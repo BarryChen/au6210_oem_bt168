@@ -1,0 +1,1349 @@
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE RADIO_CTRL
+OBJECT MODULE PLACED IN .\output\obj\radio_ctrl.obj
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE radio\radio_ctrl.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\co
+                    -nfig;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\blu
+                    -etooth;.\i2c) DEBUG PRINT(.\output\lst\radio_ctrl.lst) OBJECT(.\output\obj\radio_ctrl.obj)
+
+line level    source
+
+   1          #include <string.h>
+   2          #include "syscfg.h"
+   3          #include "utility.h"
+   4          #include "sysctrl.h"
+   5          #include "radio_ctrl.h"
+   6          #include "mv_fm.h"
+   7          #include "radio_app_interface.h"
+   8          #include "message.h"
+   9          #include "key.h"
+  10          #include "gpio.h"
+  11          #include "display.h"
+  12          #include "24cxx.h"
+  13          #include "breakpoint.h"
+  14          #include "user_interface.h"
+  15          #include "seg_panel.h"
+  16          #include "sys_on_off.h"
+  17          #include "rtc_ctrl.h"
+  18          #include "debug.h"
+  19          #include "otp_play.h"
+  20          #include "slave_ctrl.h"
+  21          #include "pt231x.h"
+  22          
+  23          #ifdef FUNC_RADIO_EN
+  24          
+  25          RADIO_CTRL      gRadioCtrl;
+  26          BYTE RadioDisFlag;
+  27          static BYTE RadioDisCount = 0;
+  28          
+  29          #ifndef FUNC_BREAK_POINT_EN
+              RADIO_DATA        gRadioData2Store;
+              #endif
+  32          
+  33          #ifdef FUNC_RADIO_ESD_AUTO_RESUME
+  34          static TIMER RadioStateCheckTimer;
+  35          static BYTE RadioStateCheckCount;
+  36          WORD gRadioCurrFreqBack;
+  37          #endif
+  38          
+  39          //区分FM的型号
+  40          RADIO_NAME      Radio_Name = RADIO_NONE;
+  41          #ifdef  FUNC_NUMBER_KEY_EN
+  42          extern WORD     gRecvNum;
+  43          extern BOOL NumKeyRadioFreqErrorFlag;
+  44          extern BOOL NumKeyErrorDispFlag;
+  45          #endif
+  46          
+  47          #ifdef AU6210K_BOOMBOX_DEMO
+              BOOL gRadioMonoEnableFlag = FALSE;      
+              #endif
+  50          
+  51          #ifdef  FUNC_DEVICE_FORCEPAUSE_EN
+              extern BOOL gDevicePlayForcePauseFlag;
+              #endif
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 2   
+
+  54          
+  55          
+  56          #ifdef __RADIOCTRL_DEBUG__
+              VOID RadioShowDebug(BYTE Index)
+              {
+                      BYTE i = 0;
+              
+                      switch(Index)
+                      {
+                              case RadioShowPowerOn:
+                                      DBG(("Read Data Form EEPROM\n"));
+                                      break;  
+                                                      
+                              case RadioShowCancelSearch:
+                                      DBG(("搜台中途退出\n"));        
+                                      break;
+                      
+                              case RadioShowSearchEndOverflow:
+                                      DBG(("搜到台数量大于MAX_RADIO_STATION_NUM\n"));
+                                      break;
+                      
+                              case RadioShowSearchEndBufferEnough:
+                                      DBG(("0<搜到台数量<buffer长度\n"));
+                                      break;
+                      
+                              case RadioShowSearchUpDown:
+                                      DBG(("SCANUP,SCANDOWN:find a channel\n"));
+                                      break;
+                      
+                              case RadioShowSaveCurFreToCurChannle:
+                                      DBG(("当前频率保存到当前通道\n"));
+                                      break;
+                      
+                              case RadioShowSaveFre:
+                                      DBG(("当前频率保存到某个频道\n"));
+                                      break;
+                      
+                              case RadioShowCurStationChange:
+                                      DBG(("通道切换\n"));
+                                      break;
+                      
+                              case RadioShowFreChange:        
+                                      DBG(("当前频率改变\n"));
+                                      break;
+                      }
+                      
+                      DBG(("频道760~874(start form 1):%2BX\n", gRadioData.Area1StationSum));  
+                      DBG(("频道875~1080(start form 1):%2BX\n", (gRadioData.StationSum - gRadioData.Area1StationSum)));                               
+                      DBG(("当前频道(start form 0):%2BX\n", gRadioData.CurrStation));
+                      
+                      DBG(("频道列表(760~874):\n"));
+                      for(i = 0; i < gRadioData.Area1StationSum; i++)
+                      {
+                              DBG(("频道%2BX  %u\n", (i + 1), (gRadioData.Stations[i] + RADIO_FREQ_BASE_760)));
+                      }       
+              
+                      DBG(("频道列表(875~1080):\n")); 
+                      for(i = gRadioData.Area1StationSum; i < gRadioData.StationSum; i++)
+                      {
+                              DBG(("频道%2BX  %u\n", (i + 1), (gRadioData.Stations[i] + RADIO_FREQ_BASE_875)));
+                      }       
+              }
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 3   
+
+              #endif
+ 117          
+ 118          
+ 119          //进入FM前初始化函数
+ 120          //利用内部FM模块时，底层会在切入通道(DAC_CH_ONCHIP_FM、DAC_CH_ONCHIP_FM_L、DAC_CH_ONCHIP_FM_R)过程中调用此
+             -函数
+ 121          VOID RadioCtrlInit(VOID)
+ 122          {
+ 123   1              DBG((">>RadioCtrlInit()\n"));
+ 124   1      #ifndef FUNC_SPI_KEY_SOUND_EN           
+                      RadioSetFreq();
+                      RadioMute(FALSE);
+                      RadioSetVolume(gSys.Volume);    
+              #endif
+ 129   1      }
+ 130          
+ 131          
+ 132          //离开FM前初始化函数
+ 133          //利用内部FM模块时，底层会在切离通道(DAC_CH_ONCHIP_FM、DAC_CH_ONCHIP_FM_L、DAC_CH_ONCHIP_FM_R)过程中调用此
+             -函数
+ 134          VOID RadioCtrlDeinit(VOID)
+ 135          {
+ 136   1              CancelSearch();
+ 137   1              MuteOn(TRUE, TRUE);
+ 138   1              RadioMute(TRUE);
+ 139   1              RadioPowerDown();
+ 140   1      #ifdef FUNC_POWER_AMPLIFIER_EN
+ 141   1              ABPowerAmplifierOn();   //在其它模式下选择AB 类功放
+ 142   1      #endif  
+ 143   1      }
+ 144          
+ 145          
+ 146          //进入FM 后初始化函数
+ 147          VOID RadioEnterInit(VOID)
+ 148          {       
+ 149   1      #ifdef FUNC_SPI_KEY_SOUND_EN
+ 150   1              RadioSetFreq();
+ 151   1              RadioMute(FALSE);
+ 152   1              RadioSetVolume(gSys.Volume);    
+ 153   1      #endif
+ 154   1      
+ 155   1              gRadioCtrl.State = RADIO_IDLE;
+ 156   1              UnMute();       
+ 157   1      
+ 158   1      #ifdef FUNC_POWER_AMPLIFIER_EN
+ 159   1              ABPowerAmplifierOff();  //在FM模式下选择D 类功放
+ 160   1      #endif
+ 161   1              
+ 162   1      #ifdef FUNC_BREAK_POINT_EN
+ 163   1              BP_SaveInfo(&gBreakPointInfo.PowerMemory.SystemMode,sizeof(gBreakPointInfo.PowerMemory.SystemMode));
+ 164   1      #endif
+ 165   1      
+ 166   1      #ifdef FUNC_RADIO_ESD_AUTO_RESUME
+ 167   1              RadioStateCheckCount = 0;
+ 168   1              TimeOutSet(&RadioStateCheckTimer, 250);
+ 169   1      #endif
+ 170   1      }
+ 171          
+ 172          
+ 173          //FM通用功能，和具体的FM型号没有关系
+ 174          //正在搜台时候中途停止搜台
+ 175          VOID CancelSearch(VOID)
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 4   
+
+ 176          {
+ 177   1              if((gRadioCtrl.State > RADIO_IDLE) && (gRadioCtrl.SeekMode != SEEK_NONE))
+ 178   1              {
+ 179   2                      RadioDisFlag = RadioDisCurFreNum;
+ 180   2                      
+ 181   2                      if(gRadioData.StationSum > 0)
+ 182   2                      {
+ 183   3                              gRadioData.CurrStation = 0;
+ 184   3                              if(gRadioData.Area1StationSum > 0)
+ 185   3                              {
+ 186   4                                      gRadioData.CurrFreq = gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_760;
+ 187   4                              }
+ 188   3                              else
+ 189   3                              {
+ 190   4                                      gRadioData.CurrFreq = gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_875;
+ 191   4                              }
+ 192   3                              RadioSetFreq(); 
+ 193   3                              RadioShowDebug(RadioShowCancelSearch);
+ 194   3                              RadioWriteData();                       
+ 195   3                      }
+ 196   2                      else
+ 197   2                      {
+ 198   3                              DBG(("Error:empty\n"));
+ 199   3                      }
+ 200   2                      RadioMute(FALSE);               
+ 201   2                      UnMute();
+ 202   2                      gRadioCtrl.State = RADIO_IDLE;
+ 203   2      #ifdef FUNC_SINGLE_LED_EN  
+ 204   2                      DispDev();
+ 205   2      #endif
+ 206   2              }
+ 207   1      }
+ 208          
+ 209          
+ 210          VOID RadioArrayInsert(VOID)
+ 211          {
+ 212   1      #ifdef  FUNC_NUMBER_KEY_EN
+ 213   1              BYTE i;
+ 214   1      
+ 215   1              if(gRecvNum > MAX_RADIO_STATION_NUM)
+ 216   1              {
+ 217   2                      return;
+ 218   2              }
+ 219   1              
+ 220   1              if(gRadioData.CurrFreq >= RADIO_FREQ_BASE_875)
+ 221   1              {
+ 222   2                      if(gRecvNum > gRadioData.StationSum)//追加到后面
+ 223   2                      {               
+ 224   3                              gRadioData.CurrStation = gRadioData.StationSum;                                                 
+ 225   3                              gRadioData.StationSum++;                                                
+ 226   3                      }
+ 227   2                      else//替换
+ 228   2                      {
+ 229   3                              gRadioData.CurrStation = gRecvNum - 1;
+ 230   3                      }
+ 231   2                      gRadioData.Stations[gRadioData.CurrStation] = (gRadioData.CurrFreq - RADIO_FREQ_BASE_875);
+ 232   2              }
+ 233   1              else //760~874
+ 234   1              {
+ 235   2                      if(gRecvNum > gRadioData.Area1StationSum)//追加
+ 236   2                      {
+ 237   3                              for(i = gRadioData.StationSum; i > gRadioData.Area1StationSum; i--)
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 5   
+
+ 238   3                              {
+ 239   4                                      gRadioData.Stations[i] = gRadioData.Stations[i-1];
+ 240   4                              }
+ 241   3                                                              
+ 242   3                              gRadioData.CurrStation = gRadioData.Area1StationSum;
+ 243   3                              gRadioData.Area1StationSum++;
+ 244   3                              gRadioData.StationSum++;
+ 245   3                      }
+ 246   2                      else//替换
+ 247   2                      {
+ 248   3                              gRadioData.CurrStation = gRecvNum - 1;                  
+ 249   3                      }
+ 250   2                      gRadioData.Stations[gRadioData.CurrStation] = (gRadioData.CurrFreq - RADIO_FREQ_BASE_760);
+ 251   2              }
+ 252   1      #endif
+ 253   1      }
+ 254          
+ 255          
+ 256          static VOID RadioChannelChange(VOID)
+ 257          {
+ 258   1              if((gRadioData.CurrStation + 1) <= gRadioData.Area1StationSum)
+ 259   1              {
+ 260   2                      gRadioData.CurrFreq = gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_760;
+ 261   2                      DBG(("CH 760+:%u\n", (gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_760)));
+ 262   2              }
+ 263   1              else
+ 264   1              {
+ 265   2                      gRadioData.CurrFreq = gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_875;
+ 266   2                      DBG(("CH 875+:%u\n", (gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_875)));
+ 267   2              }
+ 268   1      
+ 269   1              RadioSetFreq();
+ 270   1              RadioMute(FALSE);                               
+ 271   1              RadioWriteData();
+ 272   1              RadioShowDebug(RadioShowCurStationChange);
+ 273   1      }
+ 274          
+ 275                  
+ 276          //读取有效的预存台号
+ 277          #ifdef AU6210K_BOOMBOX_DEMO
+              static BOOL RadioGetValidPresetNum(BYTE CurrStationNum, BYTE Direction)
+              {
+                      BYTE Temp;
+              
+                      if(Direction == UP)
+                      {
+                              for(Temp = CurrStationNum + 1; Temp < (MAX_RADIO_STATION_NUM / 2); Temp++)
+                              {
+                                      if(gRadioData.Stations[Temp + (MAX_RADIO_STATION_NUM / 2)])
+                                      {
+                                              gRadioData.CurrStation = Temp;
+                                              return TRUE;
+                                      }
+                              }
+                              for(Temp = 0; Temp < CurrStationNum; Temp++)
+                              {
+                                      if(gRadioData.Stations[Temp + (MAX_RADIO_STATION_NUM / 2)])
+                                      {
+                                              gRadioData.CurrStation = Temp;
+                                              return TRUE;
+                                      }
+                              }       
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 6   
+
+                      }
+                      else 
+                      {
+                              for(Temp = CurrStationNum; Temp > 0; Temp--)
+                              {
+                                      if(gRadioData.Stations[Temp + (MAX_RADIO_STATION_NUM / 2)] && (Temp != CurrStationNum))
+                                      {
+                                              gRadioData.CurrStation = Temp;
+                                              return TRUE;
+                                      }
+                              }
+                              for(Temp = ((MAX_RADIO_STATION_NUM / 2) - 1); Temp > CurrStationNum; Temp--)
+                              {
+                                      if(gRadioData.Stations[Temp + (MAX_RADIO_STATION_NUM / 2)])
+                                      {
+                                              gRadioData.CurrStation = Temp;
+                                              return TRUE;
+                                      }
+                              }       
+                      }
+                      
+                      if(gRadioData.StationSum == 1)  //只有一个预存台
+                      {
+                              return TRUE;
+                      }
+                      
+                      return FALSE;   //没有预存台存在
+              }
+              #endif
+ 329          
+ 330                  
+ 331          //按键响应
+ 332          VOID RadioEventProcess(VOID)
+ 333          {
+ 334   1              MESSAGE Event = MessageGet(MSG_FIFO_KEY);
+ 335   1              
+ 336   1              switch(Event)
+ 337   1              {
+ 338   2                      case MSG_POWER:
+ 339   2                      case MSG_MODE_SW:
+ 340   2                              //DBG(("Exit FM, Event:%bx\n", Event));
+ 341   2                              CancelSearch();
+ 342   2                              MessageSend(MSG_FIFO_DEV_CTRL, Event);
+ 343   2                              break;
+ 344   2                              
+ 345   2                      case MSG_SCAN://启动自动全频段搜台
+ 346   2                      case MSG_INTRO:
+ 347   2                      case MSG_PLAY_1CP:
+ 348   2      #if !defined(AU6210K_HXX_B002)                  
+ 349   2                      case MSG_PLAY_PAUSE:
+ 350   2      #endif                  
+ 351   2      #ifdef FUNC_DEVICE_FORCEPAUSE_EN
+                                      if(gDevicePlayForcePauseFlag == TRUE)
+                                      {
+                                              gDevicePlayForcePauseFlag = FALSE;
+                                              UnMute();
+                                              break;
+                                      }
+              #endif
+ 359   2                              DBG(("SCAN\n"));
+ 360   2      #ifdef FUNC_BEEP_SOUND_EN       
+                                      PushKeyBeep(1);
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 7   
+
+              #endif
+ 363   2                              if(gRadioCtrl.State == RADIO_IDLE)
+ 364   2                              {
+ 365   3                                      gRadioCtrl.State = RADIO_READ;
+ 366   3                                      
+ 367   3                                      gRadioCtrl.SeekMode = SEEK_AUTOSCAN;
+ 368   3      #ifdef FUNC_SLAVE_UART_EN
+                                          gRadioData.CurrFreq = gRadioCtrl.RadioLowerBound;
+              #else
+ 371   3                                      gRadioData.CurrFreq = RADIO_LOWER_BOUND;
+ 372   3      #endif
+ 373   3                                      gRadioData.CurrStation = 0;     
+ 374   3                                      gRadioData.Area1StationSum = 0;
+ 375   3                                      gRadioData.StationSum = 0;                                      
+ 376   3                                      memset(&gRadioData.Stations, 0, sizeof(gRadioData.Stations));
+ 377   3                                      
+ 378   3                                      MuteOn(TRUE, TRUE);                             
+ 379   3                                      RadioSetFreq();         
+ 380   3      #ifdef FUNC_SLAVE_UART_EN
+              #ifdef  FUNC_RADIO_AUTOSEEK_EN
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioUpperBound, gRadioCtrl.RadioSeekStep, 1, 1);
+              #else
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioUpperBound, gRadioCtrl.RadioSeekStep, 0, 1);
+              #endif
+              
+              #else
+ 388   3      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+ 389   3                                      MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_UPPER_BOUND, RADIO_SEEK_STEP, 1, 1);
+ 390   3      #else
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_UPPER_BOUND, RADIO_SEEK_STEP, 0, 1);
+              #endif
+ 393   3      #endif                          
+ 394   3                                      RadioMute(TRUE);
+ 395   3                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioSeekTimeValue);
+ 396   3                              }
+ 397   2                              else
+ 398   2                              {
+ 399   3                                      CancelSearch();
+ 400   3                              }
+ 401   2                              break;
+ 402   2      
+ 403   2                      case MSG_SAVE_STATION:  //保存当前的频率到当前的频道
+ 404   2                              if(gRadioCtrl.State == RADIO_IDLE)
+ 405   2                              {               
+ 406   3                                      if(gRadioData.StationSum < MAX_RADIO_STATION_NUM)
+ 407   3                                      {               
+ 408   4                                              if((gRadioData.CurrFreq < RADIO_FREQ_BASE_875) && ((gRadioData.CurrStation + 1) <= gRadioData.Area1St
+             -ationSum))
+ 409   4                                              {
+ 410   5                                                      gRadioData.Stations[gRadioData.CurrStation] = (gRadioData.CurrFreq - RADIO_FREQ_BASE_760);
+ 411   5                                              }
+ 412   4                                              else if((gRadioData.CurrFreq > RADIO_FREQ_BASE_875) && ((gRadioData.CurrStation + 1) > gRadioData.Are
+             -a1StationSum))
+ 413   4                                              {
+ 414   5                                                      gRadioData.Stations[gRadioData.CurrStation] = (gRadioData.CurrFreq - RADIO_FREQ_BASE_875);
+ 415   5                                              }                               
+ 416   4                                              RadioShowDebug(RadioShowSaveCurFreToCurChannle);
+ 417   4                                              RadioWriteData();
+ 418   4                                              RadioDisFlag = RadioDisCurFreBlink;
+ 419   4                                              RadioDisCount = 6;
+ 420   4                                              TimeOutSet(&gRadioCtrl.SeekPreviewTimer,RadioBlinkTime);
+ 421   4      #ifdef FUNC_SLAVE_UART_EN
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 8   
+
+                                                      SlaveRadioRetCurrentStatus();
+              #endif
+ 424   4      
+ 425   4                                      }
+ 426   3                              }
+ 427   2                              break;
+ 428   2                      
+ 429   2                      case MSG_NEXT://下一个台
+ 430   2                      case MSG_PLAY_1:
+ 431   2      #ifdef  FUNC_DEVICE_FORCEPAUSE_EN
+                                      if(gDevicePlayForcePauseFlag == TRUE) 
+                                      {
+                                              break;
+                                      }                                       
+              #endif
+ 437   2      
+ 438   2      #ifdef AU6210K_BOOMBOX_DEMO
+                                      if(gRadioCtrl.State == RADIO_PROG)
+                                      {
+                                              if(gRadioData.CurrStation < (MAX_RADIO_STATION_NUM / 2))
+                                              {
+                                                      gRadioData.CurrStation++;
+                                              }
+                                              else
+                                              {
+                                                      gRadioData.CurrStation = 0;
+                                              }
+                                              break;
+                                      }
+                                      
+                                      if(gRadioCtrl.State == RADIO_IDLE)
+                                      {
+                                              if(RadioGetValidPresetNum(gRadioData.CurrStation, UP) == TRUE)
+                                              {
+                                                      RadioDisFlag = RadioDisCurChChange;
+                                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioPreVimeTimerValue);
+                                                      RadioChannelChange();
+                                                      UnMute();
+                                                      gSys.MuteFg = FALSE;
+                                              }
+                                              break;
+                                      }
+              #endif
+ 465   2      
+ 466   2                              if((gRadioData.StationSum > 0) && (gRadioCtrl.State == RADIO_IDLE))
+ 467   2                              {
+ 468   3      #ifdef FUNC_BEEP_SOUND_EN       
+                                              PushKeyBeep(1);
+              #endif
+ 471   3                                      if(gRadioData.CurrStation < (gRadioData.StationSum - 1))
+ 472   3                                      {
+ 473   4                                              gRadioData.CurrStation++;
+ 474   4                                      }
+ 475   3                                      else
+ 476   3                                      {
+ 477   4                                              gRadioData.CurrStation = 0;
+ 478   4                                      }
+ 479   3                                      RadioDisFlag = RadioDisCurChChange;                             
+ 480   3                                      RadioChannelChange();
+ 481   3                                      UnMute();
+ 482   3                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioPreVimeTimerValue);
+ 483   3                                      gSys.MuteFg = FALSE;
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 9   
+
+ 484   3      #ifdef FUNC_SLAVE_UART_EN
+                                              SlaveRadioRetCurrentStatus();
+              #endif
+ 487   3                              }
+ 488   2                              break;
+ 489   2                              
+ 490   2                      case MSG_PRE://上一个台
+ 491   2                      case MSG_EQ_CH_SUB:
+ 492   2      #ifdef  FUNC_DEVICE_FORCEPAUSE_EN
+                                      if(gDevicePlayForcePauseFlag == TRUE) 
+                                      {
+                                              break;
+                                      }                                       
+              #endif
+ 498   2      
+ 499   2      #ifdef AU6210K_BOOMBOX_DEMO
+                                      if(gRadioCtrl.State == RADIO_PROG)
+                                      {
+                                              if(gRadioData.CurrStation < (MAX_RADIO_STATION_NUM / 2))
+                                              {
+                                                      gRadioData.CurrStation++;
+                                              }
+                                              else
+                                              {
+                                                      gRadioData.CurrStation = 0;
+                                              }
+                                              break;
+                                      }
+                                      
+                                      if(gRadioCtrl.State == RADIO_IDLE)
+                                      {
+                                              if(RadioGetValidPresetNum(gRadioData.CurrStation, DOWN) == TRUE)
+                                              {
+                                                      RadioDisFlag = RadioDisCurChChange;
+                                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioPreVimeTimerValue);
+                                                      RadioChannelChange();
+                                                      UnMute();
+                                                      gSys.MuteFg = FALSE;
+                                                      break;
+                                              }
+                                      }
+              #endif
+ 526   2      
+ 527   2                              if((gRadioData.StationSum >  0) && (gRadioCtrl.State == RADIO_IDLE)) 
+ 528   2                              {
+ 529   3      #ifdef FUNC_BEEP_SOUND_EN       
+                                              PushKeyBeep(1);
+              #endif
+ 532   3                                      if(gRadioData.CurrStation > 0)
+ 533   3                                      {
+ 534   4                                              gRadioData.CurrStation--;
+ 535   4                                      }
+ 536   3                                      else
+ 537   3                                      {
+ 538   4                                              gRadioData.CurrStation = gRadioData.StationSum - 1;
+ 539   4                                      }
+ 540   3                                      RadioDisFlag = RadioDisCurChChange;                             
+ 541   3                                      RadioChannelChange();
+ 542   3                                      UnMute();
+ 543   3                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioPreVimeTimerValue);
+ 544   3                                      gSys.MuteFg = FALSE;
+ 545   3      #ifdef FUNC_SLAVE_UART_EN
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 10  
+
+                                              SlaveRadioRetCurrentStatus();
+              #endif
+ 548   3                              }
+ 549   2                              break;
+ 550   2                              
+ 551   2      #ifdef  FUNC_NUMBER_KEY_EN
+ 552   2                      case MSG_RECV_NUM://选台(输入数值在有效台数内)或设置频率(输入数值在有效频率范围内)      
+ 553   2                              if(gRadioCtrl.State == RADIO_IDLE)//SeanFu
+ 554   2                              {
+ 555   3                                      if((gRecvNum > 0) && (gRecvNum <= gRadioData.StationSum))
+ 556   3                                      {
+ 557   4                                              //DBG(("RecvNum合法台号：%d\n", gRecvNum));                             
+ 558   4                                              gRadioData.CurrStation = gRecvNum - 1;
+ 559   4                                              if(gRecvNum <= gRadioData.Area1StationSum)
+ 560   4                                              {
+ 561   5                                                      gRadioData.CurrFreq = (gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_760);
+ 562   5                                              }
+ 563   4                                              else
+ 564   4                                              {
+ 565   5                                                      gRadioData.CurrFreq = (gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_875);
+ 566   5                                              }       
+ 567   4                                              RadioWriteData();
+ 568   4                                              RadioShowDebug(RadioShowCurStationChange);
+ 569   4                                      }
+ 570   3      #ifdef FUNC_SLAVE_UART_EN
+                                          else if((gRecvNum >= gRadioCtrl.RadioLowerBound) && (gRecvNum <= gRadioCtrl.Ra
+             -dioUpperBound))
+              #else
+ 573   3                                      else if((gRecvNum >= RADIO_LOWER_BOUND) && (gRecvNum <= RADIO_UPPER_BOUND))
+ 574   3      #endif
+ 575   3                                      {
+ 576   4                                              //DBG(("RecvNum合法 频率：%d\n", gRecvNum));
+ 577   4                                              gRadioData.CurrFreq = gRecvNum;                         
+ 578   4                                              RadioWriteData();
+ 579   4                                              RadioShowDebug(RadioShowSaveFre);
+ 580   4                                      }
+ 581   3                                      else 
+ 582   3                                      {
+ 583   4                                              //DBG(("RecvNum非法：%d\n", gRecvNum)); 
+ 584   4                                              gRecvNum = 0;                                           
+ 585   4                                              NumKeyRadioFreqErrorFlag = TRUE;
+ 586   4                                              NumKeyErrorDispFlag = TRUE;                                     
+ 587   4      #ifdef FUNC_DISP_EN                                             
+ 588   4                                              TimeOutSet(&DispTmr, NORMAL_INTERVAL);  //输入错误Err显示保留时间
+ 589   4      #endif
+ 590   4                                              return;
+ 591   4                                      }                       
+ 592   3                                      RadioSetFreq();
+ 593   3                                      RadioMute(FALSE);
+ 594   3                                      gRecvNum = 0;                                   
+ 595   3      #ifdef FUNC_DISP_EN                                             
+ 596   3                                      TimeOutSet(&DispTmr, 0);        //退出数值显示
+ 597   3      #endif
+ 598   3                              }
+ 599   2                              break;
+ 600   2      
+ 601   2                      case MSG_NUM_SAVE_STAITON:      //将当前频率保存起来
+ 602   2                              if(gRadioCtrl.State == RADIO_IDLE)
+ 603   2                              {                               
+ 604   3                                      //DBG(("RecvNum %d \n", gRecvNum));
+ 605   3                                      RadioArrayInsert();
+ 606   3                                      gRecvNum = 0;
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 11  
+
+ 607   3                                      RadioWriteData();
+ 608   3                                      RadioShowDebug(RadioShowSaveFre);
+ 609   3                                      RadioDisFlag = RadioDisCurFreBlink;
+ 610   3                                      RadioDisCount = 4;
+ 611   3                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioBlinkTime);
+ 612   3                              }
+ 613   2                              break;
+ 614   2      #endif
+ 615   2                              
+ 616   2      #ifdef  FUNC_RADIO_STEPOVER_EN          
+                              case MSG_NEXT1:
+                              case MSG_FREQ_UP:
+                              case MSG_FREQUP_10TRK://循环递增微调频率(+100KHZ)       
+                                      if(gRadioCtrl.State == RADIO_IDLE)
+                                      {
+              #ifdef FUNC_SLAVE_UART_EN
+                                          if(++gRadioData.CurrFreq > gRadioCtrl.RadioUpperBound)
+                                              {
+                                                      gRadioData.CurrFreq = gRadioCtrl.RadioLowerBound;
+                                              }
+              #else
+                                              if(++gRadioData.CurrFreq > RADIO_UPPER_BOUND)
+                                              {
+                                                      gRadioData.CurrFreq = RADIO_LOWER_BOUND;
+                                              }
+              #endif
+                                              RadioSetFreq();
+                                              RadioMute(FALSE);               
+                                              RadioWriteData();
+                                              RadioShowDebug(RadioShowFreChange);
+                                      }
+                                      break;
+                              
+                              case MSG_PREV1:
+                              case MSG_FREQ_DN:
+                              case MSG_FREQDN_10TRK://循环递减微调频率(-100KHZ)               
+                                      if(gRadioCtrl.State == RADIO_IDLE)
+                                      {
+              #ifdef FUNC_SLAVE_UART_EN
+                                          if(--gRadioData.CurrFreq < gRadioCtrl.RadioLowerBound)
+                                              {
+                                                      gRadioData.CurrFreq = gRadioCtrl.RadioUpperBound;
+                                              }       
+              #else
+                                              if(--gRadioData.CurrFreq < RADIO_LOWER_BOUND)
+                                              {
+                                                      gRadioData.CurrFreq = RADIO_UPPER_BOUND;
+                                              }       
+              #endif
+                                              RadioSetFreq();
+                                              RadioMute(FALSE);               
+                                              RadioWriteData();
+                                              RadioShowDebug(RadioShowFreChange);
+                                      }
+                                      break;
+              #endif
+ 663   2                      
+ 664   2      #ifdef  FUNC_RADIO_SEMO_AUTOSEEK_EN             
+                              case MSG_FF_START:
+                              case MSG_10TRACK_ADD://递增方式搜台，搜到第一个后停止
+                                      if(gRadioCtrl.State == RADIO_IDLE)
+                                      {
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 12  
+
+                                              gRadioCtrl.SeekMode = SEEK_SCANUP;
+              #ifdef FUNC_SLAVE_UART_EN
+                                          if(gRadioData.CurrFreq >= gRadioCtrl.RadioUpperBound)
+                                              {       
+                                                      gRadioData.CurrFreq = gRadioCtrl.RadioLowerBound;
+                                              }
+                                              else
+                                              {
+                                                      gRadioData.CurrFreq++;
+                                              }
+              #else
+                                              if(gRadioData.CurrFreq >= RADIO_UPPER_BOUND)
+                                              {       
+                                                      gRadioData.CurrFreq = RADIO_LOWER_BOUND;
+                                              }
+                                              else
+                                              {
+                                                      gRadioData.CurrFreq++;
+                                              }
+              #endif                          
+                                              MuteOn(TRUE, TRUE);     
+                                              RadioSetFreq();                                         
+                                              gRadioCtrl.State = RADIO_READ;
+              #ifdef FUNC_SLAVE_UART_EN
+              #ifdef  FUNC_RADIO_AUTOSEEK_EN
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioUpperBound, gRadioCtrl.RadioSeekStep, 1, 1);
+              #else
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioUpperBound, gRadioCtrl.RadioSeekStep, 0, 1);
+              #endif
+              #else
+              #ifdef  FUNC_RADIO_AUTOSEEK_EN
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_UPPER_BOUND, RADIO_SEEK_STEP, 1, 1);
+              #else
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_UPPER_BOUND, RADIO_SEEK_STEP, 0, 1);
+              #endif
+              #endif
+                                              RadioMute(TRUE);
+                                              TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioSeekTimeValue);
+                                                      
+                                      }
+                                      break;
+                              
+                              case MSG_FB_START:
+                              case MSG_10TRACK_SUB://递减方式搜台，搜到第一个后停止
+                                      if(gRadioCtrl.State == RADIO_IDLE)
+                                      {
+                                              gRadioCtrl.SeekMode = SEEK_SCANDOWN;
+              #ifdef FUNC_SLAVE_UART_EN
+                                          if(gRadioData.CurrFreq <= gRadioCtrl.RadioLowerBound)
+                                              {
+                                                      gRadioData.CurrFreq = gRadioCtrl.RadioUpperBound;
+                                              }
+                                              else
+                                              {
+                                                      gRadioData.CurrFreq--;
+                                              }
+              #else                           
+                                              if(gRadioData.CurrFreq <= RADIO_LOWER_BOUND)
+                                              {
+                                                      gRadioData.CurrFreq = RADIO_UPPER_BOUND;
+                                              }
+                                              else
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 13  
+
+                                              {
+                                                      gRadioData.CurrFreq--;
+                                              }
+              #endif                          
+                                              MuteOn(TRUE, TRUE);     
+                                              RadioSetFreq();                                         
+                                              gRadioCtrl.State = RADIO_READ;
+              #ifdef FUNC_SLAVE_UART_EN
+              #ifdef  FUNC_RADIO_AUTOSEEK_EN
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioLowerBound, gRadioCtrl.RadioSeekStep, 1, 1);
+              #else
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioLowerBound, gRadioCtrl.RadioSeekStep, 0, 1);
+              #endif
+              #else
+              #ifdef  FUNC_RADIO_AUTOSEEK_EN
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_LOWER_BOUND, RADIO_SEEK_STEP, 1, 1);
+              #else
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_LOWER_BOUND, RADIO_SEEK_STEP, 0, 1);
+              #endif
+              #endif
+                                              RadioMute(TRUE);
+                                              TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioSeekTimeValue);
+                                                      
+                                      }
+                                      break;
+              #endif
+ 757   2      
+ 758   2                      case MSG_VOL_ADD://音量加                                       
+ 759   2      #if defined(AU6210K_NR_D_9X)||defined(AU6210K_NR_D_9X_XJ_HTS)
+                                      if (gSys.Volume >= VOLUME_MAX)
+                                      {
+                                              SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 0);
+                                              InDacChannelSel(DAC_CH_ONCHIP_FM);
+                                              RadioSetFreq();
+                                              UnMute();
+                                              SysClkDivSet(CLK_DIV_RATE);
+                                      }
+              #endif
+ 769   2      
+ 770   2      #ifdef FUNC_POWER_AMPLIFIER_EN
+ 771   2                              ABPowerAmplifierOff();                  
+ 772   2      #endif
+ 773   2      
+ 774   2      #ifdef FUNC_OTP_KEY_SOUND_EN
+                                      OTP_PlaySelNum(OTPPLAY_NUM_VOLUP, 0);
+                                      InDacChannelSel(DAC_CH_ONCHIP_FM);
+                                      RadioSetFreq();
+                                      UnMute();
+                                      SysClkDivSet(CLK_DIV_RATE);
+              #endif
+ 781   2      #ifdef FUNC_PT231X_EN
+                          VolType = VOL_MAIN;
+                          PT2313VolAdd();
+              #else
+ 785   2                              VolumeAdjust(UP);
+ 786   2      #endif
+ 787   2                              break;
+ 788   2                      
+ 789   2                      case MSG_VOL_SUB://音量减                       
+ 790   2      #if defined(AU6210K_NR_D_9X)||defined(AU6210K_NR_D_9X_XJ_HTS)
+                                      if (gSys.Volume <= VOLUME_MIN)
+                                      {
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 14  
+
+                                              SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 0);
+                                              InDacChannelSel(DAC_CH_ONCHIP_FM);
+                                              RadioSetFreq();
+                                              SysClkDivSet(CLK_DIV_RATE);
+                                      }
+              #endif
+ 799   2      
+ 800   2      #ifdef FUNC_POWER_AMPLIFIER_EN
+ 801   2                              ABPowerAmplifierOff();                  
+ 802   2      #endif
+ 803   2      
+ 804   2      #ifdef FUNC_OTP_KEY_SOUND_EN
+                                      OTP_PlaySelNum(OTPPLAY_NUM_VOLDN, 0);
+                                      InDacChannelSel(DAC_CH_ONCHIP_FM);
+                                      RadioSetFreq();
+                                      UnMute();
+                                      SysClkDivSet(CLK_DIV_RATE);
+              #endif
+ 811   2      #ifdef FUNC_PT231X_EN
+                                  VolType = VOL_MAIN;
+                                  PT2313VolSub();
+              #else
+ 815   2                              VolumeAdjust(DOWN);
+ 816   2      #endif
+ 817   2                              break;
+ 818   2      #ifdef FUNC_PT231X_EN
+                            case MSG_TREBUP:
+                                      VolType = VOL_TREB;
+                                   PT2313VolAdd();    
+                                      break;          
+                              case MSG_TREBDN:
+                                      VolType = VOL_TREB;
+                                   PT2313VolSub();    
+                                      break;          
+                              case MSG_BASSUP:
+                                      VolType = VOL_BASS;
+                                   PT2313VolAdd();    
+                                      break;          
+                              case MSG_BASSDN:
+                                      VolType = VOL_BASS;
+                                   PT2313VolSub();    
+                                      break;          
+                              case MSG_DEFAULT:
+                                      PT2313TrebBassSetDefault();
+                                      break;          
+              #endif
+ 839   2      #if defined(AU6210K_HXX_B002)
+                              case MSG_PLAY_PAUSE:
+              #endif
+ 842   2                      case MSG_MUTE:
+ 843   2                              if(gRadioCtrl.State == RADIO_IDLE)
+ 844   2                              {                       
+ 845   3      #if 0//def FUNC_SPI_KEY_SOUND_EN
+                                              if(gSys.MuteFg)
+                                              {
+                                                      SPI_PlaySelectNum(SPIPLAY_SONG_UNMUTE, 0);
+                                              }
+                                              else
+                                              {       
+                                                      SPI_PlaySelectNum(SPIPLAY_SONG_MUTE, 0);
+                                              }                               
+                                              InDacChannelSel(DAC_CH_ONCHIP_FM);
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 15  
+
+                                              if(gSys.MuteFg)
+                                              {
+                                                      RadioSetFreq();
+                                                      gSys.MuteFg = TRUE;
+                                              }
+                                              SysClkDivSet(CLK_DIV_RATE);
+              #endif
+ 862   3                                      MuteStatusChange();                     
+ 863   3                              }
+ 864   2                              break;  
+ 865   2                      
+ 866   2      #if (defined(AU6210K_BOOMBOX_DEMO))
+                              case MSG_CLOCK:                 
+                                      if(gRadioCtrl.State == RADIO_IDLE)
+                                      {
+                                              gRadioCtrl.State = RADIO_PROG;
+                                              RadioDisFlag = RadioDisCurProgramNum;
+                                              TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioProgramWaitTime);
+                                              break;
+                                      }       
+              
+                                      if(gRadioCtrl.State == RADIO_PROG)
+                                      {               
+                                              if(gRadioData.CurrFreq < RADIO_FREQ_BASE_875) 
+                                              {
+                                                      gRadioData.Stations[gRadioData.CurrStation] = (gRadioData.CurrFreq - RADIO_FREQ_BASE_760);
+                                              }
+                                              else if(gRadioData.CurrFreq > RADIO_FREQ_BASE_875)
+                                              {
+                                                      gRadioData.Stations[gRadioData.CurrStation] = (gRadioData.CurrFreq - RADIO_FREQ_BASE_875);
+                                              }                               
+                                              gRadioData.Stations[gRadioData.CurrStation + (MAX_RADIO_STATION_NUM / 2)] = gRadioData.CurrStation + 1
+             -;
+                                              gRadioData.StationSum = (MAX_RADIO_STATION_NUM / 2);            
+                                                      
+                                              RadioShowDebug(RadioShowSaveCurFreToCurChannle);
+              #ifdef FUNC_BREAK_POINT_EN
+                                              RadioWriteData();
+              #endif
+                                              RadioDisFlag = RadioDisCurFreNum;
+                                              gRadioCtrl.State = RADIO_IDLE;
+                                      }
+                                      break;
+              
+                              case MSG_FM_STERO_SW:
+                                      if(gRadioCtrl.State == RADIO_IDLE)
+                                      {
+                                              gRadioMonoEnableFlag ^= 1;
+                                              RadioMonoModeSet(gRadioMonoEnableFlag);                 
+                                      }
+                                      break;
+              #endif
+ 906   2      
+ 907   2                      default:        
+ 908   2                              break;
+ 909   2              }//switch(Event)
+ 910   1      
+ 911   1      #ifdef FUN_SYSTEM_POWEROFF_WAIT_TIME
+                      SystemOffTimeMsgPro(Event);
+              #endif
+ 914   1      }
+ 915          
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 16  
+
+ 916          
+ 917          #ifdef FUNC_DISP_EN     
+ 918          #ifdef  FUNC_NUMBER_KEY_EN
+ 919          //数字输入频点保存闪烁显示
+ 920          VOID RadioDisBlink(VOID)
+ 921          {
+ 922   1              switch(gDisplayMode)
+ 923   1              {
+ 924   2      #ifdef FUNC_SINGLE_LED_EN       
+ 925   2                      case DISP_DEV_SLED:
+ 926   2                              //add code
+ 927   2                              break;
+ 928   2      #endif
+ 929   2      
+ 930   2      #ifdef FUNC_SEG_LED_EN
+                              case DISP_DEV_LED1888:          
+                              case DISP_DEV_LED8888:          
+                              case DISP_DEV_LED57:
+                                      if(RadioDisCount % 2)
+                                      {       
+                                              DispString("    ");             
+                                              DispIcon(ICON_DP_FM_MHZ, LIGHT_OFF);                                    
+                                      }
+                                      else
+                                      {
+                                              Num2Char(gRadioData.CurrFreq, FALSE);
+                                              DispIcon(ICON_DP_FM_MHZ, LIGHT_ON);     
+                                      }                               
+                                      break;
+              #endif
+ 946   2      
+ 947   2      #ifdef FUNC_SEG_LCD_EN
+                              case DISP_DEV_LCD58:
+                                      //add code
+                                      break;
+              #endif
+ 952   2                      
+ 953   2                      default:
+ 954   2                              break;                  
+ 955   2              }
+ 956   1      }
+ 957          #endif
+ 958          #endif
+ 959          
+ 960          
+ 961          // Seek tuning will search up or down for a valid channel.
+ 962          VOID RadioStationSearch(VOID)
+ 963          {
+ 964   1              BYTE SearchState; 
+ 965   1                      
+ 966   1              switch(gRadioCtrl.State)
+ 967   1              {       
+ 968   2                      case RADIO_SEEK:        
+ 969   2                              if(IsTimeOut(&gRadioCtrl.SeekPreviewTimer))
+ 970   2                              {       
+ 971   3                                      MuteOn(TRUE, TRUE);     //解决FM信号源从DAC直接输出时，自动搜台过程中会有较大低噪声
+ 972   3                                      RadioMute(TRUE);
+ 973   3                                      RadioDisFlag = RadioDisCurFreNum;
+ 974   3      
+ 975   3      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+ 976   3                                      if((gRadioCtrl.SeekMode == SEEK_AUTOSCAN) ||(gRadioCtrl.SeekMode == SEEK_SCANUP))
+ 977   3                                      {
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 17  
+
+ 978   4      #ifdef FUNC_SLAVE_UART_EN
+                                                 MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioUpperBound, gR
+             -adioCtrl.RadioSeekStep, 1, 0);
+              #else
+ 981   4                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_UPPER_BOUND, RADIO_SEEK_STEP, 1, 0);
+ 982   4      #endif
+ 983   4                                      }
+ 984   3                                      else
+ 985   3                                      {
+ 986   4      #ifdef FUNC_SLAVE_UART_EN
+                                                 MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioLowerBound, gR
+             -adioCtrl.RadioSeekStep, 1, 0);
+              #else                           
+ 989   4                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_LOWER_BOUND, RADIO_SEEK_STEP, 1, 0);
+ 990   4      #endif
+ 991   4                                      }
+ 992   3                                      DBG(("Auto Seek Start Freq %d\n", gRadioData.CurrFreq));        
+ 993   3      #else
+                                              if((gRadioCtrl.SeekMode == SEEK_AUTOSCAN) ||(gRadioCtrl.SeekMode == SEEK_SCANUP))
+                                              {
+                                                      gRadioData.CurrFreq++;
+                                              }
+                                              else
+                                              {
+                                                      gRadioData.CurrFreq--;
+                                              }
+                                              //DBG(("Search  Freq %d\n",gRadioData.CurrFreq));                                       
+                                              //RadioSearchSet(gRadioData.CurrFreq);
+              #ifdef FUNC_SLAVE_UART_EN
+                                          MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioUpperBound, gRadioCtr
+             -l.RadioSeekStep, 0, 0);
+                                          gRadioCtrl.RadioSeekResult =0;
+              #else                                                           
+                                              MVFM_AutoSeekConfig(gRadioData.CurrFreq, RADIO_UPPER_BOUND, RADIO_SEEK_STEP, 0, 0);
+              #endif
+              #endif
+1011   3                                      gRadioCtrl.State = RADIO_READ;
+1012   3                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioSeekTimeValue);
+1013   3                                      
+1014   3      #ifdef FUNC_RADIO_ESD_AUTO_RESUME
+1015   3                                      gRadioCurrFreqBack = gRadioData.CurrFreq;
+1016   3      #endif
+1017   3      #ifdef FUNC_SLAVE_UART_EN
+                                              SlaveRadioRetCurrentStatus();
+              #endif
+1020   3                              }
+1021   2                              break;
+1022   2                                                      
+1023   2                      case RADIO_READ:
+1024   2                              if(IsTimeOut(&gRadioCtrl.SeekPreviewTimer))
+1025   2                              {
+1026   3      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+1027   3                                      if(SearchState = RadioRSSIRead(TRUE)) 
+1028   3      #else
+                                              if(SearchState = RadioRSSIRead(FALSE)) 
+              #endif
+1031   3                                      {       
+1032   4      #ifdef FUNC_SLAVE_UART_EN
+                                                 gRadioCtrl.RadioSeekResult =1;
+              #endif
+1035   4      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+1036   4      #ifdef FUNC_DISP_EN
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 18  
+
+1037   4                                              DispResume();
+1038   4      #endif
+1039   4      #endif
+1040   4                                              if(SearchState == 3) 
+1041   4                                              {
+1042   5                                                      //DBG(("Search Freq %d\n",gRadioData.CurrFreq));                                                
+1043   5                                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioSeekTimeValue);
+1044   5                                                      break;
+1045   5                                              }
+1046   4                                              
+1047   4                                              if(gRadioCtrl.SeekMode == SEEK_AUTOSCAN)
+1048   4                                              {
+1049   5                                                      if(gRadioData.StationSum < MAX_RADIO_STATION_NUM)
+1050   5                                                      {
+1051   6                                                              if(gRadioData.CurrFreq < RADIO_FREQ_BASE_875)
+1052   6                                                              {
+1053   7                                                                      gRadioData.Stations[gRadioData.StationSum] = (gRadioData.CurrFreq - RADIO_FREQ_BASE_760);
+1054   7                                                                      gRadioData.Area1StationSum++;
+1055   7                                                              }
+1056   6                                                              else
+1057   6                                                              {
+1058   7                                                                      //DBG(("~~~~~~~~~~~~~%u\n",gRadioData.CurrFreq));                                                       
+1059   7                                                                      gRadioData.Stations[gRadioData.StationSum] = (gRadioData.CurrFreq - RADIO_FREQ_BASE_875);
+1060   7                                                              }                                               
+1061   6                                                              gRadioData.StationSum++;
+1062   6      
+1063   6      //#if (defined(FUNC_SINGLE_LED_EN))     //单个LED显示需要搜台预览功能
+1064   6      #ifdef RADIO_SEEK_WAIT_EN
+1065   6                                                              RadioMute(FALSE);
+1066   6                                                              UnMute();
+1067   6      #endif
+1068   6      //#endif
+1069   6                                                              RadioDisFlag = RadioDisCurChAutoscan;
+1070   6                                                              TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioPreVimeTimerValue);
+1071   6      #ifdef FUNC_SINGLE_LED_EN  
+1072   6                                                              DispDev();
+1073   6      #endif
+1074   6      #ifdef FUNC_SLAVE_UART_EN
+                                                                      SlaveRadioRetCurrentStatus();
+              #endif
+1077   6                                                      }
+1078   5                                                      else
+1079   5                                                      {                                       
+1080   6                                                              //DBG(("FM Buffer Over\n"));
+1081   6                                                              gRadioData.CurrStation = 0;
+1082   6                                                              if(gRadioData.Area1StationSum > 0)
+1083   6                                                              {
+1084   7                                                                      gRadioData.CurrFreq = gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_760;
+1085   7                                                              }
+1086   6                                                              else
+1087   6                                                              {
+1088   7                                                                      gRadioData.CurrFreq = gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_875;
+1089   7                                                              }
+1090   6                                                              RadioMute(FALSE);
+1091   6                                                              UnMute();
+1092   6                                                              gRadioCtrl.State = RADIO_IDLE;                                                                                                                                                  
+1093   6                                                              RadioWriteData();                                                       
+1094   6                                                              RadioShowDebug(RadioShowSearchEndOverflow);
+1095   6      #ifdef FUNC_SINGLE_LED_EN 
+1096   6                                                              DispDev();
+1097   6      #endif
+1098   6      #ifdef FUNC_SLAVE_UART_EN
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 19  
+
+                                                                      SlaveRadioRetCurrentStatus();
+              #endif
+1101   6                                                              return;                                                         
+1102   6                                                      }
+1103   5                                              }
+1104   4                                              else
+1105   4                                              {
+1106   5                                                      gRadioCtrl.State = RADIO_IDLE;                                          
+1107   5                                                      RadioMute(FALSE);
+1108   5                                                      UnMute();
+1109   5                                                      RadioWriteData();                                               
+1110   5                                                      RadioShowDebug(RadioShowSearchUpDown);                                          
+1111   5      #ifdef FUNC_SINGLE_LED_EN 
+1112   5                                                      DispDev();
+1113   5      #endif
+1114   5      #ifdef FUNC_SLAVE_UART_EN
+                                                              SlaveRadioRetCurrentStatus();
+              #endif
+1117   5                                                      return;
+1118   5                                              }
+1119   4                                      }
+1120   3      #ifdef FUNC_SLAVE_UART_EN
+                                          if(((gRadioCtrl.SeekMode == SEEK_SCANDOWN) && (gRadioData.CurrFreq <= gRadioCt
+             -rl.RadioLowerBound))
+                                              || (((gRadioCtrl.SeekMode == SEEK_SCANUP) || (gRadioCtrl.SeekMode == SEEK_AUTOSCAN)) && (gRadioData.Cu
+             -rrFreq >= gRadioCtrl.RadioUpperBound)))
+              #else
+1124   3                                      if(((gRadioCtrl.SeekMode == SEEK_SCANDOWN) && (gRadioData.CurrFreq <= RADIO_LOWER_BOUND))
+1125   3                                      || (((gRadioCtrl.SeekMode == SEEK_SCANUP) || (gRadioCtrl.SeekMode == SEEK_AUTOSCAN)) && (gRadioData.Cu
+             -rrFreq >= RADIO_UPPER_BOUND)))
+1126   3      #endif
+1127   3                                      { 
+1128   4                                              gRadioCtrl.State = RADIO_IDLE;
+1129   4                                              if((gRadioData.StationSum > 0) && (gRadioCtrl.SeekMode == SEEK_AUTOSCAN))
+1130   4                                              {                                               
+1131   5      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+1132   5      #ifdef FUNC_DISP_EN
+1133   5                                                      DispResume();
+1134   5      #endif
+1135   5      #endif
+1136   5                                                      gRadioData.CurrStation = 0;
+1137   5      
+1138   5                                                      if(gRadioData.Area1StationSum > 0)
+1139   5                                                      {
+1140   6                                                              gRadioData.CurrFreq = gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_760;
+1141   6                                                      }
+1142   5                                                      else
+1143   5                                                      {
+1144   6                                                              gRadioData.CurrFreq = gRadioData.Stations[gRadioData.CurrStation] + RADIO_FREQ_BASE_875;
+1145   6                                                      }
+1146   5                                                      
+1147   5                                                      RadioSetFreq();                                                 
+1148   5                                                      RadioWriteData();                                               
+1149   5                                                      RadioShowDebug(RadioShowSearchEndBufferEnough); 
+1150   5                                              }
+1151   4                                              else
+1152   4                                              {
+1153   5                                                      DBG(("Error:empty\n"));
+1154   5                                                      RadioSetFreq();
+1155   5                                              }
+1156   4                                              
+1157   4                                              RadioMute(FALSE);       
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 20  
+
+1158   4                                              UnMute();
+1159   4      #ifdef FUNC_SINGLE_LED_EN 
+1160   4                                              DispDev();
+1161   4      #endif
+1162   4      #ifdef FUNC_SLAVE_UART_EN
+                                                      SlaveRadioRetCurrentStatus();
+              #endif
+1165   4                                      }
+1166   3                                      else
+1167   3                                      {
+1168   4                                              gRadioCtrl.State = RADIO_SEEK;
+1169   4                                              
+1170   4      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+1171   4                                              if(gRadioCtrl.SeekMode == SEEK_SCANDOWN)
+1172   4                                              {
+1173   5                                                      gRadioData.CurrFreq--;                                          
+1174   5                                              }
+1175   4                                              else
+1176   4                                              {
+1177   5                                                      gRadioData.CurrFreq++;
+1178   5                                              }                                       
+1179   4      #endif
+1180   4                                      }               
+1181   3                              }               
+1182   2                              break;
+1183   2                              
+1184   2                      case RADIO_IDLE:
+1185   2                              if(IsTimeOut(&gRadioCtrl.SeekPreviewTimer))
+1186   2                              {       
+1187   3                                      if(RadioDisFlag == RadioDisCurChChange)
+1188   3                                      {
+1189   4      #ifdef AU6210K_BOOMBOX_DEMO
+                                                      RadioDisFlag = RadioDisCurPresetCh;
+              #else
+1192   4                                              RadioDisFlag = RadioDisCurFreNum;
+1193   4      #endif
+1194   4                                      }
+1195   3                                      else if(RadioDisFlag == RadioDisCurChAutoscan)
+1196   3                                      {
+1197   4                                              RadioDisFlag = RadioDisCurFreNum;
+1198   4                                      }                               
+1199   3      #ifdef  FUNC_NUMBER_KEY_EN
+1200   3                                      else if(RadioDisFlag == RadioDisCurFreBlink)
+1201   3                                      {               
+1202   4      #ifdef FUNC_DISP_EN             
+1203   4                                              RadioDisBlink();
+1204   4      #endif
+1205   4                                              if(RadioDisCount > 0)
+1206   4                                              {
+1207   5                                                      RadioDisCount--;
+1208   5                                              }
+1209   4                                              else
+1210   4                                              {
+1211   5                                                      RadioDisFlag = RadioDisCurFreNum;
+1212   5                                              }
+1213   4                                              TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioBlinkTime);                               
+1214   4                                      }
+1215   3      #endif
+1216   3                              }
+1217   2                              break;
+1218   2                              
+1219   2      #ifdef AU6210K_BOOMBOX_DEMO
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 21  
+
+                              case RADIO_PROG:
+                                      if(IsTimeOut(&gRadioCtrl.SeekPreviewTimer))
+                                      {
+                                              gRadioCtrl.State = RADIO_IDLE;  
+                                              RadioDisFlag = RadioDisCurFreNum;
+                                      }
+                                      break;
+              #endif
+1228   2                              
+1229   2                      default:
+1230   2                              break;  
+1231   2              }
+1232   1      }
+1233          
+1234          
+1235          //按键响应
+1236          //状态处理
+1237          VOID RadioStateCtrl(VOID)
+1238          {       
+1239   1              RadioEventProcess();
+1240   1              RadioStationSearch();
+1241   1      
+1242   1      #ifdef FUNC_RADIO_ESD_AUTO_RESUME
+1243   1              if(gRadioCtrl.State == RADIO_IDLE)
+1244   1              {
+1245   2                      if(IsTimeOut(&RadioStateCheckTimer))
+1246   2                      {               
+1247   3                              if((MVFM_ReadReg(0x00) & 0x20) || (MVFM_GetCh() != gRadioCurrFreqBack))
+1248   3                              {
+1249   4                                      RadioStateCheckCount++;
+1250   4                                      if(RadioStateCheckCount > 2)    
+1251   4                                      {
+1252   5                                              RadioSetFreq(); 
+1253   5                                              RadioMute(FALSE);       
+1254   5                                      }
+1255   4                              }
+1256   3                              else
+1257   3                              {
+1258   4                                      RadioStateCheckCount = 0;
+1259   4                              }
+1260   3                              TimeOutSet(&RadioStateCheckTimer, 250);
+1261   3                      }                       
+1262   2              }
+1263   1      #endif
+1264   1      }
+1265          
+1266          #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   2287    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     18       2
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 22  
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
