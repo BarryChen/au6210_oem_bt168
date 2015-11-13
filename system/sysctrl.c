@@ -131,14 +131,15 @@ VOID main()
 /*#ifdef FUNC_SLAVE_UART_EN
 	SlaveCtrlInit();
 #endif*/
-	
 
+#ifndef need_change_flag  //no use
 	baGPIOCtrl[GPIO_A_IE] |= 0x40;//A2
 	baGPIOCtrl[GPIO_A_OE] &= ~0x40;
 	baGPIOCtrl[GPIO_A_PU] |= 0x40;
 	baGPIOCtrl[GPIO_A_PD] |= 0x40; 
 	baGPIOCtrl[GPIO_A_OUT] &= ~0x40; //A2
 	WaitMs(2);
+#endif
 
 	DBG1(("******* Welcome to use MVsilicon's chip! *******\n"));
 
@@ -150,12 +151,15 @@ VOID main()
 	|| (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_POWERDOWN)) 
 	SystemOn();
 #endif
+
+#ifndef need_change_flag  //no use
 	baGPIOCtrl[GPIO_A_IE] &= ~0x40;//A2
 	baGPIOCtrl[GPIO_A_OE] |= 0x40;
 	baGPIOCtrl[GPIO_A_PU] |= 0x40;
 	baGPIOCtrl[GPIO_A_PD] |= 0x40; 
 	baGPIOCtrl[GPIO_A_OUT] |= 0x40; //A2
 	WaitMs(2);
+#endif
 
 #ifdef FUN_SYSTEM_POWEROFF_WAIT_TIME
 	SystemOffTimeInit();
