@@ -218,16 +218,15 @@ BYTE  CODE KeyVal1[ADC_KEY_COUNT] =
 };
 
 #elif defined(AU6210K_ZB_BT007_CSR)
-#define		ADC_KEY_COUNT				6
+#define		ADC_KEY_COUNT				5
 static CODE BYTE AdcKeyEvent[][4] = 
 {
 //	SP						CPS					CPH							CPR	
-	{MSG_MODE_SW,		MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW3
-	{MSG_NEXT,			MSG_V_ADD,			MSG_VOL_ADD,				MSG_NONE	},	//SW3
-	{MSG_PRE,			MSG_V_SUB,			MSG_VOL_SUB,				MSG_NONE	},	//SW2	
-	{MSG_PLAY_PAUSE,	MSG_BT_CHANGE_PHONE,	MSG_NONE,					MSG_NONE	},	//SW4
-	{MSG_BLUETOOTH_ANSWER,	MSG_BLUETOOTH_REJECT,	MSG_BLUETOOTH_REJECT,		MSG_NONE	},	//SW4
-	{MSG_IR_ON_OFF,	MSG_IR_ON_OFF,	MSG_NONE,		MSG_NONE	},	//SW4
+	{MSG_NEXT,			MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW3
+	{MSG_VOL_ADD,			MSG_VOL_ADD,				MSG_VOL_ADD,					MSG_NONE	},	//SW3
+	{MSG_VOL_SUB,			MSG_VOL_SUB,				MSG_VOL_SUB,					MSG_NONE	},	//SW4
+	{MSG_PRE,			MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW2	
+	{MSG_PLAY_PAUSE,	MSG_MODE_SW,			MSG_NONE,					MSG_NONE	},	//SW4
 };
 
 
@@ -398,24 +397,23 @@ static BYTE	AdcChannelKeyGet(BYTE Channel)
 				DBG1(("22222222"));
 				DBG1(("22222222aaaaaKeyIndex = %d",KeyIndex));
 				if(gSys.SystemMode == SYS_MODE_BLUETOOTH )
-				{
+				{				
 					switch(KeyIndex)
 					{
+					case 0:
+						baGPIOCtrl[GPIO_A_OUT] &= ~0x04; //A2
+						break;
 					case 1: 
-						DBG1(("aaaabbb\n"));
-						baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
+						baGPIOCtrl[GPIO_D_OUT] &= ~0x04; //D2
 						break;
 					case 2:
-						DBG1(("aaacc\n"));
-						baGPIOCtrl[GPIO_A_OUT] |= 0x02; //A1
+						baGPIOCtrl[GPIO_D_OUT] &= ~0x40; //D6
 						break;
 					case 3:
-						DBG1(("aaaddb\n"));
-						baGPIOCtrl[GPIO_D_OUT] |= 0x40; //D6
+						baGPIOCtrl[GPIO_A_OUT] &= ~0x02; //A1
 						break;
 					case 4:
-						DBG1(("aaasdf\n"));
-						baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
+						baGPIOCtrl[GPIO_D_OUT] &= ~0x10; //D4
 						break;
 					default:
 						break;
@@ -563,29 +561,39 @@ VOID AdcKeyScanInit(VOID)
 #endif
 
 #ifdef AU6210K_ZB_BT007_CSR
-	baGPIOCtrl[GPIO_D_IE] &= ~0x20;//D5
-	baGPIOCtrl[GPIO_D_OE] |= 0x20;
-	baGPIOCtrl[GPIO_D_PU] |= 0x20;
-	baGPIOCtrl[GPIO_D_PD] |= 0x20; 
+	baGPIOCtrl[GPIO_D_IE] &= ~0x04;//D2
+	baGPIOCtrl[GPIO_D_OE] |= 0x04;
+	baGPIOCtrl[GPIO_D_PU] |= 0x04;
+	baGPIOCtrl[GPIO_D_PD] |= 0x04; 
+	baGPIOCtrl[GPIO_D_OUT] &= ~0x04; 
+	WaitMs(2);
+
+	baGPIOCtrl[GPIO_D_IE] &= ~0x10;//D4
+	baGPIOCtrl[GPIO_D_OE] |= 0x10;
+	baGPIOCtrl[GPIO_D_PU] |= 0x10;
+	baGPIOCtrl[GPIO_D_PD] |= 0x10; 
 	baGPIOCtrl[GPIO_D_OUT] &= ~0x10; 
 	WaitMs(2);
+	
 	baGPIOCtrl[GPIO_D_IE] &= ~0x40;//D6
 	baGPIOCtrl[GPIO_D_OE] |= 0x40;
 	baGPIOCtrl[GPIO_D_PU] |= 0x40;
 	baGPIOCtrl[GPIO_D_PD] |= 0x40; 
 	baGPIOCtrl[GPIO_D_OUT] &= ~0x40; 
 	WaitMs(2);
+	
+	baGPIOCtrl[GPIO_A_IE] &= ~0x02;//A1
+	baGPIOCtrl[GPIO_A_OE] |= 0x02;
+	baGPIOCtrl[GPIO_A_PU] |= 0x02;
+	baGPIOCtrl[GPIO_A_PD] |= 0x02; 
+	baGPIOCtrl[GPIO_A_OUT] &= ~0x02; 
+	WaitMs(2);
+	
 	baGPIOCtrl[GPIO_A_IE] &= ~0x04;//A2
 	baGPIOCtrl[GPIO_A_OE] |= 0x04;
 	baGPIOCtrl[GPIO_A_PU] |= 0x04;
 	baGPIOCtrl[GPIO_A_PD] |= 0x04; 
 	baGPIOCtrl[GPIO_A_OUT] &= ~0x04; 
-	WaitMs(2);
-	baGPIOCtrl[GPIO_A_IE] &= ~0x02;//A2
-	baGPIOCtrl[GPIO_A_OE] |= 0x02;
-	baGPIOCtrl[GPIO_A_PU] |= 0x02;
-	baGPIOCtrl[GPIO_A_PD] |= 0x02; 
-	baGPIOCtrl[GPIO_A_OUT] &= ~0x02; 
 	WaitMs(2);
 	DBG1(("dfdfd"));
 #endif
@@ -617,10 +625,10 @@ MESSAGE AdcKeyEventGet(VOID)
 			if(KeyIndex == -1)
 			{
 #ifdef AU6210K_ZB_BT007_CSR
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x20;	
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x40;	
-				baGPIOCtrl[GPIO_A_OUT] &= ~0x04;	
-				baGPIOCtrl[GPIO_A_OUT] &= ~0x02;	
+				baGPIOCtrl[GPIO_D_OUT] &= ~0x20;	//D5
+				baGPIOCtrl[GPIO_D_OUT] &= ~0x40;	//D6
+				baGPIOCtrl[GPIO_A_OUT] &= ~0x04;	//A2
+				baGPIOCtrl[GPIO_A_OUT] &= ~0x02;	//A1
 #endif				
 				return MSG_NONE;
 			}
@@ -680,24 +688,30 @@ MESSAGE AdcKeyEventGet(VOID)
 				}
 #endif
 
-#if 0 //def AU6210K_ZB_BT007_CSR
-				if(PreKeyIndex != 1)
-				switch(PreKeyIndex)
+#ifdef AU6210K_ZB_BT007_CSR
+				if(gSys.SystemMode == SYS_MODE_BLUETOOTH )
 				{
-				case 1:						
-					baGPIOCtrl[GPIO_A_OUT] &= ~0x04; //A2
-					break;
-				case 2:
-					baGPIOCtrl[GPIO_A_OUT] &= ~0x02; //A1
-					break;
-				case 3:
-					baGPIOCtrl[GPIO_D_OUT] &= ~0x40; //D6
-					break;
-				case 4:
-					baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
-					break;
-				default:
-					break;
+
+					switch(PreKeyIndex)
+					{
+					case 0:
+						baGPIOCtrl[GPIO_A_OUT] &= ~0x04; //A2
+						break;
+					case 1:	
+						baGPIOCtrl[GPIO_D_OUT] &= ~0x04; //D2
+						break;
+					case 2:
+						baGPIOCtrl[GPIO_D_OUT] &= ~0x40; //D6
+						break;
+					case 3:
+						baGPIOCtrl[GPIO_A_OUT] &= ~0x02; //A1
+						break;
+					case 4:
+						baGPIOCtrl[GPIO_D_OUT] &= ~0x10; //D4
+						break;
+					default:
+						break;
+					}
 				}
 
 #endif

@@ -31,7 +31,6 @@ BYTE standby_flag;
 
 
 
-TIMER   CSR_PRESS_TIME;
 TIMER   CSR_BTPOWEROFF_TIME;
 
 //short press£º500ms
@@ -105,12 +104,20 @@ VOID BluetoothCtrlInit(VOID)
 #endif
 
 	InDacChannelSel(BLUETOOTH_CH_TYPE);
-#ifdef AU6210K_NR_D_8_CSRBT
+/*#ifdef AU6210K_NR_D_8_CSRBT
 	NPCA110X_ADC_Input_CH_Select(INPUT_CH1);
 	NPCA110X_DAC1_Set_Volume_and_Mute(gSys.Volume);
 #else
 	SetBluetoothVolume(gSys.Volume);
 #endif
+*/
+#ifdef FUNC_CSR_CONTROL_BT_VOL
+		SetBluetoothVolume(VOLUME_MAX);
+#else
+		SetBluetoothVolume(gSys.Volume);
+	
+#endif
+
 	UnMute();
 	if (BTisMute())
 	{
@@ -342,167 +349,20 @@ VOID BluetoothStateCtrl(VOID)
 	}
 #endif	
 
-    if(IsTimeOut(&CSR_PRESS_TIME))
-    {
-	   // ClrGpioRegBit(GPIO_D_OUT, 1<<5);
-    }	
 
 	Event = MessageGet(MSG_FIFO_KEY);
     switch(Event)
 	{
-#ifdef AU6210K_ZB_BT007_CSR
-#elif 0
-#ifdef AU6210K_ZB_BT007_CSR
-	case MSG_PLAY_PAUSE:
-		TimeOutSet(&CSR_PRESS_TIME, 500);
-        while(!IsTimeOut(&CSR_PRESS_TIME))
-        {
-            SetGpioRegBit(GPIO_D_OUT, 1<<6);
-        }
-		ClrGpioRegBit(GPIO_D_OUT, 1<<6);
-#ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR		
-		SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
-		UnMute();
-#endif		
-		break;
-#endif
-
-	case MSG_BT_CHANGE_PHONE:
-		TimeOutSet(&CSR_PRESS_TIME, 1000);
-        while(!IsTimeOut(&CSR_PRESS_TIME))
-        {
-            SetGpioRegBit(GPIO_D_OUT, 1<<6);
-        }
-		ClrGpioRegBit(GPIO_D_OUT, 1<<6);
-#ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
-		SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
-		UnMute();
-#endif		
-		break;
-
-#ifdef AU6210K_ZB_BT007_CSR
-	case MSG_BLUETOOTH_ANSWER:
-#else
-	case MSG_PLAY_PAUSE:	
-#endif		
-		{
-#if defined(FUNC_AUTO_BTSTANDBY)  
-			if(standby_flag == 1)
-			{
-			    BT_POWER_H();
-				standby_flag = 0;
-				Connect = 0;
-				TimeOutSet(&BT_standby, BT_STAND_TIME);
-			}
-			else
-#endif          
-            TimeOutSet(&CSR_PRESS_TIME, 500);
-            while(!IsTimeOut(&CSR_PRESS_TIME))
-            {
-            	SetGpioRegBit(GPIO_D_OUT, 1<<5);
-            }
-			ClrGpioRegBit(GPIO_D_OUT, 1<<5);
-#if 0//def AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
-			SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
-			UnMute();
-#endif
-		
-#ifdef FUNC_BEEP_SOUND_EN	
-			{
-				PushKeyBeep(1);
-				UnMute();
-				
-			}
-#endif
-		}	
-		break;
-			
-	case MSG_NEXT:	
-		{   
-			TimeOutSet(&CSR_PRESS_TIME, 500);
-            while(!IsTimeOut(&CSR_PRESS_TIME))
-            {
-                SetGpioRegBit(GPIO_A_OUT, 1<<2);
-            }
-			ClrGpioRegBit(GPIO_A_OUT, 1<<2);
-			DBG(("MSG_NEXT\n"));
-#ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
-			SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
-			UnMute();
-#endif
-		}	
-		break;
-	case MSG_PRE:	
-		{
-			TimeOutSet(&CSR_PRESS_TIME, 500);
-            while(!IsTimeOut(&CSR_PRESS_TIME))
-            {
-                SetGpioRegBit(GPIO_A_OUT, 1<<1);
-            }
-			ClrGpioRegBit(GPIO_A_OUT, 1<<1);
-			DBG(("MSG_PRE\n"));
-#ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
-			SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
-			UnMute();
-#endif
-			
-		}	
-		break;
+#ifndef FUNC_CSR_CONTROL_BT_VOL	//if no def
+		case MSG_VOL_ADD:			
+			VolumeAdjust(UP);
+			break;
 	
-	case MSG_BLUETOOTH_REJECT:
-		{   
-			TimeOutSet(&CSR_PRESS_TIME, 1000);
-            while(!IsTimeOut(&CSR_PRESS_TIME))
-            {
-                SetGpioRegBit(GPIO_D_OUT, 1<<5);
-            }
-			ClrGpioRegBit(GPIO_D_OUT, 1<<5);
-			
-#ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
-			SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
-			UnMute();
-#endif
-		}
-		break;
-
-	case MSG_BT_RECALL:
-		{   
-			TimeOutSet(&CSR_PRESS_TIME, 500);
-            while(!IsTimeOut(&CSR_PRESS_TIME))
-            {
-                SetGpioRegBit(GPIO_D_OUT, 1<<5);
-            }
-			TimeOutSet(&CSR_PRESS_TIME, 300);
-            while(!IsTimeOut(&CSR_PRESS_TIME))
-            {
-                ClrGpioRegBit(GPIO_D_OUT, 1<<5);
-            }
-			TimeOutSet(&CSR_PRESS_TIME, 500);
-		    while(!IsTimeOut(&CSR_PRESS_TIME))
-            {
-                SetGpioRegBit(GPIO_D_OUT, 1<<5);
-            }
-			    ClrGpioRegBit(GPIO_D_OUT, 1<<5);
-#ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
-			SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
-			UnMute();
-#endif
-			
-		}
-		break;
-	case MSG_BT_DISCONNECT:
-		{   
-#ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
-			SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
-			UnMute();
-#endif
-			TimeOutSet(&CSR_PRESS_TIME, 5000);
-            SetGpioRegBit(GPIO_D_OUT, 1<<5); 	
-			
-		}
-		break;
-
-#endif
+		case MSG_VOL_SUB:
+			VolumeAdjust(DOWN);
+			break;		
+#endif		
+/*
 	case MSG_V_ADD:
 	case MSG_VOL_ADD:			
 #if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
@@ -553,7 +413,7 @@ VOID BluetoothStateCtrl(VOID)
 			//UnMute();
 		}
 #endif
-		break;		
+		break;	*/	
 		
 	default:
 		break;

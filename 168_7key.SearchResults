@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---- FUNC_READER_EN Matches (24 in 12 files) ----
 Card_reader_ctrl.c (device):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
 Devctrl.c (device):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
@@ -23,3 +24,8 @@ Sysctrl.c (system):	|| defined(FUNC_READER_EN) || defined (FUNC_AUDIO_READER_EN)
 Sysctrl.c (system):#ifdef FUNC_READER_EN
 Usb_audio_ctrl.c (device):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
 User_interface.c (lib_if):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+=======
+---- CSR_PRESS_TIME Matches (2 in 1 files) ----
+Bt.c (bluetooth):TIMER   CSR_PRESS_TIME;
+Bt.c (bluetooth):    if(IsTimeOut(&CSR_PRESS_TIME))
+>>>>>>> a2ed3cd0224c84e1b9747e8517816458fba2acc2
