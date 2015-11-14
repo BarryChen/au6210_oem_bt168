@@ -1,7 +1,25 @@
----- MSG_IR_ON_OFF Matches (7 in 4 files) ----
-Adc_key.c (key):	{MSG_IR_ON_OFF,	MSG_IR_ON_OFF,	MSG_NONE,		MSG_NONE	},	//SW4
-Ir_key.c (key):	{MSG_MODE_SW,			MSG_IR_ON_OFF,		MSG_NONE,					MSG_NONE	},	//SW3
-Key.c (key):		if(!IrIsOn && (Event != MSG_IR_ON_OFF))
-Key.c (key):		if(Event == MSG_IR_ON_OFF)
-Key.c (key):		if(Event != MSG_IR_ON_OFF && Event != MSG_NONE && Event != MSG_VOL_ADD && Event != MSG_VOL_SUB)
-Message.h (system):	MSG_IR_ON_OFF,
+---- FUNC_READER_EN Matches (24 in 12 files) ----
+Card_reader_ctrl.c (device):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Devctrl.c (device):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Devctrl.c (device):#ifdef FUNC_READER_EN
+Devctrl.c (device):#ifdef FUNC_READER_EN
+Devctrl.c (device):#ifdef FUNC_READER_EN
+Devctrl.c (device):#if ((defined FUNC_AUDIO_EN) || (defined FUNC_READER_EN) || (defined FUNC_AUDIO_READER_EN))
+Devctrl.c (device):#elif (defined FUNC_READER_EN)
+Devctrl.c (device):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Device.c (device):#if (defined(FUNC_CARD_EN) || defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Device.c (device):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Display.c (display):#ifdef FUNC_READER_EN
+Seg_lcd_disp.c (display):#ifdef FUNC_READER_EN
+Seg_led_disp.c (display):#ifdef FUNC_READER_EN
+Slave_ctrl.c (slave):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN))			
+Sled_disp.c (display):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Sled_disp.c (display):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Sled_disp.c (display):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Sled_disp.c (display):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Sled_disp.c (display):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+Syscfg.h (config)://#define FUNC_READER_EN      		//单独的USB读卡器模式
+Sysctrl.c (system):	|| defined(FUNC_READER_EN) || defined (FUNC_AUDIO_READER_EN))
+Sysctrl.c (system):#ifdef FUNC_READER_EN
+Usb_audio_ctrl.c (device):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+User_interface.c (lib_if):#if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))

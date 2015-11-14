@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 1   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE IR_KEY
@@ -62,7 +62,7 @@ line level    source
               extern BOOL GetSpiPlay();
               #if 0
               static CODE BYTE gIrVal[IR_KEY_SUM] =                                   //TOP
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 2   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 2   
 
               {
                       0xED,                                           // POWER
@@ -126,7 +126,7 @@ line level    source
                       0xF7,                                           // 4
                       0xE3,                                           // 5
                       0xA5,                                           // 6
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 3   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 3   
 
               
                       0xBD,                                           // 7
@@ -190,7 +190,7 @@ line level    source
               
                       0xEF,                                           // 4
                       0xEE,                                           // 5
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 4   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 4   
 
                       0xED,                                           // 6
               
@@ -254,7 +254,7 @@ line level    source
               
                       {MSG_NUM_7,             MSG_NUM_7CP,            MSG_NONE,                       MSG_NONE                },      // 7
                       {MSG_NUM_8,             MSG_NUM_8CP,            MSG_NONE,                       MSG_NONE                },      // 8
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 5   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 5   
 
                       {MSG_NUM_9,             MSG_NUM_9CP,            MSG_NONE,                       MSG_NONE                },      // 9
                       {MSG_NUM_0,             MSG_NUM_0CP,            MSG_NONE,                       MSG_NONE                },      // 0
@@ -318,7 +318,7 @@ line level    source
                       {MSG_NUM_6,             MSG_NUM_6CP,            MSG_NONE,                       MSG_NONE                },      // VOL+
               
                       {MSG_NUM_7,             MSG_NUM_7CP,            MSG_NONE,                       MSG_NONE                },      // 0
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 6   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 6   
 
                       {MSG_NUM_8,             MSG_NUM_8CP,            MSG_NONE,                       MSG_NONE                },      // REPEAT
                       {MSG_NUM_9,             MSG_NUM_9CP,            MSG_NONE,                       MSG_NONE                },      // USB/SD
@@ -382,7 +382,7 @@ line level    source
               
                       if(IrIsKeyCome())
                       {
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 7   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 7   
 
                               KeyInLedFlashHoldTmr = 500;
                               IsIrShortPrs = TRUE;
@@ -446,7 +446,7 @@ line level    source
                                               {
                                                       return KeyIndex;
                                               }
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 8   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 8   
 
                                       }
                               }
@@ -510,7 +510,7 @@ line level    source
                                               {
                                                       return KeyIndex;
                                               }
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 9   
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 9   
 
                                       }
                                       for(KeyIndex = 12; KeyIndex < IR_KEY_SUM; KeyIndex++)
@@ -574,7 +574,7 @@ line level    source
                       //未定义sleep模式下IR唤醒，则客户自己配置IR端口
                       IRChannelSel(IR_KEY_PORT);
               
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 10  
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 10  
 
                       IrIgnoreLeadHeader(FALSE);
                       IrInit();
@@ -638,7 +638,7 @@ line level    source
                                               baGPIOCtrl[GPIO_A_OUT] &= ~0x04;        
                                               baGPIOCtrl[GPIO_A_OUT] &= ~0x02;
                                               if(IsTimeOut(&IrKeyLockTimer))
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 11  
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 11  
 
                                               {
                                                       //DBG1(("timer out!!\n"));
@@ -702,7 +702,7 @@ line level    source
                                       }
                                       else if(IsTimeOut(&IrKeyWaitTimer))
                                       {
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 12  
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 12  
 
               #ifdef IR_KEY_C_DEBUG                   
                                               DBG(("IR CPS: %02BX\n", IrKeyEvent[PreKeyIndex][1]));
@@ -766,7 +766,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 14:16:10 PAGE 13  
+C51 COMPILER V9.00   IR_KEY                                                                11/13/2015 15:55:31 PAGE 13  
 
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----

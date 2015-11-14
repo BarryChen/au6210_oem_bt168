@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 1   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE DEVCTRL
@@ -62,7 +62,7 @@ line level    source
   51          extern BOOL gIsUsbRemove;//for usb Reconnect in mode switch 
   52          extern BOOL IsUsbLinkFlag; 
   53          
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 2   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 2   
 
   54          #define PLAY_WATCH_TIME                         10000
   55          extern VOID SongPlayTimePause(VOID);
@@ -126,7 +126,7 @@ line level    source
                                       break;
               #endif
  115   2      
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 3   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 3   
 
  116   2      #ifdef FUNC_CARD_EN
                               case SYS_MODE_SD:               //离开SD模式
@@ -190,7 +190,7 @@ line level    source
               #endif
  176   2      
  177   2                      case SYS_MODE_SLEEP:    //离开SLEEP模式
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 4   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 4   
 
  178   2                              
  179   2                              break;
@@ -254,7 +254,7 @@ line level    source
                       TimeOutSet(&gSysTimeOffState.DisTimer, 0);      
               #endif
  238   1      
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 5   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 5   
 
  239   1      #ifdef FUNC_DISP_EN
  240   1              DispMute();     //正确恢复Mute显示状态。避免从Mute状态下切换设备造成的显示错误。
@@ -318,7 +318,7 @@ line level    source
                       if(gUSBChargePowerOnFlag == TRUE)
                       {
                               return FALSE;
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 6   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 6   
 
                       }
               #endif
@@ -382,7 +382,7 @@ line level    source
                       if(!FSInit(DEV_ID_SD))
                       {
                               DBG1(("FSInit() error!\n"));
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 7   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 7   
 
                               return FALSE;
                       }
@@ -446,7 +446,7 @@ line level    source
                       DispLoad();
               #endif
               
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 8   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 8   
 
               //      DBG(("IsUSBLink() OK!\n"));
                       if(!HostStorInit())     
@@ -510,7 +510,7 @@ line level    source
  484   2                      DBG(("IsRadioLink() FALSE!\n"));
  485   2                      return FALSE;
  486   2              }
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 9   
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 9   
 
  487   1              DBG(("IsRadioLink() OK!\n"));
  488   1              
@@ -574,7 +574,7 @@ line level    source
  546          #endif
  547          
  548          
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 10  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 10  
 
  549          #ifdef FUNC_LINEIN_EN     
  550          //尝试切换到line-in模式
@@ -638,7 +638,7 @@ line level    source
  608          
  609          #ifdef FUNC_BLUETOOTH_CSR_EN      
  610          //尝试切换到line-in模式
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 11  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 11  
 
  611          static BOOL TryGotoBluetooth(VOID)
  612          {
@@ -702,7 +702,7 @@ line level    source
               #ifdef RTC_SHOWTIME_ANYMODE
                       DispTimeOnOff(FALSE);
               #endif
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 12  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 12  
 
               
               #if defined(AU6210K_JLH_JH82B)
@@ -766,7 +766,7 @@ line level    source
                               DBG(("Audio,IsPcLink() FALSE!\n"));
                               return FALSE;
                       }
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 13  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 13  
 
               
               #ifdef FUNC_DISP_EN     
@@ -830,7 +830,7 @@ line level    source
               #endif
  795          
  796          
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 14  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 14  
 
  797          #ifdef FUNC_AUDIO_READER_EN
               //尝试切换到AUDIO_READER模式
@@ -894,7 +894,7 @@ line level    source
  856          
  857          
  858          #ifdef  FUNC_SPI_UPDATE_EN
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 15  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 15  
 
  859          extern BYTE gIsMVFFileFind;
  860          #endif
@@ -958,7 +958,7 @@ line level    source
                       gPlayCtrl.FileNum = 1;
               #ifdef FUNC_TOUCH_KEY_EN
                       TR1 = 1;
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 16  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 16  
 
               #endif
                       return TRUE;
@@ -1022,7 +1022,7 @@ line level    source
  980          
  981          
  982          //尝试切换到指定设备
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 17  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 17  
 
  983          static BOOL TryGotoMode(BYTE Mode)
  984          {       
@@ -1086,7 +1086,7 @@ line level    source
                                       return TryGotoModeREADER();
               #endif
 1044   2      
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 18  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 18  
 
 1045   2      #ifdef FUNC_AUDIO_READER_EN
                               case SYS_MODE_AUDIO_READER:
@@ -1150,7 +1150,7 @@ line level    source
 1104   1      #ifdef FUNC_CARD_EN
                               SYS_MODE_SD,
               #endif
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 19  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 19  
 
 1107   1      
 1108   1      #ifdef FUNC_RADIO_EN
@@ -1214,7 +1214,7 @@ line level    source
 1166          {
 1167   1              if(!TryGotoMode(Mode))
 1168   1              {
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 20  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 20  
 
 1169   2                      TryGotoNextMode(Mode);
 1170   2              }
@@ -1278,7 +1278,7 @@ line level    source
 1228   1      #ifdef FUNC_QUICK_RESPONSE_EN
                       IsSwitchMode = FALSE;
               #endif
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 21  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 21  
 
 1231   1      
 1232   1      #ifdef FUNC_USB_EN
@@ -1342,7 +1342,7 @@ line level    source
 1290   2                      IsLineInInsert();
 1291   2      #endif
 1292   2      #endif
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 22  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 22  
 
 1293   2              }
 1294   1      
@@ -1406,7 +1406,7 @@ line level    source
               #endif
 1353   1      
 1354   1      #if defined(AU6210K_NR_D_8_CSRBT)|| defined(AU6210K_ZB_BT007_CSR)
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 23  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 23  
 
 1355   1              if (IsLineInLinkFlag == TRUE)
 1356   1              {
@@ -1470,7 +1470,7 @@ line level    source
 1414          // Device state control.
 1415          VOID DevStateCtrl(VOID)
 1416          {
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 24  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 24  
 
 1417   1              static MESSAGE Event;   //为解决Event值被修改bug将变量声明为static类型. 
 1418   1              BYTE TempMode = gSys.SystemMode;
@@ -1534,7 +1534,7 @@ line level    source
                               if(Event == MSG_POWER)
                               {
                                       DBG(("EXIT STANDBY!\n"));
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 25  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 25  
 
                                       InDacInit(FALSE);                       
                                       if(!TryGotoMode(gSystemExecState))
@@ -1598,7 +1598,7 @@ line level    source
 1538   1              //DBG1(("IsDacMute = %x\n",IsDacMute));
 1539   1      
 1540   1      #ifdef FUNC_CARD_EN
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 26  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 26  
 
                       //有卡新插入，并且当前不是处于读卡器或一线通模式，则做后插先播处理
                       if(IsCardInsert()               
@@ -1662,7 +1662,7 @@ line level    source
                                       }       
               #ifdef  FUNC_RADIO_EN
                                       else if(gSys.SystemMode == SYS_MODE_RADIO)
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 27  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 27  
 
                                       {
                                               UnMute();
@@ -1726,7 +1726,7 @@ line level    source
                                               DBG(("usb removed!\n"));
               #ifdef FUNC_USB_CHARGE_EN                       
                                               AppleDeviceFlag = FALSE;
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 28  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 28  
 
               #endif
               
@@ -1790,7 +1790,7 @@ line level    source
 1724   2      #endif
 1725   2      
 1726   2      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 29  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 29  
 
                               case SYS_MODE_AUDIO:            //current system mode is AUDIO
                               case SYS_MODE_READER:           //current system mode is READER
@@ -1854,7 +1854,7 @@ line level    source
 1786   2      
 1787   2      #ifndef FUNC_QUICK_RESPONSE_EN
 1788   2                      TryGotoNextMode(gSys.SystemMode);
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 30  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 30  
 
 1789   2      #else
                               IsSwitchMode = TRUE;
@@ -1918,7 +1918,7 @@ line level    source
                       {
                               if(IsLineInLink())
                               {
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 31  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 31  
 
                                       //DBG(("DevStateCtrl,AUX MODE\n"));
                                       TryGotoValidModeReturn(SYS_MODE_LINEIN);
@@ -1982,7 +1982,7 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 14:16:05 PAGE 32  
+C51 COMPILER V9.00   DEVCTRL                                                               11/13/2015 15:55:27 PAGE 32  
 
    CODE SIZE        =    811    ----
    CONSTANT SIZE    =   ----    ----

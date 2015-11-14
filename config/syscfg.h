@@ -52,6 +52,7 @@
 //#define AU6210K_NR_D_8_CSRBT     //ID=581
 //#define AU6210K_LK_SJ_CSRBT     //莱卡·户外
 #define AU6210K_ZB_BT007_CSR    //智博bt007 key 
+#define AU6210K_XLX_ALD800  // 新联芯ADL800:oem智博bt007 <FM+LINE+CSRBT>
 
 #ifdef AU6210K_ZB_BT007_CSR
 //#define AU6210K_ZB_BT007_IR_IC_IS_334M_CSR  //移动电源的案子    //与智博bt007 仅有部分功能不同: ir ic  //168
@@ -76,7 +77,7 @@
 //#define FUNC_USB_EN					//USB HOST功能(可连接U盘播歌)
 #endif
 
-#if defined(AU6210K_LK_SJ_CSRBT)
+#if defined(AU6210K_XLX_ALD800) 
 #else
 //#define FUNC_CARD_EN				//CARD HOST功能(可连接SD/TF卡播歌),卡检测引脚配置见下面
 #endif
@@ -84,9 +85,13 @@
 #define FUNC_LINEIN_EN				
 
 #if defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_ZB_BT007_CSR)
-#else
-#endif
+#else//no use radio
 #define FUNC_RADIO_EN				//Radio功能,该型号芯片内部集成高性能FM模块
+#endif
+
+#if defined(AU6210K_XLX_ALD800)//ald800 use radio
+#define FUNC_RADIO_EN	
+#endif
 
 #ifdef AU6210K_ZB_BT007_CSR
 #define		BT_BtPOWEROFF_TIME	(DWORD)(600000)///10min 5000//5s///5000//5s use debug
@@ -318,11 +323,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
 //#define	FUNC_LONG_NAME_EN		//长文件名功能														 
 //#define	FUNC_FAST_PLAY_EN		//快进、快退功能
-#define	FUNC_AUTO_PLAY_EN		//自动播放功能
+//#define	FUNC_AUTO_PLAY_EN		//自动播放功能
 //#define FUNC_FOLDER_EN			//文件夹功能
 //#define FUNC_HIDDEN_FOLD_EN 	//播放隐藏文件夹中的歌曲
 //#define FUNC_RECYCLED_FOLD_EN	//播放回收站文件夹中的歌曲
-#define FUNC_OPEN_FILE_DELAY_EN		//是否有延迟响应PRE、NEXT命令，连续多次按PRE、NEXT时可以快速响应
+//#define FUNC_OPEN_FILE_DELAY_EN		//是否有延迟响应PRE、NEXT命令，连续多次按PRE、NEXT时可以快速响应
 //#define FUNC_DEVICE_FORCEPAUSE_EN	//打开该宏开关，支持插入充电器时强制暂停当前设备的播放
 
 //加密播放功能
@@ -407,7 +412,7 @@
 // 该功能宏打开后，默认包含电池电压检测功能，有关电池电压检测的其它可定义参数，请详见power_monitor.c文件
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
 //#if defined(AU6210K_NR_D_9X_XJ_HTS)
-#define FUNC_POWER_MONITOR_EN
+//#define FUNC_POWER_MONITOR_EN
 //#endif
 
 #ifdef FUNC_POWER_MONITOR_EN
@@ -452,14 +457,18 @@
 
 #define POWER_SAVING_MODE_SLEEP			0
 #define POWER_SAVING_MODE_POWERDOWN		1
-#define POWER_SAVING_MODE_OPTION		POWER_SAVING_MODE_SLEEP////POWER_SAVING_MODE_POWERDOWN	//
+#define POWER_SAVING_MODE_OPTION		POWER_SAVING_MODE_POWERDOWN////POWER_SAVING_MODE_POWERDOWN	//
 
 #if (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_POWERDOWN)	//设置系统省电模式为POWERDOWN
 	//POWERDOWN方式: 系统关闭时关闭片内LDO，系统唤醒时片内LDO先上电
 	//该方式要求芯片带POWER_KEY引脚，可以实现极低功耗(powerdown)下保留重要信息的要求
 	//选择该方式后，默认系统包含POWER_KEY功能(必须选择带POWER KEY的芯片型号)
 	#if defined(AU6210K_ZB_BT007_CSR) || defined(AU6210K_LK_SJ_CSRBT)
-	 #define PWR_KEY_MODE	 PWR_KEY_SLIDE_SWITCH	//PWR_KEY_PUSH_BUTTON
+		#ifdef AU6210K_XLX_ALD800
+		#define PWR_KEY_MODE	 PWR_KEY_PUSH_BUTTON
+		#else
+	 	#define PWR_KEY_MODE	 PWR_KEY_SLIDE_SWITCH	//PWR_KEY_PUSH_BUTTON
+		#endif
 	#else
      #define PWR_KEY_MODE	 PWR_KEY_PUSH_BUTTON
 	#endif
@@ -831,7 +840,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
 // I2C IO配置(IIC pin configure)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
-// I2C SDA and CLK pin define	
+// I2C SDA and CLK pin define
+
+
+//#define I2C_FUNC
+
 #define SDIO_TO_OTHER_GPIO	0	// I2C总线使用独立GPIO
 #define SDIO_TO_A3A4A5	1	// I2C总线与SD卡总线A3A4A5复用
 #define SDIO_TO_A0E2E3	2	// I2C总线与SD卡总线A0E2E3复用
@@ -888,6 +901,7 @@
 	#define	MASK_BIT_SDA 		(1 << 7)
 #else
 	//SCL: GPIO_B[2]
+	
 	#define PORT_OUT_SCL		GPIO_B_OUT
 	#define PORT_IN_SCL			GPIO_B_IN
 	#define PORT_IE_SCL			GPIO_B_IE

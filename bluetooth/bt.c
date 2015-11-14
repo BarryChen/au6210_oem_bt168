@@ -1,4 +1,4 @@
- #include "syscfg.h"
+#include "syscfg.h"
 #include "sysctrl.h"
 #include "device.h"
 #include "user_interface.h"
@@ -131,9 +131,11 @@ VOID BluetoothCtrlInit(VOID)
 	{
 		BtMuteFlag = TRUE;
 #if defined(AU6210K_ZB_BT007_CSR)
+#ifdef BT_BtPOWEROFF_TIME
 		TimeOutSet(&CSR_BTPOWEROFF_TIME, BT_BtPOWEROFF_TIME);
 		BTPowerOffTime_Start =  TRUE;
 		DBG1(("BTPowerOffTime_Start =  TRUE;\n"));
+#endif
 #endif		
         
 	}
@@ -271,9 +273,11 @@ VOID BluetoothStateCtrl(VOID)
 	{
 		BtMuteFlag = TRUE;
 #if defined(AU6210K_ZB_BT007_CSR)
+#ifdef BT_BtPOWEROFF_TIME
 		TimeOutSet(&CSR_BTPOWEROFF_TIME, BT_BtPOWEROFF_TIME);
 		BTPowerOffTime_Start =  TRUE;
 		DBG1(("BTPowerOffTime_Start =  TRUE;\n"));
+#endif
 #endif		
         
 	}
@@ -285,10 +289,12 @@ VOID BluetoothStateCtrl(VOID)
 			BtMuteFlag = FALSE;
 			
 			DBG1(("r----\n"));
-#if defined(AU6210K_ZB_BT007_CSR)			
+#if defined(AU6210K_ZB_BT007_CSR)	
+#ifdef BT_BtPOWEROFF_TIME
 			TimeOutSet(&CSR_BTPOWEROFF_TIME, 0);
 			BTPowerOffTime_Start =	FALSE;
 			DBG1(("BTPowerOffTime_Start =  FALSE;\n"));
+#endif
 #endif			
 	}
 #endif
@@ -301,6 +307,7 @@ VOID BluetoothStateCtrl(VOID)
 
 
 #if defined(AU6210K_ZB_BT007_CSR)
+#ifdef BT_BtPOWEROFF_TIME
 	if(IsTimeOut(&CSR_BTPOWEROFF_TIME) && BTPowerOffTime_Start)
     {
      	//关机流程
@@ -319,6 +326,7 @@ VOID BluetoothStateCtrl(VOID)
 			TimeOutSet(&CSR_BTPOWEROFF_TIME, 0);
 		}
     }
+#endif
 #endif	
 
 #if defined(FUNC_AUTO_BTSTANDBY)  

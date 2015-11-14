@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 1   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE RADIO_CTRL
@@ -62,7 +62,7 @@ line level    source
   51          #ifdef  FUNC_DEVICE_FORCEPAUSE_EN
               extern BOOL gDevicePlayForcePauseFlag;
               #endif
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 2   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 2   
 
   54          
   55          
@@ -126,7 +126,7 @@ line level    source
                               DBG(("频道%2BX  %u\n", (i + 1), (gRadioData.Stations[i] + RADIO_FREQ_BASE_875)));
                       }       
               }
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 3   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 3   
 
               #endif
  117          
@@ -190,7 +190,7 @@ line level    source
  173          //FM通用功能，和具体的FM型号没有关系
  174          //正在搜台时候中途停止搜台
  175          VOID CancelSearch(VOID)
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 4   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 4   
 
  176          {
  177   1              if((gRadioCtrl.State > RADIO_IDLE) && (gRadioCtrl.SeekMode != SEEK_NONE))
@@ -254,7 +254,7 @@ line level    source
  235   2                      if(gRecvNum > gRadioData.Area1StationSum)//追加
  236   2                      {
  237   3                              for(i = gRadioData.StationSum; i > gRadioData.Area1StationSum; i--)
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 5   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 5   
 
  238   3                              {
  239   4                                      gRadioData.Stations[i] = gRadioData.Stations[i-1];
@@ -318,7 +318,7 @@ line level    source
                                               return TRUE;
                                       }
                               }       
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 6   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 6   
 
                       }
                       else 
@@ -382,7 +382,7 @@ line level    source
  359   2                              DBG(("SCAN\n"));
  360   2      #ifdef FUNC_BEEP_SOUND_EN       
                                       PushKeyBeep(1);
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 7   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 7   
 
               #endif
  363   2                              if(gRadioCtrl.State == RADIO_IDLE)
@@ -446,7 +446,7 @@ line level    source
  419   4                                              RadioDisCount = 6;
  420   4                                              TimeOutSet(&gRadioCtrl.SeekPreviewTimer,RadioBlinkTime);
  421   4      #ifdef FUNC_SLAVE_UART_EN
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 8   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 8   
 
                                                       SlaveRadioRetCurrentStatus();
               #endif
@@ -510,7 +510,7 @@ line level    source
  481   3                                      UnMute();
  482   3                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioPreVimeTimerValue);
  483   3                                      gSys.MuteFg = FALSE;
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 9   
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 9   
 
  484   3      #ifdef FUNC_SLAVE_UART_EN
                                               SlaveRadioRetCurrentStatus();
@@ -574,7 +574,7 @@ line level    source
  543   3                                      TimeOutSet(&gRadioCtrl.SeekPreviewTimer, RadioPreVimeTimerValue);
  544   3                                      gSys.MuteFg = FALSE;
  545   3      #ifdef FUNC_SLAVE_UART_EN
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 10  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 10  
 
                                               SlaveRadioRetCurrentStatus();
               #endif
@@ -638,7 +638,7 @@ line level    source
  604   3                                      //DBG(("RecvNum %d \n", gRecvNum));
  605   3                                      RadioArrayInsert();
  606   3                                      gRecvNum = 0;
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 11  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 11  
 
  607   3                                      RadioWriteData();
  608   3                                      RadioShowDebug(RadioShowSaveFre);
@@ -702,7 +702,7 @@ line level    source
                               case MSG_10TRACK_ADD://递增方式搜台，搜到第一个后停止
                                       if(gRadioCtrl.State == RADIO_IDLE)
                                       {
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 12  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 12  
 
                                               gRadioCtrl.SeekMode = SEEK_SCANUP;
               #ifdef FUNC_SLAVE_UART_EN
@@ -766,7 +766,7 @@ line level    source
                                                       gRadioData.CurrFreq = RADIO_UPPER_BOUND;
                                               }
                                               else
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 13  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 13  
 
                                               {
                                                       gRadioData.CurrFreq--;
@@ -830,7 +830,7 @@ line level    source
  790   2      #if defined(AU6210K_NR_D_9X)||defined(AU6210K_NR_D_9X_XJ_HTS)
                                       if (gSys.Volume <= VOLUME_MIN)
                                       {
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 14  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 14  
 
                                               SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 0);
                                               InDacChannelSel(DAC_CH_ONCHIP_FM);
@@ -894,7 +894,7 @@ line level    source
                                                       SPI_PlaySelectNum(SPIPLAY_SONG_MUTE, 0);
                                               }                               
                                               InDacChannelSel(DAC_CH_ONCHIP_FM);
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 15  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 15  
 
                                               if(gSys.MuteFg)
                                               {
@@ -958,7 +958,7 @@ line level    source
               #endif
  914   1      }
  915          
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 16  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 16  
 
  916          
  917          #ifdef FUNC_DISP_EN     
@@ -1022,7 +1022,7 @@ line level    source
  975   3      #ifdef  FUNC_RADIO_AUTOSEEK_EN
  976   3                                      if((gRadioCtrl.SeekMode == SEEK_AUTOSCAN) ||(gRadioCtrl.SeekMode == SEEK_SCANUP))
  977   3                                      {
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 17  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 17  
 
  978   4      #ifdef FUNC_SLAVE_UART_EN
                                                  MVFM_AutoSeekConfig(gRadioData.CurrFreq, gRadioCtrl.RadioUpperBound, gR
@@ -1086,7 +1086,7 @@ line level    source
               #endif
 1035   4      #ifdef  FUNC_RADIO_AUTOSEEK_EN
 1036   4      #ifdef FUNC_DISP_EN
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 18  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 18  
 
 1037   4                                              DispResume();
 1038   4      #endif
@@ -1150,7 +1150,7 @@ line level    source
 1096   6                                                              DispDev();
 1097   6      #endif
 1098   6      #ifdef FUNC_SLAVE_UART_EN
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 19  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 19  
 
                                                                       SlaveRadioRetCurrentStatus();
               #endif
@@ -1214,7 +1214,7 @@ line level    source
 1155   5                                              }
 1156   4                                              
 1157   4                                              RadioMute(FALSE);       
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 20  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 20  
 
 1158   4                                              UnMute();
 1159   4      #ifdef FUNC_SINGLE_LED_EN 
@@ -1278,7 +1278,7 @@ line level    source
 1217   2                              break;
 1218   2                              
 1219   2      #ifdef AU6210K_BOOMBOX_DEMO
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 21  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 21  
 
                               case RADIO_PROG:
                                       if(IsTimeOut(&gRadioCtrl.SeekPreviewTimer))
@@ -1343,7 +1343,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    FAR CONST SIZE   =   ----    ----
 END OF MODULE INFORMATION.
 
-C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 14:16:13 PAGE 22  
+C51 COMPILER V9.00   RADIO_CTRL                                                            11/13/2015 15:55:34 PAGE 22  
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

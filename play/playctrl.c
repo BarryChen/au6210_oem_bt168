@@ -1546,7 +1546,7 @@ VOID PlayStateCtrl(VOID)
 	}
 
 
-
+#ifdef BT_BtPOWEROFF_TIME
 
 	if(gPlayCtrl.State != PLAY_STATE_PLAY && !PowerOffTimeBeginFlag)
 	{
@@ -1587,6 +1587,7 @@ VOID PlayStateCtrl(VOID)
 		}
 	}
 #endif	
+#endif
 
  	switch(gPlayCtrl.State)
 	{

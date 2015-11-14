@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 1   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE ADC_KEY
@@ -62,7 +62,7 @@ line level    source
   51                  ADC_KEY_STATE_IDLE,
   52                  ADC_KEY_STATE_JITTER,
   53                  ADC_KEY_STATE_PRESS_DOWN,
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 2   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 2   
 
   54                  ADC_KEY_STATE_CP
   55          
@@ -126,7 +126,7 @@ line level    source
               /*#elif defined(AU6210K_NR_D_9X_XJ_HTS)
               #define         ADC_KEY_COUNT                           3
               static CODE BYTE AdcKeyEvent[][4] = 
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 3   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 3   
 
               {
               //      SP                                              CPS                                     CPH                                     CPR     
@@ -190,7 +190,7 @@ line level    source
               {
               //      SP                                              CPS                                     CPH                                                     CPR     
                       {MSG_DEFAULT,           MSG_NONE,                               MSG_NONE,                                       MSG_NONE        },      //SW1
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 4   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 4   
 
                       {MSG_NEXT,                      MSG_VOL_ADD,                    MSG_VOL_ADD,                            MSG_NONE        },      //SW3
                       {MSG_PRE,                       MSG_VOL_SUB,                    MSG_VOL_SUB,                            MSG_NONE        },      //SW2   
@@ -254,7 +254,7 @@ line level    source
  237                  9,      //SW4   2.2k            6       6       //SW14
  238                  14,     //SW5   4.7K            11      12      //SW15
  239                  19,     //SW6   7.5K            16      17      //SW16
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 5   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 5   
 
  240                  25,     //SW7   12K             22      22      //SW17
  241                  30,     //SW8   16K             26      27      //SW18  
@@ -318,7 +318,7 @@ line level    source
               #endif
               };
               
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 6   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 6   
 
               #if (defined(FUNC_LED_ADC1_KEY_MULTIPLE_EN) || defined(FUNC_LED_ADC2_KEY_MULTIPLE_EN))
               //ÉÏÀ­µç×è100k
@@ -382,7 +382,7 @@ line level    source
  361   1              BYTE KeyCount;
  362   1      
  363   1      #if (defined(FUNC_LED_ADC1_KEY_MULTIPLE_EN) || defined(FUNC_LED_ADC2_KEY_MULTIPLE_EN))
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 7   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 7   
 
                       Val = AdcReadOneChannel(Channel, ADC_VREF_AVDD33);
               #else
@@ -446,7 +446,7 @@ line level    source
  423   5                                      }
  424   4      
  425   4      #endif
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 8   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 8   
 
  426   4                              
  427   4                              
@@ -510,7 +510,7 @@ line level    source
  485   1      
  486   1      #ifdef HEADPHONE_ADC_PORT_CH
                       if(KeyIndex == -1)
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 9   
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 9   
 
                       {
                               KeyIndex = AdcChannelKeyGet(HEADPHONE_ADC_PORT_CH);
@@ -574,7 +574,7 @@ line level    source
  547   1      #ifdef HEADPHONE_ADC_PORT_CH
               #if (HEADPHONE_ADC_PORT_CH == ADC_CHANNEL_B6)
                       SET_B6_ANALOG_IN();
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 10  
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 10  
 
               #endif
                       
@@ -638,7 +638,7 @@ line level    source
  609   1      
  610   1      #ifdef FUNC_BEEP_SOUND_EN       
                       gPushKeyNeedBeepFlag = FALSE;
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 11  
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 11  
 
               #endif
  613   1      
@@ -702,7 +702,7 @@ line level    source
  671   3                                      AdcKeyState = ADC_KEY_STATE_IDLE;
  672   3      #ifdef FUNC_BEEP_SOUND_EN       
                                               gPushKeyNeedBeepFlag = TRUE;
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 12  
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 12  
 
               #endif
  675   3      
@@ -766,7 +766,7 @@ line level    source
  733   2                              if(PreKeyIndex != KeyIndex)
  734   2                              {
  735   3                                      //return key cp value
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 13  
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 13  
 
  736   3                                      //DBG(("ADC KEY CPR!\n"));
  737   3                                      AdcKeyState = ADC_KEY_STATE_IDLE;                               
@@ -830,7 +830,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    XDATA SIZE       =     13       1
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
-C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 14:16:10 PAGE 14  
+C51 COMPILER V9.00   ADC_KEY                                                               11/13/2015 15:55:31 PAGE 14  
 
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

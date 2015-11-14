@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 14:16:13 PAGE 1   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE RADIO_APP_INTERFACE
@@ -62,7 +62,7 @@ line level    source
              -Data2Store));
   51   1              return TRUE;
   52   1      #else
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 14:16:13 PAGE 2   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 2   
 
                       return FALSE;
               #endif
@@ -80,350 +80,350 @@ line level    source
   66   1              if((gRadioData.StationSum > MAX_RADIO_STATION_NUM) 
   67   1              || (((gRadioData.CurrStation + 1) > gRadioData.StationSum) && gRadioData.StationSum)
   68   1              || ((gRadioData.Area1StationSum) > gRadioData.StationSum)
-  69   1      #ifdef FUNC_SLAVE_UART_EN
-                      || (gRadioData.CurrFreq > gRadioCtrl.RadioUpperBound) || (gRadioData.CurrFreq < gRadioCtrl.RadioLowerBoun
-             -d)
-              #else
-  72   1              || (gRadioData.CurrFreq > RADIO_UPPER_BOUND) || (gRadioData.CurrFreq < RADIO_LOWER_BOUND)
-  73   1      #endif
-  74   1              )               
-  75   1      #endif          
-  76   1              {
-  77   2                      DBG(("\nRadio Module Debug Info:\n"));
-  78   2                      DBG(("please check eeprom chip and fm chip\n"));
-  79   2                      DBG(("If they work no problem,maybe the data in eeprom is empty\n"));
-  80   2                      memset(&gRadioData, 0, sizeof(gRadioData));     
-  81   2                      gRadioData.CurrFreq = RADIO_LOWER_BOUND;
-  82   2              }
-  83   1      
-  84   1              RadioShowDebug(RadioShowPowerOn);
-  85   1              gRadioCtrl.State = RADIO_INIT;
-  86   1              gRadioCtrl.SeekMode = SEEK_NONE;
-  87   1              Radio_Name = RADIO_NONE;
-  88   1              RadioDisFlag = RadioDisCurFreNum;
-  89   1      
-  90   1              RadioWriteData();
-  91   1      #ifdef RADIO_MVFM_EN
-  92   1                              
-  93   1              SetGpioRegBit(GPIO_FMD_OE, 0x04);
-  94   1              ClrGpioRegBit(GPIO_FMD_IE, 0x04);
-  95   1              SetGpioRegBit(GPIO_FMD_PU, 0x0C);
-  96   1              ClrGpioRegBit(GPIO_FMD_PD, 0x0C);
-  97   1              SetGpioRegBit(GPIO_FMD_OUT, 0x04);
-  98   1      
-  99   1              if(MVFM_ReadID())
- 100   1              {
- 101   2                      DBG(("MVFM!\n"));
- 102   2                      Radio_Name = RADIO_MVFM;                                                
- 103   2                      return;
- 104   2              }
- 105   1      #endif
- 106   1              
- 107   1      //      DBG(("<<RadioInit()\n"));
- 108   1      }
- 109          
- 110          
- 111          // Radio Power-On.
- 112          VOID RadioPowerOn(VOID) 
- 113          {
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 14:16:13 PAGE 3   
-
- 114   1              switch(Radio_Name)
- 115   1              {
- 116   2      #ifdef RADIO_BK1080_EN  
+  69   1              || (gRadioData.CurrFreq > RADIO_UPPER_BOUND) || (gRadioData.CurrFreq < RADIO_LOWER_BOUND))              
+  70   1      #endif          
+  71   1              {
+  72   2                      DBG(("\nRadio Module Debug Info:\n"));
+  73   2                      DBG(("please check eeprom chip and fm chip\n"));
+  74   2                      DBG(("If they work no problem,maybe the data in eeprom is empty\n"));
+  75   2                      memset(&gRadioData, 0, sizeof(gRadioData));     
+  76   2                      gRadioData.CurrFreq = RADIO_LOWER_BOUND;
+  77   2              }
+  78   1      
+  79   1              RadioShowDebug(RadioShowPowerOn);
+  80   1              gRadioCtrl.State = RADIO_INIT;
+  81   1              gRadioCtrl.SeekMode = SEEK_NONE;
+  82   1              Radio_Name = RADIO_NONE;
+  83   1              RadioDisFlag = RadioDisCurFreNum;
+  84   1      
+  85   1              RadioWriteData();
+  86   1      #ifdef RADIO_MVFM_EN
+  87   1                              
+  88   1              SetGpioRegBit(GPIO_FMD_OE, 0x04);
+  89   1              ClrGpioRegBit(GPIO_FMD_IE, 0x04);
+  90   1              SetGpioRegBit(GPIO_FMD_PU, 0x0C);
+  91   1              ClrGpioRegBit(GPIO_FMD_PD, 0x0C);
+  92   1              SetGpioRegBit(GPIO_FMD_OUT, 0x04);
+  93   1      
+  94   1              if(MVFM_ReadID())
+  95   1              {
+  96   2                      DBG(("MVFM!\n"));
+  97   2                      Radio_Name = RADIO_MVFM;                                                
+  98   2                      return;
+  99   2              }
+ 100   1      #endif
+ 101   1              
+ 102   1      //      DBG(("<<RadioInit()\n"));
+ 103   1      }
+ 104          
+ 105          
+ 106          // Radio Power-On.
+ 107          VOID RadioPowerOn(VOID) 
+ 108          {
+ 109   1              switch(Radio_Name)
+ 110   1              {
+ 111   2      #ifdef RADIO_BK1080_EN  
                               case RADIO_BK1080:
                                       BK1080PowerOn();        
                                       break;
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 3   
+
               #endif
- 121   2      
- 122   2      #ifdef RADIO_KT0830_EN
+ 116   2      
+ 117   2      #ifdef RADIO_KT0830_EN
                               case RADIO_KT0830E:
                                       KT0830PowerOn();
                                       break;
               #endif
- 127   2      
- 128   2      #ifdef RADIO_RDA5807_EN
+ 122   2      
+ 123   2      #ifdef RADIO_RDA5807_EN
                               case RADIO_RDA5807:
                                       RDA5807PowerOn();
                                       break;
               #endif
- 133   2      
- 134   2      #ifdef RADIO_QN8035_EN
+ 128   2      
+ 129   2      #ifdef RADIO_QN8035_EN
                               case RADIO_QN8035:
                                       QN8035PowerOn();
                                       break;
               #endif
- 139   2      
- 140   2      #ifdef RADIO_MVFM_EN
- 141   2                      case RADIO_MVFM:
- 142   2                              MVFM_PowerOn();
- 143   2                              break;
- 144   2      #endif
- 145   2      
- 146   2                      default:
- 147   2                              break;
- 148   2              }
- 149   1      }
- 150          
- 151          // Radio Power-Down.
- 152          VOID RadioPowerDown(VOID)       
- 153          {
- 154   1              switch(Radio_Name)
- 155   1              {
- 156   2      #ifdef RADIO_BK1080_EN  
+ 134   2      
+ 135   2      #ifdef RADIO_MVFM_EN
+ 136   2                      case RADIO_MVFM:
+ 137   2                              MVFM_PowerOn();
+ 138   2                              break;
+ 139   2      #endif
+ 140   2      
+ 141   2                      default:
+ 142   2                              break;
+ 143   2              }
+ 144   1      }
+ 145          
+ 146          // Radio Power-Down.
+ 147          VOID RadioPowerDown(VOID)       
+ 148          {
+ 149   1              switch(Radio_Name)
+ 150   1              {
+ 151   2      #ifdef RADIO_BK1080_EN  
                               case RADIO_BK1080:
                                       BK1080PowerDown();      
                                       break;
               #endif
- 161   2      
- 162   2      #ifdef RADIO_KT0830_EN
+ 156   2      
+ 157   2      #ifdef RADIO_KT0830_EN
                               case RADIO_KT0830E:
                                       KT0830PowerDown();
                                       break;
               #endif
- 167   2      
- 168   2      
- 169   2      #ifdef RADIO_RDA5807_EN
+ 162   2      
+ 163   2      
+ 164   2      #ifdef RADIO_RDA5807_EN
                               case RADIO_RDA5807:
                                       RDA5807PowerDown();
                                       break;
               #endif
- 174   2      
- 175   2      #ifdef RADIO_QN8035_EN
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 14:16:13 PAGE 4   
-
+ 169   2      
+ 170   2      #ifdef RADIO_QN8035_EN
                               case RADIO_QN8035:
                                       QN8035PowerDown();
                                       break;
               #endif
- 180   2      
- 181   2      #ifdef RADIO_MVFM_EN
- 182   2                      case RADIO_MVFM:
- 183   2                              MVFM_PowerDown();
- 184   2                              break;
- 185   2      #endif
- 186   2      
- 187   2                      default:
- 188   2                              break;
- 189   2              }
- 190   1      }
- 191          
- 192          
- 193          // Radio Set Frequency
- 194          // If succeed return TRUE,otherwise return FALSE.
- 195          BOOL RadioSetFreq(VOID)
- 196          {
- 197   1              DBG(("Fre:%d\n", gRadioData.CurrFreq));
- 198   1              
- 199   1      #ifdef FUNC_RADIO_ESD_AUTO_RESUME
- 200   1              gRadioCurrFreqBack = gRadioData.CurrFreq;
- 201   1      #endif
- 202   1              
- 203   1              switch(Radio_Name)
- 204   1              {
- 205   2      #ifdef RADIO_RDA5807_EN
+ 175   2      
+ 176   2      #ifdef RADIO_MVFM_EN
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 4   
+
+ 177   2                      case RADIO_MVFM:
+ 178   2                              MVFM_PowerDown();
+ 179   2                              break;
+ 180   2      #endif
+ 181   2      
+ 182   2                      default:
+ 183   2                              break;
+ 184   2              }
+ 185   1      }
+ 186          
+ 187          
+ 188          // Radio Set Frequency
+ 189          // If succeed return TRUE,otherwise return FALSE.
+ 190          BOOL RadioSetFreq(VOID)
+ 191          {
+ 192   1              DBG(("Fre:%d\n", gRadioData.CurrFreq));
+ 193   1              
+ 194   1      #ifdef FUNC_RADIO_ESD_AUTO_RESUME
+ 195   1              gRadioCurrFreqBack = gRadioData.CurrFreq;
+ 196   1      #endif
+ 197   1              
+ 198   1              switch(Radio_Name)
+ 199   1              {
+ 200   2      #ifdef RADIO_RDA5807_EN
                               case RADIO_RDA5807:
                                       RDA5807SetFreq(gRadioData.CurrFreq);
                                       break;
               #endif
- 210   2      
- 211   2      #ifdef RADIO_BK1080_EN
+ 205   2      
+ 206   2      #ifdef RADIO_BK1080_EN
                               case RADIO_BK1080:
                                       BK1080SetFreq(gRadioData.CurrFreq);
                                       break;
               #endif
- 216   2      
- 217   2      #ifdef RADIO_KT0830_EN
+ 211   2      
+ 212   2      #ifdef RADIO_KT0830_EN
                               case RADIO_KT0830E:
                                       KT0830SetFreq(gRadioData.CurrFreq);
                                       break;
               #endif
- 222   2      
- 223   2      #ifdef RADIO_QN8035_EN
+ 217   2      
+ 218   2      #ifdef RADIO_QN8035_EN
                               case RADIO_QN8035:                      
                                       QN8035SetFreq(gRadioData.CurrFreq);
                                       break;
               #endif          
- 228   2      
- 229   2      #ifdef RADIO_MVFM_EN
- 230   2                      case RADIO_MVFM:
- 231   2                              MVFM_SetFreq(gRadioData.CurrFreq);
- 232   2                              break;
- 233   2      #endif
- 234   2      
- 235   2                      default:
- 236   2                              return FALSE;
- 237   2              }
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 14:16:13 PAGE 5   
+ 223   2      
+ 224   2      #ifdef RADIO_MVFM_EN
+ 225   2                      case RADIO_MVFM:
+ 226   2                              MVFM_SetFreq(gRadioData.CurrFreq);
+ 227   2                              break;
+ 228   2      #endif
+ 229   2      
+ 230   2                      default:
+ 231   2                              return FALSE;
+ 232   2              }
+ 233   1      
+ 234   1              if(gSys.MuteFg == TRUE)
+ 235   1              {
+ 236   2                      UnMute();
+ 237   2                      gSys.MuteFg = FALSE;    
+ 238   2                      
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 5   
 
- 238   1      
- 239   1              if(gSys.MuteFg == TRUE)
- 240   1              {
- 241   2                      UnMute();
- 242   2                      gSys.MuteFg = FALSE;    
- 243   2                      
- 244   2      #ifdef FUNC_DISP_EN     
- 245   2      #ifdef FUNC_SINGLE_LED_EN  
- 246   2                      DispDev();
- 247   2      #else
+ 239   2      #ifdef FUNC_DISP_EN     
+ 240   2      #ifdef FUNC_SINGLE_LED_EN  
+ 241   2                      DispDev();
+ 242   2      #else
                               DispMute(); 
               #endif
- 250   2      #endif
- 251   2              }
- 252   1              return TRUE;
- 253   1      }
- 254          
- 255          
- 256          //set fm-in volume.
- 257          VOID RadioSetVolume(BYTE Volume)
- 258          {
- 259   1              InDacLineInGain(gFmInGain[Volume], gFmInGain[Volume]);
- 260   1              DBG(("FM LR,V:%bd\n", Volume));
- 261   1      }
- 262          
- 263          
- 264          BOOL RadioMute(BOOL MuteFlag)
- 265          {
- 266   1              switch(Radio_Name)
- 267   1              {
- 268   2      #ifdef RADIO_RDA5807_EN
+ 245   2      #endif
+ 246   2              }
+ 247   1              return TRUE;
+ 248   1      }
+ 249          
+ 250          
+ 251          //set fm-in volume.
+ 252          VOID RadioSetVolume(BYTE Volume)
+ 253          {
+ 254   1              InDacLineInGain(gFmInGain[Volume], gFmInGain[Volume]);
+ 255   1              DBG(("FM LR,V:%bd\n", Volume));
+ 256   1      }
+ 257          
+ 258          
+ 259          BOOL RadioMute(BOOL MuteFlag)
+ 260          {
+ 261   1              switch(Radio_Name)
+ 262   1              {
+ 263   2      #ifdef RADIO_RDA5807_EN
                               case RADIO_RDA5807:
                                       RDA5807Mute(MuteFlag);
                                       break;
               #endif
- 273   2      
- 274   2      #ifdef RADIO_BK1080_EN
+ 268   2      
+ 269   2      #ifdef RADIO_BK1080_EN
                               case RADIO_BK1080:
                                       BK1080Mute(MuteFlag);
                                       break;
               #endif
- 279   2      
- 280   2      #ifdef RADIO_KT0830_EN
+ 274   2      
+ 275   2      #ifdef RADIO_KT0830_EN
                               case RADIO_KT0830E:
                                       KT0830Mute(MuteFlag);
                                       break;
               #endif
- 285   2      
- 286   2      #ifdef RADIO_QN8035_EN
+ 280   2      
+ 281   2      #ifdef RADIO_QN8035_EN
                               case RADIO_QN8035:
                                       QN8035Mute(MuteFlag);
                                       break;
               #endif
- 291   2      
- 292   2      #ifdef RADIO_MVFM_EN
- 293   2                      case RADIO_MVFM:
- 294   2                              MVFM_Mute(MuteFlag);
- 295   2                              break;
- 296   2      #endif
- 297   2      
- 298   2                      default:
- 299   2                              return FALSE;
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 14:16:13 PAGE 6   
+ 286   2      
+ 287   2      #ifdef RADIO_MVFM_EN
+ 288   2                      case RADIO_MVFM:
+ 289   2                              MVFM_Mute(MuteFlag);
+ 290   2                              break;
+ 291   2      #endif
+ 292   2      
+ 293   2                      default:
+ 294   2                              return FALSE;
+ 295   2              }
+ 296   1      
+ 297   1              return TRUE;
+ 298   1      }
+ 299          
+ 300          
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 6   
 
- 300   2              }
- 301   1      
- 302   1              return TRUE;
- 303   1      }
- 304          
- 305          
- 306          // Received Signal Strength Indication
- 307          // RSSI_SEEK_THRESHOLD
- 308          BYTE RadioRSSIRead(BOOL AutoSeekFlag)
- 309          {
- 310   1              switch(Radio_Name)
- 311   1              {
- 312   2      #ifdef RADIO_RDA5807_EN
+ 301          // Received Signal Strength Indication
+ 302          // RSSI_SEEK_THRESHOLD
+ 303          BYTE RadioRSSIRead(BOOL AutoSeekFlag)
+ 304          {
+ 305   1              switch(Radio_Name)
+ 306   1              {
+ 307   2      #ifdef RADIO_RDA5807_EN
                               case RADIO_RDA5807:
                                       return RDA5807SearchRead(AutoSeekFlag); 
               #endif
- 316   2      
- 317   2      #ifdef RADIO_BK1080_EN
+ 311   2      
+ 312   2      #ifdef RADIO_BK1080_EN
                               case RADIO_BK1080:
                                       return BK1080SearchRead(AutoSeekFlag);
               #endif
- 321   2      
- 322   2      #ifdef RADIO_KT0830_EN
+ 316   2      
+ 317   2      #ifdef RADIO_KT0830_EN
                               case RADIO_KT0830E:
                                       return KT0830SearchRead(AutoSeekFlag);
               #endif
- 326   2      
- 327   2      #ifdef RADIO_QN8035_EN
+ 321   2      
+ 322   2      #ifdef RADIO_QN8035_EN
                               case RADIO_QN8035:
                                       return QN8035SearchRead(AutoSeekFlag);
               #endif
+ 326   2      
+ 327   2      #ifdef RADIO_MVFM_EN
+ 328   2                      case RADIO_MVFM:
+ 329   2                              return MVFM_SearchRead(AutoSeekFlag);
+ 330   2      #endif
  331   2      
- 332   2      #ifdef RADIO_MVFM_EN
- 333   2                      case RADIO_MVFM:
- 334   2                              return MVFM_SearchRead(AutoSeekFlag);
- 335   2      #endif
- 336   2      
- 337   2                      default:
- 338   2                              return FALSE;
- 339   2              }
- 340   1      }
- 341          
- 342          
- 343          VOID RadioSearchSet(WORD Freq)  
- 344          {
- 345   1              switch(Radio_Name)
- 346   1              {
- 347   2      #ifdef RADIO_RDA5807_EN
-                              case RADIO_RDA5807:
-                                      RDA5807SearchSet(Freq);
-                                      break;
-              #endif
- 352   2      
- 353   2      #ifdef RADIO_BK1080_EN
-                              case RADIO_BK1080:
-                                      BK1080SearchSet(Freq);
-                                      break;
-              #endif
- 358   2      
- 359   2      #ifdef RADIO_KT0830_EN
-                              case RADIO_KT0830E:
-                                      KT0830SearchSet(Freq);
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 14:16:13 PAGE 7   
+ 332   2                      default:
+ 333   2                              return FALSE;
+ 334   2              }
+ 335   1      }
+ 336          
+ 337          
+ 338          //////////////////////////////////////////////////////////////////////////////////////////////////////////
+             -//                        
+ 339          // 以下函数接口被屏蔽
+ 340          // 用户可以根据项目需求打开函数定义
+ 341          //////////////////////////////////////////////////////////////////////////////////////////////////////////
+             -//                        
+ 342          //VOID RadioSearchSet(WORD Freq)  
+ 343          //{
+ 344          //      switch(Radio_Name)
+ 345          //      {
+ 346          //#ifdef RADIO_RDA5807_EN
+ 347          //              case RADIO_RDA5807:
+ 348          //                      RDA5807SearchSet(Freq);
+ 349          //                      break;
+ 350          //#endif
+ 351          //
+ 352          //#ifdef RADIO_BK1080_EN
+ 353          //              case RADIO_BK1080:
+ 354          //                      BK1080SearchSet(Freq);
+ 355          //                      break;
+ 356          //#endif
+ 357          //
+ 358          //#ifdef RADIO_KT0830_EN
+ 359          //              case RADIO_KT0830E:
+ 360          //                      KT0830SearchSet(Freq);
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 7   
 
-                                      break;
-              #endif
- 364   2      
- 365   2      #ifdef RADIO_QN8035_EN
-                              case RADIO_QN8035:                      
-                                      QN8035SearchSet(Freq);
-                                      break;
-              #endif          
- 370   2              
- 371   2      #ifdef RADIO_MVFM_EN
- 372   2                      case RADIO_MVFM:
- 373   2                              MVFM_SearchSet(Freq);
- 374   2                              break;
- 375   2      #endif
- 376   2      
- 377   2                      default:
- 378   2                              break;
- 379   2              }
- 380   1      }
+ 361          //                      break;
+ 362          //#endif
+ 363          //
+ 364          //#ifdef RADIO_QN8035_EN
+ 365          //              case RADIO_QN8035:                      
+ 366          //                      QN8035SearchSet(Freq);
+ 367          //                      break;
+ 368          //#endif                
+ 369          //      
+ 370          //#ifdef RADIO_MVFM_EN
+ 371          //              case RADIO_MVFM:
+ 372          //                      MVFM_SearchSet(Freq);
+ 373          //                      break;
+ 374          //#endif
+ 375          //
+ 376          //              default:
+ 377          //                      break;
+ 378          //      }
+ 379          //}
+ 380          
  381          
- 382          
- 383          //设置FM 的Mono  模式
- 384          VOID RadioMonoModeSet(BOOL MonoEnFlag)  
- 385          {
- 386   1              MVFM_SetMonoMode(MonoEnFlag);
- 387   1      }
+ 382          //设置FM 的Mono  模式
+ 383          //VOID RadioMonoModeSet(BOOL MonoEnFlag)  
+ 384          //{
+ 385          //      MVFM_SetMonoMode(MonoEnFlag);
+ 386          //}
+ 387          
  388          
- 389          
- 390          //读取FM 信号的Stereo 和 Mono 状态
- 391          BOOL RadioGetStereoState(VOID)  
- 392          {
- 393   1              return MVFM_GetStereoStatus();
- 394   1      }
+ 389          //读取FM 信号的Stereo 和 Mono 状态
+ 390          //BOOL RadioGetStereoState(VOID)  
+ 391          //{
+ 392          //      return MVFM_GetStereoStatus();
+ 393          //}
+ 394          
  395          
- 396          
- 397          #endif
+ 396          #endif
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    365    ----
+   CODE SIZE        =    343    ----
    CONSTANT SIZE    =     33    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

@@ -66,12 +66,7 @@ VOID RadioInit(VOID)
 	if((gRadioData.StationSum > MAX_RADIO_STATION_NUM) 
 	|| (((gRadioData.CurrStation + 1) > gRadioData.StationSum) && gRadioData.StationSum)
 	|| ((gRadioData.Area1StationSum) > gRadioData.StationSum)
-#ifdef FUNC_SLAVE_UART_EN
-	|| (gRadioData.CurrFreq > gRadioCtrl.RadioUpperBound) || (gRadioData.CurrFreq < gRadioCtrl.RadioLowerBound)
-#else
-	|| (gRadioData.CurrFreq > RADIO_UPPER_BOUND) || (gRadioData.CurrFreq < RADIO_LOWER_BOUND)
-#endif
-	)		
+	|| (gRadioData.CurrFreq > RADIO_UPPER_BOUND) || (gRadioData.CurrFreq < RADIO_LOWER_BOUND))		
 #endif		
 	{
 		DBG(("\nRadio Module Debug Info:\n"));
@@ -340,58 +335,62 @@ BYTE RadioRSSIRead(BOOL AutoSeekFlag)
 }
 
 
-VOID RadioSearchSet(WORD Freq)  
-{
-	switch(Radio_Name)
-	{
-#ifdef RADIO_RDA5807_EN
-		case RADIO_RDA5807:
-			RDA5807SearchSet(Freq);
-			break;
-#endif
-
-#ifdef RADIO_BK1080_EN
-		case RADIO_BK1080:
-			BK1080SearchSet(Freq);
-			break;
-#endif
-
-#ifdef RADIO_KT0830_EN
-		case RADIO_KT0830E:
-			KT0830SearchSet(Freq);
-			break;
-#endif
-
-#ifdef RADIO_QN8035_EN
-		case RADIO_QN8035:			
-			QN8035SearchSet(Freq);
-			break;
-#endif		
-	
-#ifdef RADIO_MVFM_EN
-		case RADIO_MVFM:
-			MVFM_SearchSet(Freq);
-			break;
-#endif
-
-		default:
-			break;
-	}
-}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////			
+// 以下函数接口被屏蔽
+// 用户可以根据项目需求打开函数定义
+////////////////////////////////////////////////////////////////////////////////////////////////////////////			
+//VOID RadioSearchSet(WORD Freq)  
+//{
+//	switch(Radio_Name)
+//	{
+//#ifdef RADIO_RDA5807_EN
+//		case RADIO_RDA5807:
+//			RDA5807SearchSet(Freq);
+//			break;
+//#endif
+//
+//#ifdef RADIO_BK1080_EN
+//		case RADIO_BK1080:
+//			BK1080SearchSet(Freq);
+//			break;
+//#endif
+//
+//#ifdef RADIO_KT0830_EN
+//		case RADIO_KT0830E:
+//			KT0830SearchSet(Freq);
+//			break;
+//#endif
+//
+//#ifdef RADIO_QN8035_EN
+//		case RADIO_QN8035:			
+//			QN8035SearchSet(Freq);
+//			break;
+//#endif		
+//	
+//#ifdef RADIO_MVFM_EN
+//		case RADIO_MVFM:
+//			MVFM_SearchSet(Freq);
+//			break;
+//#endif
+//
+//		default:
+//			break;
+//	}
+//}
 
 
 //设置FM 的Mono  模式
-VOID RadioMonoModeSet(BOOL MonoEnFlag)  
-{
-	MVFM_SetMonoMode(MonoEnFlag);
-}
+//VOID RadioMonoModeSet(BOOL MonoEnFlag)  
+//{
+//	MVFM_SetMonoMode(MonoEnFlag);
+//}
 
 
 //读取FM 信号的Stereo 和 Mono 状态
-BOOL RadioGetStereoState(VOID)  
-{
-	return MVFM_GetStereoStatus();
-}
+//BOOL RadioGetStereoState(VOID)  
+//{
+//	return MVFM_GetStereoStatus();
+//}
 
 
 #endif

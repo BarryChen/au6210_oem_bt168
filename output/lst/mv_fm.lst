@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 1   
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MV_FM
@@ -62,7 +62,7 @@ line level    source
   51          #define MVFM_REG_CH_STEP                        0x0A
   52                  #define MASK_STEP_CONSTANT              0x40
   53          
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 2   
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 2   
 
   54          #define MVFM_REG_RDSD0                          0x0B
   55          #define MVFM_REG_STATUS2                        0x13
@@ -126,456 +126,435 @@ line level    source
  113   2              }
  114   1              
  115   1              return Temp;
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 3   
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 3   
 
  116   1      }
  117          
  118          VOID MVFM_SetRegBit(BYTE RegAddr, BYTE BitMask, BYTE Data)
  119          {
- 120   1              BYTE Temp;
- 121   1              
- 122   1              Temp = MVFM_ReadReg(RegAddr);
- 123   1              Temp &= (~BitMask);
- 124   1              Temp |= Data & BitMask;
- 125   1              MVFM_WriteReg((WORD)RegAddr, Temp);
- 126   1      }
- 127          
- 128          
- 129          VOID MVFM_SetCh(WORD Freq)
- 130          {
- 131   1              BYTE Temp;
- 132   1              
- 133   1              Freq = ((Freq << 1) - 1200);
- 134   1              //writing lower 8 bits of CCA channel start index
- 135   1              MVFM_WriteReg(MVFM_REG_CH_START, (BYTE)Freq);
- 136   1              //writing lower 8 bits of CCA channel stop index
- 137   1              MVFM_WriteReg(MVFM_REG_CH_STOP, (BYTE)Freq);
- 138   1              //writing lower 8 bits of channel index
- 139   1              MVFM_WriteReg(MVFM_REG_CH, (BYTE)Freq);
- 140   1      
- 141   1              //writing higher bits of CCA channel start,stop and step index
- 142   1              Temp = (BYTE) ((Freq >> 8) & CH_CH);
- 143   1              Temp |= ((BYTE)(Freq >> 6) & CH_CH_START);
- 144   1              Temp |= ((BYTE) (Freq >> 4) & CH_CH_STOP);
- 145   1              Temp |= MASK_STEP_CONSTANT;
- 146   1              MVFM_WriteReg(MVFM_REG_CH_STEP, Temp);
- 147   1      }
- 148          
- 149          
- 150          WORD MVFM_GetCh(VOID) 
- 151          {
- 152   1          BYTE Temp; 
- 153   1          WORD ChIndex = 0;
- 154   1              
- 155   1          Temp = MVFM_ReadReg(MVFM_REG_CH_STEP);
- 156   1          Temp &= CH_CH;
- 157   1          ChIndex = Temp ;
- 158   1          Temp = MVFM_ReadReg(MVFM_REG_CH);    
- 159   1          ChIndex = (ChIndex << 8 )+Temp;
- 160   1          return ((ChIndex + 1200) >> 1);
- 161   1      }
- 162          
- 163          
- 164          VOID MVFM_VolumeSet(VOID)
- 165          {
- 166   1              MVFM_WriteReg((WORD)0x14, (MVFM_ReadReg(0x14) & 0xC0) | 0x07);
- 167   1      }
- 168          
- 169          
- 170          VOID MVFM_Mute(BOOL MuteFlag)
- 171          {
- 172   1              if(MuteFlag)
- 173   1              {
- 174   2                      MVFM_WriteReg(0x4A, 0x30);
- 175   2              }
- 176   1              else
- 177   1              {
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 4   
+ 120   1              MVFM_WriteReg((WORD)RegAddr, (MVFM_ReadReg(RegAddr) & (~BitMask)) | (Data & BitMask));
+ 121   1      }
+ 122          
+ 123          
+ 124          VOID MVFM_SetCh(WORD Freq)
+ 125          {
+ 126   1              BYTE Temp;
+ 127   1              
+ 128   1              Freq = ((Freq << 1) - 1200);
+ 129   1              //writing lower 8 bits of CCA channel start index
+ 130   1              MVFM_WriteReg(MVFM_REG_CH_START, (BYTE)Freq);
+ 131   1              //writing lower 8 bits of CCA channel stop index
+ 132   1              MVFM_WriteReg(MVFM_REG_CH_STOP, (BYTE)Freq);
+ 133   1              //writing lower 8 bits of channel index
+ 134   1              MVFM_WriteReg(MVFM_REG_CH, (BYTE)Freq);
+ 135   1      
+ 136   1              //writing higher bits of CCA channel start,stop and step index
+ 137   1              Temp = (BYTE) ((Freq >> 8) & CH_CH);
+ 138   1              Temp |= ((BYTE)(Freq >> 6) & CH_CH_START);
+ 139   1              Temp |= ((BYTE) (Freq >> 4) & CH_CH_STOP);
+ 140   1              Temp |= MASK_STEP_CONSTANT;
+ 141   1              MVFM_WriteReg(MVFM_REG_CH_STEP, Temp);
+ 142   1      }
+ 143          
+ 144          
+ 145          WORD MVFM_GetCh(VOID) 
+ 146          {
+ 147   1              WORD ChIndex;
+ 148   1      
+ 149   1              ChIndex = ((MVFM_ReadReg(MVFM_REG_CH_STEP) & CH_CH) << 8) + MVFM_ReadReg(MVFM_REG_CH);
+ 150   1              return ((ChIndex + 1200) >> 1);
+ 151   1      }
+ 152          
+ 153          
+ 154          VOID MVFM_VolumeSet(VOID)
+ 155          {
+ 156   1              MVFM_WriteReg((WORD)0x14, (MVFM_ReadReg(0x14) & 0xC0) | 0x07);
+ 157   1      }
+ 158          
+ 159          
+ 160          VOID MVFM_Mute(BOOL MuteFlag)
+ 161          {
+ 162   1              if(MuteFlag)
+ 163   1              {
+ 164   2                      MVFM_WriteReg(0x4A, 0x30);
+ 165   2              }
+ 166   1              else
+ 167   1              {
+ 168   2                      WaitMs(200);
+ 169   2                      MVFM_WriteReg(0x4A, 0x10);
+ 170   2              }
+ 171   1      }
+ 172          
+ 173          
+ 174          VOID MVFM_Initialization(VOID)
+ 175          {  
+ 176   1              MVFM_WriteReg(0x00, 0x81); 
+ 177   1              WaitMs(10);
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 4   
 
- 178   2                      WaitMs(200);
- 179   2                      MVFM_WriteReg(0x4A, 0x10);
- 180   2              }
- 181   1      }
- 182          
- 183          
- 184          VOID MVFM_Initialization(VOID)
- 185          {  
- 186   1              MVFM_WriteReg(0x00, 0x81); 
- 187   1              WaitMs(10);
- 188   1      
- 189   1          /*********User sets chip working clock **********/
- 190   1          //Following is where change the input clock wave type,as sine-wave or square-wave.
- 191   1          //default set is 32.768KHZ square-wave input.
- 192   1              MVFM_WriteReg(MVFM_REG_CCA, MASK_SINE_CLOCK);//XTAL_INJ，晶体选择
- 193   1      //      MVFM_WriteReg(MVFM_REG_XTAL_DIV0, 0x6E);
- 194   1      //      MVFM_WriteReg(MVFM_REG_XTAL_DIV1, 0x01);
- 195   1      //      MVFM_WriteReg(MVFM_REG_XTAL_DIV2, 0x54); 
- 196   1      
- 197   1              MVFM_WriteReg(MVFM_REG_XTAL_DIV0, 0x01);
- 198   1              MVFM_WriteReg(MVFM_REG_XTAL_DIV1, 0x08);
- 199   1              MVFM_WriteReg(MVFM_REG_XTAL_DIV2, 0x5C); 
- 200   1              //WaitMs(10);
- 201   1      
- 202   1              MVFM_WriteReg(0x54, 0x47);//mod PLL setting
- 203   1              //select SNR as filter3,SM step is 2db
- 204   1              MVFM_WriteReg(0x19, 0xC4);
- 205   1              MVFM_WriteReg(0x40, 0x70);      //set SNR as SM,SNC,HCC MPX
- 206   1              MVFM_WriteReg(0x33, 0x9E);//set HCC and SM Hystersis 5db
- 207   1              MVFM_WriteReg(0x2D, 0xD6);//notch filter threshold adjusting
- 208   1              MVFM_WriteReg(0x43, 0x10);//notch filter threshold enable
- 209   1              MVFM_WriteReg(0x47, 0x39);
- 210   1              //MVFM_WriteReg(0x57, 0x21);//only for test
- 211   1              //enter receiver mode directly
- 212   1              MVFM_WriteReg(0x00, 0x11);
- 213   1              //Enable the channel condition filter3 adaptation,Let ccfilter3 adjust freely
- 214   1              MVFM_WriteReg(0x1D, 0xA9);      
- 215   1              MVFM_WriteReg(0x4F, 0x40);//dsiable auto tuning
- 216   1              MVFM_WriteReg(0x34, SMSTART_VAL); ///set SMSTART
- 217   1              MVFM_WriteReg(0x35, SNCSTART_VAL); ///set SNCSTART
- 218   1              MVFM_WriteReg(0x36, HCCSTART_VAL); ///set HCCSTART
- 219   1              MVFM_Mute(TRUE);
- 220   1      }
- 221          
- 222          
- 223          VOID MVFM_SetFreq(WORD Frep) 
- 224          {
- 225   1              BYTE Temp;       
- 226   1      
- 227   1              MVFM_WriteReg(MVFM_REG_REF, 0x7A);
- 228   1              
- 229   1              //RXInit
- 230   1              MVFM_WriteReg(0x1B, 0x70);      //Let NFILT adjust freely
- 231   1              MVFM_WriteReg(0x2C, 0x52);
- 232   1              MVFM_WriteReg(0x45, 0x50);      //Set aud_thrd will affect ccfilter3's tap number
- 233   1              MVFM_WriteReg(0x41, 0xCA);
- 234   1      
- 235   1      #if MVFM_INVERSE_IMR
- 236   1              Temp = MVFM_ReadReg(MVFM_REG_CCA) & (~0x40);
- 237   1              if((Frep == 934) || (Frep == 939) || (Frep == 953) || (Frep == 998) || (Frep == 1048))
- 238   1              {
- 239   2                      Temp |= 0x40;   // inverse IMR.
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 5   
+ 178   1      
+ 179   1          /*********User sets chip working clock **********/
+ 180   1          //Following is where change the input clock wave type,as sine-wave or square-wave.
+ 181   1          //default set is 32.768KHZ square-wave input.
+ 182   1              MVFM_WriteReg(MVFM_REG_CCA, MASK_SINE_CLOCK);//XTAL_INJ，晶体选择
+ 183   1      //      MVFM_WriteReg(MVFM_REG_XTAL_DIV0, 0x6E);
+ 184   1      //      MVFM_WriteReg(MVFM_REG_XTAL_DIV1, 0x01);
+ 185   1      //      MVFM_WriteReg(MVFM_REG_XTAL_DIV2, 0x54); 
+ 186   1      
+ 187   1              MVFM_WriteReg(MVFM_REG_XTAL_DIV0, 0x01);
+ 188   1              MVFM_WriteReg(MVFM_REG_XTAL_DIV1, 0x08);
+ 189   1              MVFM_WriteReg(MVFM_REG_XTAL_DIV2, 0x5C); 
+ 190   1              //WaitMs(10);
+ 191   1      
+ 192   1              MVFM_WriteReg(0x54, 0x47);//mod PLL setting
+ 193   1              //select SNR as filter3,SM step is 2db
+ 194   1              MVFM_WriteReg(0x19, 0xC4);
+ 195   1              MVFM_WriteReg(0x40, 0x70);      //set SNR as SM,SNC,HCC MPX
+ 196   1              MVFM_WriteReg(0x33, 0x9E);//set HCC and SM Hystersis 5db
+ 197   1              MVFM_WriteReg(0x2D, 0xD6);//notch filter threshold adjusting
+ 198   1              MVFM_WriteReg(0x43, 0x10);//notch filter threshold enable
+ 199   1              MVFM_WriteReg(0x47, 0x39);
+ 200   1              //MVFM_WriteReg(0x57, 0x21);//only for test
+ 201   1              //enter receiver mode directly
+ 202   1              MVFM_WriteReg(0x00, 0x11);
+ 203   1              //Enable the channel condition filter3 adaptation,Let ccfilter3 adjust freely
+ 204   1              MVFM_WriteReg(0x1D, 0xA9);      
+ 205   1              MVFM_WriteReg(0x4F, 0x40);//dsiable auto tuning
+ 206   1              MVFM_WriteReg(0x34, SMSTART_VAL); ///set SMSTART
+ 207   1              MVFM_WriteReg(0x35, SNCSTART_VAL); ///set SNCSTART
+ 208   1              MVFM_WriteReg(0x36, HCCSTART_VAL); ///set HCCSTART
+ 209   1              MVFM_Mute(TRUE);
+ 210   1      }
+ 211          
+ 212          
+ 213          VOID MVFM_SetFreq(WORD Frep) 
+ 214          {
+ 215   1              MVFM_WriteReg(MVFM_REG_REF, 0x7A);
+ 216   1              
+ 217   1              //RXInit
+ 218   1              MVFM_WriteReg(0x1B, 0x70);      //Let NFILT adjust freely
+ 219   1              MVFM_WriteReg(0x2C, 0x52);
+ 220   1              MVFM_WriteReg(0x45, 0x50);      //Set aud_thrd will affect ccfilter3's tap number
+ 221   1              MVFM_WriteReg(0x41, 0xCA);
+ 222   1      
+ 223   1      #if MVFM_INVERSE_IMR
+ 224   1              if((Frep == 934) || (Frep == 939) || (Frep == 953) || (Frep == 998) || (Frep == 1048))
+ 225   1              {
+ 226   2                      MVFM_WriteReg(MVFM_REG_CCA, MVFM_ReadReg(MVFM_REG_CCA) | 0x40); // inverse IMR.
+ 227   2              }
+ 228   1              else
+ 229   1              {
+ 230   2                      MVFM_WriteReg(MVFM_REG_CCA, MVFM_ReadReg(MVFM_REG_CCA) & (~0x40));
+ 231   2              }
+ 232   1      #endif
+ 233   1      
+ 234   1              MVFM_Mute(TRUE);
+ 235   1      //      MVFM_SetCh(Frep,Frep,1);
+ 236   1              MVFM_SetCh(Frep); 
+ 237   1              //enable CCA mode with user write into frequency
+ 238   1              MVFM_WriteReg(0x00, 0x13);
+ 239   1      
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 5   
 
- 240   2              }
- 241   1              else
- 242   1              {
- 243   2                      Temp &= ~0x40;
- 244   2              }
- 245   1              MVFM_WriteReg(MVFM_REG_CCA, Temp);
- 246   1      #endif
- 247   1      
- 248   1              MVFM_Mute(TRUE);
- 249   1      //      MVFM_SetCh(Frep,Frep,1);
- 250   1              MVFM_SetCh(Frep); 
- 251   1              //enable CCA mode with user write into frequency
- 252   1              MVFM_WriteReg(0x00, 0x13);
- 253   1      
- 254   1      #if MVFM_USING_INDUCTOR 
- 255   1              //Auto tuning
- 256   1              MVFM_WriteReg(0x4F, 0x80);
- 257   1              Temp = MVFM_ReadReg(0x4F);
- 258   1              Temp >>= 1;
- 259   1              MVFM_WriteReg(0x4F, Temp);
- 260   1      #endif
- 261   1              
- 262   1              ///avoid the "POP" noise.
- 263   1          WaitMs(CH_SETUP_DELAY_TIME);
- 264   1              ///decrease reference PLL charge pump current.
- 265   1              MVFM_WriteReg(MVFM_REG_REF, 0x70);
- 266   1              //MVFM_Mute(FALSE);  //加上此句自动搜台中有"哒哒"声。
- 267   1      }
+ 240   1      #if MVFM_USING_INDUCTOR 
+ 241   1              //Auto tuning
+ 242   1              MVFM_WriteReg(0x4F, 0x80);
+ 243   1              MVFM_WriteReg(0x4F, MVFM_ReadReg(0x4F) >> 1);
+ 244   1      #endif
+ 245   1              
+ 246   1              ///avoid the "POP" noise.
+ 247   1          WaitMs(CH_SETUP_DELAY_TIME);
+ 248   1              ///decrease reference PLL charge pump current.
+ 249   1              MVFM_WriteReg(MVFM_REG_REF, 0x70);
+ 250   1              //MVFM_Mute(FALSE);  //加上此句自动搜台中有"哒哒"声。
+ 251   1      }
+ 252          
+ 253          
+ 254          VOID MVFM_Init(VOID) 
+ 255          {
+ 256   1              MVFM_Initialization();
+ 257   1              MVFM_SetFreq(MVFM_DEF_FREQ);
+ 258   1              MVFM_VolumeSet();
+ 259   1      }                
+ 260          
+ 261          
+ 262          VOID MVFM_PowerOn(VOID)
+ 263          {
+ 264   1              MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_R_TXRX, ~MASK_STNBY);             //power up      
+ 265   1              WaitMs(200);    // wait for power stable
+ 266   1      }
+ 267          
  268          
- 269          
- 270          VOID MVFM_Init(VOID) 
- 271          {
- 272   1              MVFM_Initialization();
- 273   1              MVFM_SetFreq(MVFM_DEF_FREQ);
- 274   1              MVFM_VolumeSet();
- 275   1      }                
- 276          
- 277          
- 278          VOID MVFM_PowerOn(VOID)
- 279          {
- 280   1              MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_R_TXRX, ~MASK_STNBY);             //power up      
- 281   1              WaitMs(200);    // wait for power stable
- 282   1      }
- 283          
- 284          
- 285          VOID MVFM_PowerDown(VOID)
- 286          {
- 287   1              MVFM_Mute(TRUE);
- 288   1              MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_R_TXRX, MASK_STNBY);      // power down   
- 289   1      }
- 290          
- 291          
- 292          VOID MVFM_RXSetTH(VOID)
- 293          {       
- 294   1              //increase reference PLL charge pump current.
- 295   1              MVFM_WriteReg(MVFM_REG_REF, 0x7A);
- 296   1              //NFILT program is enabled
- 297   1              MVFM_WriteReg(0x1B, 0x78);
- 298   1              //using Filter3
- 299   1              MVFM_WriteReg(MVFM_REG_CCA1, 0x75);
- 300   1              //setting CCA IF counter error range value(768).
- 301   1              MVFM_WriteReg(MVFM_REG_CCA_CNT2, 0x03);
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 6   
+ 269          VOID MVFM_PowerDown(VOID)
+ 270          {
+ 271   1              MVFM_Mute(TRUE);
+ 272   1              MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_R_TXRX, MASK_STNBY);      // power down   
+ 273   1      }
+ 274          
+ 275          
+ 276          VOID MVFM_RXSetTH(VOID)
+ 277          {       
+ 278   1              //increase reference PLL charge pump current.
+ 279   1              MVFM_WriteReg(MVFM_REG_REF, 0x7A);
+ 280   1              //NFILT program is enabled
+ 281   1              MVFM_WriteReg(0x1B, 0x78);
+ 282   1              //using Filter3
+ 283   1              MVFM_WriteReg(MVFM_REG_CCA1, 0x75);
+ 284   1              //setting CCA IF counter error range value(768).
+ 285   1              MVFM_WriteReg(MVFM_REG_CCA_CNT2, 0x03);
+ 286   1      
+ 287   1      #if MVFM_PILOT_CCA
+ 288   1              MVFM_WriteReg(MVFM_REG_PLT1, 0x00);
+ 289   1      #endif
+ 290   1      
+ 291   1              //selection the time of CCA FSM wait RF front end and AGC to settle:20ms
+ 292   1              //0x00:     10ms
+ 293   1              //0x40:     20ms(default)
+ 294   1              //0x80:     40ms
+ 295   1              //0xC0:     60ms        
+ 296   1              MVFM_SetRegBit(MVFM_REG_CCA_SNR_TH_2, 0xC0, 0xC0);  
+ 297   1      
+ 298   1              MVFM_SetRegBit(MVFM_REG_CCA, 0x3F, 0x14);  //setting RSSI threshold for CCA
+ 299   1      
+ 300   1      
+ 301   1              //selection the time of CCA FSM wait SNR calculator to settle:20ms
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 6   
 
- 302   1      
- 303   1      #if MVFM_PILOT_CCA
- 304   1              MVFM_WriteReg(MVFM_REG_PLT1, 0x00);
- 305   1      #endif
- 306   1      
- 307   1              //selection the time of CCA FSM wait RF front end and AGC to settle:20ms
- 308   1              //0x00:     10ms
- 309   1              //0x40:     20ms(default)
- 310   1              //0x80:     40ms
- 311   1              //0xC0:     60ms        
- 312   1              MVFM_SetRegBit(MVFM_REG_CCA_SNR_TH_2, 0xC0, 0xC0);  
- 313   1      
- 314   1              MVFM_SetRegBit(MVFM_REG_CCA, 0x3F, 0x14);  //setting RSSI threshold for CCA
+ 302   1              //0x00:     20ms(default)
+ 303   1              //0x40:     40ms
+ 304   1              //0x80:     60ms
+ 305   1              //0xC0:     100m        
+ 306   1              MVFM_WriteReg(MVFM_REG_CCA_SNR_TH_1, 0x80 | 0x09); //setting SNR threshold for CCA
+ 307   1      }
+ 308          
+ 309          
+ 310          VOID MVFM_SearchSet(WORD Freq)
+ 311          {       
+ 312   1              //MVFM_Mute(TRUE);
+ 313   1              //MVFM_RXSetTH();       //为了减少自动搜台时间
+ 314   1              MVFM_SetCh(Freq);  
  315   1      
- 316   1      
- 317   1              //selection the time of CCA FSM wait SNR calculator to settle:20ms
- 318   1              //0x00:     20ms(default)
- 319   1              //0x40:     40ms
- 320   1              //0x80:     60ms
- 321   1              //0xC0:     100m        
- 322   1              MVFM_WriteReg(MVFM_REG_CCA_SNR_TH_1, 0x80 | 0x09); //setting SNR threshold for CCA
- 323   1      }
- 324          
+ 316   1      #if MVFM_USING_INDUCTOR
+ 317   1              //Auto tuning
+ 318   1              MVFM_WriteReg(0x00, 0x11);
+ 319   1              MVFM_WriteReg(0x4F, 0x80);
+ 320   1              MVFM_WriteReg(0x4F, MVFM_ReadReg(0x4F) >> 1);
+ 321   1      #endif 
+ 322   1       
+ 323   1              MVFM_WriteReg(0x00, 0x12);      
+ 324   1      }
  325          
- 326          VOID MVFM_SearchSet(WORD Freq)
- 327          {
- 328   1              BYTE Temp;
- 329   1              
- 330   1              //MVFM_Mute(TRUE);
- 331   1              //MVFM_RXSetTH();       //为了减少自动搜台时间
- 332   1              MVFM_SetCh(Freq);  
- 333   1      
- 334   1      #if MVFM_USING_INDUCTOR
- 335   1              //Auto tuning
- 336   1              MVFM_WriteReg(0x00, 0x11);
- 337   1              MVFM_WriteReg(0x4F, 0x80);
- 338   1              Temp = MVFM_ReadReg(0x4F);
- 339   1              Temp = (Temp >> 1);
- 340   1              MVFM_WriteReg(0x4F, Temp);
- 341   1      #endif 
- 342   1       
- 343   1              MVFM_WriteReg(0x00, 0x12);      
- 344   1      }
- 345          
- 346          
- 347          BYTE MVFM_SearchRead(BOOL AutoSeekFlag)
- 348          {
- 349   1              static  BYTE TimeOut = 0;
- 350   1              BYTE i;
- 351   1              BYTE StereoCount;
- 352   1      
- 353   1              if((!(MVFM_ReadReg(MVFM_REG_SYSTEM1) & MASK_CHSC)) || (TimeOut > 25))//5))
- 354   1              {
- 355   2                      TimeOut = 0;    
- 356   2                      
- 357   2                      if(AutoSeekFlag)
- 358   2                      {
- 359   3                              gRadioData.CurrFreq = MVFM_GetCh();
- 360   3                              DBG(("Seek Current Freq %d\n", gRadioData.CurrFreq));
- 361   3                      }
- 362   2                      
- 363   2                      if(!(MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_RXCCA_FAIL))
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 7   
+ 326          
+ 327          BYTE MVFM_SearchRead(BOOL AutoSeekFlag)
+ 328          {
+ 329   1              static  BYTE TimeOut = 0;
+ 330   1              BYTE i;
+ 331   1              BYTE StereoCount;
+ 332   1      
+ 333   1              if((!(MVFM_ReadReg(MVFM_REG_SYSTEM1) & MASK_CHSC)) || (TimeOut > 25))//5))
+ 334   1              {
+ 335   2                      TimeOut = 0;    
+ 336   2      
+ 337   2      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+ 338   2                      if(AutoSeekFlag)
+ 339   2                      {
+ 340   3                              gRadioData.CurrFreq = MVFM_GetCh();
+ 341   3                              DBG(("Seek Current Freq %d\n", gRadioData.CurrFreq));
+ 342   3                      }
+ 343   2      #endif
+ 344   2                      
+ 345   2                      if(!(MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_RXCCA_FAIL))
+ 346   2                      {       
+ 347   3                              DBG(("Search  Freq %d\n", gRadioData.CurrFreq));
+ 348   3      #if MVFM_PILOT_CCA
+ 349   3                              WaitMs(60);
+ 350   3                              //snr = MVFM_ReadReg(MVFM_REG_SNR);
+ 351   3                              DBG(("SNR %d\n", (WORD)MVFM_ReadReg(MVFM_REG_SNR)));
+ 352   3      
+ 353   3                              //自动搜台停台参数设置:
+ 354   3                              //注:用户可能需要根据实际测试结果调整以下这些参数
+ 355   3                              //if(gRadioData.CurrFreq != 960)        //特殊频点(指定检测Stero信号) 范围设置          
+ 356   3                              {                               
+ 357   4                                      if(((gRadioData.CurrFreq >= 950) && (gRadioData.CurrFreq <= 954))
+ 358   4                                      || ((gRadioData.CurrFreq >= 1055) && (gRadioData.CurrFreq <= 1059)))
+ 359   4                                      {
+ 360   5                                              if(MVFM_ReadReg(MVFM_REG_SNR) > 30) //特殊有效频点SNR范围设置
+ 361   5                                              {
+ 362   6                                                      DBG(("Search Freq %d\n", gRadioData.CurrFreq));
+ 363   6                                                      DBG(("SNR > 30 %d\n", gRadioData.CurrFreq));
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 7   
 
- 364   2                      {       
- 365   3                              DBG(("Search  Freq %d\n", gRadioData.CurrFreq));
- 366   3      #if MVFM_PILOT_CCA
- 367   3                              WaitMs(60);
- 368   3                              //snr = MVFM_ReadReg(MVFM_REG_SNR);
- 369   3                              DBG(("SNR %d\n", (WORD)MVFM_ReadReg(MVFM_REG_SNR)));
- 370   3      
- 371   3                              //自动搜台停台参数设置:
- 372   3                              //注:用户可能需要根据实际测试结果调整以下这些参数
- 373   3                              //if(gRadioData.CurrFreq != 960)        //特殊频点(指定检测Stero信号) 范围设置          
- 374   3                              {                               
- 375   4                                      if(((gRadioData.CurrFreq >= 950) && (gRadioData.CurrFreq <= 954))
- 376   4                                      || ((gRadioData.CurrFreq >= 1055) && (gRadioData.CurrFreq <= 1059)))
- 377   4                                      {
- 378   5                                              if(MVFM_ReadReg(MVFM_REG_SNR) > 30) //特殊有效频点SNR范围设置
- 379   5                                              {
- 380   6                                                      DBG(("Search Freq %d\n", gRadioData.CurrFreq));
- 381   6                                                      DBG(("SNR > 30 %d\n", gRadioData.CurrFreq));
- 382   6                                                      return 1;
- 383   6                                              }
- 384   5                                      }
- 385   4                                      else
- 386   4                                      {
- 387   5                                              if(MVFM_ReadReg(MVFM_REG_SNR) > 10)     //普通有效频点SNR范围设置  原来值为16
- 388   5                                              {
- 389   6                                                      DBG(("Search Freq %d\n", gRadioData.CurrFreq));
- 390   6                                                      DBG(("SNR > 16 %d\n", gRadioData.CurrFreq));
- 391   6                                                      return 1;
- 392   6                                              }
- 393   5                                      }
- 394   4                              }
- 395   3      
- 396   3                              //检测Stero信号
- 397   3                              StereoCount = 0;
- 398   3                              for(i = 0; i < 10; i++)
- 399   3                              {
- 400   4                                      WaitMs(2);
- 401   4                                      StereoCount += ((MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_ST_MO_RX) ? 0 : 1);
- 402   4                                      if(StereoCount > 3)
- 403   4                                      { 
- 404   5                                              DBG((" Freq ok  okok %d\n", gRadioData.CurrFreq));
- 405   5                                              return 1;
- 406   5                                      }
- 407   4                              }
- 408   3                              return 0;
- 409   3      #endif
- 410   3                              return 1;  
- 411   3                                              
- 412   3                      }
- 413   2                      return 0;  
- 414   2              }
- 415   1              TimeOut++;
- 416   1              
- 417   1              return 3;
- 418   1      }
+ 364   6                                                      return 1;
+ 365   6                                              }
+ 366   5                                      }
+ 367   4                                      else
+ 368   4                                      {
+ 369   5                                              if(MVFM_ReadReg(MVFM_REG_SNR) > 10)     //普通有效频点SNR范围设置  原来值为16
+ 370   5                                              {
+ 371   6                                                      DBG(("Search Freq %d\n", gRadioData.CurrFreq));
+ 372   6                                                      DBG(("SNR > 16 %d\n", gRadioData.CurrFreq));
+ 373   6                                                      return 1;
+ 374   6                                              }
+ 375   5                                      }
+ 376   4                              }
+ 377   3      
+ 378   3                              //检测Stero信号
+ 379   3                              StereoCount = 0;
+ 380   3                              for(i = 0; i < 10; i++)
+ 381   3                              {
+ 382   4                                      WaitMs(2);
+ 383   4                                      StereoCount += ((MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_ST_MO_RX) ? 0 : 1);
+ 384   4                                      if(StereoCount > 3)
+ 385   4                                      { 
+ 386   5                                              DBG((" Freq ok  okok %d\n", gRadioData.CurrFreq));
+ 387   5                                              return 1;
+ 388   5                                      }
+ 389   4                              }
+ 390   3                              return 0;
+ 391   3      #endif
+ 392   3                              return 1;  
+ 393   3                                              
+ 394   3                      }
+ 395   2                      return 0;  
+ 396   2              }
+ 397   1              TimeOut++;
+ 398   1              
+ 399   1              return 3;
+ 400   1      }
+ 401          
+ 402          
+ 403          BOOL MVFM_ReadID(VOID)
+ 404          {
+ 405   1              if((MVFM_ReadReg(0x06) & 0xFC) == 0x84)
+ 406   1              {
+ 407   2                      DBG(("MVFM_ID : 0x84\n"));
+ 408   2                      MVFM_Init();
+ 409   2                      return TRUE;
+ 410   2              }
+ 411   1              else
+ 412   1              {
+ 413   2                      DBG(("MVFM_ID ERR : %BU\n", (MVFM_ReadReg(0x06) & 0xFC)));
+ 414   2                      return FALSE;
+ 415   2              }
+ 416   1              MVFM_Mute(TRUE);
+ 417   1      }
+ 418          
  419          
- 420          
- 421          BOOL MVFM_ReadID(VOID)
- 422          {
- 423   1              if((MVFM_ReadReg(0x06) & 0xFC) == 0x84)
- 424   1              {
- 425   2                      DBG(("MVFM_ID : 0x84\n"));
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 8   
+ 420          //Description: Config start, stop, step register for FM/AM CCA or CCS
+ 421          //Param:
+ 422          //    StartFreq
+ 423          //        Set the frequency (10kHz) where scan to be started,
+ 424          //        e.g. 7600 for 76.00MHz.
+ 425          //    StopFreq
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 8   
 
- 426   2                      MVFM_Init();
- 427   2                      return TRUE;
- 428   2              }
- 429   1              else
- 430   1              {
- 431   2                      DBG(("MVFM_ID ERR : %BU\n", (MVFM_ReadReg(0x06) & 0xFC)));
- 432   2                      return FALSE;
- 433   2              }
- 434   1              MVFM_Mute(TRUE);
- 435   1      }
- 436          
- 437          
- 438          //Description: Config start, stop, step register for FM/AM CCA or CCS
- 439          //Param:
- 440          //    StartFreq
- 441          //        Set the frequency (10kHz) where scan to be started,
- 442          //        e.g. 7600 for 76.00MHz.
- 443          //    StopFreq
- 444          //        Set the frequency (10kHz) where scan to be stopped,
- 445          //        e.g. 10800 for 108.00MHz
- 446          //    SeekStep        
- 447          //        1: set leap step to (FM)100kHz
- 448          //        2: set leap step to (FM)200kHz 
- 449          //        0:  set leap step to (FM)50kHz
- 450          //      SeekMode:Select seek mode
- 451          //              1: 以硬件自动搜台和软件设置频点方式实现自动搜台
- 452          //              0: 以软件设置单步频点的方式实现自动搜台         
- 453          //      SeekStartFlag: Auto seek starts  flag
- 454          //              1:第一次启动搜台配置
- 455          //              0:搜台过程中的配置
- 456          //Return Value:       None
- 457          VOID MVFM_AutoSeekConfig(WORD StartFreq, WORD StopFreq, BYTE SeekStep, BOOL SeekMode, BOOL SeekStartFlag)
- 458          {
- 459   1              BYTE Temp = 0;
- 460   1      
- 461   1              if(SeekStartFlag)
- 462   1              {
- 463   2                       MVFM_RXSetTH();        //启动自动搜台开始时执行一次就可以了
- 464   2              }
- 465   1      
- 466   1              if(SeekMode)  
- 467   1              {               
- 468   2                      StartFreq = ((StartFreq << 1) - 1200);
- 469   2                      StopFreq = ((StopFreq << 1) - 1200);
- 470   2                      // set to reg: CH_START
- 471   2                      MVFM_WriteReg(MVFM_REG_CH_START, (BYTE) StartFreq);
- 472   2                      Temp |= ((BYTE) (StartFreq >> 6) & CH_CH_START);
- 473   2                      // set to reg: CH_STOP
- 474   2                      MVFM_WriteReg(MVFM_REG_CH_STOP, (BYTE) StopFreq);
- 475   2                      Temp |= ((BYTE) (StopFreq >> 4) & CH_CH_STOP);
- 476   2                      // set to reg: CH_STEP
- 477   2                      Temp |= SeekStep << 6;
- 478   2                      MVFM_WriteReg(MVFM_REG_CH_STEP, Temp);
- 479   2      
- 480   2                      //enter CCA mode,channel index is decided by internal CCA
- 481   2                      MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_RXCCA, MASK_CHSC);        
- 482   2      
- 483   2                      MVFM_WriteReg(0x4f, 0x00);//enable auto tunnging in CCA mode
- 484   2              }
- 485   1              else
- 486   1              {
- 487   2                      MVFM_SearchSet(StartFreq);
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 9   
+ 426          //        Set the frequency (10kHz) where scan to be stopped,
+ 427          //        e.g. 10800 for 108.00MHz
+ 428          //    SeekStep        
+ 429          //        1: set leap step to (FM)100kHz
+ 430          //        2: set leap step to (FM)200kHz 
+ 431          //        0:  set leap step to (FM)50kHz
+ 432          //      SeekMode:Select seek mode
+ 433          //              1: 以硬件自动搜台和软件设置频点方式实现自动搜台
+ 434          //              0: 以软件设置单步频点的方式实现自动搜台         
+ 435          //      SeekStartFlag: Auto seek starts  flag
+ 436          //              1:第一次启动搜台配置
+ 437          //              0:搜台过程中的配置
+ 438          //Return Value:       None
+ 439          VOID MVFM_AutoSeekConfig(WORD StartFreq, WORD StopFreq, BYTE SeekStep, BOOL SeekMode, BOOL SeekStartFlag)
+ 440          {
+ 441   1      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+ 442   1              BYTE Temp;
+ 443   1      #endif
+ 444   1      
+ 445   1              if(SeekStartFlag)
+ 446   1              {
+ 447   2                       MVFM_RXSetTH();        //启动自动搜台开始时执行一次就可以了
+ 448   2              }
+ 449   1              
+ 450   1      #ifdef  FUNC_RADIO_AUTOSEEK_EN
+ 451   1              if(SeekMode)  
+ 452   1              {               
+ 453   2                      StartFreq = ((StartFreq << 1) - 1200);
+ 454   2                      StopFreq = ((StopFreq << 1) - 1200);
+ 455   2                      // set to reg: CH_START
+ 456   2                      MVFM_WriteReg(MVFM_REG_CH_START, (BYTE) StartFreq);
+ 457   2                      Temp |= ((BYTE) (StartFreq >> 6) & CH_CH_START);
+ 458   2                      // set to reg: CH_STOP
+ 459   2                      MVFM_WriteReg(MVFM_REG_CH_STOP, (BYTE) StopFreq);
+ 460   2                      Temp |= ((BYTE) (StopFreq >> 4) & CH_CH_STOP);
+ 461   2                      // set to reg: CH_STEP
+ 462   2                      Temp |= SeekStep << 6;
+ 463   2                      MVFM_WriteReg(MVFM_REG_CH_STEP, Temp);
+ 464   2      
+ 465   2                      //enter CCA mode,channel index is decided by internal CCA
+ 466   2                      MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_RXCCA, MASK_CHSC);        
+ 467   2      
+ 468   2                      MVFM_WriteReg(0x4f, 0x00);//enable auto tunnging in CCA mode
+ 469   2              }
+ 470   1              else
+ 471   1      #endif
+ 472   1              {
+ 473   2                      MVFM_SearchSet(StartFreq);
+ 474   2              }
+ 475   1      }
+ 476          
+ 477          
+ 478          // Get   Stereo status
+ 479          //返回值: 0 -- Mono;    1 -- Stero
+ 480          //BOOL MVFM_GetStereoStatus(VOID) 
+ 481          //{      
+ 482          //   return ((MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_ST_MO_RX) ? 0 : 1);  
+ 483          //}
+ 484          
+ 485          
+ 486          //Set receiver in mono mode
+ 487          // Param:
+C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 15:55:34 PAGE 9   
 
- 488   2              }
- 489   1      }
- 490          
- 491          
- 492          // Get   Stereo status
- 493          //返回值: 0 -- Mono;    1 -- Stero
- 494          BOOL MVFM_GetStereoStatus(VOID) 
- 495          {      
- 496   1         return ((MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_ST_MO_RX) ? 0 : 1);  
- 497   1      }
- 498          
- 499          
- 500          //Set receiver in mono mode
- 501          // Param:
- 502          //              MonoEnFlag: 1 -- Force receiver in mono mode;   0 -- Not forced,stereo and mono auto selected
- 503          VOID MVFM_SetMonoMode(BOOL MonoEnFlag)
- 504          {
- 505   1              MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_RXMONO, (MonoEnFlag << 2)); 
- 506   1      }
+ 488          //              MonoEnFlag: 1 -- Force receiver in mono mode;   0 -- Not forced,stereo and mono auto selected
+ 489          //VOID MVFM_SetMonoMode(BOOL MonoEnFlag)
+ 490          //{
+ 491          //      MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_RXMONO, (MonoEnFlag << 2)); 
+ 492          //}
+ 493          
+ 494          
+ 495          // Get the RSSI value
+ 496          //BYTE MVFM_GetRSSI(VOID) 
+ 497          //{      
+ 498          //   return MVFM_ReadReg(MVFM_REG_RSSISIG);  
+ 499          //}
+ 500          
+ 501          
+ 502          // Get the SNR value
+ 503          //BYTE MVFM_GetSNR(VOID) 
+ 504          //{      
+ 505          //   return MVFM_ReadReg(MVFM_REG_SNR);  
+ 506          //}
  507          
  508          
- 509          // Get the RSSI value
- 510          BYTE MVFM_GetRSSI(VOID) 
- 511          {      
- 512   1         return MVFM_ReadReg(MVFM_REG_RSSISIG);  
- 513   1      }
- 514          
- 515          
- 516          // Get the SNR value
- 517          BYTE MVFM_GetSNR(VOID) 
- 518          {      
- 519   1         return MVFM_ReadReg(MVFM_REG_SNR);  
- 520   1      }
- 521          
- 522          
- 523          //The MVFM integrates an analog volume controller and a digital volume controller to set audio output gain
+ 509          //The MVFM integrates an analog volume controller and a digital volume controller to set audio output gain
              -. 
- 524          //The digital gain step is 1dB, and the analog gain step is 6dB. 
- 525          //The total gain range is -47 dB to 0 dB. 
- 526          //Refer to Reg14h for more descriptions.
- 527          VOID MVFM_VolSet(BYTE Vol)
- 528          {
- 529   1              BYTE Temp;      
- 530   1              
- 531   1              Temp = MVFM_ReadReg(0x14);      
- 532   1              Vol &= 0x07;//we just use the 6dB
- 533   1              Temp &= 0xF8;
- 534   1              Temp |= Vol;
- 535   1              MVFM_WriteReg(0x14, Temp);              
- 536   1      }
- 537          
- 538          
- 539          #endif
+ 510          //The digital gain step is 1dB, and the analog gain step is 6dB. 
+ 511          //The total gain range is -47 dB to 0 dB. 
+ 512          //Refer to Reg14h for more descriptions.
+ 513          //VOID MVFM_VolSet(BYTE Vol)
+ 514          //{     
+ 515          //      Vol &= 0x07;//we just use the 6dB
+ 516          //      MVFM_WriteReg(0x14, (MVFM_ReadReg(0x14) & 0xF8) | Vol);                 
+ 517          //}
+ 518          
+ 519          
+ 520          #endif
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1514    ----
+   CODE SIZE        =   1411    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      1      28
+   XDATA SIZE       =      1      25
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
-C51 COMPILER V9.00   MV_FM                                                                 11/13/2015 14:16:13 PAGE 10  
-
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----

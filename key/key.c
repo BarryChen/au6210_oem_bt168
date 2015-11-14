@@ -383,6 +383,7 @@ VOID KeyEventGet(VOID)
 	MESSAGE	Event = GetKeyEventA();		
 
 #if defined(AU6210K_ZB_BT007_CSR)
+#ifdef BT_BtPOWEROFF_TIME
 	if(Event != MSG_NONE)
 	{
 		TimeOutSet(&CSR_BTPOWEROFF_TIME, BT_BtPOWEROFF_TIME);
@@ -392,6 +393,7 @@ VOID KeyEventGet(VOID)
 		TimeOutSet(&SDCARDPOWEROFF_TIME, BT_BtPOWEROFF_TIME);
 		//SDCARDPowerOffTime_Start = FALSE;
 	}
+#endif
 #endif
 
 #ifdef FUNC_NUMBER_KEY_EN

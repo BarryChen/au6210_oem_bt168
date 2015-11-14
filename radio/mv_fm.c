@@ -117,12 +117,7 @@ BYTE MVFM_ReadReg(BYTE RegAddr)
 
 VOID MVFM_SetRegBit(BYTE RegAddr, BYTE BitMask, BYTE Data)
 {
-	BYTE Temp;
-	
-	Temp = MVFM_ReadReg(RegAddr);
-	Temp &= (~BitMask);
-	Temp |= Data & BitMask;
-	MVFM_WriteReg((WORD)RegAddr, Temp);
+	MVFM_WriteReg((WORD)RegAddr, (MVFM_ReadReg(RegAddr) & (~BitMask)) | (Data & BitMask));
 }
 
 
@@ -149,15 +144,10 @@ VOID MVFM_SetCh(WORD Freq)
 
 WORD MVFM_GetCh(VOID) 
 {
-    BYTE Temp; 
-    WORD ChIndex = 0;
-	
-    Temp = MVFM_ReadReg(MVFM_REG_CH_STEP);
-    Temp &= CH_CH;
-    ChIndex = Temp ;
-    Temp = MVFM_ReadReg(MVFM_REG_CH);    
-    ChIndex = (ChIndex << 8 )+Temp;
-    return ((ChIndex + 1200) >> 1);
+	WORD ChIndex;
+
+	ChIndex = ((MVFM_ReadReg(MVFM_REG_CH_STEP) & CH_CH) << 8) + MVFM_ReadReg(MVFM_REG_CH);
+	return ((ChIndex + 1200) >> 1);
 }
 
 
@@ -222,8 +212,6 @@ VOID MVFM_Initialization(VOID)
 
 VOID MVFM_SetFreq(WORD Frep) 
 {
-	BYTE Temp;	 
-
 	MVFM_WriteReg(MVFM_REG_REF, 0x7A);
 	
 	//RXInit
@@ -233,16 +221,14 @@ VOID MVFM_SetFreq(WORD Frep)
 	MVFM_WriteReg(0x41, 0xCA);
 
 #if MVFM_INVERSE_IMR
-	Temp = MVFM_ReadReg(MVFM_REG_CCA) & (~0x40);
 	if((Frep == 934) || (Frep == 939) || (Frep == 953) || (Frep == 998) || (Frep == 1048))
 	{
-		Temp |= 0x40;	// inverse IMR.
+		MVFM_WriteReg(MVFM_REG_CCA, MVFM_ReadReg(MVFM_REG_CCA) | 0x40);	// inverse IMR.
 	}
 	else
 	{
-		Temp &= ~0x40;
+		MVFM_WriteReg(MVFM_REG_CCA, MVFM_ReadReg(MVFM_REG_CCA) & (~0x40));
 	}
-	MVFM_WriteReg(MVFM_REG_CCA, Temp);
 #endif
 
 	MVFM_Mute(TRUE);
@@ -254,9 +240,7 @@ VOID MVFM_SetFreq(WORD Frep)
 #if MVFM_USING_INDUCTOR	
 	//Auto tuning
 	MVFM_WriteReg(0x4F, 0x80);
-	Temp = MVFM_ReadReg(0x4F);
-	Temp >>= 1;
-	MVFM_WriteReg(0x4F, Temp);
+	MVFM_WriteReg(0x4F, MVFM_ReadReg(0x4F) >> 1);
 #endif
 	
 	///avoid the "POP" noise.
@@ -324,9 +308,7 @@ VOID MVFM_RXSetTH(VOID)
 
 
 VOID MVFM_SearchSet(WORD Freq)
-{
-	BYTE Temp;
-	
+{	
 	//MVFM_Mute(TRUE);
 	//MVFM_RXSetTH();	//为了减少自动搜台时间
 	MVFM_SetCh(Freq);  
@@ -335,9 +317,7 @@ VOID MVFM_SearchSet(WORD Freq)
 	//Auto tuning
 	MVFM_WriteReg(0x00, 0x11);
 	MVFM_WriteReg(0x4F, 0x80);
-	Temp = MVFM_ReadReg(0x4F);
-	Temp = (Temp >> 1);
-	MVFM_WriteReg(0x4F, Temp);
+	MVFM_WriteReg(0x4F, MVFM_ReadReg(0x4F) >> 1);
 #endif 
  
 	MVFM_WriteReg(0x00, 0x12);	
@@ -353,12 +333,14 @@ BYTE MVFM_SearchRead(BOOL AutoSeekFlag)
 	if((!(MVFM_ReadReg(MVFM_REG_SYSTEM1) & MASK_CHSC)) || (TimeOut > 25))//5))
 	{
 		TimeOut = 0;	
-		
+
+#ifdef	FUNC_RADIO_AUTOSEEK_EN
 		if(AutoSeekFlag)
 		{
 			gRadioData.CurrFreq = MVFM_GetCh();
 			DBG(("Seek Current Freq %d\n", gRadioData.CurrFreq));
 		}
+#endif
 		
 		if(!(MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_RXCCA_FAIL))
 		{       
@@ -456,13 +438,16 @@ BOOL MVFM_ReadID(VOID)
 //Return Value:       None
 VOID MVFM_AutoSeekConfig(WORD StartFreq, WORD StopFreq, BYTE SeekStep, BOOL SeekMode, BOOL SeekStartFlag)
 {
-	BYTE Temp = 0;
+#ifdef	FUNC_RADIO_AUTOSEEK_EN
+	BYTE Temp;
+#endif
 
 	if(SeekStartFlag)
 	{
 		 MVFM_RXSetTH();	//启动自动搜台开始时执行一次就可以了
 	}
-
+	
+#ifdef	FUNC_RADIO_AUTOSEEK_EN
 	if(SeekMode)  
 	{		
 		StartFreq = ((StartFreq << 1) - 1200);
@@ -483,6 +468,7 @@ VOID MVFM_AutoSeekConfig(WORD StartFreq, WORD StopFreq, BYTE SeekStep, BOOL Seek
 		MVFM_WriteReg(0x4f, 0x00);//enable auto tunnging in CCA mode
 	}
 	else
+#endif
 	{
 		MVFM_SearchSet(StartFreq);
 	}
@@ -491,49 +477,44 @@ VOID MVFM_AutoSeekConfig(WORD StartFreq, WORD StopFreq, BYTE SeekStep, BOOL Seek
 
 // Get   Stereo status
 //返回值: 0 -- Mono;	1 -- Stero
-BOOL MVFM_GetStereoStatus(VOID) 
-{      
-   return ((MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_ST_MO_RX) ? 0 : 1);  
-}
+//BOOL MVFM_GetStereoStatus(VOID) 
+//{      
+//   return ((MVFM_ReadReg(MVFM_REG_STATUS1) & MASK_ST_MO_RX) ? 0 : 1);  
+//}
 
 
 //Set receiver in mono mode
 // Param:
 //		MonoEnFlag: 1 -- Force receiver in mono mode;	0 -- Not forced,stereo and mono auto selected
-VOID MVFM_SetMonoMode(BOOL MonoEnFlag)
-{
-	MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_RXMONO, (MonoEnFlag << 2)); 
-}
+//VOID MVFM_SetMonoMode(BOOL MonoEnFlag)
+//{
+//	MVFM_SetRegBit(MVFM_REG_SYSTEM1, MASK_RXMONO, (MonoEnFlag << 2)); 
+//}
 
 
 // Get the RSSI value
-BYTE MVFM_GetRSSI(VOID) 
-{      
-   return MVFM_ReadReg(MVFM_REG_RSSISIG);  
-}
+//BYTE MVFM_GetRSSI(VOID) 
+//{      
+//   return MVFM_ReadReg(MVFM_REG_RSSISIG);  
+//}
 
 
 // Get the SNR value
-BYTE MVFM_GetSNR(VOID) 
-{      
-   return MVFM_ReadReg(MVFM_REG_SNR);  
-}
+//BYTE MVFM_GetSNR(VOID) 
+//{      
+//   return MVFM_ReadReg(MVFM_REG_SNR);  
+//}
 
 
 //The MVFM integrates an analog volume controller and a digital volume controller to set audio output gain. 
 //The digital gain step is 1dB, and the analog gain step is 6dB. 
 //The total gain range is -47 dB to 0 dB. 
 //Refer to Reg14h for more descriptions.
-VOID MVFM_VolSet(BYTE Vol)
-{
-	BYTE Temp;	
-	
-	Temp = MVFM_ReadReg(0x14); 	
-	Vol &= 0x07;//we just use the 6dB
-	Temp &= 0xF8;
-	Temp |= Vol;
-	MVFM_WriteReg(0x14, Temp); 		
-}
+//VOID MVFM_VolSet(BYTE Vol)
+//{	
+//	Vol &= 0x07;//we just use the 6dB
+//	MVFM_WriteReg(0x14, (MVFM_ReadReg(0x14) & 0xF8) | Vol); 		
+//}
 
 
 #endif

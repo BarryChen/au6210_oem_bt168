@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 14:16:15 PAGE 1   
+C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 15:55:36 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SLAVE_CMD
@@ -62,7 +62,7 @@ line level    source
                       RstFastUart();
                       FastUartOpen(57600);  
                       FastUartSendByte('S');
-C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 14:16:15 PAGE 2   
+C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 15:55:36 PAGE 2   
 
                       FastUartSendByte('T');
                       FastUartSendByte('A');
@@ -126,7 +126,7 @@ line level    source
                       while(GetRxQueueLen() > 0)
                       {       I51UartSendByte(0x19);
                               if(IsTimeOut(&Timer))
-C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 14:16:15 PAGE 3   
+C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 15:55:36 PAGE 3   
 
                               {
                                       //DBG(("timeout\n"));
@@ -190,7 +190,7 @@ line level    source
               }
               
               VOID BluetoothPlayPhoneNum()
-C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 14:16:15 PAGE 4   
+C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 15:55:36 PAGE 4   
 
               {
                       BYTE Cmdbuf;
@@ -254,7 +254,7 @@ line level    source
               }
               
               VOID BluetoothRefreshStatus()
-C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 14:16:15 PAGE 5   
+C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 15:55:36 PAGE 5   
 
               {
                       PlayPhoneNumBreakoff = FALSE;
@@ -318,7 +318,7 @@ line level    source
                                                               #if defined(FUNC_AUTO_BTSTANDBY)
                                                                   TimeOutSet(&BT_standby, 15000);
                                                               #endif
-C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 14:16:15 PAGE 6   
+C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 15:55:36 PAGE 6   
 
                                                                       SPI_PlaySelectNum(SPIPLAY_SONG_PHONE_TWO_DISCONNECTED,0);
                                                                       InDacChannelSel(BLUETOOTH_CJ_IO_TYPE);
@@ -382,7 +382,7 @@ line level    source
               VOID SlaveSendResp(WORD Cmd, BYTE* Buf, BYTE Len)
               {
                       BYTE CheckSum;
-C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 14:16:15 PAGE 7   
+C51 COMPILER V9.00   SLAVE_CMD                                                             11/13/2015 15:55:36 PAGE 7   
 
               
                       CheckSum = Len + (BYTE0(Cmd) | 0x80) + BYTE1(Cmd);

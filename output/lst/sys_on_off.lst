@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 14:16:09 PAGE 1   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SYS_ON_OFF
@@ -36,52 +36,52 @@ line level    source
   25   1              
   26   1      
   27   1      #if (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_SLEEP)
-  28   1              
-  29   1              //»ñµÃ´ÓSLEEP×´Ì¬»½ÐÑµÄ´¥·¢Ô´±êÖ¾
-  30   1              DBG1((">>WakeUpOp(), gWakeupTrigFlg:%bx\n", gWakeupTrigFlg));
-  31   1      
-  32   1              //ÏµÍ³¶¨ÒåÁËIR»½ÐÑ¹¦ÄÜ£¬IR½ÓÊÕÍ·Á¬½ÓÓÚGPIOB6/GPIOE0£¬IRÐÅºÅ»½ÐÑÏµÍ³ºó£¬ÔòÅÐ¶Ï¼üÖµ
-  33   1      #ifdef  WIS_FLG_IR
-  34   1              if((gWakeupTrigFlg == WIS_FLG_GPB6) || (gWakeupTrigFlg == WIS_FLG_GPE0))
-  35   1              {               
-  36   2                      DWORD IrKeyData;
-  37   2                      
-  38   2      
-  39   2                      TimeOutSet(&WaitTimer, 3500);
-  40   2                      //Èç¹ûÔÚ¹æ¶¨Ê±¼äÄÚÎ´·¢ÏÖÔ¤¶¨µÄIR¼üÖµ£¬Ôò¼ÌÐøË¯Ãß
-  41   2                      while(!IsTimeOut(&WaitTimer))   
-  42   2                      {
-  43   3      #ifdef FUNC_WATCHDOG_EN
-  44   3                              FeedWatchDog();
-  45   3      #endif
-  46   3                              IrKeyData = IrKeyDataVal();
-  47   3                              DBG1(("IrKeyData = : %08LX\n", IrKeyData)); 
-  48   3      
-  49   3                              //Èç¹û¼ì²âµ½Ô¤¶¨µÄIR¼üÖµ£¬Ôò¿ªÊ¼ÔËÐÐÏµÍ³
-  50   3                              if( (IrKeyData == 0x5AA57F80) ||
-  51   3                                      (IrKeyData == 0x5FA07F80) ||
-  52   3                                      (IrKeyData == 0x5EA17F80) ||
-  53   3                                      (IrKeyData == 0x5DA27F80) ||
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 14:16:09 PAGE 2   
+                      
+                      //»ñµÃ´ÓSLEEP×´Ì¬»½ÐÑµÄ´¥·¢Ô´±êÖ¾
+                      DBG1((">>WakeUpOp(), gWakeupTrigFlg:%bx\n", gWakeupTrigFlg));
+              
+                      //ÏµÍ³¶¨ÒåÁËIR»½ÐÑ¹¦ÄÜ£¬IR½ÓÊÕÍ·Á¬½ÓÓÚGPIOB6/GPIOE0£¬IRÐÅºÅ»½ÐÑÏµÍ³ºó£¬ÔòÅÐ¶Ï¼üÖµ
+              #ifdef  WIS_FLG_IR
+                      if((gWakeupTrigFlg == WIS_FLG_GPB6) || (gWakeupTrigFlg == WIS_FLG_GPE0))
+                      {               
+                              DWORD IrKeyData;
+                              
+              
+                              TimeOutSet(&WaitTimer, 3500);
+                              //Èç¹ûÔÚ¹æ¶¨Ê±¼äÄÚÎ´·¢ÏÖÔ¤¶¨µÄIR¼üÖµ£¬Ôò¼ÌÐøË¯Ãß
+                              while(!IsTimeOut(&WaitTimer))   
+                              {
+              #ifdef FUNC_WATCHDOG_EN
+                                      FeedWatchDog();
+              #endif
+                                      IrKeyData = IrKeyDataVal();
+                                      DBG1(("IrKeyData = : %08LX\n", IrKeyData)); 
+              
+                                      //Èç¹û¼ì²âµ½Ô¤¶¨µÄIR¼üÖµ£¬Ôò¿ªÊ¼ÔËÐÐÏµÍ³
+                                      if( (IrKeyData == 0x5AA57F80) ||
+                                              (IrKeyData == 0x5FA07F80) ||
+                                              (IrKeyData == 0x5EA17F80) ||
+                                              (IrKeyData == 0x5DA27F80) ||
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 2   
 
-  54   3                                      (IrKeyData == 0x5CA37F80) ||
-  55   3                                      (IrKeyData == 0x59A67F80) ||
-  56   3                                      (IrKeyData == 0x5BA47F80) )
-  57   3                              {
-  58   4                                      MessageInit();
-  59   4                                      DBG1(("WAKE UP FROM SLEEP BY IR!\n"));
-  60   4                                      baGPIOCtrl[GPIO_A_IE] &= ~0x40;//A2
-  61   4                                      return;
-  62   4                              }
-  63   3                              else
-  64   3                              {
-  65   4                                      DBG1(("ERROR IR KEY!\n"));
-  66   4                                      break;
-  67   4                              }
-  68   3                      }
-  69   2                      
-  70   2                      DBG1(("TIMEOUT!\n"));
-  71   2      #ifdef IR_KEY_PORT
+                                              (IrKeyData == 0x5CA37F80) ||
+                                              (IrKeyData == 0x59A67F80) ||
+                                              (IrKeyData == 0x5BA47F80) )
+                                      {
+                                              MessageInit();
+                                              DBG1(("WAKE UP FROM SLEEP BY IR!\n"));
+                                              baGPIOCtrl[GPIO_A_IE] &= ~0x40;//A2
+                                              return;
+                                      }
+                                      else
+                                      {
+                                              DBG1(("ERROR IR KEY!\n"));
+                                              break;
+                                      }
+                              }
+                              
+                              DBG1(("TIMEOUT!\n"));
+              #ifdef IR_KEY_PORT
                               if(IR_KEY_PORT == IR_INPUT_GPIOB6)
                               {
                                       SetWakeupSrcInSleep(WIS_GPB6_LOW);
@@ -111,75 +111,75 @@ line level    source
                                       }
                               }
               #endif
-  99   2      
- 100   2                      GoToSleepMode(SLEEP_MOD_OTP_PD);
- 101   2      
- 102   2                      DBG1(("<<WakeUpOp()\n")); 
- 103   2                      return;
- 104   2              }
- 105   1      
- 106   1              
- 107   1      #endif
- 108   1              
- 109   1      
- 110   1      #elif (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_POWERDOWN)
-              #if     (PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON)
-                      DBG(("\nPWR_KEY_PUSH_BUTTON\n\n"));     
-                      SetChip8SRstMode(CRM_IN_PUSH_BUTTON);
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 14:16:09 PAGE 3   
-
               
-              #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
+                              GoToSleepMode(SLEEP_MOD_OTP_PD);
+              
+                              DBG1(("<<WakeUpOp()\n")); 
+                              return;
+                      }
+              
+                      
+              #endif
+                      
+              
+              #elif (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_POWERDOWN)
+ 111   1      #if     (PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON)
+ 112   1              DBG(("\nPWR_KEY_PUSH_BUTTON\n\n"));     
+ 113   1              SetChip8SRstMode(CRM_IN_PUSH_BUTTON);
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 3   
+
+ 114   1      
+ 115   1      #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
                       DBG(("\nPWR_KEY_SLIDE_SWITCH\n\n"));    
                       SetChip8SRstMode(CRM_IN_SLIDE_SWITCH);
               #endif
-              
-                      gWakeupTrigFlg = GetWakeupFlgFromPD();                  //»ñµÃ´Ópowerdown×´Ì¬´¥·¢Æ¬ÄÚÖ÷µçÔ´ÉÏµçÏµÍ³Æô¶¯µÄ´¥·¢Ô´±êÖ¾
-                      DBG(("gWakeupTrigFlg:%bx\n", gWakeupTrigFlg));
-              
-                      if(WIP_SRC_PWR_KEY & gWakeupTrigFlg)
-                      {
-                              DBG(("POWER KEY SYS ON\n"));
-                      }
-                      else if(WIP_SRC_LP_RTC & gWakeupTrigFlg)
-                      {
-                              DBG(("LP_RTC SYS ON\n"));
-                      }
-              
-                      //Èç¹ûPOWER_KEYÊ¹ÓÃÈí¿ª¹Ø(push button)£¬²¢ÇÒ¶¨ÒåÁËPOWER KEY¿ª¹Ø»ú±£³ÖÊ±¼ä
-                      //ÀýÈç£¬ÒªÇó°´×¡POWER_KEY³¬¹ý2Ãëºó£¬ÏµÍ³²Å»áµãÁÁÏÔÊ¾¼ÌÐøÔËÐÐ£¬·ñÔòÏµÍ³ÔÙ´Î¹Ø±Õ£¬ÓÃ»§²»»á¸Ð¾õµ½ÏµÍ³ÔËÐÐ¹ý
-                      //POWER_KEY³ÖÐø°´ÏÂÁË¹æ¶¨Ê±¼äµÄÅÐ¶¨ÊÇÔÚpower_key.cÄÚÍê³ÉµÄ¡£
-              #if     ((PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON) && defined(TIME_POWER_ON_HOLD))  
-                      if(WIP_SRC_PWR_KEY & gWakeupTrigFlg)            //±ØÐëÊÇPOWER_KEY»½ÐÑÏµÍ³Ê±£¬²Å¼ì²é¿ª»ú±£³ÖÊ±¼ä£¬¶øWTD¸´Î»µÈÏµÍ³ÖØÐ
+ 119   1      
+ 120   1              gWakeupTrigFlg = GetWakeupFlgFromPD();                  //»ñµÃ´Ópowerdown×´Ì¬´¥·¢Æ¬ÄÚÖ÷µçÔ´ÉÏµçÏµÍ³Æô¶¯µÄ´¥·¢Ô´±êÖ¾
+ 121   1              DBG(("gWakeupTrigFlg:%bx\n", gWakeupTrigFlg));
+ 122   1      
+ 123   1              if(WIP_SRC_PWR_KEY & gWakeupTrigFlg)
+ 124   1              {
+ 125   2                      DBG(("POWER KEY SYS ON\n"));
+ 126   2              }
+ 127   1              else if(WIP_SRC_LP_RTC & gWakeupTrigFlg)
+ 128   1              {
+ 129   2                      DBG(("LP_RTC SYS ON\n"));
+ 130   2              }
+ 131   1      
+ 132   1              //Èç¹ûPOWER_KEYÊ¹ÓÃÈí¿ª¹Ø(push button)£¬²¢ÇÒ¶¨ÒåÁËPOWER KEY¿ª¹Ø»ú±£³ÖÊ±¼ä
+ 133   1              //ÀýÈç£¬ÒªÇó°´×¡POWER_KEY³¬¹ý2Ãëºó£¬ÏµÍ³²Å»áµãÁÁÏÔÊ¾¼ÌÐøÔËÐÐ£¬·ñÔòÏµÍ³ÔÙ´Î¹Ø±Õ£¬ÓÃ»§²»»á¸Ð¾õµ½ÏµÍ³ÔËÐÐ¹ý
+ 134   1              //POWER_KEY³ÖÐø°´ÏÂÁË¹æ¶¨Ê±¼äµÄÅÐ¶¨ÊÇÔÚpower_key.cÄÚÍê³ÉµÄ¡£
+ 135   1      #if     ((PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON) && defined(TIME_POWER_ON_HOLD))  
+ 136   1              if(WIP_SRC_PWR_KEY & gWakeupTrigFlg)            //±ØÐëÊÇPOWER_KEY»½ÐÑÏµÍ³Ê±£¬²Å¼ì²é¿ª»ú±£³ÖÊ±¼ä£¬¶øWTD¸´Î»µÈÏµÍ³ÖØÐ
              -ÂÆô¶¯Ôò²»ÐèÒª
-                      {
-                              TimeOutSet(&WaitTimer, (TIME_POWER_ON_HOLD * 2));
-                              
-                              while(!IsTimeOut(&WaitTimer))
-                              {
-              #ifdef FUNC_WATCHDOG_EN
-                                      FeedWatchDog();
-              #endif
-                                      KeyEventGet();  
-              
-                                      if(MessageGet(MSG_FIFO_KEY) == MSG_SYS_ON)              //Èç¹û´ïµ½¿ª»ú±£³ÖÊ±¼ä£¬ÔòÏµÍ³¼ÌÐøÔËÐÐ
-                                      {                       
-                                              MessageInit();
-                                              DBG(("POWER_KEY Hold time,MSG_SYS_ON\n"));
-                                              return;
-                                      }
-                              }
-                              
-                              DBG(("TIMEOUT!\n"));
-                              //Èç¹ûÔÚ¹æ¶¨Ê±¼äÄÚÃ»ÓÐÊÕµ½ÓÉpower_key.cÍÆËÍµÄMSG_SYS_ONÏûÏ¢£¬ÐèÒªÔÙ´ÎÏµÍ³¹Ø±Õ¡£
-                              GoToPDMode();
-                      }
-              
-              #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
+ 137   1              {
+ 138   2                      TimeOutSet(&WaitTimer, (TIME_POWER_ON_HOLD * 2));
+ 139   2                      
+ 140   2                      while(!IsTimeOut(&WaitTimer))
+ 141   2                      {
+ 142   3      #ifdef FUNC_WATCHDOG_EN
+ 143   3                              FeedWatchDog();
+ 144   3      #endif
+ 145   3                              KeyEventGet();  
+ 146   3      
+ 147   3                              if(MessageGet(MSG_FIFO_KEY) == MSG_SYS_ON)              //Èç¹û´ïµ½¿ª»ú±£³ÖÊ±¼ä£¬ÔòÏµÍ³¼ÌÐøÔËÐÐ
+ 148   3                              {                       
+ 149   4                                      MessageInit();
+ 150   4                                      DBG(("POWER_KEY Hold time,MSG_SYS_ON\n"));
+ 151   4                                      return;
+ 152   4                              }
+ 153   3                      }
+ 154   2                      
+ 155   2                      DBG(("TIMEOUT!\n"));
+ 156   2                      //Èç¹ûÔÚ¹æ¶¨Ê±¼äÄÚÃ»ÓÐÊÕµ½ÓÉpower_key.cÍÆËÍµÄMSG_SYS_ONÏûÏ¢£¬ÐèÒªÔÙ´ÎÏµÍ³¹Ø±Õ¡£
+ 157   2                      GoToPDMode();
+ 158   2              }
+ 159   1      
+ 160   1      #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
                       DBG(("\nPWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH\n\n"));    
               #endif          
-                              
-              #endif
+ 163   1                      
+ 164   1      #endif
  165   1      }
  166          
  167          
@@ -187,62 +187,62 @@ line level    source
  169          VOID SystemOff(VOID)
  170          {
  171   1      #if (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_SLEEP)
- 172   1              //ÐÝÃß£¬½øÈëSLEEPÄ£Ê½
- 173   1              DBG(("SLEEP!\n"));
- 174   1      #ifdef FUNC_DISP_EN
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 14:16:09 PAGE 4   
-
- 175   1              DispDeInit();
- 176   1      #endif
- 177   1      
- 178   1      #ifdef FUNC_RADIO_EN
- 179   1              if(gSys.SystemMode == SYS_MODE_RADIO)
- 180   1              {
- 181   2                      RadioCtrlDeinit();
- 182   2              }
- 183   1      #endif
- 184   1      
- 185   1              MuteOn(FALSE, TRUE);
- 186   1              //NPCA110X_SetOutMute(TRUE);
- 187   1              InDacChannelSel(DAC_CH_NONE);
- 188   1              InDacPowerDown(FALSE);
- 189   1      
- 190   1              //ºìÍâ»½ÐÑÔ´Ñ¡ÔñÊ±ÐèÒª×¢ÒâÑ¡ÔñµÄGPIO¶Ë¿Ú
- 191   1              SetWakeupSrcInSleep(WIS_GPB6_LOW);
- 192   1              //SetWakeupSrcInSleep(WIS_GPD7_HIGH);
- 193   1              //SetWakeupSrcInSleep(WIS_GPE0_LOW);
- 194   1              //SetWakeupSrcInSleep(WIS_GPE1_HIGH);
- 195   1              //SetWakeupSrcInSleep(WIS_RTC_ALARM);
- 196   1              //SetWakeupSrcInSleep(WIS_PWR_KEY); 
- 197   1              GoToSleepMode(SLEEP_MOD_OTP_PD);
- 198   1              //GoToSleepMode(SLEEP_MOD_NORMAL);
- 199   1              return;
- 200   1      
- 201   1      #elif (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_POWERDOWN)
-              
-              #if(PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON) //POWER_KEYÎª°´Å¥¿ª¹Ø£¨Èí¿ª¹Ø£©
-                      DBG(("\nSYSTEM OFF BY PUSH BUTTON!\n\n"));
-              
-              #ifdef  FUNC_ALARM_EN
-                      SetWakeupLpRtcInPD(); // RTCÄÖÖÓ»½ÐÑÊ¹ÄÜ
-              #endif
-              
-              #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
-                              DBG(("\nSYSTEM OFF BY SLID SWITCH!\n\n"));      
-              #endif
-                      
+                      //ÐÝÃß£¬½øÈëSLEEPÄ£Ê½
+                      DBG(("SLEEP!\n"));
               #ifdef FUNC_DISP_EN
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 4   
+
                       DispDeInit();
               #endif
               
-                      MuteOn(FALSE, TRUE);
-              //Ö´ÐÐInDacMuteEn¡¢InDacChannelSelºÍInDacPowerDown ¹²800ms×óÓÒ£¬Ôì³É¹Ø»úºó²»ÄÜ¿ìËÙ°´¼ü¿ª»ú
-              //ÆÁ±ÎÕâ²¿·Ö´úÂëºó¿ÉÄÜµ¼ÖÂ¿ìËÙ¿ª»ú»áÓÐPOPÉù
-              //      InDacChannelSel(DAC_CH_NONE);
-              //      InDacPowerDown(FALSE);
-                      
-                      GoToPDMode();   
+              #ifdef FUNC_RADIO_EN
+                      if(gSys.SystemMode == SYS_MODE_RADIO)
+                      {
+                              RadioCtrlDeinit();
+                      }
               #endif
+              
+                      MuteOn(FALSE, TRUE);
+                      //NPCA110X_SetOutMute(TRUE);
+                      InDacChannelSel(DAC_CH_NONE);
+                      InDacPowerDown(FALSE);
+              
+                      //ºìÍâ»½ÐÑÔ´Ñ¡ÔñÊ±ÐèÒª×¢ÒâÑ¡ÔñµÄGPIO¶Ë¿Ú
+                      SetWakeupSrcInSleep(WIS_GPB6_LOW);
+                      //SetWakeupSrcInSleep(WIS_GPD7_HIGH);
+                      //SetWakeupSrcInSleep(WIS_GPE0_LOW);
+                      //SetWakeupSrcInSleep(WIS_GPE1_HIGH);
+                      //SetWakeupSrcInSleep(WIS_RTC_ALARM);
+                      //SetWakeupSrcInSleep(WIS_PWR_KEY); 
+                      GoToSleepMode(SLEEP_MOD_OTP_PD);
+                      //GoToSleepMode(SLEEP_MOD_NORMAL);
+                      return;
+              
+              #elif (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_POWERDOWN)
+ 202   1      
+ 203   1      #if(PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON) //POWER_KEYÎª°´Å¥¿ª¹Ø£¨Èí¿ª¹Ø£©
+ 204   1              DBG(("\nSYSTEM OFF BY PUSH BUTTON!\n\n"));
+ 205   1      
+ 206   1      #ifdef  FUNC_ALARM_EN
+                      SetWakeupLpRtcInPD(); // RTCÄÖÖÓ»½ÐÑÊ¹ÄÜ
+              #endif
+ 209   1      
+ 210   1      #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
+                              DBG(("\nSYSTEM OFF BY SLID SWITCH!\n\n"));      
+              #endif
+ 213   1              
+ 214   1      #ifdef FUNC_DISP_EN
+ 215   1              DispDeInit();
+ 216   1      #endif
+ 217   1      
+ 218   1              MuteOn(FALSE, TRUE);
+ 219   1      //Ö´ÐÐInDacMuteEn¡¢InDacChannelSelºÍInDacPowerDown ¹²800ms×óÓÒ£¬Ôì³É¹Ø»úºó²»ÄÜ¿ìËÙ°´¼ü¿ª»ú
+ 220   1      //ÆÁ±ÎÕâ²¿·Ö´úÂëºó¿ÉÄÜµ¼ÖÂ¿ìËÙ¿ª»ú»áÓÐPOPÉù
+ 221   1      //      InDacChannelSel(DAC_CH_NONE);
+ 222   1      //      InDacPowerDown(FALSE);
+ 223   1              
+ 224   1              GoToPDMode();   
+ 225   1      #endif
  226   1      }
  227          
  228          
@@ -254,7 +254,7 @@ line level    source
               {
                       gSysTimeOffState.ProState = SYS_OFF_TIMEING_IDLE;
                       gSysTimeOffState.EnState = FALSE;
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 14:16:09 PAGE 5   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 5   
 
                       gSysTimeOffState.SleepState = SLEEP_00;
               }
@@ -318,7 +318,7 @@ line level    source
                                       gSysTimeOffState.EnState = TRUE;                                
                                       gSysTimeOffState.ProState = SYS_OFF_TIMEING_SET_MODE_VALID;     
                                       SystemOffSetTimer();
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 14:16:09 PAGE 6   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 6   
 
                               }
                               else
@@ -382,7 +382,7 @@ line level    source
               
               //Èç¹ûÓÐºÍ´Ëº¯ÊýÀàËÆÓÃ·¨(Ç¶Èëµ½¸÷¸öÄ£Ê½)µÄº¯ÊýÎ»ÓÚÆäºó£¬´Ëº¯Êý²»ÒªÓÐdefault£¬·ÀÖ¹À¹½ØºóÕßÓÐÓÃµÄÏûÏ¢
               VOID SystemOffTimeMsgPro(BYTE Msg)
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 14:16:09 PAGE 7   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 7   
 
               {       
                       if(Msg != MSG_NONE)
@@ -446,7 +446,7 @@ line level    source
                                               if(gSysTimeOffState.EnState == TRUE)
                                               {
                                                       DBG(("SYSTEM OFF BY TimeOut!\n"));
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 14:16:09 PAGE 8   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 8   
 
                                                       SystemOff();
                                               }
@@ -464,9 +464,9 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    290    ----
+   CODE SIZE        =     94    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----       9
+   XDATA SIZE       =   ----       5
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
