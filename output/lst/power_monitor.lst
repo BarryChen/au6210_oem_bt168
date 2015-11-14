@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/13/2015 15:55:31 PAGE 1   
+C51 COMPILER V9.00   POWER_MONITOR                                                         11/14/2015 16:49:46 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE POWER_MONITOR
@@ -62,7 +62,7 @@ line level    source
               //电压检测时不同的显示处理
               
               
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/13/2015 15:55:31 PAGE 2   
+C51 COMPILER V9.00   POWER_MONITOR                                                         11/14/2015 16:49:46 PAGE 2   
 
               //主要用于电压状态显示的变量
               static TIMER BlinkTimer;
@@ -126,7 +126,7 @@ line level    source
                                       DispIcon(ICON_BATFUL, FALSE);
                                       DispIcon(ICON_BATHAF, TRUE);
                                       //可以显示2格电量，请添加显示代码
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/13/2015 15:55:31 PAGE 3   
+C51 COMPILER V9.00   POWER_MONITOR                                                         11/14/2015 16:49:46 PAGE 3   
 
                                       break;
               
@@ -190,7 +190,7 @@ line level    source
                       //采样够LDOIN_SAMPLE_COUNT次数，求LDOIN平均值
                       if(LdoinSampleCnt == 0)
                       {
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/13/2015 15:55:31 PAGE 4   
+C51 COMPILER V9.00   POWER_MONITOR                                                         11/14/2015 16:49:46 PAGE 4   
 
                               LdoinLevelAverage = LdoinSampleSum / LDOIN_SAMPLE_COUNT;
               
@@ -254,7 +254,7 @@ line level    source
                                       if(LdoinLevelAverage <= LDOIN_VOLTAGE_LOW)
                                       {
                                               PowerOffFlag = TRUE;
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/13/2015 15:55:31 PAGE 5   
+C51 COMPILER V9.00   POWER_MONITOR                                                         11/14/2015 16:49:46 PAGE 5   
 
                                       }                       
                               }
@@ -318,7 +318,7 @@ line level    source
               VOID PowerMonitorInit(VOID)
               {
                       TimeOutSet(&PowerMonitorTimer, 0);      
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/13/2015 15:55:31 PAGE 6   
+C51 COMPILER V9.00   POWER_MONITOR                                                         11/14/2015 16:49:46 PAGE 6   
 
                       TimeOutSet(&BlinkTimer, 0);     
               
@@ -382,7 +382,7 @@ line level    source
               #endif
 
 
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/13/2015 15:55:31 PAGE 7   
+C51 COMPILER V9.00   POWER_MONITOR                                                         11/14/2015 16:49:46 PAGE 7   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   ----    ----

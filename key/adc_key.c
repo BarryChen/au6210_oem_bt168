@@ -237,7 +237,6 @@ BYTE  CODE KeyVal1[ADC_KEY_COUNT] =
 	14,	//SW5	4.7K 		11	12	//SW15
 	19,	//SW6	7.5K		16	17	//SW16
 	25,	//SW7	12K		22	22	//SW17
-	30,	//SW8	16K		26	27	//SW18 	
 	
 };
 #else
@@ -393,7 +392,9 @@ static BYTE	AdcChannelKeyGet(BYTE Channel)
 		{
 			if(Val < KeyVal1[KeyIndex])
 			{
-#ifdef AU6210K_ZB_BT007_CSR
+
+
+#ifdef CSR_IO_CTRL
 				DBG1(("22222222"));
 				DBG1(("22222222aaaaaKeyIndex = %d",KeyIndex));
 				if(gSys.SystemMode == SYS_MODE_BLUETOOTH )
@@ -560,7 +561,7 @@ VOID AdcKeyScanInit(VOID)
 #endif
 #endif
 
-#ifdef AU6210K_ZB_BT007_CSR
+#ifdef CSR_IO_CTRL
 	baGPIOCtrl[GPIO_D_IE] &= ~0x04;//D2
 	baGPIOCtrl[GPIO_D_OE] |= 0x04;
 	baGPIOCtrl[GPIO_D_PU] |= 0x04;
@@ -624,7 +625,7 @@ MESSAGE AdcKeyEventGet(VOID)
 		case ADC_KEY_STATE_IDLE:
 			if(KeyIndex == -1)
 			{
-#ifdef AU6210K_ZB_BT007_CSR
+#ifdef CSR_IO_CTRL
 				baGPIOCtrl[GPIO_D_OUT] &= ~0x20;	//D5
 				baGPIOCtrl[GPIO_D_OUT] &= ~0x40;	//D6
 				baGPIOCtrl[GPIO_A_OUT] &= ~0x04;	//A2
@@ -688,7 +689,7 @@ MESSAGE AdcKeyEventGet(VOID)
 				}
 #endif
 
-#ifdef AU6210K_ZB_BT007_CSR
+#ifdef CSR_IO_CTRL
 				if(gSys.SystemMode == SYS_MODE_BLUETOOTH )
 				{
 

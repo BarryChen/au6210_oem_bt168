@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 1   
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE USER_INTERFACE
@@ -21,7 +21,7 @@ line level    source
   10          #include "spi_play.h"
   11          #include "touchkey_ctrl.h"
   12          #include "pt231x.h"
-  13          #include "bluetooth_ctrl.h"
+  13          #include "bt.h"
   14          #include "npca110x.h"
   15          
   16          
@@ -62,7 +62,7 @@ line level    source
   51          extern BOOL ROM_QuickResponse(BYTE Dev);
   52          BOOL IsSupportSpecialDevice = FALSE;    //Ö§³Ö²¿·ÖÌØÉ«Éè±¸£¬MBR 512×Ö½Ú×îºóÁ½¸ö×Ö½Ú²»ÊÇ0x55AA¡¾Ä¬ÈÏÎªFLASE£¬²
              -»Ö§³ÖÌØÊâÉè±¸¡¿
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 2   
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 2   
 
   53          
   54          
@@ -126,7 +126,7 @@ line level    source
                               NPCA110X_DAC1_Set_Volume_and_Mute(0);
                               NPCA110X_SetOutMute(TRUE);
               #else
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 3   
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 3   
 
  115   2                      InDacSetVolume(0, 0);
  116   2      #endif
@@ -190,7 +190,7 @@ line level    source
  174   2                      {
  175   3      #ifdef AU6210K_NR_D_8_CSRBT
                                       NPCA110X_ADC_Input_CH_Select(INPUT_CH1);
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 4   
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 4   
 
                                       NPCA110X_DAC1_Set_Volume_and_Mute(gSys.Volume);
               #else
@@ -235,9 +235,7 @@ line level    source
  217   3                      }       
  218   2              }               
  219   1      #endif
- 220   1      #if defiend(FUNC_PT231X_EN) && !defiend(AU6210K_NR_D_8_CSRBT)
-*** WARNING C322 IN LINE 220 OF lib_if\user_interface.c: unknown identifier
-*** WARNING C323 IN LINE 220 OF lib_if\user_interface.c: newline expected, extra characters found
+ 220   1      #if 0// defiend(FUNC_PT231X_EN) && !defiend(AU6210K_NR_D_8_CSRBT)
                     PT2313MuteOnOff(0);
               #endif
  223   1      
@@ -254,10 +252,10 @@ line level    source
  234   2                      gSys.MuteFg = FALSE;            
  235   2                      UnMute();       
  236   2                      DBG1(("4433\n"));
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 5   
-
  237   2              }
  238   1              else
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 5   
+
  239   1              {       
  240   2                      gSys.MuteFg = TRUE;
  241   2                      MuteOn(TRUE, TRUE);       
@@ -318,10 +316,10 @@ line level    source
  296   2      #ifdef FUNC_AUDIO_EN
                               case SYS_MODE_AUDIO:
                                       DeviceAudioSetVolume();
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 6   
-
                                       break;
               #endif
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 6   
+
  301   2      
  302   2      #ifdef FUNC_AUDIO_READER_EN
                               case SYS_MODE_AUDIO_READER:
@@ -382,10 +380,10 @@ line level    source
  358   2              }
  359   1      
  360   1      #ifdef FUNC_DISP_EN
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 7   
-
  361   1      #ifndef FUNC_SINGLE_LED_EN
                       DispMute();       //ÕýÈ·»Ö¸´MuteÏÔÊ¾×´Ì¬¡£±ÜÃâ´ÓMute×´Ì¬ÏÂÉèÖÃÒôÁ¿Ôì³ÉµÄÏÔÊ¾´íÎó¡£
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 7   
+
               #endif  
  364   1      #endif
  365   1      }
@@ -446,10 +444,10 @@ line level    source
  420   3                                      if(gSys.SystemMode == SYS_MODE_BLUETOOTH && !GetBtMuteFlag())
  421   3                                      {
  422   4                                              DBG1(("345\m"));
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 8   
-
  423   4                                              UnMute();
  424   4                                      }
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 8   
+
  425   3                              }
  426   2                      }
  427   1      #endif  
@@ -510,10 +508,10 @@ line level    source
                               {               
               #ifdef  FUNC_HEADPHONE_DETECT_EN
                                       if(IsHeadphoneLinkFlag == FALSE)
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 9   
-
               #endif
                                       {
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 9   
+
                                               ExMuteOff();
                                       }
                               }               
@@ -574,10 +572,10 @@ line level    source
                                                               SongPlayDo();
                                                       }       
                                               }               
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 10  
-
                                       }
                               }
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 10  
+
                               
               #ifdef FUNC_EXMUTE_EN
                               if((gSys.Volume > 0) && (IsDacMute == TRUE))
@@ -638,20 +636,21 @@ line level    source
                               MessageInit();
                               return TRUE;
                       }
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 11  
-
               
                       return FALSE;
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 11  
+
               }
               #endif
  613          
  614          
- 615          //----------------------------------------------------------
- 616          // Èç¹ûÓÃ»§ÐèÒªÔÚ1msÏµÍ³Ê±»ùÉÏ×ö´¦Àí£¬ÒªÔÚÓ¦ÓÃ´úÂëÉÏÖØÐ´TimerTick1ms()º¯Êý
- 617          extern BOOL gIsNvmOnUse;
- 618          VOID TimerTick1ms(VOID)
- 619          {
- 620   1      #if     (PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
+ 615          
+ 616          //----------------------------------------------------------
+ 617          // Èç¹ûÓÃ»§ÐèÒªÔÚ1msÏµÍ³Ê±»ùÉÏ×ö´¦Àí£¬ÒªÔÚÓ¦ÓÃ´úÂëÉÏÖØÐ´TimerTick1ms()º¯Êý
+ 618          extern BOOL gIsNvmOnUse;
+ 619          VOID TimerTick1ms(VOID)
+ 620          {
+ 621   1      #if     (PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
                       extern BOOL gIsPwrkeyPadOn;
               
                       if((gIsPwrkeyPadOn == FALSE) && (gIsNvmOnUse == FALSE))
@@ -671,17 +670,17 @@ line level    source
                               GoToPDMode();           //Ö´ÐÐÓ²¿ª¹ØµÄÏµÍ³¹Ø±Õ¶¯×÷
                       }
               #endif
- 640   1      
- 641   1      #ifdef FUNC_SEG_LED_EN 
+ 641   1      
+ 642   1      #ifdef FUNC_SEG_LED_EN 
               #if !defined(FUNC_TIMER1_REFRESH_LED_EN)
                       LedFlushDisp();
               #endif
               #endif
- 646   1      
- 647   1      #ifdef FUNC_SEG_LCD_EN 
+ 647   1      
+ 648   1      #ifdef FUNC_SEG_LCD_EN 
                       LcdFlushDisp();
               #endif
- 650   1      #if 0
+ 651   1      #if 0
                       if(KeyInLedFlashHoldTmr)
                       {
                               KeyInLedFlashHoldTmr--;
@@ -702,45 +701,61 @@ line level    source
                                       {
                                               KeyInLedFlashOn =1;
                                               baGPIOCtrl[GPIO_B_OE]|=0x80;
-C51 COMPILER V9.00   USER_INTERFACE                                                        11/13/2015 15:55:27 PAGE 12  
-
                                               baGPIOCtrl[GPIO_B_OUT]&=(~0x80);
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 12  
+
                                       }
                               }
                       }
               #endif
- 676   1              // To do...
- 677   1      }
- 678          
- 679          
- 680          // Èç¹û¿Í»§ÐèÒªºöÂÔÌØ¶¨VID/PIDµÄUSBÉè±¸£¬¿ÉÒÔÍ¨¹ý±¾º¯ÊýÊµÏÖ
- 681          BOOL USB_IgnoreDev(VOID)
- 682          {
- 683   1              if(gLibUsbInfo.VID == 0x05AC)   //ºöÂÔÆ»¹û¹«Ë¾ËùÓÐÉè±¸
- 684   1              {
- 685   2                      DBG(("Apple device!\n"));
- 686   2                      return TRUE;
- 687   2              }
- 688   1      
- 689   1              return FALSE;
- 690   1      }
- 691          
- 692          
- 693          //----------------------------------------------------------
- 694          // Èç¹û²»Ö§³ÖUSB AudioÄ£Ê½£¬ÏµÍ³²»¼ì²âPCÁ¬½Ó×´Ì¬£¬ÒÔÔöÇ¿UÅÌ¼æÈÝÐÔ¡£
- 695          BOOL IsAudDetectDisable(VOID)
- 696          {
- 697   1      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+ 677   1              if(btIO_Red_Led_is_High())
+ 678   1                      setMCU_Red__Led_Port();
+ 679   1              else
+ 680   1                      clrMCU_Red__Led_Port();
+ 681   1      
+ 682   1              if(btIO_Blue_Led_is_High())
+ 683   1                      setMCU_Blue__Led_Port();
+ 684   1              else
+ 685   1                      clrMCU_Blue__Led_Port();
+ 686   1      
+ 687   1              if(btIO_Mute_Need_mute())
+ 688   1                      //mute
+ 689   1                      MuteOn(FALSE, TRUE);    
+ 690   1              else
+ 691   1                      //unmute
+ 692   1                      UnMute();
+ 693   1              // To do...
+ 694   1      }
+ 695          
+ 696          
+ 697          // Èç¹û¿Í»§ÐèÒªºöÂÔÌØ¶¨VID/PIDµÄUSBÉè±¸£¬¿ÉÒÔÍ¨¹ý±¾º¯ÊýÊµÏÖ
+ 698          BOOL USB_IgnoreDev(VOID)
+ 699          {
+ 700   1              if(gLibUsbInfo.VID == 0x05AC)   //ºöÂÔÆ»¹û¹«Ë¾ËùÓÐÉè±¸
+ 701   1              {
+ 702   2                      DBG(("Apple device!\n"));
+ 703   2                      return TRUE;
+ 704   2              }
+ 705   1      
+ 706   1              return FALSE;
+ 707   1      }
+ 708          
+ 709          
+ 710          //----------------------------------------------------------
+ 711          // Èç¹û²»Ö§³ÖUSB AudioÄ£Ê½£¬ÏµÍ³²»¼ì²âPCÁ¬½Ó×´Ì¬£¬ÒÔÔöÇ¿UÅÌ¼æÈÝÐÔ¡£
+ 712          BOOL IsAudDetectDisable(VOID)
+ 713          {
+ 714   1      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
                       return FALSE;
               #else
- 700   1              return TRUE;
- 701   1      #endif
- 702   1      }
- 703          
+ 717   1              return TRUE;
+ 718   1      #endif
+ 719   1      }
+ 720          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    626    ----
+   CODE SIZE        =    698    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      7       1
    PDATA SIZE       =   ----    ----
@@ -751,7 +766,9 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
    FAR CONST SIZE   =   ----    ----
+C51 COMPILER V9.00   USER_INTERFACE                                                        11/14/2015 16:49:42 PAGE 13  
+
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

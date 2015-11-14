@@ -105,6 +105,7 @@
 
 #define FUNC_BLUETOOTH_CSR_EN
 #ifdef FUNC_BLUETOOTH_CSR_EN
+#define CSR_IO_CTRL
      //#define FUNC_AUTO_BTSTANDBY     //一段时间内蓝牙没连接自动关掉蓝牙
 #endif
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			

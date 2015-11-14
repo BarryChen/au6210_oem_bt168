@@ -10,7 +10,7 @@
 #include "spi_play.h"
 #include "touchkey_ctrl.h"
 #include "pt231x.h"
-#include "bluetooth_ctrl.h"
+#include "bt.h"
 #include "npca110x.h"
 
 
@@ -217,7 +217,7 @@ VOID UnMute(VOID)
 		}	
 	}		
 #endif
-#if defiend(FUNC_PT231X_EN) && !defiend(AU6210K_NR_D_8_CSRBT)
+#if 0// defiend(FUNC_PT231X_EN) && !defiend(AU6210K_NR_D_8_CSRBT)
       PT2313MuteOnOff(0);
 #endif
 
@@ -612,6 +612,7 @@ BOOL QuickResponse(VOID)
 #endif
 
 
+
 //----------------------------------------------------------
 // 如果用户需要在1ms系统时基上做处理，要在应用代码上重写TimerTick1ms()函数
 extern BOOL gIsNvmOnUse;
@@ -673,6 +674,22 @@ VOID TimerTick1ms(VOID)
 		}
 	}
 #endif
+	if(btIO_Red_Led_is_High())
+		setMCU_Red__Led_Port();
+	else
+		clrMCU_Red__Led_Port();
+
+	if(btIO_Blue_Led_is_High())
+		setMCU_Blue__Led_Port();
+	else
+		clrMCU_Blue__Led_Port();
+
+	if(btIO_Mute_Need_mute())
+		//mute
+		MuteOn(FALSE, TRUE);    
+	else
+		//unmute
+		UnMute();
 	// To do...
 }
 

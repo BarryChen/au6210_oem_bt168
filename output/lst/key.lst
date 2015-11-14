@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 1   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE KEY
@@ -62,7 +62,7 @@ line level    source
   51          extern BOOL GetBtMuteFlag();
   52          
   53          #ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 2   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 2   
 
               BOOL GetIrIsOn(void)
               {
@@ -126,7 +126,7 @@ line level    source
  113          #endif
  114          
  115          static MESSAGE GetKeyEventA(VOID)                                                       
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 3   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 3   
 
  116          {
  117   1              MESSAGE Event = MSG_NONE;
@@ -190,7 +190,7 @@ line level    source
                                       {
                                               if(Event == MSG_MODE_SW)
                                               {
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 4   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 4   
 
                                                       SPI_PlaySelectNum(SPIPLAY_SONG_IR_KEY, 0);
                                                       MuteOn(TRUE,FALSE);
@@ -254,7 +254,7 @@ line level    source
               #endif
               #ifdef AU6210K_ZB_BT007_IR_IC_IS_334M_CSR
                               
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 5   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 5   
 
                               if(!IrIsOn && (Event != MSG_IR_ON_OFF))
                               {
@@ -318,7 +318,7 @@ line level    source
                                               }
                                               if(gSys.SystemMode == SYS_MODE_BLUETOOTH && !GetBtMuteFlag())
                                               {
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 6   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 6   
 
                                                       DBG1(("ccccccccddddddddddddd\m"));
                                                       UnMute();
@@ -382,7 +382,7 @@ line level    source
  359   1              TimeOutSet(&RecvNumTimer, 0);
  360   1      #endif
  361   1      }
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 7   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 7   
 
  362          
  363          
@@ -446,7 +446,7 @@ line level    source
  421   3                              NumKeyErrorDispFlag = FALSE;                    
  422   3                              NumKeyRadioFreqErrorFlag = FALSE;
  423   3                              
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 8   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 8   
 
  424   3                              if(Event == MSG_NUM_10ADD)
  425   3                              {
@@ -510,7 +510,7 @@ line level    source
  483   3                               || ((gSys.SystemMode == SYS_MODE_RADIO) && (gRadioCtrl.State == RADIO_IDLE) && (gRecvNum <= MAX_RAD
              -IO_STATION_NUM))
  484   3                      #endif
-C51 COMPILER V9.00   KEY                                                                   11/13/2015 15:55:31 PAGE 9   
+C51 COMPILER V9.00   KEY                                                                   11/14/2015 16:49:46 PAGE 9   
 
  485   3                              )
  486   3                              {

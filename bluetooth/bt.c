@@ -91,6 +91,16 @@ VOID BluetoothCtrlInit(VOID)
     
 	BTjustEnter = 1;
 	PlayPairFlag = 1;
+	BTIO_PORT_MUTE_INIT();
+
+	//与CSR连接的IO口初始化
+	BTIO_PORT_BLUE_LED_INIT();
+	BTIO_PORT_RED_LED_INIT();
+	MCUIO_PORT_red_LED_INIT();
+	MCUIO_PORT_blue_LED_INIT();
+
+
+	
 	BT_POWER_H();
 
 #if defined(FUNC_AUTO_BTSTANDBY)  
@@ -99,11 +109,14 @@ VOID BluetoothCtrlInit(VOID)
 
 #if defined(AU6210K_NR_D_8_CSRBT)
 #else
+	#if BLUETOOTH_CH_TYPE == DAC_CH_LINEIN
+	InDacChannelSel(BLUETOOTH_CH_TYPE);
+	#else
 	SET_E0_ANALOG_IN();	//将E0E1配置为模拟端口
 	SET_E1_ANALOG_IN();
+	#endif
 #endif
 
-	InDacChannelSel(BLUETOOTH_CH_TYPE);
 /*#ifdef AU6210K_NR_D_8_CSRBT
 	NPCA110X_ADC_Input_CH_Select(INPUT_CH1);
 	NPCA110X_DAC1_Set_Volume_and_Mute(gSys.Volume);
@@ -134,38 +147,23 @@ VOID BluetoothCtrlInit(VOID)
 			DBG1(("r0000r\n"));
 	}
 
+#ifdef BT_BtPOWEROFF_TIME
 	if (BTisMute() && BtMuteFlag)
 	{
 		BtMuteFlag = TRUE;
 #if defined(AU6210K_ZB_BT007_CSR)
-#ifdef BT_BtPOWEROFF_TIME
 		TimeOutSet(&CSR_BTPOWEROFF_TIME, BT_BtPOWEROFF_TIME);
 		BTPowerOffTime_Start =  TRUE;
 		DBG1(("BTPowerOffTime_Start =  TRUE;\n"));
-#endif
 #endif		
-        
 	}
+#endif
 	
 	DBG(("<<LineInCtrlInit()\n"));
 #ifdef FUNC_BREAK_POINT_EN
 	BP_SaveInfo(&gBreakPointInfo.PowerMemory.SystemMode, sizeof(gBreakPointInfo.PowerMemory.SystemMode));
 #endif
 
-//与CSR连接的IO口初始化
-	BTIO_PORT1_INIT();//blue led in MCU
-	BTIO_PORT2_INIT();
-	BTIO_PORT3_INIT();
-	BTIO_PORT4_INIT();//Red led in mcu
-	BTIO_PORT5_INIT();
-	BTIO_PORT6_INIT();
-	BTIO_PORT7_INIT();
-	BTIO_PORT_BLUE_LED_INIT();
-#ifdef AU6210K_NR_D_8_CSRBT
-#else
-	BTIO_PORT_RED_LED_INIT();
-#endif
-	BTIO_PORT_MUTE_INIT();
 
 }
 
@@ -181,15 +179,6 @@ VOID BluetothCtrlEnd(VOID)
     InDacMuteEn();
 	InDacChannelSel(DAC_CH_NONE);
 	BT_POWER_L();
-#if 1//defined(AU6210K_LK_SJ_CSRBT)||defined(AU6210K_ZB_BT007_CSR)
-	BTIO_PORT1_END();
-	BTIO_PORT2_END();
-	BTIO_PORT3_END();
-	BTIO_PORT4_END();
-	BTIO_PORT5_END();
-	BTIO_PORT6_END();
-	BTIO_PORT7_END();
-#endif
 
 }
 

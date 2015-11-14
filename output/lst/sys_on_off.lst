@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 1   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/14/2015 16:49:45 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SYS_ON_OFF
@@ -62,7 +62,7 @@ line level    source
                                               (IrKeyData == 0x5FA07F80) ||
                                               (IrKeyData == 0x5EA17F80) ||
                                               (IrKeyData == 0x5DA27F80) ||
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 2   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/14/2015 16:49:45 PAGE 2   
 
                                               (IrKeyData == 0x5CA37F80) ||
                                               (IrKeyData == 0x59A67F80) ||
@@ -126,7 +126,7 @@ line level    source
  111   1      #if     (PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON)
  112   1              DBG(("\nPWR_KEY_PUSH_BUTTON\n\n"));     
  113   1              SetChip8SRstMode(CRM_IN_PUSH_BUTTON);
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 3   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/14/2015 16:49:45 PAGE 3   
 
  114   1      
  115   1      #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
@@ -190,7 +190,7 @@ line level    source
                       //休眠，进入SLEEP模式
                       DBG(("SLEEP!\n"));
               #ifdef FUNC_DISP_EN
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 4   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/14/2015 16:49:45 PAGE 4   
 
                       DispDeInit();
               #endif
@@ -254,7 +254,7 @@ line level    source
               {
                       gSysTimeOffState.ProState = SYS_OFF_TIMEING_IDLE;
                       gSysTimeOffState.EnState = FALSE;
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 5   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/14/2015 16:49:45 PAGE 5   
 
                       gSysTimeOffState.SleepState = SLEEP_00;
               }
@@ -318,7 +318,7 @@ line level    source
                                       gSysTimeOffState.EnState = TRUE;                                
                                       gSysTimeOffState.ProState = SYS_OFF_TIMEING_SET_MODE_VALID;     
                                       SystemOffSetTimer();
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 6   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/14/2015 16:49:45 PAGE 6   
 
                               }
                               else
@@ -382,7 +382,7 @@ line level    source
               
               //如果有和此函数类似用法(嵌入到各个模式)的函数位于其后，此函数不要有default，防止拦截后者有用的消息
               VOID SystemOffTimeMsgPro(BYTE Msg)
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 7   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/14/2015 16:49:45 PAGE 7   
 
               {       
                       if(Msg != MSG_NONE)
@@ -446,7 +446,7 @@ line level    source
                                               if(gSysTimeOffState.EnState == TRUE)
                                               {
                                                       DBG(("SYSTEM OFF BY TimeOut!\n"));
-C51 COMPILER V9.00   SYS_ON_OFF                                                            11/13/2015 15:55:30 PAGE 8   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            11/14/2015 16:49:45 PAGE 8   
 
                                                       SystemOff();
                                               }

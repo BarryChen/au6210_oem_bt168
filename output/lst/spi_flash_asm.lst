@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/13/2015 15:55:35 PAGE     1
+A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/14/2015 16:49:49 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.01
@@ -65,7 +65,7 @@ LOC  OBJ            LINE     SOURCE
                       55     
                       56             
 0003 90960A           57             MOV DPTR, #GPIO_PORT_START +  FLASH_GPIO_PORT + 01H 
-A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/13/2015 15:55:35 PAGE     2
+A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/14/2015 16:49:49 PAGE     2
 
 0006 E0               58             MOVX A, @DPTR
 0007 4401             59             ORL A, #FLAHS_CLK_PIN
@@ -133,7 +133,7 @@ LOC  OBJ            LINE     SOURCE
 0052 E0              121             MOVX A, @DPTR
 0053 A2E2            122             MOV C, ACC.FLAHS_DO_BIT
 0055 E4              123             CLR A
-A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/13/2015 15:55:35 PAGE     3
+A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/14/2015 16:49:49 PAGE     3
 
 0056 92E0            124             MOV ACC.0, C
 0058 2A              125             ADD A, R2
@@ -201,7 +201,7 @@ LOC  OBJ            LINE     SOURCE
                      187             
                      188             
 00A4 54FE            189             ANL A, #~FLAHS_CLK_PIN
-A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/13/2015 15:55:35 PAGE     4
+A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/14/2015 16:49:49 PAGE     4
 
 00A6 F0              190             MOVX @DPTR, A
                      191             
@@ -224,7 +224,7 @@ LOC  OBJ            LINE     SOURCE
                      208     
                      209             END
                              
-A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/13/2015 15:55:35 PAGE     5
+A51 MACRO ASSEMBLER  SPI_FLASH_ASM                                                        11/14/2015 16:49:49 PAGE     5
 
 SYMBOL TABLE LISTING
 ------ ----- -------

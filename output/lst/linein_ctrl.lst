@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   LINEIN_CTRL                                                           11/13/2015 15:55:28 PAGE 1   
+C51 COMPILER V9.00   LINEIN_CTRL                                                           11/14/2015 16:49:43 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE LINEIN_CTRL
@@ -62,7 +62,7 @@ line level    source
                       19,             17,             15,             13,             11,             9,              8,              7,      
                       #else
   52                  63,
-C51 COMPILER V9.00   LINEIN_CTRL                                                           11/13/2015 15:55:28 PAGE 2   
+C51 COMPILER V9.00   LINEIN_CTRL                                                           11/14/2015 16:49:43 PAGE 2   
 
   53                  62,             58,             54,             51,             48,             45,             42,             39,
   54                  37,             35,             33,             31,             29,             27,             25,             23,
@@ -126,7 +126,7 @@ line level    source
  112          {
  113   1              MESSAGE Event = MessageGet(MSG_FIFO_KEY);
  114   1              BYTE minvolflag = 0;
-C51 COMPILER V9.00   LINEIN_CTRL                                                           11/13/2015 15:55:28 PAGE 3   
+C51 COMPILER V9.00   LINEIN_CTRL                                                           11/14/2015 16:49:43 PAGE 3   
 
  115   1              BYTE maxvolflag = 0;
  116   1      
@@ -190,7 +190,7 @@ line level    source
  172   2      #endif
  173   2                      break;  
  174   2      #ifdef FUNC_PT231X_EN
-C51 COMPILER V9.00   LINEIN_CTRL                                                           11/13/2015 15:55:28 PAGE 4   
+C51 COMPILER V9.00   LINEIN_CTRL                                                           11/14/2015 16:49:43 PAGE 4   
 
                       case MSG_TREBUP:
                                       VolType = VOL_TREB;
@@ -254,7 +254,7 @@ line level    source
  234   1      
  235   1      #ifdef FUN_SYSTEM_POWEROFF_WAIT_TIME
                       SystemOffTimeMsgPro(Event);
-C51 COMPILER V9.00   LINEIN_CTRL                                                           11/13/2015 15:55:28 PAGE 5   
+C51 COMPILER V9.00   LINEIN_CTRL                                                           11/14/2015 16:49:43 PAGE 5   
 
               #endif
  238   1      }

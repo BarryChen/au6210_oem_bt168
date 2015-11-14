@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/13/2015 15:55:35 PAGE 1   
+C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/14/2015 16:49:50 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE BLUETOOTH_CTRL
@@ -62,7 +62,7 @@ line level    source
               
               static BYTE justEnter;
               
-C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/13/2015 15:55:35 PAGE 2   
+C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/14/2015 16:49:50 PAGE 2   
 
               #ifdef BLUETOOTH_ALWAYS_OPEN
               #define BT_SCAN_BIT                     1<<2
@@ -126,7 +126,7 @@ line level    source
                       WaitUs(2);
               
                       opened = (GetGpioReg(RDABT_DET_IN) & RDABT_DET_BIT);
-C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/13/2015 15:55:35 PAGE 3   
+C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/14/2015 16:49:50 PAGE 3   
 
                       DBG(("Bluetooth opened:%bu\n", opened));
                       return opened;
@@ -190,7 +190,7 @@ line level    source
                       BT_NEXT_L();
                       BT_PLAY_L();
                       BT_PREV_L();    
-C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/13/2015 15:55:35 PAGE 4   
+C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/14/2015 16:49:50 PAGE 4   
 
               #ifdef RDA_BLUETOOTH
                       RDABT_POWER_HOLD_L();//当该脚为低，RDA蓝牙模块会自动关闭自己
@@ -254,7 +254,7 @@ line level    source
                       }
               
                       msg = MessageGet(MSG_FIFO_KEY);
-C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/13/2015 15:55:35 PAGE 5   
+C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/14/2015 16:49:50 PAGE 5   
 
                       switch(msg)
                       {
@@ -318,7 +318,7 @@ line level    source
                                               TimeOutSet(&BT_Key, BT_KEYCPS_delay);
                                       #endif
                                               DBG(("MSG_VOL_SUB\n"));
-C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/13/2015 15:55:35 PAGE 6   
+C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/14/2015 16:49:50 PAGE 6   
 
                                       }
                                       break;
@@ -382,7 +382,7 @@ line level    source
                       SetGpioRegBit(GPIO_E_PU, BT_SCAN_BIT);
                       SetGpioRegBit(GPIO_E_PD, BT_SCAN_BIT);
                       ClrGpioRegBit(GPIO_E_OE, BT_SCAN_BIT);
-C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/13/2015 15:55:35 PAGE 7   
+C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/14/2015 16:49:50 PAGE 7   
 
                       SetGpioRegBit(GPIO_E_IE, BT_SCAN_BIT);
                       WaitUs(2);
@@ -446,7 +446,7 @@ line level    source
               #endif
                                               
                                                       BTStateCallInMonitorCount = BT_STATUS_SAMPLE_COUNT;
-C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/13/2015 15:55:35 PAGE 8   
+C51 COMPILER V9.00   BLUETOOTH_CTRL                                                        11/14/2015 16:49:50 PAGE 8   
 
                                                       gBTPhoneInCall = TRUE;
                                               }

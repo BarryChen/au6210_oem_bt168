@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MESSAGE                                                               11/13/2015 15:55:30 PAGE 1   
+C51 COMPILER V9.00   MESSAGE                                                               11/14/2015 16:49:45 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MESSAGE
@@ -62,7 +62,7 @@ line level    source
   51          BYTE MessageGet(BYTE MsgFifoIndex)                                                      
   52          {
   53   1              MESSAGE Event = MSG_NONE;
-C51 COMPILER V9.00   MESSAGE                                                               11/13/2015 15:55:30 PAGE 2   
+C51 COMPILER V9.00   MESSAGE                                                               11/14/2015 16:49:45 PAGE 2   
 
   54   1              MESSAGE_FIFO* pMsgFifo = &MsgFifos[MsgFifoIndex];
   55   1      

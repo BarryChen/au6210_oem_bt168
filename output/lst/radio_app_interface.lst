@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 1   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/14/2015 16:49:49 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE RADIO_APP_INTERFACE
@@ -62,7 +62,7 @@ line level    source
              -Data2Store));
   51   1              return TRUE;
   52   1      #else
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 2   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/14/2015 16:49:49 PAGE 2   
 
                       return FALSE;
               #endif
@@ -126,7 +126,7 @@ line level    source
                               case RADIO_BK1080:
                                       BK1080PowerOn();        
                                       break;
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 3   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/14/2015 16:49:49 PAGE 3   
 
               #endif
  116   2      
@@ -190,7 +190,7 @@ line level    source
               #endif
  175   2      
  176   2      #ifdef RADIO_MVFM_EN
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 4   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/14/2015 16:49:49 PAGE 4   
 
  177   2                      case RADIO_MVFM:
  178   2                              MVFM_PowerDown();
@@ -254,7 +254,7 @@ line level    source
  236   2                      UnMute();
  237   2                      gSys.MuteFg = FALSE;    
  238   2                      
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 5   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/14/2015 16:49:49 PAGE 5   
 
  239   2      #ifdef FUNC_DISP_EN     
  240   2      #ifdef FUNC_SINGLE_LED_EN  
@@ -318,7 +318,7 @@ line level    source
  298   1      }
  299          
  300          
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 6   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/14/2015 16:49:49 PAGE 6   
 
  301          // Received Signal Strength Indication
  302          // RSSI_SEEK_THRESHOLD
@@ -382,7 +382,7 @@ line level    source
  358          //#ifdef RADIO_KT0830_EN
  359          //              case RADIO_KT0830E:
  360          //                      KT0830SearchSet(Freq);
-C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/13/2015 15:55:34 PAGE 7   
+C51 COMPILER V9.00   RADIO_APP_INTERFACE                                                   11/14/2015 16:49:49 PAGE 7   
 
  361          //                      break;
  362          //#endif

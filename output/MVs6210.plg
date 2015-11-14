@@ -12,8 +12,23 @@ compiling clk_if.c...
 compiling user_interface.c...
 lib_if\user_interface.c(220): warning C322: unknown identifier
 lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
+LIB_IF\USER_INTERFACE.C(677): warning C206: 'btIO_Red_Led_is_High': missing function-prototype
+LIB_IF\USER_INTERFACE.C(678): warning C206: 'setMCU_Red__Led_Port': missing function-prototype
+LIB_IF\USER_INTERFACE.C(680): warning C206: 'clrMCU_Red__Led_Port': missing function-prototype
+LIB_IF\USER_INTERFACE.C(682): warning C206: 'btIO_Blue_Led_is_High': missing function-prototype
+LIB_IF\USER_INTERFACE.C(683): warning C206: 'setMCU_Blue__Led_Port': missing function-prototype
+LIB_IF\USER_INTERFACE.C(685): warning C206: 'clrMCU_Blue__Led_Port': missing function-prototype
+LIB_IF\USER_INTERFACE.C(687): error C202: 'btIO_Mute_Need_mute': undefined identifier
 compiling card_reader_ctrl.c...
 compiling devctrl.c...
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
 compiling device.c...
 compiling usb_audio_ctrl.c...
 compiling linein_ctrl.c...
@@ -22,12 +37,16 @@ compiling touchkey_ctrl.c...
 compiling presearch.c...
 compiling otp_fs.c...
 compiling playctrl.c...
-play\playctrl.c(759): warning C322: unknown identifier
-play\playctrl.c(759): warning C322: unknown identifier
-play\playctrl.c(842): warning C322: unknown identifier
-play\playctrl.c(842): warning C322: unknown identifier
 compiling otp_play.c...
 compiling sysctrl.c...
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
 compiling interrupt.c...
 compiling message.c...
 compiling sys_on_off.c...
@@ -36,8 +55,17 @@ compiling power_monitor.c...
 compiling breakpoint.c...
 compiling pt231x.c...
 compiling key.c...
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
 compiling ir_key.c...
 compiling adc_key.c...
+KEY\ADC_KEY.C(240): error C242: 'array[]': too many initializers
 compiling power_key.c...
 key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
 compiling gpio_key.c...
@@ -65,2450 +93,359 @@ SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
 SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
 compiling spi_fs.c...
 compiling spi_play.c...
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
 compiling bluetooth_ctrl.c...
+compiling bt.c...
+BLUETOOTH\BT.H(99): error C141: syntax error near '}'
+BLUETOOTH\BT.H(99): error C141: syntax error near '0'
+BLUETOOTH\BT.H(103): error C141: syntax error near '0'
+BLUETOOTH\BT.H(108): error C141: syntax error near '0'
+BLUETOOTH\BT.H(112): error C141: syntax error near '0'
+BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+BLUETOOTH\BT.H(120): error C141: syntax error near '0'
+BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+compiling bluetooth_cmd.c...
+BLUETOOTH\BT.H(99): error C141: syntax error near '}'
+BLUETOOTH\BT.H(99): error C141: syntax error near '0'
+BLUETOOTH\BT.H(103): error C141: syntax error near '0'
+BLUETOOTH\BT.H(108): error C141: syntax error near '0'
+BLUETOOTH\BT.H(112): error C141: syntax error near '0'
+BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+BLUETOOTH\BT.H(120): error C141: syntax error near '0'
+BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+compiling slave_cmd.c...
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
+.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+compiling slave_ctrl.c...
+compiling npca110x.c...
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+lib_if\user_interface.c(220): warning C322: unknown identifier
+lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(689): error C129: missing ';' before 'MuteOn'
+compiling devctrl.c...
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+compiling sysctrl.c...
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+compiling key.c...
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+compiling adc_key.c...
+KEY\ADC_KEY.C(240): error C242: 'array[]': too many initializers
+compiling spi_play.c...
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+compiling bt.c...
+BLUETOOTH\BT.H(116): error C141: syntax error near '}'
+BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+compiling bluetooth_cmd.c...
+BLUETOOTH\BT.H(116): error C141: syntax error near '}'
+BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+compiling slave_cmd.c...
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
+.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+lib_if\user_interface.c(220): warning C322: unknown identifier
+lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(689): error C129: missing ';' before 'MuteOn'
+compiling devctrl.c...
+compiling sysctrl.c...
+compiling key.c...
+compiling adc_key.c...
+KEY\ADC_KEY.C(240): error C242: 'array[]': too many initializers
+compiling spi_play.c...
 compiling bt.c...
 compiling bluetooth_cmd.c...
 compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+lib_if\user_interface.c(220): warning C322: unknown identifier
+lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(689): error C129: missing ';' before 'MuteOn'
+compiling devctrl.c...
+compiling sysctrl.c...
+compiling key.c...
+compiling adc_key.c...
+KEY\ADC_KEY.C(240): error C242: 'array[]': too many initializers
+compiling spi_play.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+lib_if\user_interface.c(220): warning C322: unknown identifier
+lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '\'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '0x00'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '&'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '1'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(689): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(689): error C231: '_MuteOn': redefinition
+LIB_IF\USER_INTERFACE.C(690): error C141: syntax error near 'else'
+LIB_IF\USER_INTERFACE.C(692): error C231: 'UnMute': redefinition
+LIB_IF\USER_INTERFACE.C(694): error C141: syntax error near '}'
+compiling adc_key.c...
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+lib_if\user_interface.c(220): warning C322: unknown identifier
+lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '0x00'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '&'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '1'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(689): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(689): error C231: '_MuteOn': redefinition
+LIB_IF\USER_INTERFACE.C(690): error C141: syntax error near 'else'
+LIB_IF\USER_INTERFACE.C(692): error C231: 'UnMute': redefinition
+LIB_IF\USER_INTERFACE.C(694): error C141: syntax error near '}'
+compiling devctrl.c...
+compiling sysctrl.c...
+compiling key.c...
+compiling spi_play.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
+lib_if\user_interface.c(220): warning C322: unknown identifier
+lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
+LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
+LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near ')'
+LIB_IF\USER_INTERFACE.C(689): error C141: syntax error near '0'
+LIB_IF\USER_INTERFACE.C(689): error C231: '_MuteOn': redefinition
+LIB_IF\USER_INTERFACE.C(690): error C141: syntax error near 'else'
+LIB_IF\USER_INTERFACE.C(692): error C231: 'UnMute': redefinition
+LIB_IF\USER_INTERFACE.C(694): error C141: syntax error near '}'
+compiling devctrl.c...
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
+compiling sysctrl.c...
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
+compiling key.c...
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
+compiling spi_play.c...
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
+compiling bt.c...
+BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
+BLUETOOTH\BT.H(154): error C141: syntax error near '&'
+BLUETOOTH\BT.H(154): error C141: syntax error near '1'
+compiling bluetooth_cmd.c...
+BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
+BLUETOOTH\BT.H(154): error C141: syntax error near '&'
+BLUETOOTH\BT.H(154): error C141: syntax error near '1'
+compiling slave_cmd.c...
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
+.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+lib_if\user_interface.c(220): warning C322: unknown identifier
+lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
+compiling devctrl.c...
+compiling sysctrl.c...
+compiling key.c...
+compiling spi_play.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
 linking...
-Program Size: data=13.0 xdata=3128 const=687 code=56168
+Program Size: data=13.0 xdata=2769 const=320 code=52151
 creating hex file from ".\output\obj\..\MVs6210"...
-".\output\obj\..\MVs6210" - 0 Error(s), 16 Warning(s).
+".\output\obj\..\MVs6210" - 0 Error(s), 2 Warning(s).
 Build target 'MVs6210_R1_src'
-compiling clk_if.c...
 compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
 linking...
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?PR?STORBULKTRANSPORT_REP?OTG_HOST_FIX
-    LENGTH:  0000DCH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?PR?SETRTCALARMVALID?RTC_FIX
-    LENGTH:  000014H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0017
-    LENGTH:  00007CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM001C
-    LENGTH:  00006AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM001D
-    LENGTH:  00005FH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM002E
-    LENGTH:  000038H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM003B
-    LENGTH:  00001AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0046
-    LENGTH:  000017H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM005D
-    LENGTH:  000022H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0060
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0079
-    LENGTH:  00001AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0080
-    LENGTH:  000015H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0090
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0092
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00CB
-    LENGTH:  000011H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00D0
-    LENGTH:  000011H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00D4
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00DE
-    LENGTH:  000010H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00DF
-    LENGTH:  00000FH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00E8
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00F0
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00FC
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0103
-    LENGTH:  00000DH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0105
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010A
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010B
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010F
-    LENGTH:  00000DH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM011F
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM012E
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0131
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0132
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0134
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0138
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0139
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM013C
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM014D
-    LENGTH:  000009H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0158
-    LENGTH:  000009H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM015C
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM015D
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0163
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM016A
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM016B
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0171
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM017D
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM017E
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0180
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018B
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018D
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018F
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0191
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0192
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A3
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A9
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01AA
-    LENGTH:  000008H   
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 09FCH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0A25H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0A6FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0B20H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0C26H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0C76H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0C89H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0CD4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E26H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E2FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E72H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0EADH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F2AH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F56H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F63H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F78H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F85H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F8AH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F93H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0FC7H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01093H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0109EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01144H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 011A3H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012DFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012EEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012FEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 013CCH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 013FFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 014AEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 014F7H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01538H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01543H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01577H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01593H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015B5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015BCH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015EDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015F4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0170AH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01791H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 017A8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01AC9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ACDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01AD7H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01B7BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EC9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ECFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ED5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EDBH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EEDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F03H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F19H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F84H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0202FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02077H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02092H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0246AH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0248CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 025CAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0263EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 028AFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0299FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 029A5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 029AEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02B96H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02C01H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02C60H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02D0BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02D5BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02D70H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02E0FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02EA1H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02ED9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F05H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F65H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F74H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F7AH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F7DH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F98H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F9EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02FD0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031A8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031E3H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031E9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031EFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031F5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03374H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 036B0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 036EDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 036F3H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03700H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03E9DH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04121H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0412AH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04193H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 041DEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0421EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0422CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0456FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 045E2H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04751H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04761H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 053FFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0548AH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 05525H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 05ADAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 05B15H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 06766H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0677DH
-Program Size: data=13.0 xdata=3185 const=687 code=57814
-Target not created
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-linking...
-*** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SPI_PlaySelectNum
-    ADDRESS: 1001B83H
-*** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SPI_PlaySelectNum
-    ADDRESS: 1002947H
-*** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SPI_PlaySelectNum
-    ADDRESS: 1002A48H
-*** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SPI_PlaySelectNum
-    ADDRESS: 1002AA3H
-*** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SPI_PlaySelectNum
-    ADDRESS: 1002AABH
-*** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SPI_PlaySelectNum
-    ADDRESS: 1002B2FH
-*** ERROR L127: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  _SPI_PlaySelectNum
-    MODULE:  .\output\obj\user_interface.obj (USER_INTERFACE)
-*** ERROR L127: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  _SPI_PlaySelectNum
-    MODULE:  .\output\obj\linein_ctrl.obj (LINEIN_CTRL)
-*** ERROR L127: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  _SPI_PlaySelectNum
-    MODULE:  .\output\obj\playctrl.obj (PLAYCTRL)
-*** ERROR L127: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  _SPI_PlaySelectNum
-    MODULE:  .\output\obj\power_monitor.obj (POWER_MONITOR)
-*** ERROR L127: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  _SPI_PlaySelectNum
-    MODULE:  .\output\obj\bt.obj (BT)
-Program Size: data=13.0 xdata=2909 const=687 code=55128
-Target not created
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-linking...
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?PR?GETPCMAMPLITUDE?PCM_AMPLITUDE
-    LENGTH:  00005BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?PR?_CARDWRITEBLOCKSTART?SDMODE_ASYNC
-    LENGTH:  00002BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?PR?STORBULKTRANSPORT_REP?OTG_HOST_FIX
-    LENGTH:  0000DCH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0017
-    LENGTH:  00007CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM001D
-    LENGTH:  00005FH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM002E
-    LENGTH:  000038H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM003B
-    LENGTH:  00001AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0046
-    LENGTH:  000017H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0060
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0080
-    LENGTH:  000015H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0090
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0092
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00CA
-    LENGTH:  000011H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00CF
-    LENGTH:  000011H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00DD
-    LENGTH:  000010H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00DE
-    LENGTH:  00000FH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00E8
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00F0
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0103
-    LENGTH:  00000DH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0105
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010A
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010B
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010F
-    LENGTH:  00000DH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM011F
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM012D
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0130
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0133
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0137
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0138
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM013B
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM014C
-    LENGTH:  000009H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM015A
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM015C
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0161
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0168
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0169
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM016F
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM017B
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM017E
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018B
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018D
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0190
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0191
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A2
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A8
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A9
-    LENGTH:  000008H   
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 09FCH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0A25H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0A6FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0B20H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0C26H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0C76H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0C89H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0CD4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E26H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E2FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E72H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0EADH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F63H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0F85H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01093H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0109EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01144H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 011A3H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012DFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012EEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012FEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 013CCH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 013FFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 014AEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 014F7H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01538H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01543H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01577H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01593H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015B5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015BCH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015EDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015F4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0170AH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01791H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 017A8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01AC9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ACDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01AD7H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01B7BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EC9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ECFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ED5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EDBH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EEDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F03H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F19H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0202FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02059H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02077H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02092H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0263EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 028AFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0299FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 029A5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 029AEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02B97H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02C02H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02C61H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02D75H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02E36H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02E82H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02EA6H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02EDEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F5DH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F6CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F72H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F8FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F95H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03729H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 038D0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 038D9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03941H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0398CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 039CCH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 039DAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03D1DH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03D90H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03EFFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03F0FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 041FFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04205H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0420BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04211H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04341H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04692H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 046CFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 046D5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 046E2H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 062FEH
-Program Size: data=13.0 xdata=3182 const=687 code=57692
-Target not created
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-play\playctrl.c(759): warning C322: unknown identifier
-play\playctrl.c(759): warning C322: unknown identifier
-play\playctrl.c(842): warning C322: unknown identifier
-play\playctrl.c(842): warning C322: unknown identifier
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-linking...
-Program Size: data=13.0 xdata=3125 const=687 code=56070
-creating hex file from ".\output\obj\..\MVs6210"...
-".\output\obj\..\MVs6210" - 0 Error(s), 16 Warning(s).
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-play\playctrl.c(759): warning C322: unknown identifier
-play\playctrl.c(759): warning C322: unknown identifier
-play\playctrl.c(842): warning C322: unknown identifier
-play\playctrl.c(842): warning C322: unknown identifier
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-linking...
-Program Size: data=13.0 xdata=3090 const=687 code=55568
-creating hex file from ".\output\obj\..\MVs6210"...
-".\output\obj\..\MVs6210" - 0 Error(s), 16 Warning(s).
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-linking...
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0017
-    LENGTH:  00007CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0029
-    LENGTH:  000038H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM007D
-    LENGTH:  000015H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00C4
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00CC
-    LENGTH:  000011H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00E5
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00EB
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00EE
-    LENGTH:  00000FH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0106
-    LENGTH:  00000DH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010C
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010D
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0123
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0129
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM012E
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0130
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0135
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0138
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM013A
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM014A
-    LENGTH:  000009H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0158
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM015D
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0164
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0165
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0177
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0178
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0179
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM017A
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM017D
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0186
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018A
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018B
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018D
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM019D
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM019F
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A0
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A3
-    LENGTH:  000007H   
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 09E8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0A11H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0A5BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0B0CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0C61H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0CBEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E19H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E5CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0FAAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01094H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0109FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012E5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012FFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 013CDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01400H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01539H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01544H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01578H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01594H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015B6H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015BDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015EEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015F5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0170BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01792H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 017A9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ACAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ACEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01AD8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01B7CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ECEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ED4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EDAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EE0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EF2H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F08H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F1EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F89H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02030H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02390H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0242EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02561H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 025A5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02691H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0273DH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0290EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02A41H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02A8BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02AF5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02B47H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02C02H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02D16H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02E2BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02E77H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F29H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031A6H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031E2H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031E8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031EEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031F4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 038A7H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 039A0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03BDEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03C2EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03D1EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03E7BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03FB8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03FCAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03FD0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03FD4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04B40H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04C6FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04E57H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04E6DH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 06F83H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 06FC5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 077D3H
-Program Size: data=13.0 xdata=3147 const=687 code=57138
-Target not created
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-PLAY\PLAYCTRL.C(1554): error C202: 'BT_BtPOWEROFF_TIME': undefined identifier
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-KEY\KEY.C(388): error C202: 'BT_BtPOWEROFF_TIME': undefined identifier
-KEY\KEY.C(392): error C202: 'BT_BtPOWEROFF_TIME': undefined identifier
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-BLUETOOTH\BT.C(134): error C202: 'BT_BtPOWEROFF_TIME': undefined identifier
-BLUETOOTH\BT.C(274): error C202: 'BT_BtPOWEROFF_TIME': undefined identifier
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-Target not created
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-PLAY\PLAYCTRL.C(1554): error C202: 'BT_BtPOWEROFF_TIME': undefined identifier
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-Target not created
-Build target 'MVs6210_R1_src'
-compiling playctrl.c...
-linking...
-Program Size: data=13.0 xdata=2775 const=325 code=51976
+Program Size: data=13.0 xdata=2769 const=320 code=52151
 creating hex file from ".\output\obj\..\MVs6210"...
 ".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
 Build target 'MVs6210_R1_src'
 compiling clk_if.c...
 compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-linking...
-Program Size: data=13.0 xdata=2775 const=325 code=52281
-creating hex file from ".\output\obj\..\MVs6210"...
-".\output\obj\..\MVs6210" - 0 Error(s), 12 Warning(s).
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling card_reader_ctrl.c...
-compiling devctrl.c...
-compiling device.c...
-compiling usb_audio_ctrl.c...
-compiling linein_ctrl.c...
-compiling rtc_ctrl.c...
-compiling touchkey_ctrl.c...
-compiling presearch.c...
-compiling otp_fs.c...
-compiling playctrl.c...
-compiling otp_play.c...
-compiling sysctrl.c...
-compiling interrupt.c...
-compiling message.c...
-compiling sys_on_off.c...
-compiling debug.c...
-compiling power_monitor.c...
-compiling breakpoint.c...
-compiling pt231x.c...
-compiling key.c...
-compiling ir_key.c...
-compiling adc_key.c...
-compiling power_key.c...
-key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
-compiling gpio_key.c...
-key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
-compiling coding_key.c...
-compiling touch_key.c...
-compiling 24cxx.c...
-compiling i2c.c...
-EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
-EEPROM\I2C.C(325): warning C291: not every exit path returns a value
-compiling display.c...
-DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
-DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
-DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
-compiling seg_lcd_disp.c...
-compiling seg_led_disp.c...
-compiling seg_panel.c...
-compiling sled_disp.c...
-compiling radio_app_interface.c...
-compiling radio_ctrl.c...
-compiling mv_fm.c...
-compiling spi_flash.c...
-SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
-SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
-compiling spi_fs.c...
-compiling spi_play.c...
-compiling bluetooth_ctrl.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-compiling slave_ctrl.c...
-compiling npca110x.c...
-linking...
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0017
-    LENGTH:  00007CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0029
-    LENGTH:  000038H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM007D
-    LENGTH:  000015H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00C4
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00CC
-    LENGTH:  000011H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00E5
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00EB
-    LENGTH:  00000EH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM00EE
-    LENGTH:  00000FH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0106
-    LENGTH:  00000DH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010C
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM010D
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0123
-    LENGTH:  00000CH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0129
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM012E
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0130
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0135
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0138
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM013A
-    LENGTH:  00000BH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM014A
-    LENGTH:  000009H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0158
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM015D
-    LENGTH:  00000AH   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0164
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0165
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0177
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0178
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0179
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM017A
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM017D
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM0186
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018A
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018B
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM018D
-    LENGTH:  000007H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM019D
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM019F
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A0
-    LENGTH:  000008H   
-*** ERROR L107: ADDRESS SPACE OVERFLOW
-    SPACE:   CODE
-    SEGMENT: ?L?COM01A3
-    LENGTH:  000007H   
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 09E8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0A11H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0A5BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0B0CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0C61H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0CBEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E19H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0E5CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0FAAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01094H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0109FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012E5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 012FFH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 013CDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01400H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01539H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01544H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01578H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01594H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015B6H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015BDH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015EEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 015F5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0170BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01792H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 017A9H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ACAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ACEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01AD8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01B7CH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ECEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01ED4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EDAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EE0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01EF2H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F08H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F1EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 01F89H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02030H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02390H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0242EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02561H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 025A5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02691H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0273DH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 0290EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02A41H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02A8BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02AF5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02B47H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02C02H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02D16H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02E2BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02E77H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 02F29H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031A6H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031E2H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031E8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031EEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 031F4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 038A7H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 039A0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03BDEH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03C2EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03D1EH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03E7BH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03FB8H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03FCAH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03FD0H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 03FD4H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04B40H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04C6FH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04E57H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 04E6DH
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 06F83H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 06FC5H
-*** ERROR L138: CODE GENERATION: PROBLEM WHEN PROCESSING INSTRUCTIONS
-    CAUSE:   JUMP TARGET OUT OF RANGE
-    ADDRESS: 077D3H
-Program Size: data=13.0 xdata=3147 const=687 code=57138
-Target not created
-Build target 'MVs6210_R1_src'
-compiling clk_if.c...
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
 compiling card_reader_ctrl.c...
 compiling devctrl.c...
 compiling device.c...
@@ -2568,6 +505,6 @@ compiling slave_cmd.c...
 compiling slave_ctrl.c...
 compiling npca110x.c...
 linking...
-Program Size: data=13.0 xdata=2775 const=325 code=52281
+Program Size: data=13.0 xdata=2769 const=320 code=52151
 creating hex file from ".\output\obj\..\MVs6210"...
-".\output\obj\..\MVs6210" - 0 Error(s), 12 Warning(s).
+".\output\obj\..\MVs6210" - 0 Error(s), 10 Warning(s).
