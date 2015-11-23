@@ -94,8 +94,7 @@
 #endif
 
 #ifdef AU6210K_ZB_BT007_CSR
-#define		BT_BtPOWEROFF_TIME	(DWORD)(600000)///10min 5000//5s///5000//5s use debug
-
+//#define		BT_BtPOWEROFF_TIME	(DWORD)(600000)///10min 5000//5s///5000//5s use debug
 //#define FUNC_READER_EN      		//单独的USB读卡器模式
 #endif
 //#define FUNC_AUDIO_READER_EN		//一线通模式，PC同时识别出USB声卡和USB读卡器	
@@ -104,9 +103,10 @@
 //#define FUNC_BLUETOOTH_EN
 
 #define FUNC_BLUETOOTH_CSR_EN
+
 #ifdef FUNC_BLUETOOTH_CSR_EN
 #define CSR_IO_CTRL
-     //#define FUNC_AUTO_BTSTANDBY     //一段时间内蓝牙没连接自动关掉蓝牙
+//#define FUNC_AUTO_BTSTANDBY     //一段时间内蓝牙没连接自动关掉蓝牙
 #endif
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
 // 配置OTP 播放的模式
@@ -478,8 +478,8 @@
 		//如果选择软开关，可以定义POWER KEY开关机保持时间
 		//在开机阶段，是指用户必须按住POWER_KEY超过[开关机保持时间]后，系统才会点亮显示继续运行，否则芯片再次进入powerdown
 		//在关机阶段，用户必须按住POWER_KEY超过[开关机保持时间]后，系统才会关闭显示等，然后进入powerdown.
-	#define TIME_POWER_ON_HOLD		1000	//单位ms
-	#define TIME_POWER_OFF_HOLD		1000
+	#define TIME_POWER_ON_HOLD		2500	//单位ms
+	#define TIME_POWER_OFF_HOLD		2500
 
 	//除了POWER_KEY可以唤醒芯片启动片内主电源外，还可定义LP_RTC的闹钟源作为启动触发源，RTC唤醒仅仅在PWR_KEY_PUSH_BUTTON模式下应用
 	#define	WAKEUP_IN_PWRDWN_BY_LP_RTC
@@ -801,7 +801,7 @@
 #endif
 
 
-#if !defined(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) || defined(AU6210K_ZB_BT007_CSR)
+#if  defined(AU6210K_ZB_BT007_CSR) // || !defined(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) 
 #define FUNC_POWER_AMPLIFIER_EN	//AB和D类功放选择
 #endif
 
@@ -811,7 +811,7 @@
 	#define POWER_AMPLIFIER_PORT_OE				GPIO_D_OE
 	#define POWER_AMPLIFIER_PORT_PU				GPIO_D_PU
 	#define POWER_AMPLIFIER_PORT_PD				GPIO_D_PD
-	#define POWER_AMPLIFIER_PORT_BIT			(1 << 3)   //A0
+	#define POWER_AMPLIFIER_PORT_BIT			(1 << 3)   //
 	#define POWER_AMPLIFIER_PORT_OUT			GPIO_D_OUT
 #else
 	#define POWER_AMPLIFIER_PORT_IE				GPIO_E_IE

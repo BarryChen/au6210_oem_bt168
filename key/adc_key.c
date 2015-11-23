@@ -68,156 +68,7 @@ extern BOOL gPushKeyNeedBeepFlag;
 extern BOOL gLedDispRefreshFlag;
 #endif
 
-#if defined(AU6210K_JLH_JH82B)
-#define		ADC_KEY_COUNT				3
-static CODE BYTE AdcKeyEvent[][4] = 
-{
-//	SP						CPS					CPH					CPR	
-	{MSG_PRE,			MSG_VOL_SUB,		MSG_VOL_SUB,	MSG_NONE	},	//SW2	
-	{MSG_NEXT,			MSG_VOL_ADD,		MSG_VOL_ADD,	MSG_NONE	},	//SW3
-	{MSG_PLAY_PAUSE,	MSG_MODE_SW,		MSG_NONE,		MSG_NONE	},	//SW1
-};
-
-
-BYTE  CODE KeyVal1[ADC_KEY_COUNT] = 
-{ 
-#if 1			//иою╜10K
-	4,	//SW3	0 		0	0	//SW13
-	17,	//SW4	1.5k		8	8	//SW14
-	30,	//SW5	6.8K 		26	26	//SW15
-#else
-	3,	//SW3	0 		0	0	//SW13
-	9,	//SW4	2.2k		6	6	//SW14
-	14,	//SW5	4.7K 		11	12	//SW15
-#endif
-};
-
-#elif defined(AU6210K_NR_D_9X)
-#define		ADC_KEY_COUNT				3
-static CODE BYTE AdcKeyEvent[][4] = 
-{
-//	SP						CPS					CPH					CPR	
-	{MSG_PLAY_PAUSE,		MSG_NONE,			MSG_NONE,		MSG_NONE	},	//SW4
-	{MSG_NEXT,			MSG_VOL_ADD,		MSG_VOL_ADD,	MSG_NONE	},	//SW3
-	{MSG_PRE,			MSG_VOL_SUB,		MSG_VOL_SUB,	MSG_NONE	},	//SW2	
-};
-
-
-BYTE  CODE KeyVal1[ADC_KEY_COUNT] = 
-{ 
-	3,	//SW3	0 		0	0	//SW13
-	9,	//SW4	2.2k		6	6	//SW14
-	14,	//SW5	4.7K 		11	12	//SW15
-};
-
-/*#elif defined(AU6210K_NR_D_9X_XJ_HTS)
-#define		ADC_KEY_COUNT				3
-static CODE BYTE AdcKeyEvent[][4] = 
-{
-//	SP						CPS					CPH					CPR	
-	{MSG_PLAY_PAUSE,	MSG_BLUETOOTH_REJECT,			MSG_NONE,		MSG_NONE	},	//SW4
-	{MSG_PRE,			MSG_VOL_SUB,		MSG_VOL_SUB,	MSG_NONE	},	//SW2	
-	{MSG_NEXT,			MSG_VOL_ADD,		MSG_VOL_ADD,	MSG_NONE	},	//SW3
-};
-
-
-BYTE  CODE KeyVal1[ADC_KEY_COUNT] = 
-{ 
-	3,	//SW3	0 		0	0	//SW13
-	9,	//SW4	2.2k		6	6	//SW14
-	14,	//SW5	4.7K 		11	12	//SW15
-};*/
-#elif defined(AU6210K_NR_D_9X_XJ_HTS)
-#define		ADC_KEY_COUNT				5
-static CODE BYTE AdcKeyEvent[][4] = 
-{
-//	SP						CPS					CPH					CPR	
-	{MSG_VOL_SUB, 	    MSG_NONE, 			    MSG_NONE, 			MSG_NONE		},	//SW1	
-	{MSG_NEXT, 			MSG_MODE_SW, 		    MSG_NONE, 		    MSG_NONE		},	//SW2	
-	{MSG_PRE, 			MSG_BT_DISCONNECT, 		        MSG_NONE, 		    MSG_NONE		},	//SW3
-	{MSG_PLAY_PAUSE, 	MSG_BLUETOOTH_REJECT,   MSG_NONE, 			MSG_NONE		}, //SW4
-	{MSG_VOL_ADD, 		MSG_NONE, 			    MSG_NONE, 			MSG_NONE		},	//SW5
-};
-
-
-BYTE  CODE KeyVal1[ADC_KEY_COUNT] = 
-{ 
-	3,	//SW3	0 		0	0	//SW13
-	9,	//SW4	2.2k		6	6	//SW14
-	14,	//SW5	4.7K 		11	12	//SW15
-	19,	//SW6	7.5K		16	17	//SW16
-	25,	//SW7	12K		22	22	//SW17
-};
-
-#elif defined(AU6210K_HXX_B002)
-#define		ADC_KEY_COUNT				5
-static CODE BYTE AdcKeyEvent[][4] = 
-{
-//	SP						CPS					CPH					CPR	
-	{MSG_PLAY_PAUSE,		MSG_SCAN,			MSG_NONE,		MSG_NONE	},	//SW4
-	{MSG_NEXT,			MSG_VOL_ADD,		MSG_VOL_ADD,	MSG_NONE	},	//SW3
-	{MSG_PRE,			MSG_VOL_SUB,		MSG_VOL_SUB,	MSG_NONE	},	//SW2	
-	{MSG_MODE_SW,	MSG_NONE,		MSG_NONE,		MSG_NONE	},	//SW1
-};
-
-
-BYTE  CODE KeyVal1[ADC_KEY_COUNT] = 
-{ 
-	3,	//SW3	0 		0	0	//SW13
-	9,	//SW4	2.2k		6	6	//SW14
-	14,	//SW5	4.7K 		11	12	//SW15
-	19,	//SW6	7.5K		16	17	//SW16
-};
-
-#elif defined(AU6210K_NR_D_8_CSRBT)
-#define		ADC_KEY_COUNT				8
-static CODE BYTE AdcKeyEvent[][4] = 
-{
-//	SP						CPS					CPH							CPR	
-	{MSG_DEFAULT,		MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW1
-	{MSG_NEXT,			MSG_VOL_ADD,			MSG_VOL_ADD,				MSG_NONE	},	//SW3
-	{MSG_PRE,			MSG_VOL_SUB,			MSG_VOL_SUB,				MSG_NONE	},	//SW2	
-	{MSG_PLAY_PAUSE,	MSG_BLUETOOTH_REJECT,	MSG_BLUETOOTH_REJECT,		MSG_NONE	},	//SW4
-	{MSG_TREBUP,		MSG_TREBUP,				MSG_TREBUP,					MSG_NONE	},	//SW4MSG_TREBUP
-	{MSG_TREBDN,		MSG_TREBDN,				MSG_TREBDN,					MSG_NONE	},	//SW4MSG_TREBUP	
-	{MSG_BASSUP,		MSG_BASSUP,				MSG_BASSUP,					MSG_NONE	},	//SW4MSG_TREBUP
-	{MSG_BASSDN,		MSG_BASSDN,				MSG_BASSDN,					MSG_NONE	},	//SW4MSG_TREBUP
-};
-
-
-BYTE  CODE KeyVal1[ADC_KEY_COUNT] = 
-{ 
-	3,	//SW3	0 		0	0	//SW13
-	9,	//SW4	2.2k		6	6	//SW14
-	14,	//SW5	4.7K 		11	12	//SW15
-	19,	//SW6	7.5K		16	17	//SW16
-	25,	//SW7	12K		22	22	//SW17
-	30,	//SW8	16K		26	27	//SW18 	
-	36,	//SW9	24K		33	33	//SW19
-	42,	//SW10	36K		39	39 	//SW20
-	
-};
-#elif defined(AU6210K_LK_SJ_CSRBT)
-#define		ADC_KEY_COUNT				4
-static CODE BYTE AdcKeyEvent[][4] = 
-{
-//	SP						CPS					CPH							CPR	
-	{MSG_MODE_SW,		MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW1
-	{MSG_NEXT,			MSG_VOL_ADD,			MSG_VOL_ADD,				MSG_NONE	},	//SW3
-	{MSG_PRE,			MSG_VOL_SUB,			MSG_VOL_SUB,				MSG_NONE	},	//SW2	
-	{MSG_PLAY_PAUSE,	MSG_BLUETOOTH_REJECT,	MSG_BLUETOOTH_REJECT,		MSG_NONE	},	//SW4
-};
-
-
-BYTE  CODE KeyVal1[ADC_KEY_COUNT] = 
-{ 
-	3,	//SW3	0 		0	0	//SW13
-	9,	//SW4	2.2k		6	6	//SW14
-	14,	//SW5	4.7K 		11	12	//SW15
-	19,	//SW6	7.5K		16	17	//SW16
-};
-
-#elif defined(AU6210K_ZB_BT007_CSR)
+#if defined(AU6210K_ZB_BT007_CSR)
 #define		ADC_KEY_COUNT				5
 static CODE BYTE AdcKeyEvent[][4] = 
 {
@@ -226,7 +77,7 @@ static CODE BYTE AdcKeyEvent[][4] =
 	{MSG_VOL_ADD,			MSG_VOL_ADD,				MSG_VOL_ADD,					MSG_NONE	},	//SW3
 	{MSG_VOL_SUB,			MSG_VOL_SUB,				MSG_VOL_SUB,					MSG_NONE	},	//SW4
 	{MSG_PRE,			MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW2	
-	{MSG_PLAY_PAUSE,	MSG_MODE_SW,			MSG_NONE,					MSG_NONE	},	//SW4
+	{MSG_PLAY_PAUSE,	MSG_NONE,			MSG_NONE,					MSG_NONE	},	//SW4
 };
 
 
@@ -402,19 +253,19 @@ static BYTE	AdcChannelKeyGet(BYTE Channel)
 					switch(KeyIndex)
 					{
 					case 0:
-						baGPIOCtrl[GPIO_A_OUT] &= ~0x04; //A2
+						baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
 						break;
-					case 1: 
-						baGPIOCtrl[GPIO_D_OUT] &= ~0x04; //D2
+					case 1:	
+						baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
 						break;
 					case 2:
-						baGPIOCtrl[GPIO_D_OUT] &= ~0x40; //D6
+						baGPIOCtrl[GPIO_D_OUT] |= 0x40; //D6
 						break;
 					case 3:
-						baGPIOCtrl[GPIO_A_OUT] &= ~0x02; //A1
+						baGPIOCtrl[GPIO_A_OUT] |= 0x02; //A1
 						break;
 					case 4:
-						baGPIOCtrl[GPIO_D_OUT] &= ~0x10; //D4
+						baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
 						break;
 					default:
 						break;
@@ -569,11 +420,11 @@ VOID AdcKeyScanInit(VOID)
 	baGPIOCtrl[GPIO_D_OUT] &= ~0x04; 
 	WaitMs(2);
 
-	baGPIOCtrl[GPIO_D_IE] &= ~0x10;//D4
-	baGPIOCtrl[GPIO_D_OE] |= 0x10;
-	baGPIOCtrl[GPIO_D_PU] |= 0x10;
-	baGPIOCtrl[GPIO_D_PD] |= 0x10; 
-	baGPIOCtrl[GPIO_D_OUT] &= ~0x10; 
+	baGPIOCtrl[GPIO_D_IE] &= ~0x20;//D5
+	baGPIOCtrl[GPIO_D_OE] |= 0x20;
+	baGPIOCtrl[GPIO_D_PU] |= 0x20;
+	baGPIOCtrl[GPIO_D_PD] |= 0x20; 
+	baGPIOCtrl[GPIO_D_OUT] &= ~0x20; 
 	WaitMs(2);
 	
 	baGPIOCtrl[GPIO_D_IE] &= ~0x40;//D6
@@ -626,10 +477,12 @@ MESSAGE AdcKeyEventGet(VOID)
 			if(KeyIndex == -1)
 			{
 #ifdef CSR_IO_CTRL
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x20;	//D5
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x40;	//D6
-				baGPIOCtrl[GPIO_A_OUT] &= ~0x04;	//A2
-				baGPIOCtrl[GPIO_A_OUT] &= ~0x02;	//A1
+				baGPIOCtrl[GPIO_D_OUT] &= ~0x04;//D2
+				baGPIOCtrl[GPIO_D_OUT] &= ~0x20;//D5
+				baGPIOCtrl[GPIO_D_OUT] &= ~0x40;//D6
+				baGPIOCtrl[GPIO_A_OUT] &= ~0x02;//A1
+				baGPIOCtrl[GPIO_A_OUT] &= ~0x04;//A2
+				 
 #endif				
 				return MSG_NONE;
 			}
@@ -696,19 +549,19 @@ MESSAGE AdcKeyEventGet(VOID)
 					switch(PreKeyIndex)
 					{
 					case 0:
-						baGPIOCtrl[GPIO_A_OUT] &= ~0x04; //A2
+						baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
 						break;
 					case 1:	
-						baGPIOCtrl[GPIO_D_OUT] &= ~0x04; //D2
+						baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
 						break;
 					case 2:
-						baGPIOCtrl[GPIO_D_OUT] &= ~0x40; //D6
+						baGPIOCtrl[GPIO_D_OUT] |= 0x40; //D6
 						break;
 					case 3:
-						baGPIOCtrl[GPIO_A_OUT] &= ~0x02; //A1
+						baGPIOCtrl[GPIO_A_OUT] |= 0x02; //A1
 						break;
 					case 4:
-						baGPIOCtrl[GPIO_D_OUT] &= ~0x10; //D4
+						baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
 						break;
 					default:
 						break;

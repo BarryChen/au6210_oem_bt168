@@ -3,446 +3,257 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-D:\uct\6210_proj\ALD800_oem168_7key\MVs6210_R1_src.uvproj
-Project File Date:  05/21/2015
+D:\1UCT_Project\custom\5_ald800\au6210_oem_bt168\MVs6210_R1_src.uvproj
+Project File Date:  11/13/2015
 
 <h2>Output:</h2>
 Build target 'MVs6210_R1_src'
 compiling clk_if.c...
+LIB_IF\CLK_IF.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-LIB_IF\USER_INTERFACE.C(677): warning C206: 'btIO_Red_Led_is_High': missing function-prototype
-LIB_IF\USER_INTERFACE.C(678): warning C206: 'setMCU_Red__Led_Port': missing function-prototype
-LIB_IF\USER_INTERFACE.C(680): warning C206: 'clrMCU_Red__Led_Port': missing function-prototype
-LIB_IF\USER_INTERFACE.C(682): warning C206: 'btIO_Blue_Led_is_High': missing function-prototype
-LIB_IF\USER_INTERFACE.C(683): warning C206: 'setMCU_Blue__Led_Port': missing function-prototype
-LIB_IF\USER_INTERFACE.C(685): warning C206: 'clrMCU_Blue__Led_Port': missing function-prototype
-LIB_IF\USER_INTERFACE.C(687): error C202: 'btIO_Mute_Need_mute': undefined identifier
+LIB_IF\USER_INTERFACE.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling card_reader_ctrl.c...
+DEVICE\CARD_READER_CTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling devctrl.c...
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+DEVICE\DEVCTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling device.c...
+DEVICE\DEVICE.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling usb_audio_ctrl.c...
+DEVICE\USB_AUDIO_CTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling linein_ctrl.c...
+DEVICE\LINEIN_CTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling rtc_ctrl.c...
+DEVICE\RTC_CTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling touchkey_ctrl.c...
+DEVICE\TOUCHKEY_CTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling presearch.c...
+FS\PRESEARCH.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling otp_fs.c...
+FS\OTP_FS.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling playctrl.c...
+PLAY\PLAYCTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling otp_play.c...
+PLAY\OTP_PLAY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
+assembling file_dec_asm.A51...
 compiling sysctrl.c...
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+SYSTEM\SYSCTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
+assembling STARTUP.a51...
 compiling interrupt.c...
+SYSTEM\INTERRUPT.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling message.c...
+SYSTEM\MESSAGE.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling sys_on_off.c...
+SYSTEM\SYS_ON_OFF.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling debug.c...
+SYSTEM\DEBUG.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling power_monitor.c...
+POWER\POWER_MONITOR.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling breakpoint.c...
+SYSTEM\BREAKPOINT.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling pt231x.c...
+SYSTEM\PT231X.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling key.c...
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+KEY\KEY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling ir_key.c...
+KEY\IR_KEY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling adc_key.c...
-KEY\ADC_KEY.C(240): error C242: 'array[]': too many initializers
+KEY\ADC_KEY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling power_key.c...
+KEY\POWER_KEY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
 compiling gpio_key.c...
+KEY\GPIO_KEY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
 compiling coding_key.c...
+KEY\CODING_KEY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling touch_key.c...
+KEY\TOUCH_KEY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling 24cxx.c...
+EEPROM\24CXX.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling i2c.c...
+EEPROM\I2C.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
 EEPROM\I2C.C(325): warning C291: not every exit path returns a value
 compiling display.c...
+DISPLAY\DISPLAY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
 DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
 DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
 compiling seg_lcd_disp.c...
+DISPLAY\SEG_LCD_DISP.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling seg_led_disp.c...
+DISPLAY\SEG_LED_DISP.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling seg_panel.c...
+DISPLAY\SEG_PANEL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling sled_disp.c...
+DISPLAY\SLED_DISP.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling radio_app_interface.c...
+RADIO\RADIO_APP_INTERFACE.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling radio_ctrl.c...
+RADIO\RADIO_CTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling mv_fm.c...
+RADIO\MV_FM.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling spi_flash.c...
+SPI_FLASH\SPI_FLASH.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
 SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
 SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
 compiling spi_fs.c...
+SPI_FLASH\SPI_FS.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
+assembling spi_flash_asm.a51...
 compiling spi_play.c...
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+SPI_FLASH\SPI_PLAY.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling bluetooth_ctrl.c...
+BLUETOOTH\BLUETOOTH_CTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling bt.c...
-BLUETOOTH\BT.H(99): error C141: syntax error near '}'
-BLUETOOTH\BT.H(99): error C141: syntax error near '0'
-BLUETOOTH\BT.H(103): error C141: syntax error near '0'
-BLUETOOTH\BT.H(108): error C141: syntax error near '0'
-BLUETOOTH\BT.H(112): error C141: syntax error near '0'
-BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-BLUETOOTH\BT.H(120): error C141: syntax error near '0'
-BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+BLUETOOTH\BT.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling bluetooth_cmd.c...
-BLUETOOTH\BT.H(99): error C141: syntax error near '}'
-BLUETOOTH\BT.H(99): error C141: syntax error near '0'
-BLUETOOTH\BT.H(103): error C141: syntax error near '0'
-BLUETOOTH\BT.H(108): error C141: syntax error near '0'
-BLUETOOTH\BT.H(112): error C141: syntax error near '0'
-BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-BLUETOOTH\BT.H(120): error C141: syntax error near '0'
-BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+BLUETOOTH\BLUETOOTH_CMD.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling slave_cmd.c...
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(99): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(103): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(108): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(112): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(120): error C141: syntax error near '0'
-.\BLUETOOTH\BT.H(155): error C141: syntax error near '0'
+SLAVE\SLAVE_CMD.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling slave_ctrl.c...
+SLAVE\SLAVE_CTRL.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 compiling npca110x.c...
-Target not created
-Build target 'MVs6210_R1_src'
-compiling user_interface.c...
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(689): error C129: missing ';' before 'MuteOn'
-compiling devctrl.c...
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-compiling sysctrl.c...
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-compiling key.c...
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-compiling adc_key.c...
-KEY\ADC_KEY.C(240): error C242: 'array[]': too many initializers
-compiling spi_play.c...
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-compiling bt.c...
-BLUETOOTH\BT.H(116): error C141: syntax error near '}'
-BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-compiling bluetooth_cmd.c...
-BLUETOOTH\BT.H(116): error C141: syntax error near '}'
-BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-compiling slave_cmd.c...
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '}'
-.\BLUETOOTH\BT.H(116): error C141: syntax error near '0'
-Target not created
-Build target 'MVs6210_R1_src'
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(689): error C129: missing ';' before 'MuteOn'
-compiling devctrl.c...
-compiling sysctrl.c...
-compiling key.c...
-compiling adc_key.c...
-KEY\ADC_KEY.C(240): error C242: 'array[]': too many initializers
-compiling spi_play.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-Target not created
-Build target 'MVs6210_R1_src'
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(689): error C129: missing ';' before 'MuteOn'
-compiling devctrl.c...
-compiling sysctrl.c...
-compiling key.c...
-compiling adc_key.c...
-KEY\ADC_KEY.C(240): error C242: 'array[]': too many initializers
-compiling spi_play.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-Target not created
-Build target 'MVs6210_R1_src'
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '\'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '0x00'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '&'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '1'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(689): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(689): error C231: '_MuteOn': redefinition
-LIB_IF\USER_INTERFACE.C(690): error C141: syntax error near 'else'
-LIB_IF\USER_INTERFACE.C(692): error C231: 'UnMute': redefinition
-LIB_IF\USER_INTERFACE.C(694): error C141: syntax error near '}'
-compiling adc_key.c...
-Target not created
-Build target 'MVs6210_R1_src'
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '0x00'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '&'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '1'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(689): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(689): error C231: '_MuteOn': redefinition
-LIB_IF\USER_INTERFACE.C(690): error C141: syntax error near 'else'
-LIB_IF\USER_INTERFACE.C(692): error C231: 'UnMute': redefinition
-LIB_IF\USER_INTERFACE.C(694): error C141: syntax error near '}'
-compiling devctrl.c...
-compiling sysctrl.c...
-compiling key.c...
-compiling spi_play.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
-Target not created
-Build target 'MVs6210_R1_src'
-compiling user_interface.c...
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(677): error C190: '&': not an lvalue
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near 'while'
-LIB_IF\USER_INTERFACE.C(677): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(678): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(680): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near 'do'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0x1B'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '&'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '1'
-LIB_IF\USER_INTERFACE.C(682): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(683): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0x1C'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(685): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(687): error C141: syntax error near ')'
-LIB_IF\USER_INTERFACE.C(689): error C141: syntax error near '0'
-LIB_IF\USER_INTERFACE.C(689): error C231: '_MuteOn': redefinition
-LIB_IF\USER_INTERFACE.C(690): error C141: syntax error near 'else'
-LIB_IF\USER_INTERFACE.C(692): error C231: 'UnMute': redefinition
-LIB_IF\USER_INTERFACE.C(694): error C141: syntax error near '}'
-compiling devctrl.c...
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
-compiling sysctrl.c...
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
-compiling key.c...
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
-compiling spi_play.c...
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
-compiling bt.c...
-BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
-BLUETOOTH\BT.H(154): error C141: syntax error near '&'
-BLUETOOTH\BT.H(154): error C141: syntax error near '1'
-compiling bluetooth_cmd.c...
-BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
-BLUETOOTH\BT.H(154): error C141: syntax error near '&'
-BLUETOOTH\BT.H(154): error C141: syntax error near '1'
-compiling slave_cmd.c...
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '0x00'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '&'
-.\BLUETOOTH\BT.H(154): error C141: syntax error near '1'
-Target not created
-Build target 'MVs6210_R1_src'
-compiling user_interface.c...
-lib_if\user_interface.c(220): warning C322: unknown identifier
-lib_if\user_interface.c(220): warning C323: newline expected, extra characters found
-compiling devctrl.c...
-compiling sysctrl.c...
-compiling key.c...
-compiling spi_play.c...
-compiling bt.c...
-compiling bluetooth_cmd.c...
-compiling slave_cmd.c...
+I2C\NPCA110X.C(1): warning C500: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
 linking...
-Program Size: data=13.0 xdata=2769 const=320 code=52151
-creating hex file from ".\output\obj\..\MVs6210"...
-".\output\obj\..\MVs6210" - 0 Error(s), 2 Warning(s).
+LX51 LINKER/LOCATER V4.41 - SN: K1MMC-Q424KC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1995 - 2009
+@.\output\obj\..\MVs6210.lnp ".\output\obj\clk_if.obj",
+".\output\obj\user_interface.obj",
+PUBLICSONLY (".\library\AU6210R1.OBJ"),
+".\library\MVs6210_R1_01_P9_reader.LIB",
+".\output\obj\card_reader_ctrl.obj",
+".\output\obj\devctrl.obj",
+".\output\obj\device.obj",
+".\output\obj\usb_audio_ctrl.obj",
+".\output\obj\linein_ctrl.obj",
+".\output\obj\rtc_ctrl.obj",
+".\output\obj\touchkey_ctrl.obj",
+".\output\obj\presearch.obj",
+".\output\obj\otp_fs.obj",
+".\output\obj\playctrl.obj",
+".\output\obj\otp_play.obj",
+".\output\obj\file_dec_asm.obj",
+".\output\obj\sysctrl.obj",
+".\output\obj\STARTUP.obj",
+".\output\obj\interrupt.obj",
+".\output\obj\message.obj",
+".\output\obj\sys_on_off.obj",
+".\output\obj\debug.obj",
+".\output\obj\power_monitor.obj",
+".\output\obj\breakpoint.obj",
+".\output\obj\pt231x.obj",
+".\output\obj\key.obj",
+".\output\obj\ir_key.obj",
+".\output\obj\adc_key.obj",
+".\output\obj\power_key.obj",
+".\output\obj\gpio_key.obj",
+".\output\obj\coding_key.obj",
+".\output\obj\touch_key.obj",
+".\output\obj\24cxx.obj",
+".\output\obj\i2c.obj",
+".\output\obj\display.obj",
+".\output\obj\seg_lcd_disp.obj",
+".\output\obj\seg_led_disp.obj",
+".\output\obj\seg_panel.obj",
+".\output\obj\sled_disp.obj",
+".\output\obj\radio_app_interface.obj",
+".\output\obj\radio_ctrl.obj",
+".\output\obj\mv_fm.obj",
+".\output\obj\spi_flash.obj",
+".\output\obj\spi_fs.obj",
+".\output\obj\spi_flash_asm.obj",
+".\output\obj\spi_play.obj",
+".\output\obj\bluetooth_ctrl.obj",
+".\output\obj\bt.obj",
+".\output\obj\bluetooth_cmd.obj",
+".\output\obj\slave_cmd.obj",
+".\output\obj\slave_ctrl.obj",
+".\output\obj\npca110x.obj" 
+TO ".\output\obj\..\MVs6210" 
+PRINT(".\output\lst\..\MVs6210.map") NOOVERLAY 
+CLASSES (XDATA (X:0x0-X:0xCFF), HDATA (X:0x0-X:0xCFF), CODE (C:0x0-C:0xDFFF), CONST (C:0x0-C:0xDFFF), 
+ECODE (C:0x0-C:0xDFFF), HCONST (C:0x0-C:0xDFFF)) 
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 6361H BYTE (1242%) *
+******************************************************************************
+Program Size: data=13.0 xdata=2769 const=320 code=52122
+*** ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    LIMIT:   0800H BYTES
+Target not created
 Build target 'MVs6210_R1_src'
-compiling user_interface.c...
 linking...
-Program Size: data=13.0 xdata=2769 const=320 code=52151
-creating hex file from ".\output\obj\..\MVs6210"...
-".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+LX51 LINKER/LOCATER V4.41 - SN: K1UMC-IT0H4C
+COPYRIGHT KEIL ELEKTRONIK GmbH 1995 - 2009
+@.\output\obj\..\MVs6210.lnp ".\output\obj\clk_if.obj",
+".\output\obj\user_interface.obj",
+PUBLICSONLY (".\library\AU6210R1.OBJ"),
+".\library\MVs6210_R1_01_P9_reader.LIB",
+".\output\obj\card_reader_ctrl.obj",
+".\output\obj\devctrl.obj",
+".\output\obj\device.obj",
+".\output\obj\usb_audio_ctrl.obj",
+".\output\obj\linein_ctrl.obj",
+".\output\obj\rtc_ctrl.obj",
+".\output\obj\touchkey_ctrl.obj",
+".\output\obj\presearch.obj",
+".\output\obj\otp_fs.obj",
+".\output\obj\playctrl.obj",
+".\output\obj\otp_play.obj",
+".\output\obj\file_dec_asm.obj",
+".\output\obj\sysctrl.obj",
+".\output\obj\STARTUP.obj",
+".\output\obj\interrupt.obj",
+".\output\obj\message.obj",
+".\output\obj\sys_on_off.obj",
+".\output\obj\debug.obj",
+".\output\obj\power_monitor.obj",
+".\output\obj\breakpoint.obj",
+".\output\obj\pt231x.obj",
+".\output\obj\key.obj",
+".\output\obj\ir_key.obj",
+".\output\obj\adc_key.obj",
+".\output\obj\power_key.obj",
+".\output\obj\gpio_key.obj",
+".\output\obj\coding_key.obj",
+".\output\obj\touch_key.obj",
+".\output\obj\24cxx.obj",
+".\output\obj\i2c.obj",
+".\output\obj\display.obj",
+".\output\obj\seg_lcd_disp.obj",
+".\output\obj\seg_led_disp.obj",
+".\output\obj\seg_panel.obj",
+".\output\obj\sled_disp.obj",
+".\output\obj\radio_app_interface.obj",
+".\output\obj\radio_ctrl.obj",
+".\output\obj\mv_fm.obj",
+".\output\obj\spi_flash.obj",
+".\output\obj\spi_fs.obj",
+".\output\obj\spi_flash_asm.obj",
+".\output\obj\spi_play.obj",
+".\output\obj\bluetooth_ctrl.obj",
+".\output\obj\bt.obj",
+".\output\obj\bluetooth_cmd.obj",
+".\output\obj\slave_cmd.obj",
+".\output\obj\slave_ctrl.obj",
+".\output\obj\npca110x.obj" 
+TO ".\output\obj\..\MVs6210" 
+PRINT(".\output\lst\..\MVs6210.map") NOOVERLAY 
+CLASSES (XDATA (X:0x0-X:0xCFF), HDATA (X:0x0-X:0xCFF), CODE (C:0x0-C:0xDFFF), CONST (C:0x0-C:0xDFFF), 
+ECODE (C:0x0-C:0xDFFF), HCONST (C:0x0-C:0xDFFF)) 
+*** WARNING L52: EVAL VERSION USED BEFORE, REBUILD ALL *.OBJ FILES
+    MODULE:  .\output\obj\user_interface.obj (USER_INTERFACE)
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 6361H BYTE (1242%) *
+******************************************************************************
+Program Size: data=13.0 xdata=2769 const=320 code=52122
+*** WARNING L52: EVAL VERSION USED BEFORE, REBUILD ALL *.OBJ FILES
+    MODULE:  .\output\obj\user_interface.obj (USER_INTERFACE)
+*** ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    LIMIT:   0800H BYTES
+Target not created
+Clean started: Project: 'MVs6210_R1_src'
+   deleting intermediate output files for target 'MVs6210_R1_src'
 Build target 'MVs6210_R1_src'
 compiling clk_if.c...
 compiling user_interface.c...
@@ -508,3 +319,953 @@ linking...
 Program Size: data=13.0 xdata=2769 const=320 code=52151
 creating hex file from ".\output\obj\..\MVs6210"...
 ".\output\obj\..\MVs6210" - 0 Error(s), 10 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling clk_if.c...
+compiling user_interface.c...
+compiling card_reader_ctrl.c...
+compiling devctrl.c...
+compiling device.c...
+compiling usb_audio_ctrl.c...
+compiling linein_ctrl.c...
+compiling rtc_ctrl.c...
+compiling touchkey_ctrl.c...
+compiling presearch.c...
+compiling otp_fs.c...
+compiling playctrl.c...
+compiling otp_play.c...
+compiling sysctrl.c...
+compiling interrupt.c...
+compiling message.c...
+compiling sys_on_off.c...
+compiling debug.c...
+compiling power_monitor.c...
+compiling breakpoint.c...
+compiling pt231x.c...
+compiling key.c...
+compiling ir_key.c...
+compiling adc_key.c...
+compiling power_key.c...
+key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
+compiling gpio_key.c...
+key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
+compiling coding_key.c...
+compiling touch_key.c...
+compiling 24cxx.c...
+compiling i2c.c...
+EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
+EEPROM\I2C.C(325): warning C291: not every exit path returns a value
+compiling display.c...
+DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
+DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
+DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
+compiling seg_lcd_disp.c...
+compiling seg_led_disp.c...
+compiling seg_panel.c...
+compiling sled_disp.c...
+compiling radio_app_interface.c...
+compiling radio_ctrl.c...
+compiling mv_fm.c...
+compiling spi_flash.c...
+SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
+SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
+SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
+compiling spi_fs.c...
+compiling spi_play.c...
+compiling bluetooth_ctrl.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+compiling slave_ctrl.c...
+compiling npca110x.c...
+linking...
+Program Size: data=13.0 xdata=2768 const=320 code=52008
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 10 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling clk_if.c...
+compiling user_interface.c...
+compiling card_reader_ctrl.c...
+compiling devctrl.c...
+compiling device.c...
+compiling usb_audio_ctrl.c...
+compiling linein_ctrl.c...
+compiling rtc_ctrl.c...
+compiling touchkey_ctrl.c...
+compiling presearch.c...
+compiling otp_fs.c...
+compiling playctrl.c...
+compiling otp_play.c...
+compiling sysctrl.c...
+compiling interrupt.c...
+compiling message.c...
+compiling sys_on_off.c...
+compiling debug.c...
+compiling power_monitor.c...
+compiling breakpoint.c...
+compiling pt231x.c...
+compiling key.c...
+compiling ir_key.c...
+compiling adc_key.c...
+compiling power_key.c...
+key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
+compiling gpio_key.c...
+key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
+compiling coding_key.c...
+compiling touch_key.c...
+compiling 24cxx.c...
+compiling i2c.c...
+EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
+EEPROM\I2C.C(325): warning C291: not every exit path returns a value
+compiling display.c...
+DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
+DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
+DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
+compiling seg_lcd_disp.c...
+compiling seg_led_disp.c...
+compiling seg_panel.c...
+compiling sled_disp.c...
+compiling radio_app_interface.c...
+compiling radio_ctrl.c...
+compiling mv_fm.c...
+compiling spi_flash.c...
+SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
+SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
+SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
+compiling spi_fs.c...
+compiling spi_play.c...
+compiling bluetooth_ctrl.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+compiling slave_ctrl.c...
+compiling npca110x.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=52072
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 10 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+compiling adc_key.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=52165
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+compiling devctrl.c...
+compiling sysctrl.c...
+compiling key.c...
+compiling spi_play.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=52148
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling clk_if.c...
+compiling user_interface.c...
+compiling card_reader_ctrl.c...
+compiling devctrl.c...
+compiling device.c...
+compiling usb_audio_ctrl.c...
+compiling linein_ctrl.c...
+compiling rtc_ctrl.c...
+compiling touchkey_ctrl.c...
+compiling presearch.c...
+compiling otp_fs.c...
+compiling playctrl.c...
+compiling otp_play.c...
+compiling sysctrl.c...
+compiling interrupt.c...
+compiling message.c...
+compiling sys_on_off.c...
+compiling debug.c...
+compiling power_monitor.c...
+compiling breakpoint.c...
+compiling pt231x.c...
+compiling key.c...
+compiling ir_key.c...
+compiling adc_key.c...
+compiling power_key.c...
+key\power_key.c(15): warning C320: "MV: PUSH BUTTON POWER KEY ENABLE!"
+compiling gpio_key.c...
+key\gpio_key.c(354): warning C320: "MV: GPIO KEY NOT ENABLE!"
+compiling coding_key.c...
+compiling touch_key.c...
+compiling 24cxx.c...
+compiling i2c.c...
+EEPROM\I2C.C(441): warning C280: 'j': unreferenced local variable
+EEPROM\I2C.C(325): warning C291: not every exit path returns a value
+compiling display.c...
+DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
+DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
+DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
+compiling seg_lcd_disp.c...
+compiling seg_led_disp.c...
+compiling seg_panel.c...
+compiling sled_disp.c...
+compiling radio_app_interface.c...
+compiling radio_ctrl.c...
+compiling mv_fm.c...
+compiling spi_flash.c...
+SPI_FLASH\SPI_FLASH.C(222): warning C280: 'Addr': unreferenced local variable
+SPI_FLASH\SPI_FLASH.C(267): warning C280: 'Addr': unreferenced local variable
+SPI_FLASH\SPI_FLASH.C(267): warning C280: 'DataNum': unreferenced local variable
+compiling spi_fs.c...
+compiling spi_play.c...
+compiling bluetooth_ctrl.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+compiling slave_ctrl.c...
+compiling npca110x.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51657
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 10 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling sled_disp.c...
+compiling bt.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51743
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+compiling sled_disp.c...
+display\sled_disp.c(1389): warning C312: misplaced endif control
+compiling bt.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51776
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 1 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+LIB_IF\USER_INTERFACE.C(701): error C141: syntax error near '}', expected ';'
+compiling devctrl.c...
+compiling sysctrl.c...
+compiling key.c...
+compiling spi_play.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BTisMute
+    MODULE:  .\output\obj\devctrl.obj (DEVCTRL)
+   DEFINED:  .\output\obj\user_interface.obj (USER_INTERFACE)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BTisMute
+    MODULE:  .\output\obj\sysctrl.obj (SYSCTRL)
+   DEFINED:  .\output\obj\user_interface.obj (USER_INTERFACE)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BTisMute
+    MODULE:  .\output\obj\key.obj (KEY)
+   DEFINED:  .\output\obj\user_interface.obj (USER_INTERFACE)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BTisMute
+    MODULE:  .\output\obj\spi_play.obj (SPI_PLAY)
+   DEFINED:  .\output\obj\user_interface.obj (USER_INTERFACE)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BTisMute
+    MODULE:  .\output\obj\bt.obj (BT)
+   DEFINED:  .\output\obj\user_interface.obj (USER_INTERFACE)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BTisMute
+    MODULE:  .\output\obj\bluetooth_cmd.obj (BLUETOOTH_CMD)
+   DEFINED:  .\output\obj\user_interface.obj (USER_INTERFACE)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BTisMute
+    MODULE:  .\output\obj\slave_cmd.obj (SLAVE_CMD)
+   DEFINED:  .\output\obj\user_interface.obj (USER_INTERFACE)
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SONGPLAYSTOP?PLAYCTRL
+    LENGTH:  000026H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SPIFLASHWRITEREG?SPI_FLASH
+    LENGTH:  000026H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SPIFLASHWAITREADY?SPI_FLASH
+    LENGTH:  000026H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?FILEREWIND_INS?FS_FIX
+    LENGTH:  000026H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_CLRWAKEUPSRCINSLEEP?POWER_FIX
+    LENGTH:  000026H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_TRYGOTOVALIDMODERETURN?DEVCTRL
+    LENGTH:  000025H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BLUETOOTHSTATECTRL?BT
+    LENGTH:  000025H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?PLAYSTATESTOPOP?PLAYCTRL
+    LENGTH:  000023H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SYSTICKINIT?SYSCTRL
+    LENGTH:  000023H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SPIINIT?SPI_FLASH
+    LENGTH:  000023H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_TRYGOTOMODE?DEVCTRL
+    LENGTH:  000022H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?MUTESTATUSCHANGE?USER_INTERFACE
+    LENGTH:  00001FH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_I2C_SENDACK?I2C
+    LENGTH:  00001FH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_I2C_SENDNOACK?I2C
+    LENGTH:  00001FH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SPIFLASHSENDADDR?SPI_FLASH
+    LENGTH:  00001EH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SPIFLASHFILESEEK?SPI_FS
+    LENGTH:  00001EH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BLUETOTHCTRLEND?BT
+    LENGTH:  00001DH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SETRTCALARMVALID?RTC_FIX
+    LENGTH:  00001DH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?USB_IGNOREDEV?USER_INTERFACE
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?TRYGOTOBLUETOOTH?DEVCTRL
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?LINEINIODEINIT?LINEIN_CTRL
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?PLAYVOL2DECD?PLAYCTRL
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SETOUTPUTSCL?I2C
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SETINPUTSDA?I2C
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SETOUTPUTSDA?I2C
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_MVFM_MUTE?MV_FM
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?GETDP?OTG_DETECT
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?GETDM?OTG_DETECT
+    LENGTH:  00001CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?LINEINCTRLINIT?LINEIN_CTRL
+    LENGTH:  00001BH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_INDACSETVMID?DAC_AUDIO
+    LENGTH:  00001BH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_INDACVCOMSET?DAC
+    LENGTH:  00001AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?ISRADIOLINK?DEVICE
+    LENGTH:  00001AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?KEYSCANINIT?KEY
+    LENGTH:  00001AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?MVFM_READID?MV_FM
+    LENGTH:  00001AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SPIFILEEOF?SPI_PLAY
+    LENGTH:  00001AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_WRITENVMREG?NVM_LIB
+    LENGTH:  00001AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_READNVMREG?NVM_LIB
+    LENGTH:  00001AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?CLRWAKEUPLPRTCINPD?POWER_FIX
+    LENGTH:  000018H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_TRYGOTOVALIDMODE?DEVCTRL
+    LENGTH:  000017H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_RADIOMUTE?RADIO_APP_INTERFACE
+    LENGTH:  000017H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?ISENABLE_DPPU_1K?OTG_DETECT
+    LENGTH:  000017H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_BUFFERCONVERT?FILE_DEC_ASM
+    LENGTH:  000016H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?FILEEOF_INS?FS_FIX
+    LENGTH:  000016H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SETWAKEUPLPRTCINPD?POWER_FIX
+    LENGTH:  000016H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SYSCLKDIVCLR?CLK_IF
+    LENGTH:  000015H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?PLAYEQ2DECD?PLAYCTRL
+    LENGTH:  000015H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SETSCL?I2C
+    LENGTH:  000015H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_CLRSCL?I2C
+    LENGTH:  000015H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SETSDA?I2C
+    LENGTH:  000015H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_CLRSDA?I2C
+    LENGTH:  000015H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?GETKEYEVENTA?KEY
+    LENGTH:  000014H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?CLOCKSWITCHTORC?CLK_SWITCH
+    LENGTH:  000013H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?ENABLE_DPPU_1K?OTG_DETECT
+    LENGTH:  000013H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISABLE_DPPU_1K?OTG_DETECT
+    LENGTH:  000013H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?ENABLE_PD_15K?OTG_DETECT
+    LENGTH:  000013H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISABLE_PD_15K?OTG_DETECT
+    LENGTH:  000013H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?MVFM_VOLUMESET?MV_FM
+    LENGTH:  000012H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?TIMERTICK1MS_INS?REP_FUNCTIONS
+    LENGTH:  000012H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_OTPFILEREAD?OTP_FS_DEF
+    LENGTH:  000012H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BTISMUTE?USER_INTERFACE
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BTISMUTE?DEVCTRL
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BTISMUTE?SYSCTRL
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?ISBPVALID?BREAKPOINT
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BTISMUTE?KEY
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_GETSDA?I2C
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_RADIORSSIREAD?RADIO_APP_INTERFACE
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BTISMUTE?SPI_PLAY
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BTISMUTE?BT
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BLUETOOTH_BLUELED?BT
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BLUETOOTH_REDLED?BT
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BTISMUTE?BLUETOOTH_CMD
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BTISMUTE?SLAVE_CMD
+    LENGTH:  000011H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPMUTE?DISPLAY
+    LENGTH:  000010H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPDEVSYMBOL?DISPLAY
+    LENGTH:  000010H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPDEV?DISPLAY
+    LENGTH:  000010H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPLAY?DISPLAY
+    LENGTH:  000010H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?MVFM_POWERON?MV_FM
+    LENGTH:  000010H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?HOSTINIT?OTG_HOST_FIX
+    LENGTH:  000010H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?MESSAGEINIT?MESSAGE
+    LENGTH:  00000FH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?RADIOPOWERON?RADIO_APP_INTERFACE
+    LENGTH:  00000FH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?RADIOPOWERDOWN?RADIO_APP_INTERFACE
+    LENGTH:  00000FH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?HALFSECSTATUS?REP_FUNCTIONS
+    LENGTH:  00000FH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?RADIOWRITEDATA?RADIO_APP_INTERFACE
+    LENGTH:  00000EH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?MVFM_POWERDOWN?MV_FM
+    LENGTH:  00000EH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?FSINFOINIT?FS_INFO_DEF
+    LENGTH:  00000EH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SYSTEMOFF?SYS_ON_OFF
+    LENGTH:  00000DH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SLEDDEINIT?SLED_DISP
+    LENGTH:  00000DH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?MVFM_INIT?MV_FM
+    LENGTH:  00000DH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?GOTOPDMODE?POWER_FIX
+    LENGTH:  00000DH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_TIMERCOUNTSET?TIMER_FIX
+    LENGTH:  00000CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SETLINEINVOLUME?LINEIN_CTRL
+    LENGTH:  00000CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_RADIOSETVOLUME?RADIO_APP_INTERFACE
+    LENGTH:  00000CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SPIFLASHSENDCMD?SPI_FLASH
+    LENGTH:  00000CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SPISONGPLAYSTOP?SPI_PLAY
+    LENGTH:  00000CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_SETBLUETOOTHVOLUME?BT
+    LENGTH:  00000CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?INITLIBARY?INCLUDE_TABLES
+    LENGTH:  00000CH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SONGPLAYTIMESTART?PLAYCTRL
+    LENGTH:  00000BH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SONGPLAYTIMEPAUSE?PLAYCTRL
+    LENGTH:  00000BH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SONGPLAYTIMERESUME?PLAYCTRL
+    LENGTH:  00000BH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?POWERKEYSCANINIT?POWER_KEY
+    LENGTH:  00000BH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SPIFLASHFILEREWIND?SPI_FS
+    LENGTH:  00000BH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_OTPFILEOPEN?OTP_FS_DEF
+    LENGTH:  00000BH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?NORMALSONGPLAYRESUME?SPI_PLAY
+    LENGTH:  00000AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?HOSTSTORINIT?OTG_HOST_FIX
+    LENGTH:  00000AH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?GETECOFLAG?ECO_FLAG
+    LENGTH:  000009H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPPLAYSTATE?DISPLAY
+    LENGTH:  000009H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?IGNOREUSBDEV_INS?REP_FUNCTIONS
+    LENGTH:  000009H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?FILEGETTYPE_INS?FS_FIX
+    LENGTH:  000009H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?CO?PARTITION
+    LENGTH:  000009H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?ISENABLE_PD_15K?OTG_DETECT
+    LENGTH:  000008H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?SYSTEMPOWERONSOUND?DEVCTRL
+    LENGTH:  000007H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?EXINT1INIT?INTERRUPT
+    LENGTH:  000007H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?PLAYCTRLEND?PLAYCTRL
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BP_GETSYSTEMMODE?BREAKPOINT
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?GETADCKEYINDEX?ADC_KEY
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_DISPREPEAT?DISPLAY
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_DISPEQ?DISPLAY
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_GDBYTEPROGRAM?SPI_FLASH
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?GETSPIPLAY?SPI_PLAY
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?GETBTMUTEFLAG?BT
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?ROMACCESSBUGFIX?INIT_VARIABLE_ROM
+    LENGTH:  000006H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?OTPFILEEOF?OTP_FS_DEF
+    LENGTH:  000003H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?QUICKRESPONSE?QUICK_RESP_DEF
+    LENGTH:  000003H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?_DISPPLAYTIME?DISPLAY
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPRESUME?DISPLAY
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPLOAD?DISPLAY
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPAUDIO?DISPLAY
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?DISPPOWERON?DISPLAY
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?BASSLED_CALLBAK?SLED_DISP
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?RADIOCTRLINIT?RADIO_CTRL
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?RADIODISBLINK?RADIO_CTRL
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CODE
+    SEGMENT: ?PR?OTPFILEREWIND?OTP_FS_DEF
+    LENGTH:  000001H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CONST
+    SEGMENT: ?CO?PLAYCTRL
+    LENGTH:  0000B0H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CONST
+    SEGMENT: ?CO?LINEIN_CTRL
+    LENGTH:  000021H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CONST
+    SEGMENT: ?CO?RADIO_APP_INTERFACE
+    LENGTH:  000021H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CONST
+    SEGMENT: ?CO?BT
+    LENGTH:  000021H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CONST
+    SEGMENT: ?CO?ADC_KEY
+    LENGTH:  000019H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CONST
+    SEGMENT: ?CO?EQ
+    LENGTH:  00000DH   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CONST
+    SEGMENT: ?CO?GPIO_FIX
+    LENGTH:  000004H   
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   CONST
+    SEGMENT: ?CO?POWER_KEY
+    LENGTH:  000003H   
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?LINEIN_CTRL
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?PLAYCTRL
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?PR?_BUFFERCONVERT?FILE_DEC_ASM
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?ADC_KEY
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?POWER_KEY
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?RADIO_APP_INTERFACE
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?BT
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?EQ
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?PARTITION
+*** ERROR L120: CONTENT BELONGS TO ERRONEOUS SEGMENT
+    SEGMENT: ?CO?GPIO_FIX
+Program Size: data=13.0 xdata=2769 const=320 code=59705
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+compiling devctrl.c...
+compiling sysctrl.c...
+compiling key.c...
+compiling spi_play.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51753
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51722
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51703
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+LIB_IF\USER_INTERFACE.C(703): error C141: syntax error near 'else'
+compiling devctrl.c...
+compiling sysctrl.c...
+compiling key.c...
+compiling spi_play.c...
+compiling bt.c...
+compiling bluetooth_cmd.c...
+compiling slave_cmd.c...
+Target not created
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51803
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling user_interface.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51801
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling sled_disp.c...
+display\sled_disp.c(1390): warning C312: misplaced endif control
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51771
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 1 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling sled_disp.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51771
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling sled_disp.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51774
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling sled_disp.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51728
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling sled_disp.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51809
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling sled_disp.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51811
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling sled_disp.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51813
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 0 Warning(s).
+Build target 'MVs6210_R1_src'
+compiling power_monitor.c...
+compiling display.c...
+DISPLAY\DISPLAY.C(133): warning C280: 'IsStandBy': unreferenced local variable
+DISPLAY\DISPLAY.C(293): warning C280: 'IsForced': unreferenced local variable
+DISPLAY\DISPLAY.C(337): warning C280: 'IsForced': unreferenced local variable
+compiling seg_panel.c...
+compiling sled_disp.c...
+compiling bluetooth_ctrl.c...
+linking...
+Program Size: data=13.0 xdata=2769 const=320 code=51827
+creating hex file from ".\output\obj\..\MVs6210"...
+".\output\obj\..\MVs6210" - 0 Error(s), 3 Warning(s).

@@ -488,8 +488,8 @@ static BOOL TryGotoModeRADIO(VOID)
 	
 	GotoMode(SYS_MODE_RADIO);
 	
-#if 0//def FUNC_SPI_KEY_SOUND_EN	
-	SPI_PlaySelectNum(SPIPLAY_SONG_NEXT, 0);
+#ifdef FUNC_SPI_KEY_SOUND_EN	
+	SPI_PlaySelectNum(SPIPLAY_SONG_PLAY_FM, 0);
 #endif
  
 	RadioPowerOn();
@@ -1151,6 +1151,17 @@ static VOID TryGotoNextMode(BYTE Mode)
 			ModeIndex = 0;
 		} 		
 		
+#ifdef AU6210K_XLX_ALD800
+		if(ModeOrder[ModeIndex] == SYS_MODE_LINEIN)
+		{
+			if(TryGotoMode(SYS_MODE_BLUETOOTH))
+			{
+				return;
+			}
+		}
+			
+
+#endif
 		if(TryGotoMode(ModeOrder[ModeIndex]))
 		{
 			return;
@@ -1261,6 +1272,11 @@ VOID DevCtrlInit(VOID)
 	RadioPowerDown();
 #endif
 
+#ifdef FUNC_POWER_AMPLIFIER_EN
+		ABPowerAmplifierOn();	//在其它模式下选择AB 类功放
+#endif	
+
+
 	//等待300毫秒，第一次检测所有设备的连接状态
 	//消除系统复位后第一次的后插先播
 	TimeOutSet(&Timer, 300);
@@ -1336,7 +1352,7 @@ VOID DevCtrlInit(VOID)
        PT2313Init();
 #endif
 
-#if defined(AU6210K_NR_D_9X_XJ_HTS)
+#if 0//defined(AU6210K_NR_D_9X_XJ_HTS)
 	if (IsUsbLinkFlag == TRUE)
 	{
 		gSys.SystemMode = SYS_MODE_USB;
@@ -1352,22 +1368,28 @@ VOID DevCtrlInit(VOID)
 #endif
 
 #if defined(AU6210K_NR_D_8_CSRBT)|| defined(AU6210K_ZB_BT007_CSR)
+#ifdef FUNC_LINEIN_EN
 	if (IsLineInLinkFlag == TRUE)
 	{
 		gSys.SystemMode = SYS_MODE_LINEIN;
 	}
-	else if(IsCardLinkFlag == TRUE)
+	else 
+#endif
+
+#ifdef FUNC_CARD_EN
+	if(IsCardLinkFlag == TRUE)
 	{
 		gSys.SystemMode = SYS_MODE_SD;
 	}
 	else
+#endif
 	{
 		gSys.SystemMode = SYS_MODE_BLUETOOTH;
 	}
 #endif
 
 
-#if defined(AU6210K_HXX_B002)
+#if 0// defined(AU6210K_HXX_B002)
 	if (IsCardLinkFlag == TRUE)
 	{
 		gSys.SystemMode = SYS_MODE_SD;
@@ -1420,7 +1442,7 @@ VOID DevStateCtrl(VOID)
 	Event = MessageGet(MSG_FIFO_DEV_CTRL);	 
 //	DBG(("DevStateCtrl\nevent:%bx\n", Event));
 //DBG1(("vol = %x\n",gSys.Volume));
-#ifdef AU6210K_NR_D_8_CSRBT
+#if 0//def AU6210K_NR_D_8_CSRBT
 #if defined(FUNC_NPCA110X_EN) 
 	if(Event == MSG_DEFAULT)
 	{
@@ -1718,7 +1740,7 @@ VOID DevStateCtrl(VOID)
 			if(!IsLineInLink())		//line-in removed
 			{
 				DBG(("line-in removed!\n"));
-				TryGotoValidMode(SYS_MODE_USB);
+				TryGotoValidMode(SYS_MODE_BLUETOOTH);
 			}
 			break;
 #endif

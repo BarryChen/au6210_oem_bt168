@@ -61,33 +61,33 @@
 
 #ifdef MCUIO_PORT
 #define MCUIO_PORT_red_LED_INIT()/*D1*/	do{ \	
-	SetGpioRegBit(GPIO_D_PU, (1 << 1));\
-	ClrGpioRegBit(GPIO_D_PD, (1 << 1));	\
-	ClrGpioRegBit(GPIO_D_OE, (1 << 1));\
-	SetGpioRegBit(GPIO_D_OUT, (1 << 1));\
-	ClrGpioRegBit(GPIO_D_IE, (1 << 1));\
+	SetGpioRegBit(GPIO_B_PU, (1 << 5));\
+	ClrGpioRegBit(GPIO_B_PD, (1 << 5));	\
+	ClrGpioRegBit(GPIO_B_OE, (1 << 5));\
+	SetGpioRegBit(GPIO_B_OUT, (1 << 5));\
+	ClrGpioRegBit(GPIO_B_IE, (1 << 5));\
 	}while(0)
 #define SET_MCU_red_LED_PORT()/*D1*/	do{ \	
-	SetGpioRegBit(GPIO_D_OUT, (1 << 1)); \
+	SetGpioRegBit(GPIO_B_OUT, (1 << 5)); \
 	}while(0)
 
 #define CLR_MCU_red_LED_PORT()/*D1*/	do{ \	
-	ClrGpioRegBit(GPIO_D_OUT, (1 << 1)); \
+	ClrGpioRegBit(GPIO_B_OUT, (1 << 5)); \
 	}while(0)
 	
 
 #define MCUIO_PORT_blue_LED_INIT()/*D1*/	do{ \	
-	SetGpioRegBit(GPIO_D_PU, (1 << 1));\
-	ClrGpioRegBit(GPIO_D_PD, (1 << 1));	\
-	ClrGpioRegBit(GPIO_D_OE, (1 << 1));\
-	SetGpioRegBit(GPIO_D_OUT, (1 << 1));\
-	ClrGpioRegBit(GPIO_D_IE, (1 << 1));\
+	SetGpioRegBit(GPIO_A_PU, (1 << 0));\
+	ClrGpioRegBit(GPIO_A_PD, (1 << 0));	\
+	ClrGpioRegBit(GPIO_A_OE, (1 << 0));\
+	SetGpioRegBit(GPIO_A_OUT, (1 << 0));\
+	ClrGpioRegBit(GPIO_A_IE, (1 << 0));\
 	}while(0)
 #define SET_MCU_blue_LED_PORT()/*D1*/	do{ \	
-	SetGpioRegBit(GPIO_D_OUT, (1 << 1));\
+	SetGpioRegBit(GPIO_A_OUT, (1 << 0));\
 	}while(0)
 #define CLR_MCU_blue_LED_PORT()/*D1*/	do{ \	
-	ClrGpioRegBit(GPIO_D_OUT, (1 << 1));\
+	ClrGpioRegBit(GPIO_A_OUT, (1 << 0));\
 	}while(0)
 
 
@@ -126,7 +126,7 @@
 //mute设置
 //////////////////////////////////////////////////////////////////////
 
-#ifdef AU6210K_LK_SJ_CSRBT
+#if 0//def AU6210K_LK_SJ_CSRBT
 
 #define BTIO_PORT_MUTE_INIT()/*B6*/	do{ \	
 	SetGpioRegBit(GPIO_A_PU, (1 << 7));\
@@ -141,18 +141,23 @@
 #elif defined(AU6210K_ZB_BT007_CSR) 
 
 #define BTIO_PORT_MUTE_INIT()/*a7*/	do{ \	
-	SetGpioRegBit(GPIO_A_IE, (1 << 7));\
-	ClrGpioRegBit(GPIO_A_OE, (1 << 7));\
-	SetGpioRegBit(GPIO_A_PU, (1 << 7));\
-	SetGpioRegBit(GPIO_A_PD, (1 << 7));	\
+	SetGpioRegBit(GPIO_B_IE, (1 << 6));\
+	ClrGpioRegBit(GPIO_B_OE, (1 << 6));\
+	SetGpioRegBit(GPIO_B_PU, (1 << 6));\
+	SetGpioRegBit(GPIO_B_PD, (1 << 6));	\
 	}while(0)
 #define GET_BT_MUTE_STATUS()/*a7*/	\	
-	GetGpioReg(GPIO_A_IN) & (1 << 7)
+	GetGpioReg(GPIO_B_IN) & (1 << 6)
 
 #define btIO_Mute_Need_mute() \
 	GET_BT_MUTE_STATUS()
+
+
+
+
 		
 #else //纳瑞csr+6210k+dsp/pt2313 D8案子是用B5 ,而B6做电压检测了
+#if 0
 #define BTIO_PORT_MUTE_INIT()/*B5*/	do{ \	
 	ClrGpioRegBit(GPIO_B_PU, (1 << 5));\
 	ClrGpioRegBit(GPIO_B_PD, (1 << 5));	\
@@ -161,6 +166,7 @@
 	}while(0)
 #define GET_BT_MUTE_STATUS()/*B5*/	\	
 	GetGpioReg(GPIO_B_IN) & (1 << 5)
+#endif
 #endif
 	
 VOID LineInCtrlInit(VOID);

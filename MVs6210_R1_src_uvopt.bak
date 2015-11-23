@@ -534,8 +534,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>172</TopLine>
-      <CurrentLine>175</CurrentLine>
+      <TopLine>20</TopLine>
+      <CurrentLine>22</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\system\sys_on_off.c</PathWithFileName>
       <FilenameWithoutPath>sys_on_off.c</FilenameWithoutPath>

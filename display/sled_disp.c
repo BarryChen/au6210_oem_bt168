@@ -55,7 +55,10 @@ VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
 #if defined(FUNC_SINGLE_LED_HIGHON_EN)
 			SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
 #else
-			ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+			if(gSys.SystemMode == SYS_MODE_BLUETOOTH)
+				ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+			else
+				SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
 #endif
 		}
 		else
@@ -204,7 +207,7 @@ VOID SLedInit(VOID)
 	SetGpioRegBit(SLED_PORT_OE, MASK_SLED_POWER);		// Output Enable. // D[2:7]
 	SetGpioRegBit(SLED_PORT_OUT, MASK_SLED_POWER);		// Output 0
 #else
-#if defined(AU6210K_ZB_BT007_CSR)
+#if 0//defined(AU6210K_ZB_BT007_CSR)
 	ClrGpioRegBit(SLED_PORT_PU, MASK_SLED_POWER);		// Pull-Down.
 	ClrGpioRegBit(SLED_PORT_PD, MASK_SLED_POWER);		// Pull-Down.
 	ClrGpioRegBit(SLED_PORT_IE, MASK_SLED_POWER);		// Input Disable
@@ -299,11 +302,13 @@ VOID SLedDeinit(VOID)
 #ifdef AU6210K_NR_D_8_CSRBT
 	ClrGpioRegBit(GPIO_D_OUT, (1<<1));		// Output 0
 #endif
+/*
 	baGPIOCtrl[GPIO_A_IE] |= 0x40;//A2
 	baGPIOCtrl[GPIO_A_OE] &= ~0x40;
 	baGPIOCtrl[GPIO_A_PU] |= 0x40;
 	baGPIOCtrl[GPIO_A_PD] |= 0x40; 
 	WaitUs(20);
+*/
 
 }
 
@@ -737,7 +742,7 @@ VOID SLedDispLineIn(VOID)//linein playing led show
 
 
 #ifdef SLED_MP3_EN
-#if defined(AU6210K_LK_SJ_CSRBT)
+#if 1//defined(AU6210K_LK_SJ_CSRBT)
 		SLedLightOp(LED_MP3, LIGHTON);
 #else
 		SLedLightOp(LED_MP3, LIGHTOFF);
@@ -804,7 +809,7 @@ VOID SLedDispRadio(VOID)
 	if(gRadioCtrl.State == RADIO_INIT)
 	{
 		gBlink.BlinkFlag = 0;
-		SLedLightOp(LED_POWER, LIGHTON);
+		SLedLightOp(LED_MP3, LIGHTON);
 #ifdef SLED_RAD_EN
 		SLedLightOp(LED_RADIO, LIGHTON);
 #endif
@@ -815,7 +820,7 @@ VOID SLedDispRadio(VOID)
 		gBlink.BlinkFlag = 0;		
 		if(gSys.MuteFg == TRUE)
 		{
-			SLedLightOp(LED_POWER, LIGHTOFF);
+			SLedLightOp(LED_MP3, LIGHTOFF);
 #ifdef SLED_RAD_EN
 			SLedLightOp(LED_RADIO, LIGHTOFF);
 #endif
@@ -825,7 +830,7 @@ VOID SLedDispRadio(VOID)
 		}
 		else
 		{
-			SLedLightOp(LED_POWER, LIGHTON);
+			SLedLightOp(LED_MP3, LIGHTON);
 #ifdef SLED_RAD_EN
 			SLedLightOp(LED_RADIO, LIGHTON);
 #endif
@@ -838,12 +843,12 @@ VOID SLedDispRadio(VOID)
 		if(RadioDisFlag == RadioDisCurChAutoscan)
 		{			
 			gBlink.BlinkFlag = 0;
-			SLedLightOp(LED_POWER, LIGHTON);
+			SLedLightOp(LED_MP3, LIGHTON);
 			return;
 		}
 #endif
 		
-		SLedLightOp(LED_POWER, LIGHTOFF);
+		SLedLightOp(LED_MP3, LIGHTOFF);
 #ifdef SLED_RAD_EN
 		SLedLightOp(LED_RADIO, LIGHTOFF);
 #endif
@@ -1091,7 +1096,7 @@ VOID BassLed_CallBak(VOID)
 VOID SLedDisplay(VOID)
 {
 	BOOL Light;
-#if defined(AU6210K_NR_D_8_CSRBT)
+#if 0//defined(AU6210K_NR_D_8_CSRBT)
 #ifdef FUNC_POWER_MONITOR_EN
 	if(GetPwrDisp() == PWR_MNT_DISP_EMPTY_V)
 	{
@@ -1220,7 +1225,7 @@ VOID SLedDisplay(VOID)
 	
 #ifdef FUNC_RADIO_EN
 			case SYS_MODE_RADIO:
-				SLedLightOp(LED_POWER, Light);
+				SLedLightOp(LED_POWER, FALSE);
 #ifdef SLED_MP3_EN
 				SLedLightOp(LED_MP3, Light);
 #endif

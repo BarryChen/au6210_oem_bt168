@@ -613,6 +613,7 @@ BOOL QuickResponse(VOID)
 
 
 
+extern BOOL BTisMute();
 //----------------------------------------------------------
 // 如果用户需要在1ms系统时基上做处理，要在应用代码上重写TimerTick1ms()函数
 extern BOOL gIsNvmOnUse;
@@ -674,22 +675,33 @@ VOID TimerTick1ms(VOID)
 		}
 	}
 #endif
-	if(btIO_Red_Led_is_High())
-		setMCU_Red__Led_Port();
-	else
-		clrMCU_Red__Led_Port();
+#if 1
 
-	if(btIO_Blue_Led_is_High())
-		setMCU_Blue__Led_Port();
-	else
-		clrMCU_Blue__Led_Port();
+	if(gSys.SystemMode == SYS_MODE_BLUETOOTH)
+	{
+		if(btIO_Red_Led_is_High())
+		{
+			setMCU_Red__Led_Port();
+		}
+		else
+		{
+			clrMCU_Red__Led_Port();
+		}
 
-	if(btIO_Mute_Need_mute())
-		//mute
-		MuteOn(FALSE, TRUE);    
-	else
-		//unmute
-		UnMute();
+		if(btIO_Blue_Led_is_High())
+			setMCU_Blue__Led_Port();
+		else
+			clrMCU_Blue__Led_Port();
+
+		if(BTisMute())		
+			//mute		
+			ExMuteOn();	 
+		else
+			//unmute
+			ExMuteOff();
+	}
+	
+#endif
 	// To do...
 }
 

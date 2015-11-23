@@ -96,8 +96,8 @@ VOID BluetoothCtrlInit(VOID)
 	//与CSR连接的IO口初始化
 	BTIO_PORT_BLUE_LED_INIT();
 	BTIO_PORT_RED_LED_INIT();
-	MCUIO_PORT_red_LED_INIT();
-	MCUIO_PORT_blue_LED_INIT();
+	//MCUIO_PORT_red_LED_INIT();//开机的时候初始化了灯的状态，此处不要再设置
+	//MCUIO_PORT_blue_LED_INIT();
 
 
 	
@@ -213,6 +213,7 @@ BOOL BTisMute()
 		return TRUE;
 
 }
+
 BOOL GetBtMuteFlag(void)
 {
 	return BtMuteFlag;
@@ -244,11 +245,10 @@ VOID BluetoothStateCtrl(VOID)
 		UnMute();
 		#endif
 	}*/
-#if defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
+#if 0//defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
 //DBG1(("BtMuteFlag = %x\n",BtMuteFlag));
 
-#else
-    if (Bluetooth_BlueLED())
+if (Bluetooth_BlueLED())
 	{
 		LED_BLUE_H();
 	}
@@ -261,7 +261,10 @@ VOID BluetoothStateCtrl(VOID)
 	}
 	else
 		LED_RED_L();*/
-#endif	
+
+#else
+
+//mute检测循环检测的方法，用定时器此处不要
 #if defined(AU6210K_ZB_BT007_CSR)|| defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)
 
 //#if defiend(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) || defiend(AU6210K_ZB_BT007_CSR)
@@ -293,13 +296,15 @@ VOID BluetoothStateCtrl(VOID)
 #endif
 #endif			
 	}
-#endif
+	
 	if(BtMuteFlag)
 		ExMuteOn();
 	else
 	{
-		UnMute();
+		ExMuteOff();
 	}
+#endif
+
 
 
 #if defined(AU6210K_ZB_BT007_CSR)
@@ -338,6 +343,7 @@ VOID BluetoothStateCtrl(VOID)
 	}
 #endif	
 
+#endif	
 
 	Event = MessageGet(MSG_FIFO_KEY);
     switch(Event)

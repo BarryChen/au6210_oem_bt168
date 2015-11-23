@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 1   
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SLED_DISP
 OBJECT MODULE PLACED IN .\output\obj\sled_disp.obj
-COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE display\sled_disp.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\c
+COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE display\sled_disp.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\c
                     -onfig;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\bl
                     -uetooth;.\i2c) DEBUG PRINT(.\output\lst\sled_disp.lst) OBJECT(.\output\obj\sled_disp.obj)
 
@@ -62,48 +62,51 @@ line level    source
   51   1              {
   52   2                      if(IsLightOn)
   53   2                      {
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 2   
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 2   
 
   54   3                              //DBG(("SLED_POWER ON\n"));
   55   3      #if defined(FUNC_SINGLE_LED_HIGHON_EN)
                                       SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
               #else
-  58   3                              ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
-  59   3      #endif
-  60   3                      }
-  61   2                      else
-  62   2                      {
-  63   3                              //DBG(("SLED_POWER OFF\n"));
-  64   3      #if defined(FUNC_SINGLE_LED_HIGHON_EN)
+  58   3                              if(gSys.SystemMode == SYS_MODE_BLUETOOTH)
+  59   3                                      ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+  60   3                              else
+  61   3                                      SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+  62   3      #endif
+  63   3                      }
+  64   2                      else
+  65   2                      {
+  66   3                              //DBG(("SLED_POWER OFF\n"));
+  67   3      #if defined(FUNC_SINGLE_LED_HIGHON_EN)
                                       ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
               #else
-  67   3                              SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
-  68   3      #endif
-  69   3                      }
-  70   2                      
-  71   2      #ifdef  FUNC_GPIO_KEY_EN
+  70   3                              SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+  71   3      #endif
+  72   3                      }
+  73   2                      
+  74   2      #ifdef  FUNC_GPIO_KEY_EN
               //              SLedOnOffFlag = IsLightOn;                      
               #endif
-  74   2              }
-  75   1      
-  76   1      #ifdef SLED_MP3_EN
-  77   1              if(Led == LED_MP3)
-  78   1              {
-  79   2                      DBG(("SLED_MP3 "));
-  80   2                      if(IsLightOn)
-  81   2                      {
-  82   3                              DBG(("ON\n"));
-  83   3                              ClrGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
-  84   3                      }
-  85   2                      else
-  86   2                      {
-  87   3                              DBG(("OFF\n"));
-  88   3                              SetGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
-  89   3                      }
-  90   2              }
-  91   1      #endif
-  92   1      
-  93   1      #ifdef SLED_USB_EN
+  77   2              }
+  78   1      
+  79   1      #ifdef SLED_MP3_EN
+  80   1              if(Led == LED_MP3)
+  81   1              {
+  82   2                      DBG(("SLED_MP3 "));
+  83   2                      if(IsLightOn)
+  84   2                      {
+  85   3                              DBG(("ON\n"));
+  86   3                              ClrGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
+  87   3                      }
+  88   2                      else
+  89   2                      {
+  90   3                              DBG(("OFF\n"));
+  91   3                              SetGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
+  92   3                      }
+  93   2              }
+  94   1      #endif
+  95   1      
+  96   1      #ifdef SLED_USB_EN
                       if(Led == LED_USB)
                       {
                               DBG(("SLED_USB "));
@@ -119,15 +122,15 @@ line level    source
                               }
                       }
               #endif
- 109   1      
- 110   1      #ifdef SLED_SD_EN
+ 112   1      
+ 113   1      #ifdef SLED_SD_EN
                       if(Led == LED_SD)
                       {
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 3   
+
                               DBG(("SLED_SD "));
                               if(IsLightOn)
                               {
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 3   
-
                                       DBG(("ON\n"));
                                       ClrGpioRegBit(SLED_SD_PORT, MASK_SLED_SD);
                               }
@@ -138,8 +141,8 @@ line level    source
                               }
                       }
               #endif
- 126   1      
- 127   1      #ifdef SLED_AUX_EN
+ 129   1      
+ 130   1      #ifdef SLED_AUX_EN
                       if(Led == LED_AUX)
                       {
                               DBG(("SLED_AUX "));
@@ -155,8 +158,8 @@ line level    source
                               }
                       }
               #endif
- 143   1      
- 144   1      #ifdef SLED_RAD_EN
+ 146   1      
+ 147   1      #ifdef SLED_RAD_EN
                       if(Led == LED_RADIO)
                       {
                               DBG(("SLED_RADIO "));
@@ -172,8 +175,8 @@ line level    source
                               }
                       }
               #endif
- 160   1      
- 161   1      #ifdef SLED_REP_EN
+ 163   1      
+ 164   1      #ifdef SLED_REP_EN
                       if(Led == LED_REPEAT)
                       {
                               DBG(("SLED_REPEAT "));
@@ -187,12 +190,12 @@ line level    source
                                       DBG(("OFF\n"));
                                       SetGpioRegBit(SLED_REPEAT_PORT, MASK_SLED_REPEAT);
                               }
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 4   
+
                       }
               #endif
- 177   1      
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 4   
-
- 178   1      #ifdef SLED_AUD_EN
+ 180   1      
+ 181   1      #ifdef SLED_AUD_EN
                       if(Led == LED_AUDIO)
                       {
                               DBG(("SLED_AUDIO "));
@@ -208,57 +211,57 @@ line level    source
                               }
                       }
               #endif          
- 194   1      }
- 195          
- 196          
- 197          // 初始化.
- 198          VOID SLedInit(VOID)
- 199          {       
- 200   1      #if defined(FUNC_SINGLE_LED_HIGHON_EN)
+ 197   1      }
+ 198          
+ 199          
+ 200          // 初始化.
+ 201          VOID SLedInit(VOID)
+ 202          {       
+ 203   1      #if defined(FUNC_SINGLE_LED_HIGHON_EN)
                       ClrGpioRegBit(SLED_PORT_PU, MASK_SLED_POWER);           // Pull-Down.
                       ClrGpioRegBit(SLED_PORT_PD, MASK_SLED_POWER);           // Pull-Down.
                       ClrGpioRegBit(SLED_PORT_IE, MASK_SLED_POWER);           // Input Disable
                       SetGpioRegBit(SLED_PORT_OE, MASK_SLED_POWER);           // Output Enable. // D[2:7]
                       SetGpioRegBit(SLED_PORT_OUT, MASK_SLED_POWER);          // Output 0
               #else
- 207   1      #if defined(AU6210K_ZB_BT007_CSR)
- 208   1              ClrGpioRegBit(SLED_PORT_PU, MASK_SLED_POWER);           // Pull-Down.
- 209   1              ClrGpioRegBit(SLED_PORT_PD, MASK_SLED_POWER);           // Pull-Down.
- 210   1              ClrGpioRegBit(SLED_PORT_IE, MASK_SLED_POWER);           // Input Disable
- 211   1              SetGpioRegBit(SLED_PORT_OE, MASK_SLED_POWER);           // Output Enable. // D[2:7]
- 212   1              SetGpioRegBit(SLED_PORT_OUT, MASK_SLED_POWER);          // Output 0
- 213   1      #else
-                      SetGpioRegBit(SLED_PORT_PU, MASK_SLED_POWER);           // Pull-Down.
-                      SetGpioRegBit(SLED_PORT_PD, MASK_SLED_POWER);           // Pull-Down.
+ 210   1      #if 0//defined(AU6210K_ZB_BT007_CSR)
+                      ClrGpioRegBit(SLED_PORT_PU, MASK_SLED_POWER);           // Pull-Down.
+                      ClrGpioRegBit(SLED_PORT_PD, MASK_SLED_POWER);           // Pull-Down.
                       ClrGpioRegBit(SLED_PORT_IE, MASK_SLED_POWER);           // Input Disable
                       SetGpioRegBit(SLED_PORT_OE, MASK_SLED_POWER);           // Output Enable. // D[2:7]
-                      ClrGpioRegBit(SLED_PORT_OUT, MASK_SLED_POWER);          // Output 0
-              #endif  
- 220   1      #endif
- 221   1      
- 222   1              //SetGpioRegBit(SLED_PORT_DS, MASK_ALLSLED);
- 223   1      #if defined(AU6210K_LK_SJ_CSRBT)||defined(AU6210K_ZB_BT007_CSR)
- 224   1      #ifdef SLED_MP3_EN
- 225   1      #if defined(FUNC_SINGLE_LED_HIGHON_EN)
+                      SetGpioRegBit(SLED_PORT_OUT, MASK_SLED_POWER);          // Output 0
+              #else
+ 217   1              SetGpioRegBit(SLED_PORT_PU, MASK_SLED_POWER);           // Pull-Down.
+ 218   1              SetGpioRegBit(SLED_PORT_PD, MASK_SLED_POWER);           // Pull-Down.
+ 219   1              ClrGpioRegBit(SLED_PORT_IE, MASK_SLED_POWER);           // Input Disable
+ 220   1              SetGpioRegBit(SLED_PORT_OE, MASK_SLED_POWER);           // Output Enable. // D[2:7]
+ 221   1              ClrGpioRegBit(SLED_PORT_OUT, MASK_SLED_POWER);          // Output 0
+ 222   1      #endif  
+ 223   1      #endif
+ 224   1      
+ 225   1              //SetGpioRegBit(SLED_PORT_DS, MASK_ALLSLED);
+ 226   1      #if defined(AU6210K_LK_SJ_CSRBT)||defined(AU6210K_ZB_BT007_CSR)
+ 227   1      #ifdef SLED_MP3_EN
+ 228   1      #if defined(FUNC_SINGLE_LED_HIGHON_EN)
                       ClrGpioRegBit(SLED_MP3_PU, MASK_SLED_MP3);              // Pull-Down.
                       ClrGpioRegBit(SLED_MP3_PD, MASK_SLED_MP3);              // Pull-Down.
                       ClrGpioRegBit(SLED_MP3_IE, MASK_SLED_MP3);              // Input Disable
                       SetGpioRegBit(SLED_MP3_OE, MASK_SLED_MP3);              // Output Enable. // D[2:7]
                       SetGpioRegBit(SLED_MP3_OUT, MASK_SLED_MP3);             // Output 0
               #else
- 232   1              SetGpioRegBit(SLED_MP3_PU, MASK_SLED_MP3);              // Pull-Down.
- 233   1              SetGpioRegBit(SLED_MP3_PD, MASK_SLED_MP3);              // Pull-Down.
- 234   1              ClrGpioRegBit(SLED_MP3_IE, MASK_SLED_MP3);              // Input Disable
- 235   1              SetGpioRegBit(SLED_MP3_OE, MASK_SLED_MP3);              // Output Enable. // D[2:7]
- 236   1              ClrGpioRegBit(SLED_MP3_OUT, MASK_SLED_MP3);             // Output 0
- 237   1      #endif  
- 238   1      
- 239   1      #endif
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 5   
+ 235   1              SetGpioRegBit(SLED_MP3_PU, MASK_SLED_MP3);              // Pull-Down.
+ 236   1              SetGpioRegBit(SLED_MP3_PD, MASK_SLED_MP3);              // Pull-Down.
+ 237   1              ClrGpioRegBit(SLED_MP3_IE, MASK_SLED_MP3);              // Input Disable
+ 238   1              SetGpioRegBit(SLED_MP3_OE, MASK_SLED_MP3);              // Output Enable. // D[2:7]
+ 239   1              ClrGpioRegBit(SLED_MP3_OUT, MASK_SLED_MP3);             // Output 0
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 5   
 
- 240   1      #endif
+ 240   1      #endif  
  241   1      
- 242   1      #ifdef AU6210K_NR_D_8_CSRBT
+ 242   1      #endif
+ 243   1      #endif
+ 244   1      
+ 245   1      #ifdef AU6210K_NR_D_8_CSRBT
                       SetGpioRegBit(GPIO_D_PU, (1<<1));               // Pull-Down.
                       SetGpioRegBit(GPIO_D_PD, (1<<1));               // Pull-Down.
                       ClrGpioRegBit(GPIO_D_IE, (1<<1));               // Input Disable
@@ -266,75 +269,77 @@ line level    source
                       ClrGpioRegBit(GPIO_D_OUT, (1<<1));              // Output 0
               
               #endif
- 250   1      //      
- 251   1      
- 252   1      //      #ifdef SLED_USB_EN
  253   1      //      
- 254   1      //      #endif
- 255   1      //      #ifdef SLED_SD_EN
+ 254   1      
+ 255   1      //      #ifdef SLED_USB_EN
  256   1      //      
  257   1      //      #endif
- 258   1      //      #ifdef SLED_AUX_EN
+ 258   1      //      #ifdef SLED_SD_EN
  259   1      //      
  260   1      //      #endif
- 261   1      //      #ifdef SLED_RAD_EN
+ 261   1      //      #ifdef SLED_AUX_EN
  262   1      //      
  263   1      //      #endif
- 264   1      //      #ifdef SLED_REP_EN
+ 264   1      //      #ifdef SLED_RAD_EN
  265   1      //      
  266   1      //      #endif
- 267   1      //      #ifdef SLED_AUD_EN
+ 267   1      //      #ifdef SLED_REP_EN
  268   1      //      
  269   1      //      #endif
- 270   1      }
- 271          
- 272          
- 273          // 反初始化.
- 274          VOID SLedDeinit(VOID)
- 275          {       
- 276   1              SLedLightOp(LED_POWER, LIGHTOFF);
- 277   1      #ifdef SLED_MP3_EN
- 278   1              SLedLightOp(LED_MP3, LIGHTOFF);
- 279   1      #endif
- 280   1      
- 281   1      #ifdef SLED_USB_EN
+ 270   1      //      #ifdef SLED_AUD_EN
+ 271   1      //      
+ 272   1      //      #endif
+ 273   1      }
+ 274          
+ 275          
+ 276          // 反初始化.
+ 277          VOID SLedDeinit(VOID)
+ 278          {       
+ 279   1              SLedLightOp(LED_POWER, LIGHTOFF);
+ 280   1      #ifdef SLED_MP3_EN
+ 281   1              SLedLightOp(LED_MP3, LIGHTOFF);
+ 282   1      #endif
+ 283   1      
+ 284   1      #ifdef SLED_USB_EN
                       SLedLightOp(LED_USB, LIGHTOFF);
               #endif
- 284   1      #ifdef SLED_SD_EN
+ 287   1      #ifdef SLED_SD_EN
                       SLedLightOp(LED_SD, LIGHTOFF);
               #endif
- 287   1      
- 288   1      #ifdef SLED_AUX_EN
+ 290   1      
+ 291   1      #ifdef SLED_AUX_EN
                       SLedLightOp(LED_AUX, LIGHTOFF);
               #endif
- 291   1      
- 292   1      #ifdef SLED_RAD_EN
+ 294   1      
+ 295   1      #ifdef SLED_RAD_EN
                       SLedLightOp(LED_RADIO, LIGHTOFF);
               #endif
- 295   1      
- 296   1      #ifdef SLED_REP_EN
+ 298   1      
+ 299   1      #ifdef SLED_REP_EN
                       SLedLightOp(LED_REPEAT, LIGHTOFF);
               #endif
- 299   1      #ifdef AU6210K_NR_D_8_CSRBT
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 6   
+
+ 302   1      #ifdef AU6210K_NR_D_8_CSRBT
                       ClrGpioRegBit(GPIO_D_OUT, (1<<1));              // Output 0
               #endif
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 6   
-
- 302   1              baGPIOCtrl[GPIO_A_IE] |= 0x40;//A2
- 303   1              baGPIOCtrl[GPIO_A_OE] &= ~0x40;
- 304   1              baGPIOCtrl[GPIO_A_PU] |= 0x40;
- 305   1              baGPIOCtrl[GPIO_A_PD] |= 0x40; 
- 306   1              WaitUs(20);
- 307   1      
- 308   1      }
- 309          
- 310          
- 311          // 切换设备时调用.
- 312          VOID SLedDispDevSymbol(VOID)
- 313          {
- 314   1              switch(gSys.SystemMode)
- 315   1              {
- 316   2      #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
+ 305   1      /*
+ 306   1              baGPIOCtrl[GPIO_A_IE] |= 0x40;//A2
+ 307   1              baGPIOCtrl[GPIO_A_OE] &= ~0x40;
+ 308   1              baGPIOCtrl[GPIO_A_PU] |= 0x40;
+ 309   1              baGPIOCtrl[GPIO_A_PD] |= 0x40; 
+ 310   1              WaitUs(20);
+ 311   1      */
+ 312   1      
+ 313   1      }
+ 314          
+ 315          
+ 316          // 切换设备时调用.
+ 317          VOID SLedDispDevSymbol(VOID)
+ 318          {
+ 319   1              switch(gSys.SystemMode)
+ 320   1              {
+ 321   2      #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
               #ifdef FUNC_USB_EN
                               case SYS_MODE_USB:
               #ifdef SLED_MP3_EN
@@ -377,13 +382,13 @@ line level    source
                                       SLedLightOp(LED_SD, LIGHTON);
               #endif
               
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 7   
+
               #ifdef SLED_AUX_EN
                                       SLedLightOp(LED_AUX, LIGHTOFF);
               #endif
               
               #ifdef SLED_RAD_EN
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 7   
-
                                       SLedLightOp(LED_RADIO, LIGHTOFF);
               #endif
               
@@ -393,66 +398,66 @@ line level    source
                                       break;
               #endif
               #endif
- 373   2              
- 374   2      #ifdef FUNC_LINEIN_EN
- 375   2                      case SYS_MODE_LINEIN:
- 376   2      #ifdef SLED_MP3_EN
- 377   2                              SLedLightOp(LED_MP3, LIGHTOFF);
- 378   2      #endif
- 379   2       
- 380   2      #ifdef SLED_USB_EN
+ 378   2              
+ 379   2      #ifdef FUNC_LINEIN_EN
+ 380   2                      case SYS_MODE_LINEIN:
+ 381   2      #ifdef SLED_MP3_EN
+ 382   2                              SLedLightOp(LED_MP3, LIGHTOFF);
+ 383   2      #endif
+ 384   2       
+ 385   2      #ifdef SLED_USB_EN
                                       SLedLightOp(LED_USB, LIGHTOFF);
               #endif
- 383   2      
- 384   2      #ifdef SLED_SD_EN
+ 388   2      
+ 389   2      #ifdef SLED_SD_EN
                                       SLedLightOp(LED_SD, LIGHTOFF);
               #endif
- 387   2              
- 388   2      #ifdef SLED_AUX_EN
+ 392   2              
+ 393   2      #ifdef SLED_AUX_EN
                                       SLedLightOp(LED_AUX, LIGHTON);
               #endif
- 391   2      
- 392   2      #ifdef SLED_RAD_EN
+ 396   2      
+ 397   2      #ifdef SLED_RAD_EN
                                       SLedLightOp(LED_RADIO, LIGHTOFF);
               #endif
- 395   2      
- 396   2      #ifdef SLED_REP_EN
+ 400   2      
+ 401   2      #ifdef SLED_REP_EN
                                       SLedLightOp(LED_REPEAT, LIGHTOFF);
               #endif
- 399   2                              break;
- 400   2      #endif
- 401   2      
- 402   2      #ifdef FUNC_RADIO_EN
- 403   2                      case SYS_MODE_RADIO:
- 404   2      #ifdef SLED_MP3_EN
- 405   2                              SLedLightOp(LED_MP3, LIGHTOFF);
- 406   2      #endif 
- 407   2      
- 408   2      #ifdef SLED_USB_EN
+ 404   2                              break;
+ 405   2      #endif
+ 406   2      
+ 407   2      #ifdef FUNC_RADIO_EN
+ 408   2                      case SYS_MODE_RADIO:
+ 409   2      #ifdef SLED_MP3_EN
+ 410   2                              SLedLightOp(LED_MP3, LIGHTOFF);
+ 411   2      #endif 
+ 412   2      
+ 413   2      #ifdef SLED_USB_EN
                                       SLedLightOp(LED_USB, LIGHTOFF);
               #endif
- 411   2      
- 412   2      #ifdef SLED_SD_EN
+ 416   2      
+ 417   2      #ifdef SLED_SD_EN
                                       SLedLightOp(LED_SD, LIGHTOFF);
               #endif
- 415   2              
- 416   2      #ifdef SLED_AUX_EN
+ 420   2              
+ 421   2      #ifdef SLED_AUX_EN
                                       SLedLightOp(LED_AUX, LIGHTOFF);
               #endif
- 419   2      
- 420   2      #ifdef SLED_RAD_EN
+ 424   2      
+ 425   2      #ifdef SLED_RAD_EN
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 8   
+
                                       SLedLightOp(LED_RADIO, LIGHTON);
               #endif
- 423   2      
- 424   2      #ifdef SLED_REP_EN
+ 428   2      
+ 429   2      #ifdef SLED_REP_EN
                                       SLedLightOp(LED_REPEAT, LIGHTOFF);
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 8   
-
               #endif
- 427   2                              break;
- 428   2      #endif
- 429   2      
- 430   2      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+ 432   2                              break;
+ 433   2      #endif
+ 434   2      
+ 435   2      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
                               case SYS_MODE_AUDIO:
                               case SYS_MODE_READER:
                               case SYS_MODE_AUDIO_READER:
@@ -481,8 +486,8 @@ line level    source
               #endif
                                       break;
               #endif
- 459   2      
- 460   2      #ifdef FUNC_RTC_EN
+ 464   2      
+ 465   2      #ifdef FUNC_RTC_EN
                               case SYS_MODE_RTC:
               #ifdef SLED_MP3_EN
                                       SLedLightOp(LED_MP3, LIGHTOFF);
@@ -505,49 +510,49 @@ line level    source
               #endif
               
               #ifdef SLED_REP_EN              
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 9   
+
                                       SLedLightOp(LED_REPEAT, LIGHTOFF);
               #endif
                                       break;
               #endif
- 487   2      
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 9   
-
- 488   2                      case SYS_MODE_NONE:
- 489   2                      default:
- 490   2      #ifdef SLED_MP3_EN
- 491   2                              SLedLightOp(LED_MP3, LIGHTOFF);
- 492   2      #endif
- 493   2      
- 494   2      #ifdef SLED_USB_EN
+ 492   2      
+ 493   2                      case SYS_MODE_NONE:
+ 494   2                      default:
+ 495   2      #ifdef SLED_MP3_EN
+ 496   2                              SLedLightOp(LED_MP3, LIGHTOFF);
+ 497   2      #endif
+ 498   2      
+ 499   2      #ifdef SLED_USB_EN
                                       SLedLightOp(LED_USB, LIGHTOFF);
               #endif
- 497   2      
- 498   2      #ifdef SLED_SD_EN
+ 502   2      
+ 503   2      #ifdef SLED_SD_EN
                                       SLedLightOp(LED_SD, LIGHTOFF);
               #endif
- 501   2      
- 502   2      #ifdef SLED_AUX_EN
+ 506   2      
+ 507   2      #ifdef SLED_AUX_EN
                                       SLedLightOp(LED_AUX, LIGHTOFF);
               #endif
- 505   2      
- 506   2      #ifdef SLED_RAD_EN
+ 510   2      
+ 511   2      #ifdef SLED_RAD_EN
                                       SLedLightOp(LED_RADIO, LIGHTOFF);
               #endif
- 509   2      
- 510   2      #ifdef SLED_REP_EN              
+ 514   2      
+ 515   2      #ifdef SLED_REP_EN              
                                       SLedLightOp(LED_REPEAT, LIGHTOFF);
               #endif
- 513   2                              break;
- 514   2              }
- 515   1      
- 516   1              SLedLightOp(LED_POWER, LIGHTON);
- 517   1              gBlink.BlinkFlag = 0;
- 518   1              TimeOutSet(&DispTmr, NORMAL_INTERVAL);
- 519   1      }
- 520          
- 521          
- 522          // MP3设备下播放状态改变时调用.
- 523          #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
+ 518   2                              break;
+ 519   2              }
+ 520   1      
+ 521   1              SLedLightOp(LED_POWER, LIGHTON);
+ 522   1              gBlink.BlinkFlag = 0;
+ 523   1              TimeOutSet(&DispTmr, NORMAL_INTERVAL);
+ 524   1      }
+ 525          
+ 526          
+ 527          // MP3设备下播放状态改变时调用.
+ 528          #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
               VOID SLedDispPlayState(VOID)
               {
                       if((gSys.SystemMode != SYS_MODE_USB) && (gSys.SystemMode != SYS_MODE_SD))
@@ -569,13 +574,13 @@ line level    source
                               SLedQuickoff = 0;
                               SLedFlickNormal = 1;
                               SLedNormaloff = 1;
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 10  
+
                               SLedFlickSlow = 0;
                               SLedSlowoff = 0;
               #endif          
                               SLedLightOp(LED_POWER, LIGHTOFF);
               #ifdef SLED_MP3_EN
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 10  
-
                               SLedLightOp(LED_MP3, LIGHTOFF);
               #endif
                       
@@ -633,13 +638,13 @@ line level    source
                       else if((gPlayCtrl.State == PLAY_STATE_STOP) || (gPlayCtrl.State == PLAY_STATE_PAUSE))//TF pause led show
                       {
                               SLedFlickQuick = 0;
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 11  
+
                               SLedQuickoff = 0;
                               SLedFlickNormal = 0;
                               SLedNormaloff = 0;
                               SLedFlickSlow = 0;
                               SLedSlowoff = 0;
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 11  
-
               #ifdef AU6210K_ZB_BT007_CSR
                               SLedLightOp(LED_POWER, LIGHTOFF);
               #else
@@ -697,20 +702,20 @@ line level    source
               #endif
                               }
                               TimeOutSet(&DispTmr, 0);        
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 12  
+
                       }
               }
               #endif
- 672          
- 673          
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 12  
-
- 674          // MP3设备下Repeat模式改变时调用.
- 675          // Repeat也可以根据具体Repeat模式不同设定闪烁的频率，但是必须要用单独的定时器，不能共用MP3播放状态的定时器
+ 677          
+ 678          
+ 679          // MP3设备下Repeat模式改变时调用.
+ 680          // Repeat也可以根据具体Repeat模式不同设定闪烁的频率，但是必须要用单独的定时器，不能共用MP3播放状态的定时器
              -。
- 676          // 目前代码显示部分共用一个定时器，所以Repeat模式闪烁的频率会取决于MP3播放状态，SLedDispRepeat/SLedDispPla
+ 681          // 目前代码显示部分共用一个定时器，所以Repeat模式闪烁的频率会取决于MP3播放状态，SLedDispRepeat/SLedDispPla
              -yState
- 677          // 调用次序也会受到显示。
- 678          #ifdef SLED_REP_EN
+ 682          // 调用次序也会受到显示。
+ 683          #ifdef SLED_REP_EN
               VOID SLedDispRepeat(VOID)
               {
                       if((gSys.SystemMode != SYS_MODE_USB) && (gSys.SystemMode != SYS_MODE_SD))
@@ -740,165 +745,165 @@ line level    source
                       }
               }
               #endif
- 708          
- 709          
- 710          // LineIn设备显示.
- 711          #ifdef FUNC_LINEIN_EN
- 712          VOID SLedDispLineIn(VOID)//linein playing led show
- 713          {
- 714   1              if(gSys.SystemMode != SYS_MODE_LINEIN)
- 715   1              {
- 716   2                      return;
- 717   2              }
- 718   1      
- 719   1      
- 720   1      
- 721   1      #if defined(AU6210K_ZB_BT007_CSR) || defined(AU6210K_LK_SJ_CSRBT)
- 722   1              if(gSys.MuteFg == TRUE)
- 723   1              {
- 724   2      
- 725   2                      gBlink.BlinkFlag = 0;
- 726   2                      SLedFlickQuick = 0;
- 727   2                      SLedQuickoff = 0;
- 728   2                      SLedFlickNormal = 0;
- 729   2                      SLedNormaloff = 0;
- 730   2                      SLedFlickSlow = 0;
- 731   2                      SLedSlowoff = 0;
- 732   2      #if defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
- 733   2                      SLedLightOp(LED_POWER, LIGHTOFF);
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 13  
+ 713          
+ 714          
+ 715          // LineIn设备显示.
+ 716          #ifdef FUNC_LINEIN_EN
+ 717          VOID SLedDispLineIn(VOID)//linein playing led show
+ 718          {
+ 719   1              if(gSys.SystemMode != SYS_MODE_LINEIN)
+ 720   1              {
+ 721   2                      return;
+ 722   2              }
+ 723   1      
+ 724   1      
+ 725   1      
+ 726   1      #if defined(AU6210K_ZB_BT007_CSR) || defined(AU6210K_LK_SJ_CSRBT)
+ 727   1              if(gSys.MuteFg == TRUE)
+ 728   1              {
+ 729   2      
+ 730   2                      gBlink.BlinkFlag = 0;
+ 731   2                      SLedFlickQuick = 0;
+ 732   2                      SLedQuickoff = 0;
+ 733   2                      SLedFlickNormal = 0;
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 13  
 
- 734   2      #else
+ 734   2                      SLedNormaloff = 0;
+ 735   2                      SLedFlickSlow = 0;
+ 736   2                      SLedSlowoff = 0;
+ 737   2      #if defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
+ 738   2                      SLedLightOp(LED_POWER, LIGHTOFF);
+ 739   2      #else
                               SLedLightOp(LED_POWER, LIGHTON);
               #endif
- 737   2      
- 738   2      
- 739   2      #ifdef SLED_MP3_EN
- 740   2      #if defined(AU6210K_LK_SJ_CSRBT)
-                              SLedLightOp(LED_MP3, LIGHTON);
-              #else
- 743   2                      SLedLightOp(LED_MP3, LIGHTOFF);
- 744   2      #endif
- 745   2      #endif
- 746   2      
- 747   2                      
- 748   2      #ifdef SLED_AUX_EN
+ 742   2      
+ 743   2      
+ 744   2      #ifdef SLED_MP3_EN
+ 745   2      #if 1//defined(AU6210K_LK_SJ_CSRBT)
+ 746   2                      SLedLightOp(LED_MP3, LIGHTON);
+ 747   2      #else
+                              SLedLightOp(LED_MP3, LIGHTOFF);
+              #endif
+ 750   2      #endif
+ 751   2      
+ 752   2                      
+ 753   2      #ifdef SLED_AUX_EN
                               SLedLightOp(LED_AUX, LIGHTOFF);
               #endif
- 751   2                      TimeOutSet(&DispTmr, NORMAL_BLINK_INTERVAL);            
- 752   2              }
- 753   1              else
- 754   1              {
- 755   2                      gBlink.BlinkFlag = 0;
- 756   2                      SLedFlickQuick = 0;
- 757   2                      SLedQuickoff = 0;
- 758   2                      SLedFlickNormal = 0;
- 759   2                      SLedNormaloff = 0;
- 760   2                      SLedFlickSlow = 1;
- 761   2                      SLedSlowoff = 1;
- 762   2      
- 763   2      #if defined(AU6210K_LK_SJ_CSRBT)
+ 756   2                      TimeOutSet(&DispTmr, NORMAL_BLINK_INTERVAL);            
+ 757   2              }
+ 758   1              else
+ 759   1              {
+ 760   2                      gBlink.BlinkFlag = 0;
+ 761   2                      SLedFlickQuick = 0;
+ 762   2                      SLedQuickoff = 0;
+ 763   2                      SLedFlickNormal = 0;
+ 764   2                      SLedNormaloff = 0;
+ 765   2                      SLedFlickSlow = 1;
+ 766   2                      SLedSlowoff = 1;
+ 767   2      
+ 768   2      #if defined(AU6210K_LK_SJ_CSRBT)
                               SLedLightOp(LED_POWER, LIGHTOFF);
               #else
- 766   2                      SLedLightOp(LED_POWER, LIGHTON);
- 767   2      #endif
- 768   2                      
- 769   2      #ifdef SLED_MP3_EN
- 770   2      #if defined(AU6210K_LK_SJ_CSRBT)
+ 771   2                      SLedLightOp(LED_POWER, LIGHTON);
+ 772   2      #endif
+ 773   2                      
+ 774   2      #ifdef SLED_MP3_EN
+ 775   2      #if defined(AU6210K_LK_SJ_CSRBT)
                               SLedLightOp(LED_MP3, LIGHTON);
               #else
- 773   2                      SLedLightOp(LED_MP3, LIGHTOFF);
- 774   2      #endif
- 775   2      #endif
- 776   2                      
- 777   2      #ifdef SLED_AUX_EN
+ 778   2                      SLedLightOp(LED_MP3, LIGHTOFF);
+ 779   2      #endif
+ 780   2      #endif
+ 781   2                      
+ 782   2      #ifdef SLED_AUX_EN
                               SLedLightOp(LED_AUX, LIGHTON);
               #endif
- 780   2                      TimeOutSet(&DispTmr, 0);
- 781   2              }
- 782   1      #else
+ 785   2                      TimeOutSet(&DispTmr, 0);
+ 786   2              }
+ 787   1      #else
                       gBlink.BlinkFlag = 0;
               
               #endif
- 786   1      
- 787   1      
- 788   1      #if defined(AU6210K_NR_D_8_CSRBT)
+ 791   1      
+ 792   1      
+ 793   1      #if defined(AU6210K_NR_D_8_CSRBT)
                       SLedLightOp(LED_POWER, LIGHTON);
               #endif
- 791   1      }
- 792          #endif
- 793          
- 794          
- 795          // Radio设备显示.
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 14  
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 14  
 
- 796          #ifdef FUNC_RADIO_EN
- 797          VOID SLedDispRadio(VOID)
- 798          {
- 799   1              if(gSys.SystemMode != SYS_MODE_RADIO)
- 800   1              {
- 801   2                      return;
- 802   2              }
- 803   1      
- 804   1              if(gRadioCtrl.State == RADIO_INIT)
+ 796   1      }
+ 797          #endif
+ 798          
+ 799          
+ 800          // Radio设备显示.
+ 801          #ifdef FUNC_RADIO_EN
+ 802          VOID SLedDispRadio(VOID)
+ 803          {
+ 804   1              if(gSys.SystemMode != SYS_MODE_RADIO)
  805   1              {
- 806   2                      gBlink.BlinkFlag = 0;
- 807   2                      SLedLightOp(LED_POWER, LIGHTON);
- 808   2      #ifdef SLED_RAD_EN
+ 806   2                      return;
+ 807   2              }
+ 808   1      
+ 809   1              if(gRadioCtrl.State == RADIO_INIT)
+ 810   1              {
+ 811   2                      gBlink.BlinkFlag = 0;
+ 812   2                      SLedLightOp(LED_MP3, LIGHTON);
+ 813   2      #ifdef SLED_RAD_EN
                               SLedLightOp(LED_RADIO, LIGHTON);
               #endif
- 811   2                      TimeOutSet(&DispTmr, 0);
- 812   2              }
- 813   1              else if(gRadioCtrl.State == RADIO_IDLE)
- 814   1              {
- 815   2                      gBlink.BlinkFlag = 0;           
- 816   2                      if(gSys.MuteFg == TRUE)
- 817   2                      {
- 818   3                              SLedLightOp(LED_POWER, LIGHTOFF);
- 819   3      #ifdef SLED_RAD_EN
+ 816   2                      TimeOutSet(&DispTmr, 0);
+ 817   2              }
+ 818   1              else if(gRadioCtrl.State == RADIO_IDLE)
+ 819   1              {
+ 820   2                      gBlink.BlinkFlag = 0;           
+ 821   2                      if(gSys.MuteFg == TRUE)
+ 822   2                      {
+ 823   3                              SLedLightOp(LED_MP3, LIGHTOFF);
+ 824   3      #ifdef SLED_RAD_EN
                                       SLedLightOp(LED_RADIO, LIGHTOFF);
               #endif
- 822   3                              SLedFlickSlow = 1;
- 823   3                              SLedSlowoff = 1;
- 824   3                              TimeOutSet(&DispTmr, SLOW_BLINK_INTERVAL);      
- 825   3                      }
- 826   2                      else
- 827   2                      {
- 828   3                              SLedLightOp(LED_POWER, LIGHTON);
- 829   3      #ifdef SLED_RAD_EN
+ 827   3                              SLedFlickSlow = 1;
+ 828   3                              SLedSlowoff = 1;
+ 829   3                              TimeOutSet(&DispTmr, SLOW_BLINK_INTERVAL);      
+ 830   3                      }
+ 831   2                      else
+ 832   2                      {
+ 833   3                              SLedLightOp(LED_MP3, LIGHTON);
+ 834   3      #ifdef SLED_RAD_EN
                                       SLedLightOp(LED_RADIO, LIGHTON);
               #endif
- 832   3                              TimeOutSet(&DispTmr, 0);
- 833   3                      }       
- 834   2              }
- 835   1              else
- 836   1              {
- 837   2      #ifdef  RADIO_SEEK_WAIT_EN              
- 838   2                      if(RadioDisFlag == RadioDisCurChAutoscan)
- 839   2                      {                       
- 840   3                              gBlink.BlinkFlag = 0;
- 841   3                              SLedLightOp(LED_POWER, LIGHTON);
- 842   3                              return;
- 843   3                      }
- 844   2      #endif
- 845   2                      
- 846   2                      SLedLightOp(LED_POWER, LIGHTOFF);
- 847   2      #ifdef SLED_RAD_EN
+ 837   3                              TimeOutSet(&DispTmr, 0);
+ 838   3                      }       
+ 839   2              }
+ 840   1              else
+ 841   1              {
+ 842   2      #ifdef  RADIO_SEEK_WAIT_EN              
+ 843   2                      if(RadioDisFlag == RadioDisCurChAutoscan)
+ 844   2                      {                       
+ 845   3                              gBlink.BlinkFlag = 0;
+ 846   3                              SLedLightOp(LED_MP3, LIGHTON);
+ 847   3                              return;
+ 848   3                      }
+ 849   2      #endif
+ 850   2                      
+ 851   2                      SLedLightOp(LED_MP3, LIGHTOFF);
+ 852   2      #ifdef SLED_RAD_EN
                               SLedLightOp(LED_RADIO, LIGHTOFF);
               #endif
- 850   2                      gBlink.BlinkFlag = 0;
- 851   2                      SLedFlickQuick = 1;
- 852   2                      SLedQuickoff = 1;
- 853   2                      TimeOutSet(&DispTmr, QUICK_BLINK_INTERVAL);
- 854   2              }
- 855   1      }
- 856          #endif
- 857          
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 15  
+ 855   2                      gBlink.BlinkFlag = 0;
+ 856   2                      SLedFlickQuick = 1;
+ 857   2                      SLedQuickoff = 1;
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 15  
 
- 858          
- 859          // Radio设备显示.
- 860          #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+ 858   2                      TimeOutSet(&DispTmr, QUICK_BLINK_INTERVAL);
+ 859   2              }
+ 860   1      }
+ 861          #endif
+ 862          
+ 863          
+ 864          // Radio设备显示.
+ 865          #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
               VOID SLedDispAudio(VOID)
               {
                       if((gSys.SystemMode != SYS_MODE_AUDIO)
@@ -941,10 +946,10 @@ line level    source
                       }       
               }
               #endif
- 903          
- 904          
- 905          // RTC设备显示.
- 906          #ifdef FUNC_RTC_EN
+ 908          
+ 909          
+ 910          // RTC设备显示.
+ 911          #ifdef FUNC_RTC_EN
               VOID SLedDispRTC(VOID)
               {
                       if(gSys.SystemMode != SYS_MODE_RTC)
@@ -953,18 +958,18 @@ line level    source
                       }
               
                       SLedLightOp(LED_POWER, LIGHTON);        
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 16  
+
               }
               #endif
- 917          
- 918          
- 919          // MUTE状态转变时调用.
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 16  
-
- 920          VOID SLedDispMute(VOID)
- 921          {
- 922   1              switch(gSys.SystemMode)
- 923   1              {
- 924   2      #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
+ 922          
+ 923          
+ 924          // MUTE状态转变时调用.
+ 925          VOID SLedDispMute(VOID)
+ 926          {
+ 927   1              switch(gSys.SystemMode)
+ 928   1              {
+ 929   2      #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
                               case SYS_MODE_USB:
                               case SYS_MODE_SD:
                                       if(gSys.MuteFg == TRUE)
@@ -1017,77 +1022,77 @@ line level    source
                                               else
               #endif
               
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 17  
+
               #ifdef SLED_SD_EN
                                               {
                                                       SLedLightOp(LED_SD, LIGHTON);
                                               }
               #endif
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 17  
-
                                               TimeOutSet(&DispTmr, 0);
                                       }
                                       break;
               #endif
- 986   2              
- 987   2      #ifdef FUNC_LINEIN_EN
- 988   2                      case SYS_MODE_LINEIN://linein pause led show
- 989   2                              if(gSys.MuteFg == TRUE)
- 990   2                              {
- 991   3                                      gBlink.BlinkFlag = 0;
- 992   3                                      SLedFlickNormal= 0;
- 993   3                                      SLedNormaloff = 0;
- 994   3                                      SLedLightOp(LED_POWER, LIGHTON);
- 995   3      #ifdef SLED_AUX_EN
+ 991   2              
+ 992   2      #ifdef FUNC_LINEIN_EN
+ 993   2                      case SYS_MODE_LINEIN://linein pause led show
+ 994   2                              if(gSys.MuteFg == TRUE)
+ 995   2                              {
+ 996   3                                      gBlink.BlinkFlag = 0;
+ 997   3                                      SLedFlickNormal= 0;
+ 998   3                                      SLedNormaloff = 0;
+ 999   3                                      SLedLightOp(LED_POWER, LIGHTON);
+1000   3      #ifdef SLED_AUX_EN
                                               SLedLightOp(LED_AUX, LIGHTOFF);
               #endif
- 998   3                                      TimeOutSet(&DispTmr, SLOW_BLINK_INTERVAL);
- 999   3                              }
-1000   2                              else
-1001   2                              {
-1002   3                                      gBlink.BlinkFlag = 0;
-1003   3                                      SLedLightOp(LED_POWER, LIGHTON);
-1004   3      #ifdef SLED_AUX_EN
+1003   3                                      TimeOutSet(&DispTmr, SLOW_BLINK_INTERVAL);
+1004   3                              }
+1005   2                              else
+1006   2                              {
+1007   3                                      gBlink.BlinkFlag = 0;
+1008   3                                      SLedLightOp(LED_POWER, LIGHTON);
+1009   3      #ifdef SLED_AUX_EN
                                               SLedLightOp(LED_AUX, LIGHTON);
               #endif
-1007   3                                      TimeOutSet(&DispTmr, 0);
-1008   3                              }
-1009   2                              break;
-1010   2      #endif
-1011   2      
-1012   2      #ifdef FUNC_RADIO_EN
-1013   2                      case SYS_MODE_RADIO:
-1014   2                              if(gSys.MuteFg == TRUE)
-1015   2                              {
-1016   3                                      gBlink.BlinkFlag = 0;
-1017   3                                      SLedFlickSlow = 1;
-1018   3                                      SLedSlowoff = 1;
-1019   3                                      SLedLightOp(LED_POWER, LIGHTOFF);
-1020   3      #ifdef SLED_RAD_EN
+1012   3                                      TimeOutSet(&DispTmr, 0);
+1013   3                              }
+1014   2                              break;
+1015   2      #endif
+1016   2      
+1017   2      #ifdef FUNC_RADIO_EN
+1018   2                      case SYS_MODE_RADIO:
+1019   2                              if(gSys.MuteFg == TRUE)
+1020   2                              {
+1021   3                                      gBlink.BlinkFlag = 0;
+1022   3                                      SLedFlickSlow = 1;
+1023   3                                      SLedSlowoff = 1;
+1024   3                                      SLedLightOp(LED_POWER, LIGHTOFF);
+1025   3      #ifdef SLED_RAD_EN
                                               SLedLightOp(LED_RADIO, LIGHTOFF);
               #endif
-1023   3                                      TimeOutSet(&DispTmr, SLOW_BLINK_INTERVAL);
-1024   3                              }
-1025   2                              else
-1026   2                              {
-1027   3                                      gBlink.BlinkFlag = 0;
-1028   3                                      SLedLightOp(LED_POWER, LIGHTON);
-1029   3      #ifdef SLED_RAD_EN
+1028   3                                      TimeOutSet(&DispTmr, SLOW_BLINK_INTERVAL);
+1029   3                              }
+1030   2                              else
+1031   2                              {
+1032   3                                      gBlink.BlinkFlag = 0;
+1033   3                                      SLedLightOp(LED_POWER, LIGHTON);
+1034   3      #ifdef SLED_RAD_EN
                                               SLedLightOp(LED_RADIO, LIGHTON);
               #endif
-1032   3                                      TimeOutSet(&DispTmr, 0);
-1033   3                              }
-1034   2                              break;
-1035   2      #endif
-1036   2      
-1037   2      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+1037   3                                      TimeOutSet(&DispTmr, 0);
+1038   3                              }
+1039   2                              break;
+1040   2      #endif
+1041   2      
+1042   2      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
                               case SYS_MODE_AUDIO:
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 18  
+
                               case SYS_MODE_READER:
                               case SYS_MODE_AUDIO_READER:
                                       if(gSys.MuteFg == TRUE)
                                       {
                                               gBlink.BlinkFlag = 0;
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 18  
-
                                               SLedFlickSlow = 1;
                                               SLedSlowoff = 1;
                                               SLedLightOp(LED_POWER, LIGHTOFF);
@@ -1107,21 +1112,21 @@ line level    source
                                       }
                                       break;
               #endif
-1063   2      
-1064   2      #ifdef FUNC_RTC_EN
+1068   2      
+1069   2      #ifdef FUNC_RTC_EN
                               case SYS_MODE_RTC:
               
                               //      break;
               #endif
-1069   2                      default:
-1070   2                              break;
-1071   2              }
-1072   1      
-1073   1      }
-1074          
-1075          VOID BassLed_CallBak(VOID)
-1076          {
-1077   1      #ifdef FUNC_NPCA110X_EN
+1074   2                      default:
+1075   2                              break;
+1076   2              }
+1077   1      
+1078   1      }
+1079          
+1080          VOID BassLed_CallBak(VOID)
+1081          {
+1082   1      #ifdef FUNC_NPCA110X_EN
                       DBG1(("isDefaultBass = %x",isDefaultBass));
                       if(isDefaultBass)
                       {
@@ -1132,26 +1137,26 @@ line level    source
                               SetGpioRegBit(GPIO_D_OUT, (1<<1));              // Output 0
                       }
               #endif
-1088   1      }
-1089          
-1090          // 显示.
-1091          VOID SLedDisplay(VOID)
-1092          {
-1093   1              BOOL Light;
-1094   1      #if defined(AU6210K_NR_D_8_CSRBT)
+1093   1      }
+1094          
+1095          // 显示.
+1096          VOID SLedDisplay(VOID)
+1097          {
+1098   1              BOOL Light;
+1099   1      #if 0//defined(AU6210K_NR_D_8_CSRBT)
               #ifdef FUNC_POWER_MONITOR_EN
                       if(GetPwrDisp() == PWR_MNT_DISP_EMPTY_V)
                       {
                               if(gBlink.BlinkFlag)
                               {
                                       if(!IsTimeOut(&DispTmr))
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 19  
+
                                       {
                                               return;
                                       }
                                       if(SLedFlickQuick)
                                       {
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 19  
-
                                               //DBG(("SLedFlickQuick\n"));
                                               TimeOutSet(&DispTmr, QUICK_BLINK_INTERVAL);
                                               SLedQuickoff = !SLedQuickoff;
@@ -1179,48 +1184,48 @@ line level    source
               #endif  
                       
               #endif  
-1133   1              if(gBlink.BlinkFlag)
-1134   1              {
-1135   2                      if(!IsTimeOut(&DispTmr))
-1136   2                      {
-1137   3                              return;
-1138   3                      }
-1139   2      
-1140   2                      if(SLedFlickQuick)
+1138   1              if(gBlink.BlinkFlag)
+1139   1              {
+1140   2                      if(!IsTimeOut(&DispTmr))
 1141   2                      {
-1142   3                              //DBG(("SLedFlickQuick\n"));
-1143   3                              TimeOutSet(&DispTmr, QUICK_BLINK_INTERVAL);
-1144   3                              SLedQuickoff = !SLedQuickoff;
-1145   3                              Light = SLedQuickoff;
-1146   3                      }
-1147   2                      else if(SLedFlickSlow)
-1148   2                      {
-1149   3                              //DBG(("SLedFlickSlow\n"));
-1150   3                              TimeOutSet(&DispTmr, SLOW_BLINK_INTERVAL);
-1151   3                              SLedSlowoff = !SLedSlowoff;
-1152   3                              Light = SLedSlowoff;
-1153   3                      }
-1154   2                      else
-1155   2                      {
-1156   3                              //DBG(("SLedFlickNormal\n"));
-1157   3                              TimeOutSet(&DispTmr, NORMAL_BLINK_INTERVAL);
-1158   3                              SLedNormaloff = !SLedNormaloff;
-1159   3                              Light = SLedNormaloff;
-1160   3                      }
-1161   2      
-1162   2      #ifdef SLED_REP_EN
+1142   3                              return;
+1143   3                      }
+1144   2      
+1145   2                      if(SLedFlickQuick)
+1146   2                      {
+1147   3                              //DBG(("SLedFlickQuick\n"));
+1148   3                              TimeOutSet(&DispTmr, QUICK_BLINK_INTERVAL);
+1149   3                              SLedQuickoff = !SLedQuickoff;
+1150   3                              Light = SLedQuickoff;
+1151   3                      }
+1152   2                      else if(SLedFlickSlow)
+1153   2                      {
+1154   3                              //DBG(("SLedFlickSlow\n"));
+1155   3                              TimeOutSet(&DispTmr, SLOW_BLINK_INTERVAL);
+1156   3                              SLedSlowoff = !SLedSlowoff;
+1157   3                              Light = SLedSlowoff;
+1158   3                      }
+1159   2                      else
+1160   2                      {
+1161   3                              //DBG(("SLedFlickNormal\n"));
+1162   3                              TimeOutSet(&DispTmr, NORMAL_BLINK_INTERVAL);
+1163   3                              SLedNormaloff = !SLedNormaloff;
+1164   3                              Light = SLedNormaloff;
+1165   3                      }
+1166   2      
+1167   2      #ifdef SLED_REP_EN
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 20  
+
                               if(SLedRepeatFlick)
                               {
                                       SLedRepeatOff = !SLedRepeatOff;
                                       //DBG(("SLedRepeatOff:%bx\n", SLedRepeatOff));
                               }
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 20  
-
               #endif
-1169   2      
-1170   2                      switch(gSys.SystemMode)
-1171   2                      {
-1172   3      #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
+1174   2      
+1175   2                      switch(gSys.SystemMode)
+1176   2                      {
+1177   3      #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
                                       case SYS_MODE_USB:
                                       case SYS_MODE_SD:
               #if defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
@@ -1251,40 +1256,40 @@ line level    source
               #endif
                                               break;
               #endif
-1203   3              
-1204   3      #ifdef FUNC_LINEIN_EN
-1205   3                              case SYS_MODE_LINEIN:
-1206   3      #if defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
-1207   3                                      SLedLightOp(LED_POWER, LIGHTOFF);
-1208   3      #else
+1208   3              
+1209   3      #ifdef FUNC_LINEIN_EN
+1210   3                              case SYS_MODE_LINEIN:
+1211   3      #if defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
+1212   3                                      SLedLightOp(LED_POWER, LIGHTOFF);
+1213   3      #else
                                               SLedLightOp(LED_POWER, Light);
               #endif
-1211   3      #ifdef SLED_MP3_EN
-1212   3                                      SLedLightOp(LED_MP3, Light);
-1213   3      #endif
-1214   3                                      
-1215   3      #ifdef SLED_AUX_EN
+1216   3      #ifdef SLED_MP3_EN
+1217   3                                      SLedLightOp(LED_MP3, Light);
+1218   3      #endif
+1219   3                                      
+1220   3      #ifdef SLED_AUX_EN
                                               SLedLightOp(LED_AUX, Light);
               #endif
-1218   3                                      break;
-1219   3      #endif
-1220   3              
-1221   3      #ifdef FUNC_RADIO_EN
-1222   3                              case SYS_MODE_RADIO:
-1223   3                                      SLedLightOp(LED_POWER, Light);
-1224   3      #ifdef SLED_MP3_EN
-1225   3                                      SLedLightOp(LED_MP3, Light);
-1226   3      #endif
-1227   3                                      
-1228   3      #ifdef SLED_RAD_EN
-                                              SLedLightOp(LED_RADIO, Light);
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 21  
+1223   3                                      break;
+1224   3      #endif
+1225   3              
+1226   3      #ifdef FUNC_RADIO_EN
+1227   3                              case SYS_MODE_RADIO:
+1228   3                                      SLedLightOp(LED_POWER, FALSE);
+1229   3      #ifdef SLED_MP3_EN
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 21  
 
+1230   3                                      SLedLightOp(LED_MP3, Light);
+1231   3      #endif
+1232   3                                      
+1233   3      #ifdef SLED_RAD_EN
+                                              SLedLightOp(LED_RADIO, Light);
               #endif
-1231   3                                      break;
-1232   3      #endif
-1233   3              
-1234   3      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+1236   3                                      break;
+1237   3      #endif
+1238   3              
+1239   3      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
                                       case SYS_MODE_AUDIO:
                                       case SYS_MODE_READER:
                                       case SYS_MODE_AUDIO_READER:
@@ -1294,87 +1299,87 @@ line level    source
               #endif
                                               break;
               #endif
-1244   3      
-1245   3      #if defined(FUNC_BLUETOOTH_EN)
+1249   3      
+1250   3      #if defined(FUNC_BLUETOOTH_EN)
                                       case SYS_MODE_BLUETOOTH:
                                               SLedLightOp(LED_POWER, FALSE);  
                                               break;
               #endif
-1250   3              
-1251   3      #ifdef FUNC_RTC_EN
+1255   3              
+1256   3      #ifdef FUNC_RTC_EN
                                       case SYS_MODE_RTC:
                       
                                               break;
               #endif
-1256   3      
-1257   3                      case SYS_MODE_NONE:
-1258   3                              //SLedLightOp(LED_POWER, Light);
-1259   3                              break;
-1260   3                              
-1261   3                              default:
-1262   3                                      break;
-1263   3                      }
-1264   2              }
-1265   1              else//if(!gBlink.BlinkFlag)
-1266   1              {
-1267   2                      switch(gSys.SystemMode)
-1268   2                      {
-1269   3      #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
+1261   3      
+1262   3                      case SYS_MODE_NONE:
+1263   3                              //SLedLightOp(LED_POWER, Light);
+1264   3                              break;
+1265   3                              
+1266   3                              default:
+1267   3                                      break;
+1268   3                      }
+1269   2              }
+1270   1              else//if(!gBlink.BlinkFlag)
+1271   1              {
+1272   2                      switch(gSys.SystemMode)
+1273   2                      {
+1274   3      #if (defined(FUNC_USB_EN) || defined(FUNC_CARD_EN))
                                       case SYS_MODE_USB:
                                       case SYS_MODE_SD:
                                               SLedDispPlayState();
                                               break;
               #endif
-1275   3              
-1276   3      #ifdef FUNC_LINEIN_EN
-1277   3                              case SYS_MODE_LINEIN:
-1278   3                                      SLedDispLineIn();
-1279   3                                      break;
-1280   3      #endif
-1281   3              
-1282   3      #ifdef FUNC_RADIO_EN
-1283   3                              case SYS_MODE_RADIO:
-1284   3                                      SLedDispRadio();
-1285   3                                      break;
-1286   3      #endif
-1287   3              
-1288   3      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
+1280   3              
+1281   3      #ifdef FUNC_LINEIN_EN
+1282   3                              case SYS_MODE_LINEIN:
+1283   3                                      SLedDispLineIn();
+1284   3                                      break;
+1285   3      #endif
+1286   3              
+1287   3      #ifdef FUNC_RADIO_EN
+1288   3                              case SYS_MODE_RADIO:
+1289   3                                      SLedDispRadio();
+1290   3                                      break;
+1291   3      #endif
+C51 COMPILER V9.00   SLED_DISP                                                             11/22/2015 21:40:33 PAGE 22  
+
+1292   3              
+1293   3      #if (defined(FUNC_AUDIO_EN) || defined(FUNC_READER_EN) || defined(FUNC_AUDIO_READER_EN))
                                       case SYS_MODE_AUDIO:
                                       case SYS_MODE_READER:
                                       case SYS_MODE_AUDIO_READER:
-C51 COMPILER V9.00   SLED_DISP                                                             11/14/2015 16:49:48 PAGE 22  
-
                                               SLedDispAudio();
                                               break;
               #endif
-1295   3      
-1296   3      #if defined(FUNC_BLUETOOTH_EN)
+1300   3      
+1301   3      #if defined(FUNC_BLUETOOTH_EN)
                                       case SYS_MODE_BLUETOOTH:
                                               SLedLightOp(LED_POWER, FALSE);  
                                               break;
               #endif
-1301   3      
-1302   3      #ifdef FUNC_RTC_EN
+1306   3      
+1307   3      #ifdef FUNC_RTC_EN
                                       case SYS_MODE_RTC:
                                               SLedDispRTC();
                                               break;
               #endif
-1307   3      
-1308   3                              case SYS_MODE_NONE:
-1309   3                                      break;
-1310   3                              
-1311   3                              default:
-1312   3                                      break;
-1313   3                      }       
-1314   2              }
-1315   1      }
-1316          
-1317          
-1318          #endif
+1312   3      
+1313   3                              case SYS_MODE_NONE:
+1314   3                                      break;
+1315   3                              
+1316   3                              default:
+1317   3                                      break;
+1318   3                      }       
+1319   2              }
+1320   1      }
+1321          
+1322          
+1323          #endif
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    987    ----
+   CODE SIZE        =    973    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----       3
    PDATA SIZE       =   ----    ----

@@ -807,8 +807,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1384</TopLine>
+      <CurrentLine>1390</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\display\sled_disp.c</PathWithFileName>
       <FilenameWithoutPath>sled_disp.c</FilenameWithoutPath>

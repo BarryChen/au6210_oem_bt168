@@ -33,11 +33,9 @@ TIMER			PowerKeyWaitTimer;
 POWER_KEY_STATE	PowerKeyState;
 BOOL			IsPwrkeyInSysOn = TRUE;		//表示当前是否是系统启动阶段的POWER_KEY识别
 
-#ifdef AU6210K_NR_D_8_CSRBT
+
 static CODE BYTE PowerKeyEvent[3] = {MSG_MODE_SW, MSG_SYS_ON, MSG_SYS_OFF};	
-#else
-static CODE BYTE PowerKeyEvent[3] = {MSG_MODE_SW, MSG_SYS_ON, MSG_SYS_OFF};	
-#endif
+
 
 
 // Initialize POWER_KEY scan operation.
