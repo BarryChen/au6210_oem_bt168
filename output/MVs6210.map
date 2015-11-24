@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.41                                                               11/22/2015  21:40:33  PAGE 1
+LX51 LINKER/LOCATER V4.41                                                               11/24/2015  14:32:06  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.41, INVOKED BY:
@@ -67,7 +67,7 @@ INPUT MODULES INCLUDED:
          SUB-MODULE: HOST_HCD
          COMMENT TYPE 0: C51 V8.16
          SUB-MODULE: HOST_STOR_SCSI
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 2
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 2
 
 
          COMMENT TYPE 0: C51 V8.16
@@ -135,7 +135,7 @@ INPUT MODULES INCLUDED:
          COMMENT TYPE 1: A51 / ASM51 Assembler
          SUB-MODULE: ?C?ULCMP
          COMMENT TYPE 1: A51 / ASM51 Assembler
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 3
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 3
 
 
          SUB-MODULE: ?C?ULSHR
@@ -203,7 +203,7 @@ INPUT MODULES INCLUDED:
   .\library\MVs6210_R1_01_P9_reader.LIB (CLK_SWITCH)
          COMMENT TYPE 0: C51 V9.00
   .\library\MVs6210_R1_01_P9_reader.LIB (TIMER_FIX)
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 4
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 4
 
 
          COMMENT TYPE 0: C51 V9.00
@@ -271,7 +271,7 @@ INPUT MODULES INCLUDED:
          COMMENT TYPE 0: C51 V9.00
   .\output\obj\display.obj (DISPLAY)
          COMMENT TYPE 0: C51 V9.00
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 5
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 5
 
 
   .\output\obj\seg_lcd_disp.obj (SEG_LCD_DISP)
@@ -339,7 +339,7 @@ INPUT MODULES INCLUDED:
   .\library\MVs6210_R1_01_P9_reader.LIB (ROMBIN)
          COMMENT TYPE 1: A51 / ASM51 Assembler
   .\library\MVs6210_R1_01_P9_reader.LIB (FUNCTIONTABLE)
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 6
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 6
 
 
          COMMENT TYPE 1: A51 / ASM51 Assembler
@@ -407,7 +407,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000013H   000015H   000003H   BYTE   OFFS..   CODE           ?INTERRUPT?00013
 000016H   000018H   000003H   BYTE   UNIT     CONST          ?CO?POWER_KEY
 000019H   000019H   000001H   BYTE   UNIT     CODE           ?PR?DISPFILENUM?DISPLAY
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 7
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 7
 
 
 00001AH   00001AH   000001H   BYTE   UNIT     CODE           ?PR?_DISPVOLUME?DISPLAY
@@ -475,7 +475,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000DEBH   000E32H   000048H   BYTE   UNIT     CODE           ?PR?DAC_LINEINDISCONNECT?DAC
 000E33H   000EB8H   000086H   BYTE   UNIT     CODE           ?PR?DAC_CONNECT2LINEIN?DAC
 000EB9H   000F38H   000080H   BYTE   UNIT     CODE           ?PR?_INDACINIT?DAC
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 8
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 8
 
 
 000F39H   000F79H   000041H   BYTE   UNIT     CODE           ?PR?_DAC_POWERON?DAC
@@ -543,7 +543,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 001F93H   001FD2H   000040H   BYTE   UNIT     CODE           ?PR?BP_SETPLAYATTRIB?BREAKPOINT
 001FD3H   001FD8H   000006H   BYTE   UNIT     CODE           ?L?COM00D7
 001FD9H   001FE1H   000009H   BYTE   UNIT     CODE           ?L?COM0073
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 9
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 9
 
 
 001FE2H   001FEAH   000009H   BYTE   UNIT     CODE           ?L?COM007F
@@ -611,7 +611,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 002C4BH   002DBAH   000170H   BYTE   UNIT     CODE           ?PR?_SPIFLASHFILEOPEN?SPI_FS
 002DBBH   002DC3H   000009H   BYTE   UNIT     CODE           ?L?COM009F
 002DC4H   002DCBH   000008H   BYTE   UNIT     CODE           ?L?COM0133
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 10
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 10
 
 
 002DCCH   002DD4H   000009H   BYTE   UNIT     CODE           ?L?COM0111
@@ -679,7 +679,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 003778H   0037B3H   00003CH   BYTE   UNIT     CODE           ?PR?_I2C_START?I2C
 0037B4H   0037C3H   000010H   BYTE   UNIT     CODE           ?PR?_CLRSCL?I2C
 0037C4H   0037D2H   00000FH   BYTE   UNIT     CODE           ?L?COM008D
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 11
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 11
 
 
 0037D3H   0037E2H   000010H   BYTE   UNIT     CODE           ?PR?_SETSCL?I2C
@@ -747,7 +747,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 004031H   004037H   000007H   BYTE   UNIT     CODE           ?L?COM0102
 004038H   00403FH   000008H   BYTE   UNIT     CODE           ?L?COM0143
 004040H   004048H   000009H   BYTE   UNIT     CODE           ?PR?DISPPLAYSTATE?DISPLAY
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 12
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 12
 
 
 004049H   004051H   000009H   BYTE   UNIT     CODE           ?L?COM00A9
@@ -815,7 +815,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 004B32H   004B57H   000026H   BYTE   UNIT     CODE           ?PR?_SSTERASE?SPI_FLASH
 004B58H   004B7AH   000023H   BYTE   UNIT     CODE           ?PR?_SSTBYTEPROGRAM?SPI_FLASH
 004B7BH   004B7FH   000005H   BYTE   UNIT     CODE           ?L?COM00B4
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 13
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 13
 
 
 004B80H   004BA2H   000023H   BYTE   UNIT     CODE           ?PR?SPIFLASHINIT?SPI_FLASH
@@ -883,7 +883,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 0054DEH   0054E6H   000009H   BYTE   UNIT     CODE           ?L?COM0115
 0054E7H   005513H   00002DH   BYTE   UNIT     CODE           ?PR?MVFM_GETCH?MV_FM
 005514H   0055A4H   000091H   BYTE   UNIT     CODE           ?PR?RADIOARRAYINSERT?RADIO_CTRL
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 14
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 14
 
 
 0055A5H   0055ACH   000008H   BYTE   UNIT     CODE           ?L?COM00CD
@@ -951,7 +951,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 006171H   006176H   000006H   BYTE   UNIT     CODE           ?L?COM00F3
 006177H   0061E2H   00006CH   BYTE   UNIT     CODE           ?PR?GETLDOINVOLTAGE?POWER_FIX
 0061E3H   0061EAH   000008H   BYTE   UNIT     CODE           ?L?COM012E
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 15
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 15
 
 
 0061EBH   006241H   000057H   BYTE   UNIT     CODE           ?PR?_NVMWRITEMULTI?NVM_LIB
@@ -1019,7 +1019,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 006AC0H   006AC6H   000007H   BYTE   UNIT     CODE           ?L?COM0136
 006AC7H   006ACDH   000007H   BYTE   UNIT     CODE           ?L?COM0139
 006ACEH   006AD5H   000008H   BYTE   UNIT     CODE           ?L?COM013A
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 16
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 16
 
 
 006AD6H   006ADCH   000007H   BYTE   UNIT     CODE           ?L?COM0141
@@ -1087,7 +1087,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000A0AH   000A0EH   000005H   BYTE   UNIT     XDATA          ?XD?DATETODAYS_REP?RTC_FIX
 000A0FH   000A13H   000005H   BYTE   UNIT     XDATA          ?XD?GETRTCCURALARMNUM?RTC_FIX
 000A14H   000A18H   000005H   BYTE   UNIT     XDATA          ?XD?RTC_FIX
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 17
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 17
 
 
 000A19H   000A1CH   000004H   BYTE   UNIT     XDATA          ?XD?_INDACSETVOLUME?DAC
@@ -1155,7 +1155,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000AB8H   000AB8H   000001H   BYTE   UNIT     XDATA          ?XD?ISLINEININSERT?DEVICE
 000AB9H   000AB9H   000001H   BYTE   UNIT     XDATA          ?XD?PRESEARCH?PRESEARCH
 000ABAH   000ABAH   000001H   BYTE   UNIT     XDATA          ?XD?_FSINIT?PRESEARCH
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 18
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 18
 
 
 000ABBH   000ABBH   000001H   BYTE   UNIT     XDATA          ?XD?CHECKBPDATAVALID?BREAKPOINT
@@ -1223,7 +1223,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       02000609H   XDATA    BYTE      ?_PwmConfigChannel?BYTE
       02000602H   XDATA    BYTE      ?_ReadBlock?BYTE
       020005DFH   XDATA    BYTE      ?_ReadCardStorBlock?BYTE
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 19
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 19
 
 
       0200064AH   XDATA    BYTE      ?_SD_AppCommandAndResponse?BYTE
@@ -1291,7 +1291,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010083F8H   CODE     ---       ?C?SLCMP
       010089C2H   CODE     ---       ?C?SLDIV
       01008182H   CODE     ---       ?C?UIDIV
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 20
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 20
 
 
       0100840EH   CODE     ---       ?C?ULCMP
@@ -1359,7 +1359,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100B9ACH   CODE     ---       _GetGpioReg
       0100D273H   CODE     ---       _GetLongName
       0100C085H   CODE     ---       _GetMonthDays
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 21
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 21
 
 
       01009EDCH   CODE     ---       _GetNextClusNum
@@ -1427,7 +1427,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100177AH   CODE     ---       _MVFM_SearchSet
       010036B2H   CODE     ---       _MVFM_SetCh
       010016A4H   CODE     ---       _MVFM_SetFreq
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 22
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 22
 
 
       010035A3H   CODE     ---       _MVFM_SetRegBit
@@ -1495,7 +1495,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01002BCCH   CODE     ---       _SpiFlashFileRead
       010055C8H   CODE     ---       _SPIFlashMultiBytePrgm
       01004C5AH   CODE     ---       _SPIFlashSendAddr
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 23
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 23
 
 
       010027C8H   CODE     ---       _SPIFlashSendCMD
@@ -1563,7 +1563,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100B65BH   CODE     ---       CardOpen
       0200042AH   XDATA    BYTE      CardRstCnt
       0100B83CH   CODE     ---       CardSdClkStop
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 24
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 24
 
 
       02000413H   XDATA    ---       CardTimer
@@ -1631,7 +1631,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01009766H   CODE     ---       FeedWatchDog
       01005D89H   CODE     ---       FileEOF_Ins
       01003B92H   CODE     ---       FileGetType
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 25
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 25
 
 
       01003D45H   CODE     ---       FileGetType_Ins
@@ -1699,7 +1699,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       020006D3H   XDATA    BYTE      gFileType
       0200003FH   XDATA    CHAR      gFindFolderFlag
       010005A8H   CONST    ---       gFmInGain
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 26
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 26
 
 
       020003DCH   XDATA    DWORD     gFolderDirStart
@@ -1767,7 +1767,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005B81H   CODE     ---       IgnoreUsbDev_Ins
       02000697H   XDATA    WORD      IncFileSum
       02000695H   XDATA    WORD      IncFolderSum
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 27
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 27
 
 
       0100334EH   CODE     ---       InDacExFmDisConnect
@@ -1835,7 +1835,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003598H   CODE     ---       MVFM_PowerDown
       01000673H   CODE     ---       MVFM_PowerOn
       01005320H   CODE     ---       MVFM_ReadID
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 28
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 28
 
 
       010035CAH   CODE     ---       MVFM_RXSetTH
@@ -1903,7 +1903,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 *SFR* 00000098H.2 DATA     BIT       RB8
 *SFR* 000000B0H.7 DATA     BIT       RD
       02000927H   XDATA    ---       RecvNumTimer
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 29
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 29
 
 
       02000AA2H   XDATA    CHAR      RecycledFolderEnable
@@ -1971,7 +1971,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001C4FH   CODE     ---       SongPlayTimeUpdate
 *SFR* 00000081H   DATA     BYTE      SP
       02000A9DH   XDATA    BYTE      SPI_DI
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 30
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 30
 
 
       01002BA8H   CODE     ---       SPI_SongPlayDo
@@ -2039,7 +2039,7 @@ PUBLIC SYMBOLS OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100659BH   CODE     ---       USBSTARTDEVICE_REP
       01003317H   CODE     ---       UseAsSlaveDecd
       01003DCAH   CODE     ---       VARIABLEINIT_ROM
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 31
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 31
 
 
       020007A0H   XDATA    ---       VolumeUpTimer
@@ -2107,7 +2107,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0000008BH   SFRSYM    DATA     BYTE      TL1
       00000098H.5 SFRSYM    DATA     BIT       SM2
       000000B8H.1 SFRSYM    DATA     BIT       PT0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 32
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 32
 
 
       000000B8H.3 SFRSYM    DATA     BIT       PT1
@@ -2175,7 +2175,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000A8H.4 SFRSYM    DATA     BIT       ES
       000000B8H   SFRSYM    DATA     BYTE      IP
       00000098H   SFRSYM    DATA     BIT       RI
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 33
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 33
 
 
       000000B0H.2 SFRSYM    DATA     BIT       INT0
@@ -2243,7 +2243,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000924H   LINE      ---      ---       #81
       01000924H   LINE      ---      ---       #83
       01000928H   LINE      ---      ---       #84
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 34
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 34
 
 
       01000928H   LINE      ---      ---       #89
@@ -2311,7 +2311,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001808H   LINE      ---      ---       #241
       0100180DH   LINE      ---      ---       #242
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 35
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 35
 
 
 
@@ -2379,7 +2379,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01002851H   LINE      ---      ---       #401
       01002854H   LINE      ---      ---       #402
       01002854H   LINE      ---      ---       #403
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 36
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 36
 
 
       01002854H   LINE      ---      ---       #405
@@ -2447,7 +2447,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01009814H   PUBLIC    CODE     ---       _LE32ToCPU
       010097F8H   PUBLIC    CODE     ---       _LE16ToCPU
       01009766H   PUBLIC    CODE     ---       FeedWatchDog
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 37
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 37
 
 
       01009001H   PUBLIC    CODE     ---       _WaitUs
@@ -2515,7 +2515,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0200053FH   PUBLIC    XDATA    BYTE      CurrAlarmIndex
       0200053EH   PUBLIC    XDATA    BYTE      gAlarmNum
       01008A95H   PUBLIC    CONST    ---       MonthOffsetTable
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 38
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 38
 
 
       01008A7BH   PUBLIC    CONST    ---       s_days
@@ -2583,7 +2583,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100BDF7H   PUBLIC    CODE     ---       HostUsbPortReset
       01009758H   PUBLIC    CODE     ---       HostIsLink
       0100BD72H   PUBLIC    CODE     ---       HostUsbOpen
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 39
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 39
 
 
       01008F80H   PUBLIC    CODE     ---       _WriteOTGReg8
@@ -2651,7 +2651,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100CD62H   PUBLIC    CODE     ---       _DECD_MP3PrScal
       0100C818H   PUBLIC    CODE     ---       ClearDecd
       020006BEH   PUBLIC    XDATA    WORD      s_SamplesPerFrame
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 40
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 40
 
 
       010088FDH   PUBLIC    CODE     ---       SamplingRate
@@ -2719,7 +2719,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01009C6BH   PUBLIC    CODE     ---       _FileOpenByNum
       0100983BH   PUBLIC    CODE     ---       _FileGetInfo
       02000639H   PUBLIC    XDATA    BYTE      ?_FileGetLongName?BYTE
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 41
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 41
 
 
       0100DB36H   PUBLIC    CODE     ---       _FileGetLongName
@@ -2787,7 +2787,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100853BH   PUBLIC    CODE     ---       ?C?LLDIXDATA1
       0100853DH   PUBLIC    CODE     ---       ?C?LLDIXDATA8
       01008570H   PUBLIC    CODE     ---       ?C?LSTXDATA
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 42
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 42
 
 
       0100857CH   PUBLIC    CODE     ---       ?C?LSTKXDATA
@@ -2855,7 +2855,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  CODE     ---       LVL=0
 
       01000B41H   BLOCK     CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 43
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 43
 
 
       01000B59H   LINE      ---      ---       #90
@@ -2923,7 +2923,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000DC5H   LINE      ---      ---       #208
       01000DCBH   LINE      ---      ---       #209
       01000DCDH   LINE      ---      ---       #211
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 44
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 44
 
 
       01000DCDH   LINE      ---      ---       #212
@@ -2991,7 +2991,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000E11H   LINE      ---      ---       #332
       01000E14H   LINE      ---      ---       #333
       01000E1CH   LINE      ---      ---       #336
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 45
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 45
 
 
       01000E24H   LINE      ---      ---       #339
@@ -3059,7 +3059,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000C56H   LINE      ---      ---       #443
       01000C56H   LINE      ---      ---       #444
       01000C5AH   LINE      ---      ---       #446
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 46
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 46
 
 
       01000C5AH   LINE      ---      ---       #448
@@ -3127,7 +3127,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000AC1H   LINE      ---      ---       #549
       01000AC1H   BLOCK     CODE     NEAR LAB  LVL=1
       01000AC1H   LINE      ---      ---       #554
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 47
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 47
 
 
       01000AC6H   LINE      ---      ---       #556
@@ -3195,7 +3195,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100383BH   LINE      ---      ---       #647
       0100383EH   LINE      ---      ---       #650
       01003846H   LINE      ---      ---       #651
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 48
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 48
 
 
       01003846H   LINE      ---      ---       #652
@@ -3263,7 +3263,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003971H   LINE      ---      ---       #725
       01003971H   LINE      ---      ---       #726
       01003974H   LINE      ---      ---       #728
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 49
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 49
 
 
       0100397BH   LINE      ---      ---       #729
@@ -3331,7 +3331,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010033A4H   LINE      ---      ---       #892
       010033ABH   LINE      ---      ---       #894
       010033B2H   LINE      ---      ---       #896
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 50
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 50
 
 
       010033B9H   LINE      ---      ---       #897
@@ -3399,7 +3399,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010009D1H   LINE      ---      ---       #993
       010009D1H   LINE      ---      ---       #995
       010009DBH   LINE      ---      ---       #996
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 51
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 51
 
 
       010009DBH   LINE      ---      ---       #998
@@ -3467,7 +3467,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000AA5H   LINE      ---      ---       #1082
       01000AAFH   LINE      ---      ---       #1083
       01000AAFH   LINE      ---      ---       #1084
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 52
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 52
 
 
       01000AAFH   LINE      ---      ---       #1086
@@ -3535,7 +3535,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010030A9H   LINE      ---      ---       #1175
       010030A9H   LINE      ---      ---       #1176
       010030ABH   LINE      ---      ---       #1178
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 53
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 53
 
 
       010030ABH   LINE      ---      ---       #1181
@@ -3603,7 +3603,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100316DH   LINE      ---      ---       #1306
       0100316DH   LINE      ---      ---       #1307
       01003172H   LINE      ---      ---       #1308
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 54
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 54
 
 
       01003172H   LINE      ---      ---       #1309
@@ -3671,7 +3671,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003477H   LINE      ---      ---       #1412
       01003477H   LINE      ---      ---       #1413
       0100347AH   LINE      ---      ---       #1414
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 55
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 55
 
 
       0100347AH   LINE      ---      ---       #1415
@@ -3739,7 +3739,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100331EH   LINE      ---      ---       #1502
       01003324H   LINE      ---      ---       #1504
       0100332AH   LINE      ---      ---       #1506
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 56
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 56
 
 
       01003330H   LINE      ---      ---       #1508
@@ -3807,7 +3807,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010026BFH   LINE      ---      ---       #55
       010026BFH   LINE      ---      ---       #56
       010026BFH   LINE      ---      ---       #58
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 57
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 57
 
 
       010026C7H   LINE      ---      ---       #59
@@ -3875,7 +3875,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000A8H   SFRSYM    DATA     BIT       EX0
       00000088H   SFRSYM    DATA     BIT       IT0
       0000008DH   SFRSYM    DATA     BYTE      TH1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 58
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 58
 
 
       00000098H.3 SFRSYM    DATA     BIT       TB8
@@ -3943,7 +3943,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000A8H.3 SFRSYM    DATA     BIT       ET1
       00000088H.5 SFRSYM    DATA     BIT       TF0
       00000088H.7 SFRSYM    DATA     BIT       TF1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 59
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 59
 
 
       00000098H.2 SFRSYM    DATA     BIT       RB8
@@ -4011,7 +4011,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010034DCH   LINE      ---      ---       #158
       010034E4H   LINE      ---      ---       #159
       010034E4H   LINE      ---      ---       #160
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 60
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 60
 
 
       010034E4H   LINE      ---      ---       #161
@@ -4079,7 +4079,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003A90H   LINE      ---      ---       #605
       01003A92H   LINE      ---      ---       #606
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 61
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 61
 
 
 
@@ -4147,7 +4147,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010006F1H   LINE      ---      ---       #1165
       010006FFH   LINE      ---      ---       #1166
       010006FFH   LINE      ---      ---       #1168
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 62
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 62
 
 
       010006FFH   LINE      ---      ---       #1169
@@ -4215,7 +4215,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003597H   LINE      ---      ---       #1434
       020008D4H   SYMBOL    XDATA    ---       Timer
       ---         BLOCKEND  CODE     ---       LVL=1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 63
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 63
 
 
       ---         BLOCKEND  CODE     ---       LVL=0
@@ -4283,7 +4283,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B0H.7 SFRSYM    DATA     BIT       RD
       000000A8H.4 SFRSYM    DATA     BIT       ES
       000000B8H   SFRSYM    DATA     BYTE      IP
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 64
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 64
 
 
       00000098H   SFRSYM    DATA     BIT       RI
@@ -4351,7 +4351,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003ABFH   LINE      ---      ---       #184
       01003ABFH   LINE      ---      ---       #185
       01003AC4H   LINE      ---      ---       #186
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 65
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 65
 
 
       01003AC8H   LINE      ---      ---       #187
@@ -4419,7 +4419,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000087H   SFRSYM    DATA     BYTE      PCON
       00000098H   SFRSYM    DATA     BYTE      SCON
       00000089H   SFRSYM    DATA     BYTE      TMOD
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 66
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 66
 
 
       00000088H   SFRSYM    DATA     BYTE      TCON
@@ -4487,7 +4487,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B8H.4 SFRSYM    DATA     BIT       PS
       00000081H   SFRSYM    DATA     BYTE      SP
       000000D0H.2 SFRSYM    DATA     BIT       OV
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 67
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 67
 
 
       000000B0H.6 SFRSYM    DATA     BIT       WR
@@ -4555,7 +4555,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003B6DH   LINE      ---      ---       #103
       01003B74H   LINE      ---      ---       #104
       01003B7BH   LINE      ---      ---       #105
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 68
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 68
 
 
       01003B82H   LINE      ---      ---       #106
@@ -4623,7 +4623,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B8H   SFRSYM    DATA     BYTE      IP
       00000098H   SFRSYM    DATA     BIT       RI
       000000B0H.2 SFRSYM    DATA     BIT       INT0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 69
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 69
 
 
       000000D0H.7 SFRSYM    DATA     BIT       CY
@@ -4691,7 +4691,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B8H   SFRSYM    DATA     BYTE      IP
       00000098H   SFRSYM    DATA     BIT       RI
       000000B0H.2 SFRSYM    DATA     BIT       INT0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 70
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 70
 
 
       000000D0H.7 SFRSYM    DATA     BIT       CY
@@ -4759,7 +4759,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H.6 SFRSYM    DATA     BIT       AC
       000000B0H.5 SFRSYM    DATA     BIT       T1
       000000A8H.7 SFRSYM    DATA     BIT       EA
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 71
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 71
 
 
       000000A8H   SFRSYM    DATA     BYTE      IE
@@ -4827,7 +4827,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       01003B92H   BLOCK     CODE     ---       LVL=0
       01003B92H   LINE      ---      ---       #43
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 72
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 72
 
 
       01003B92H   LINE      ---      ---       #44
@@ -4895,7 +4895,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003CD2H   LINE      ---      ---       #162
       01003CD7H   LINE      ---      ---       #163
       01003CDFH   LINE      ---      ---       #164
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 73
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 73
 
 
       01003CDFH   LINE      ---      ---       #165
@@ -4963,7 +4963,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003DB7H   LINE      ---      ---       #283
       01003DBDH   LINE      ---      ---       #292
       01003DBEH   LINE      ---      ---       #293
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 74
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 74
 
 
       02000ABAH   SYMBOL    XDATA    BYTE      DeviceID
@@ -5031,7 +5031,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000098H.4 SFRSYM    DATA     BIT       REN
       000000B0H   SFRSYM    DATA     BIT       RXD
       000000B0H.1 SFRSYM    DATA     BIT       TXD
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 75
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 75
 
 
       000000D0H.5 SFRSYM    DATA     BIT       F0
@@ -5099,7 +5099,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000A8H.3 SFRSYM    DATA     BIT       ET1
       00000088H.5 SFRSYM    DATA     BIT       TF0
       00000088H.7 SFRSYM    DATA     BIT       TF1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 76
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 76
 
 
       00000098H.2 SFRSYM    DATA     BIT       RB8
@@ -5167,7 +5167,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001C6EH   LINE      ---      ---       #162
       01001C6EH   LINE      ---      ---       #163
       01001C73H   LINE      ---      ---       #164
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 77
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 77
 
 
       01001C7AH   LINE      ---      ---       #165
@@ -5235,7 +5235,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001CA2H   LINE      ---      ---       #364
       01001CABH   LINE      ---      ---       #365
       01001CB5H   LINE      ---      ---       #366
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 78
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 78
 
 
       01001CB7H   LINE      ---      ---       #369
@@ -5303,7 +5303,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001D59H   LINE      ---      ---       #540
       01001D67H   LINE      ---      ---       #541
       01001D67H   LINE      ---      ---       #542
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 79
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 79
 
 
       01001D71H   LINE      ---      ---       #543
@@ -5371,7 +5371,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001EEFH   LINE      ---      ---       #643
       01001F0DH   LINE      ---      ---       #644
       01001F19H   LINE      ---      ---       #645
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 80
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 80
 
 
       01001F19H   LINE      ---      ---       #646
@@ -5439,7 +5439,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001E13H   LINE      ---      ---       #747
       01001E13H   LINE      ---      ---       #749
       01001E15H   LINE      ---      ---       #751
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 81
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 81
 
 
       01001E15H   LINE      ---      ---       #752
@@ -5507,7 +5507,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001A2AH   BLOCK     CODE     NEAR LAB  LVL=1
       01001A2AH   LINE      ---      ---       #926
       01001A2FH   LINE      ---      ---       #927
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 82
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 82
 
 
       01001A31H   LINE      ---      ---       #929
@@ -5575,7 +5575,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001B41H   LINE      ---      ---       #1084
       01001B41H   LINE      ---      ---       #1085
       01001B44H   LINE      ---      ---       #1088
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 83
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 83
 
 
       01001B46H   LINE      ---      ---       #1092
@@ -5643,7 +5643,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001BA0H   LINE      ---      ---       #1345
       01001BA0H   LINE      ---      ---       #1346
       01001BA0H   LINE      ---      ---       #1352
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 84
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 84
 
 
       01001BBBH   LINE      ---      ---       #1358
@@ -5711,7 +5711,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  CODE     ---       LVL=0
 
       010045E8H   BLOCK     CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 85
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 85
 
 
       010045E8H   LINE      ---      ---       #1628
@@ -5779,7 +5779,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H.6 SFRSYM    DATA     BIT       AC
       000000B0H.5 SFRSYM    DATA     BIT       T1
       000000A8H.7 SFRSYM    DATA     BIT       EA
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 86
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 86
 
 
       000000A8H   SFRSYM    DATA     BYTE      IE
@@ -5847,7 +5847,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000082H   SYMBOL    DATA     ---       DPL
       00000000H   SYMBOL    NUMBER   ---       FILE_DEC_ASM
       010004B8H   LINE      CODE     ---       #22
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 87
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 87
 
 
       010004BAH   LINE      CODE     ---       #23
@@ -5915,7 +5915,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000098H.7 SFRSYM    DATA     BIT       SM0
       0000008AH   SFRSYM    DATA     BYTE      TL0
       000000A9H   SFRSYM    DATA     BYTE      IP_X
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 88
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 88
 
 
       00000098H.6 SFRSYM    DATA     BIT       SM1
@@ -5983,7 +5983,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000896H   LINE      ---      ---       #158
       0100089EH   LINE      ---      ---       #160
       010008A5H   LINE      ---      ---       #161
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 89
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 89
 
 
       010008A8H   LINE      ---      ---       #169
@@ -6051,7 +6051,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000000H   LINE      CODE     ---       #100
       01000360H   LINE      CODE     ---       #111
       01000363H   LINE      CODE     ---       #114
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 90
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 90
 
 
       01000365H   LINE      CODE     ---       #115
@@ -6119,7 +6119,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000F0H   SFRSYM    DATA     BYTE      B
       000000E0H   SFRSYM    DATA     BYTE      ACC
       000000A8H.1 SFRSYM    DATA     BIT       ET0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 91
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 91
 
 
       000000A8H.3 SFRSYM    DATA     BIT       ET1
@@ -6187,7 +6187,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       01000022H   BLOCK     CODE     ---       LVL=0
       01000022H   LINE      ---      ---       #133
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 92
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 92
 
 
       01000022H   LINE      ---      ---       #149
@@ -6255,7 +6255,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000098H.6 SFRSYM    DATA     BIT       SM1
       0000008BH   SFRSYM    DATA     BYTE      TL1
       00000098H.5 SFRSYM    DATA     BIT       SM2
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 93
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 93
 
 
       000000B8H.1 SFRSYM    DATA     BIT       PT0
@@ -6323,7 +6323,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B0H   SFRSYM    DATA     BYTE      P3
       000000B0H.4 SFRSYM    DATA     BIT       T0
       000000D0H.6 SFRSYM    DATA     BIT       AC
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 94
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 94
 
 
       000000B0H.5 SFRSYM    DATA     BIT       T1
@@ -6391,7 +6391,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004713H   LINE      ---      ---       #113
       01004718H   LINE      ---      ---       #120
       01004720H   LINE      ---      ---       #123
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 95
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 95
 
 
       01004720H   LINE      ---      ---       #124
@@ -6459,7 +6459,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000A8H.1 SFRSYM    DATA     BIT       ET0
       000000A8H.3 SFRSYM    DATA     BIT       ET1
       00000088H.5 SFRSYM    DATA     BIT       TF0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 96
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 96
 
 
       00000088H.7 SFRSYM    DATA     BIT       TF1
@@ -6527,7 +6527,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000A8H.1 SFRSYM    DATA     BIT       ET0
       000000A8H.3 SFRSYM    DATA     BIT       ET1
       00000088H.5 SFRSYM    DATA     BIT       TF0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 97
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 97
 
 
       00000088H.7 SFRSYM    DATA     BIT       TF1
@@ -6595,7 +6595,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H.7 SFRSYM    DATA     BIT       CY
       00000098H.1 SFRSYM    DATA     BIT       TI
       000000B0H.3 SFRSYM    DATA     BIT       INT1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 98
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 98
 
 
       000000B8H.4 SFRSYM    DATA     BIT       PS
@@ -6663,7 +6663,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010020D0H   LINE      ---      ---       #110
       010020D7H   LINE      ---      ---       #114
       010020D7H   LINE      ---      ---       #118
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 99
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 99
 
 
       010020DCH   LINE      ---      ---       #120
@@ -6731,7 +6731,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010021DCH   LINE      ---      ---       #279
       010021E1H   LINE      ---      ---       #280
       010021E3H   LINE      ---      ---       #281
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 100
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 100
 
 
       010021E7H   LINE      ---      ---       #282
@@ -6799,7 +6799,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01002065H   LINE      ---      ---       #451
       01002071H   LINE      ---      ---       #458
       01002073H   LINE      ---      ---       #459
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 101
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 101
 
 
       01002077H   LINE      ---      ---       #460
@@ -6867,7 +6867,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100225FH   LINE      ---      ---       #630
       0100226AH   LINE      ---      ---       #631
       02000A35H   SYMBOL    XDATA    ---       Ptr
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 102
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 102
 
 
       02000A38H   SYMBOL    XDATA    BYTE      Len
@@ -6935,7 +6935,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H.7 SFRSYM    DATA     BIT       CY
       00000098H.1 SFRSYM    DATA     BIT       TI
       000000B0H.3 SFRSYM    DATA     BIT       INT1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 103
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 103
 
 
       000000B8H.4 SFRSYM    DATA     BIT       PS
@@ -7003,7 +7003,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H.6 SFRSYM    DATA     BIT       AC
       000000B0H.5 SFRSYM    DATA     BIT       T1
       000000A8H.7 SFRSYM    DATA     BIT       EA
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 104
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 104
 
 
       000000A8H   SFRSYM    DATA     BYTE      IE
@@ -7071,7 +7071,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010048C4H   LINE      ---      ---       #65
       010048C7H   LINE      ---      ---       #69
       010048C7H   LINE      ---      ---       #70
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 105
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 105
 
 
       010048D0H   LINE      ---      ---       #71
@@ -7139,7 +7139,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010046E3H   LINE      ---      ---       #371
       010046E5H   LINE      ---      ---       #373
       010046E5H   LINE      ---      ---       #374
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 106
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 106
 
 
       010046EFH   LINE      ---      ---       #375
@@ -7207,7 +7207,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004578H   LINE      ---      ---       #480
       010045ADH   LINE      ---      ---       #486
       010045ADH   LINE      ---      ---       #487
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 107
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 107
 
 
       010045B3H   LINE      ---      ---       #489
@@ -7275,7 +7275,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0000008DH   SFRSYM    DATA     BYTE      TH1
       00000098H.3 SFRSYM    DATA     BIT       TB8
       000000A8H.2 SFRSYM    DATA     BIT       EX1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 108
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 108
 
 
       00000088H.2 SFRSYM    DATA     BIT       IT1
@@ -7343,7 +7343,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000088H.5 SFRSYM    DATA     BIT       TF0
       00000088H.7 SFRSYM    DATA     BIT       TF1
       00000098H.2 SFRSYM    DATA     BIT       RB8
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 109
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 109
 
 
       0000008CH   SFRSYM    DATA     BYTE      TH0
@@ -7411,7 +7411,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004DC8H   LINE      ---      ---       #267
       01004DC8H   LINE      ---      ---       #268
       01004DCAH   LINE      ---      ---       #269
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 110
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 110
 
 
       01004DCAH   LINE      ---      ---       #270
@@ -7479,7 +7479,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001571H   LINE      ---      ---       #463
       01001571H   LINE      ---      ---       #464
       01001573H   LINE      ---      ---       #465
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 111
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 111
 
 
       01001573H   LINE      ---      ---       #466
@@ -7547,7 +7547,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100164FH   LINE      ---      ---       #596
       0100165AH   LINE      ---      ---       #597
       0100165AH   LINE      ---      ---       #598
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 112
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 112
 
 
       0100165AH   LINE      ---      ---       #600
@@ -7615,7 +7615,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000088H.7 SFRSYM    DATA     BIT       TF1
       00000098H.2 SFRSYM    DATA     BIT       RB8
       0000008CH   SFRSYM    DATA     BYTE      TH0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 113
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 113
 
 
       000000A8H   SFRSYM    DATA     BIT       EX0
@@ -7683,7 +7683,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004E3DH   LINE      ---      ---       #87
       01004E43H   LINE      ---      ---       #88
       01004E43H   LINE      ---      ---       #89
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 114
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 114
 
 
       01004E47H   LINE      ---      ---       #90
@@ -7751,7 +7751,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000088H.1 SFRSYM    DATA     BIT       IE0
       00000088H.3 SFRSYM    DATA     BIT       IE1
       000000F0H   SFRSYM    DATA     BYTE      B
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 115
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 115
 
 
       000000E0H   SFRSYM    DATA     BYTE      ACC
@@ -7819,7 +7819,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000088H.1 SFRSYM    DATA     BIT       IE0
       00000088H.3 SFRSYM    DATA     BIT       IE1
       000000F0H   SFRSYM    DATA     BYTE      B
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 116
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 116
 
 
       000000E0H   SFRSYM    DATA     BYTE      ACC
@@ -7887,7 +7887,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000088H.1 SFRSYM    DATA     BIT       IE0
       00000088H.3 SFRSYM    DATA     BIT       IE1
       000000F0H   SFRSYM    DATA     BYTE      B
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 117
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 117
 
 
       000000E0H   SFRSYM    DATA     BYTE      ACC
@@ -7955,7 +7955,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000088H.1 SFRSYM    DATA     BIT       IE0
       00000088H.3 SFRSYM    DATA     BIT       IE1
       000000F0H   SFRSYM    DATA     BYTE      B
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 118
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 118
 
 
       000000E0H   SFRSYM    DATA     BYTE      ACC
@@ -8023,7 +8023,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010037D3H   PUBLIC    CODE     ---       _SetSCL
       01004E95H   PUBLIC    CODE     ---       _SetOutputSCL
       00000080H   SFRSYM    DATA     BYTE      P0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 119
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 119
 
 
       00000090H   SFRSYM    DATA     BYTE      P1
@@ -8091,7 +8091,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       01004E95H   BLOCK     CODE     ---       LVL=0
       01004E95H   LINE      ---      ---       #44
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 120
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 120
 
 
       01004E95H   LINE      ---      ---       #45
@@ -8159,7 +8159,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004FA9H   LINE      ---      ---       #223
       00000007H   SYMBOL    DATA     BYTE      I2cDevice
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 121
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 121
 
 
 
@@ -8227,7 +8227,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010037AFH   LINE      ---      ---       #357
       02000ABEH   SYMBOL    XDATA    BYTE      I2cDevice
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 122
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 122
 
 
 
@@ -8295,7 +8295,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100501CH   LINE      ---      ---       #424
       0100501EH   LINE      ---      ---       #426
       0100501EH   LINE      ---      ---       #427
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 123
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 123
 
 
       01005023H   LINE      ---      ---       #428
@@ -8363,7 +8363,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  CODE     ---       LVL=0
 
       01005125H   BLOCK     CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 124
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 124
 
 
       01005125H   LINE      ---      ---       #488
@@ -8431,7 +8431,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000007H   SYMBOL    DATA     BYTE      DevAddr
       00000004H   SYMBOL    DATA     WORD      Addr
       02000965H   SYMBOL    XDATA    ---       Buf
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 125
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 125
 
 
       02000968H   SYMBOL    XDATA    BYTE      Len
@@ -8499,7 +8499,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       02000842H   PUBLIC    XDATA    ---       gDispBuff
       02000841H   PUBLIC    XDATA    BYTE      gDispState
       0100527AH   PUBLIC    CODE     ---       Display
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 126
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 126
 
 
       010017BBH   PUBLIC    CODE     ---       DispDev
@@ -8567,7 +8567,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000098H.7 SFRSYM    DATA     BIT       SM0
       0000008AH   SFRSYM    DATA     BYTE      TL0
       00000098H.6 SFRSYM    DATA     BIT       SM1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 127
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 127
 
 
       0000008BH   SFRSYM    DATA     BYTE      TL1
@@ -8635,7 +8635,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  ---      ---       LVL=0
 
       01005241H   BLOCK     CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 128
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 128
 
 
       01005241H   LINE      ---      ---       #337
@@ -8703,7 +8703,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001816H   LINE      ---      ---       #1010
       ---         BLOCKEND  ---      ---       LVL=0
 
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 129
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 129
 
 
       01005249H   BLOCK     CODE     ---       LVL=0
@@ -8771,7 +8771,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B0H.2 SFRSYM    DATA     BIT       INT0
       000000D0H.7 SFRSYM    DATA     BIT       CY
       00000098H.1 SFRSYM    DATA     BIT       TI
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 130
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 130
 
 
       000000B0H.3 SFRSYM    DATA     BIT       INT1
@@ -8839,7 +8839,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B0H.2 SFRSYM    DATA     BIT       INT0
       000000D0H.7 SFRSYM    DATA     BIT       CY
       00000098H.1 SFRSYM    DATA     BIT       TI
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 131
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 131
 
 
       000000B0H.3 SFRSYM    DATA     BIT       INT1
@@ -8907,7 +8907,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B0H.2 SFRSYM    DATA     BIT       INT0
       000000D0H.7 SFRSYM    DATA     BIT       CY
       00000098H.1 SFRSYM    DATA     BIT       TI
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 132
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 132
 
 
       000000B0H.3 SFRSYM    DATA     BIT       INT1
@@ -8975,7 +8975,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B0H.4 SFRSYM    DATA     BIT       T0
       000000D0H.6 SFRSYM    DATA     BIT       AC
       000000B0H.5 SFRSYM    DATA     BIT       T1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 133
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 133
 
 
       000000A8H.7 SFRSYM    DATA     BIT       EA
@@ -9043,7 +9043,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100187EH   LINE      ---      ---       #52
       01001882H   LINE      ---      ---       #53
       01001882H   LINE      ---      ---       #58
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 134
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 134
 
 
       0100188DH   LINE      ---      ---       #59
@@ -9111,7 +9111,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       010019E7H   BLOCK     CODE     ---       LVL=0
       010019E7H   LINE      ---      ---       #717
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 135
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 135
 
 
       010019E7H   LINE      ---      ---       #718
@@ -9179,7 +9179,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001822H   LINE      ---      ---       #928
       01001822H   LINE      ---      ---       #993
       01001822H   LINE      ---      ---       #994
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 136
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 136
 
 
       01001826H   LINE      ---      ---       #995
@@ -9247,7 +9247,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010019C9H   LINE      ---      ---       #1223
       010019CBH   LINE      ---      ---       #1227
       010019CBH   LINE      ---      ---       #1228
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 137
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 137
 
 
       010019CEH   LINE      ---      ---       #1230
@@ -9315,7 +9315,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000089H   SFRSYM    DATA     BYTE      TMOD
       00000088H   SFRSYM    DATA     BYTE      TCON
       00000088H.1 SFRSYM    DATA     BIT       IE0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 138
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 138
 
 
       00000088H.3 SFRSYM    DATA     BIT       IE1
@@ -9383,7 +9383,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005306H   LINE      ---      ---       #92
       0100530DH   LINE      ---      ---       #94
       01005312H   LINE      ---      ---       #95
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 139
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 139
 
 
       01005312H   LINE      ---      ---       #97
@@ -9451,7 +9451,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01001047H   LINE      ---      ---       #259
       01001047H   LINE      ---      ---       #260
       01001047H   LINE      ---      ---       #261
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 140
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 140
 
 
       0100104FH   LINE      ---      ---       #262
@@ -9519,7 +9519,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000087H   SFRSYM    DATA     BYTE      PCON
       00000098H   SFRSYM    DATA     BYTE      SCON
       00000089H   SFRSYM    DATA     BYTE      TMOD
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 141
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 141
 
 
       00000088H   SFRSYM    DATA     BYTE      TCON
@@ -9587,7 +9587,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003AF7H   LINE      ---      ---       #152
       01003AF9H   LINE      ---      ---       #155
       01003AFCH   LINE      ---      ---       #156
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 142
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 142
 
 
       01003AFFH   LINE      ---      ---       #159
@@ -9655,7 +9655,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005593H   LINE      ---      ---       #245
       01005595H   LINE      ---      ---       #247
       01005595H   LINE      ---      ---       #248
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 143
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 143
 
 
       0100559BH   LINE      ---      ---       #249
@@ -9723,7 +9723,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010012F7H   LINE      ---      ---       #408
       01001307H   LINE      ---      ---       #409
       01001307H   LINE      ---      ---       #410
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 144
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 144
 
 
       0100130AH   LINE      ---      ---       #411
@@ -9791,7 +9791,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010013FFH   LINE      ---      ---       #575
       010013FFH   LINE      ---      ---       #577
       01001402H   LINE      ---      ---       #578
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 145
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 145
 
 
       01001404H   LINE      ---      ---       #580
@@ -9859,7 +9859,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100106DH   LINE      ---      ---       #968
       0100106DH   LINE      ---      ---       #969
       01001077H   LINE      ---      ---       #970
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 146
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 146
 
 
       01001077H   LINE      ---      ---       #971
@@ -9927,7 +9927,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100117EH   LINE      ---      ---       #1119
       0100117EH   LINE      ---      ---       #1124
       010011A8H   LINE      ---      ---       #1127
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 147
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 147
 
 
       010011A8H   LINE      ---      ---       #1128
@@ -9995,7 +9995,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 148
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 148
 
 
       01001523H   BLOCK     CODE     ---       LVL=0
@@ -10063,7 +10063,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000B8H.4 SFRSYM    DATA     BIT       PS
       00000081H   SFRSYM    DATA     BYTE      SP
       000000D0H.2 SFRSYM    DATA     BIT       OV
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 149
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 149
 
 
       000000B0H.6 SFRSYM    DATA     BIT       WR
@@ -10131,7 +10131,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       01001788H   BLOCK     CODE     ---       LVL=0
       01001788H   LINE      ---      ---       #102
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 150
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 150
 
 
       0100178DH   LINE      ---      ---       #103
@@ -10199,7 +10199,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010053F3H   LINE      ---      ---       #161
       010053F3H   LINE      ---      ---       #162
       010053F6H   LINE      ---      ---       #163
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 151
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 151
 
 
       010053F6H   LINE      ---      ---       #164
@@ -10267,7 +10267,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       01000673H   BLOCK     CODE     ---       LVL=0
       01000673H   LINE      ---      ---       #262
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 152
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 152
 
 
       01000673H   LINE      ---      ---       #263
@@ -10335,7 +10335,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005493H   LINE      ---      ---       #375
       01005493H   LINE      ---      ---       #376
       01005493H   LINE      ---      ---       #379
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 153
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 153
 
 
       01005498H   LINE      ---      ---       #380
@@ -10403,7 +10403,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 154
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 154
 
 
       ---         MODULE    ---      ---       SPI_FLASH
@@ -10471,7 +10471,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000F0H   SFRSYM    DATA     BYTE      B
       000000E0H   SFRSYM    DATA     BYTE      ACC
       000000A8H.1 SFRSYM    DATA     BIT       ET0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 155
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 155
 
 
       000000A8H.3 SFRSYM    DATA     BIT       ET1
@@ -10539,7 +10539,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       010027C1H   BLOCK     CODE     ---       LVL=0
       010027C8H   LINE      ---      ---       #71
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 156
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 156
 
 
       010027CAH   LINE      ---      ---       #72
@@ -10607,7 +10607,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004B32H   LINE      ---      ---       #138
       01004B38H   LINE      ---      ---       #139
       01004B38H   LINE      ---      ---       #142
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 157
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 157
 
 
       01004B3DH   LINE      ---      ---       #145
@@ -10675,7 +10675,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 158
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 158
 
 
       01004AFDH   BLOCK     CODE     ---       LVL=0
@@ -10743,7 +10743,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       02000910H   SYMBOL    XDATA    ---       Buffer
       02000913H   SYMBOL    XDATA    WORD      Length
       01002F01H   BLOCK     CODE     NEAR LAB  LVL=1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 159
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 159
 
 
       01002F01H   LINE      ---      ---       #298
@@ -10811,7 +10811,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004B80H   LINE      ---      ---       #368
       01004B80H   LINE      ---      ---       #369
       01004B80H   LINE      ---      ---       #370
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 160
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 160
 
 
       01004B87H   LINE      ---      ---       #371
@@ -10879,7 +10879,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010055DBH   LINE      ---      ---       #452
       010055DBH   LINE      ---      ---       #453
       010055E5H   LINE      ---      ---       #454
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 161
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 161
 
 
       010055E5H   LINE      ---      ---       #456
@@ -10947,7 +10947,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H   SFRSYM    DATA     BIT       P
       00000098H.7 SFRSYM    DATA     BIT       SM0
       0000008AH   SFRSYM    DATA     BYTE      TL0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 162
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 162
 
 
       00000098H.6 SFRSYM    DATA     BIT       SM1
@@ -11015,7 +11015,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01002C8AH   LINE      ---      ---       #88
       01002C8AH   LINE      ---      ---       #89
       01002C91H   LINE      ---      ---       #90
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 163
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 163
 
 
       01002C91H   LINE      ---      ---       #91
@@ -11083,7 +11083,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100569BH   BLOCK     CODE     ---       LVL=0
       0100569BH   LINE      ---      ---       #200
       0100569BH   LINE      ---      ---       #201
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 164
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 164
 
 
       0100569BH   LINE      ---      ---       #207
@@ -11151,7 +11151,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000032H   LINE      CODE     ---       #66
       01000035H   LINE      CODE     ---       #67
       01000036H   LINE      CODE     ---       #68
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 165
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 165
 
 
       01000038H   LINE      CODE     ---       #69
@@ -11219,7 +11219,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01000099H   LINE      CODE     ---       #148
       0100009AH   LINE      CODE     ---       #149
       0100009CH   LINE      CODE     ---       #150
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 166
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 166
 
 
       0100009DH   LINE      CODE     ---       #153
@@ -11287,7 +11287,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000A8H.7 SFRSYM    DATA     BIT       EA
       000000A8H   SFRSYM    DATA     BYTE      IE
       000000B0H.7 SFRSYM    DATA     BIT       RD
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 167
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 167
 
 
       000000A8H.4 SFRSYM    DATA     BIT       ES
@@ -11355,7 +11355,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       010057E7H   BLOCK     CODE     ---       LVL=0
       010057E7H   LINE      ---      ---       #49
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 168
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 168
 
 
       010057E7H   LINE      ---      ---       #50
@@ -11423,7 +11423,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01002BA8H   LINE      ---      ---       #152
       01002BA8H   LINE      ---      ---       #153
       01002BA8H   LINE      ---      ---       #154
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 169
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 169
 
 
       01002BAEH   LINE      ---      ---       #155
@@ -11491,7 +11491,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010028F2H   LINE      ---      ---       #256
       010028F4H   LINE      ---      ---       #257
       02000A85H   SYMBOL    XDATA    BYTE      Volume
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 170
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 170
 
 
       ---         BLOCKEND  CODE     ---       LVL=1
@@ -11559,7 +11559,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000098H.4 SFRSYM    DATA     BIT       REN
       000000B0H   SFRSYM    DATA     BIT       RXD
       000000B0H.1 SFRSYM    DATA     BIT       TXD
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 171
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 171
 
 
       000000D0H.5 SFRSYM    DATA     BIT       F0
@@ -11627,7 +11627,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       00000098H.7 SFRSYM    DATA     BIT       SM0
       0000008AH   SFRSYM    DATA     BYTE      TL0
       00000098H.6 SFRSYM    DATA     BIT       SM1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 172
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 172
 
 
       0000008BH   SFRSYM    DATA     BYTE      TL1
@@ -11695,7 +11695,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100586CH   LINE      ---      ---       #193
       0100586CH   LINE      ---      ---       #194
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 173
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 173
 
 
 
@@ -11763,7 +11763,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  CODE     ---       LVL=0
 
       ---         MODULE    ---      ---       BLUETOOTH_CMD
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 174
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 174
 
 
       00000080H   SFRSYM    DATA     BYTE      P0
@@ -11831,7 +11831,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H   SFRSYM    DATA     BYTE      PSW
 
       ---         MODULE    ---      ---       SLAVE_CMD
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 175
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 175
 
 
       00000080H   SFRSYM    DATA     BYTE      P0
@@ -11899,7 +11899,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H   SFRSYM    DATA     BYTE      PSW
 
       ---         MODULE    ---      ---       SLAVE_CTRL
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 176
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 176
 
 
       00000080H   SFRSYM    DATA     BYTE      P0
@@ -11967,7 +11967,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H   SFRSYM    DATA     BYTE      PSW
 
       ---         MODULE    ---      ---       NPCA110X
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 177
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 177
 
 
       00000080H   SFRSYM    DATA     BYTE      P0
@@ -12035,7 +12035,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       000000D0H   SFRSYM    DATA     BYTE      PSW
 
       ---         MODULE    ---      ---       INCLUDE_TABLES
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 178
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 178
 
 
       01005878H   PUBLIC    CODE     ---       InitLibary
@@ -12103,7 +12103,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005B81H   LINE      ---      ---       #98
       01005B81H   LINE      ---      ---       #99
       01005B89H   LINE      ---      ---       #100
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 179
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 179
 
 
       ---         BLOCKEND  ---      ---       LVL=0
@@ -12171,7 +12171,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005C2BH   LINE      ---      ---       #183
       01005C2BH   LINE      ---      ---       #185
       01005C2BH   LINE      ---      ---       #186
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 180
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 180
 
 
       01005C2BH   LINE      ---      ---       #187
@@ -12239,7 +12239,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100418BH   LINE      ---      ---       #31
       0100418EH   LINE      ---      ---       #32
       0100418EH   LINE      ---      ---       #33
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 181
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 181
 
 
       010041A3H   LINE      ---      ---       #34
@@ -12307,7 +12307,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005D14H   LINE      ---      ---       #97
       02000A49H   SYMBOL    XDATA    VOID      BuffTmp
       01005D14H   BLOCK     CODE     NEAR LAB  LVL=2
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 182
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 182
 
 
       01005D14H   LINE      ---      ---       #101
@@ -12375,7 +12375,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005699H   LINE      ---      ---       #172
       01005699H   LINE      ---      ---       #173
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 183
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 183
 
 
 
@@ -12443,7 +12443,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005DE6H   LINE      ---      ---       #27
       01005DECH   LINE      ---      ---       #28
       01005DECH   LINE      ---      ---       #31
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 184
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 184
 
 
       01005DECH   LINE      ---      ---       #33
@@ -12511,7 +12511,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005F95H   LINE      ---      ---       #117
       01005F9FH   LINE      ---      ---       #118
       01005F9FH   LINE      ---      ---       #121
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 185
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 185
 
 
       01005FAAH   LINE      ---      ---       #122
@@ -12579,7 +12579,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003F7BH   PUBLIC    CODE     ---       ClrWakeupLpRtcInPD
       01003F6EH   PUBLIC    CODE     ---       SetWakeupLpRtcInPD
       01003F9CH   PUBLIC    CODE     ---       _ClrWakeupSrcInSleep
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 186
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 186
 
 
       01006177H   PUBLIC    CODE     ---       GetLdoinVoltage
@@ -12647,7 +12647,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       ---         MODULE    ---      ---       PWRKEY_DRV
       02000A88H   PUBLIC    XDATA    CHAR      gIsPwrkeyPadOn
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 187
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 187
 
 
       01005B51H   PUBLIC    CODE     ---       PwrkeyPadChk
@@ -12715,7 +12715,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01006275H   LINE      ---      ---       #57
       01006275H   LINE      ---      ---       #58
       0100627CH   LINE      ---      ---       #59
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 188
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 188
 
 
       0100627CH   LINE      ---      ---       #61
@@ -12783,7 +12783,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003EB5H   LINE      ---      ---       #10
       01003EB5H   LINE      ---      ---       #11
       01003EB5H   BLOCK     CODE     NEAR LAB  LVL=1
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 189
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 189
 
 
       01003EB5H   LINE      ---      ---       #14
@@ -12851,7 +12851,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003DCAH   BLOCK     CODE     ---       LVL=0
       01003DCAH   LINE      ---      ---       #23
       01003DCAH   LINE      ---      ---       #24
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 190
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 190
 
 
       01003DCAH   LINE      ---      ---       #46
@@ -12919,7 +12919,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01003E63H   LINE      ---      ---       #60
       01003E65H   LINE      ---      ---       #61
       01003E67H   LINE      ---      ---       #62
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 191
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 191
 
 
       01003E6CH   LINE      ---      ---       #63
@@ -12987,7 +12987,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010041DCH   LINE      ---      ---       #53
       010041E2H   LINE      ---      ---       #54
       010041E2H   LINE      ---      ---       #55
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 192
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 192
 
 
       010041E4H   LINE      ---      ---       #56
@@ -13055,7 +13055,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010063D2H   LINE      ---      ---       #140
       010063D2H   LINE      ---      ---       #142
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 193
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 193
 
 
 
@@ -13123,7 +13123,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       ---         BLOCKEND  ---      ---       LVL=0
 
       01005B3EH   BLOCK     CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 194
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 194
 
 
       01005B45H   LINE      ---      ---       #51
@@ -13191,7 +13191,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010058F1H   LINE      ---      ---       #127
       010058F1H   LINE      ---      ---       #128
       010058F2H   LINE      ---      ---       #129
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 195
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 195
 
 
       010058F6H   LINE      ---      ---       #130
@@ -13259,7 +13259,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010059A6H   LINE      ---      ---       #208
       010059AEH   LINE      ---      ---       #209
       010059AEH   LINE      ---      ---       #210
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 196
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 196
 
 
       010059B3H   LINE      ---      ---       #211
@@ -13327,7 +13327,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01005AEDH   LINE      ---      ---       #286
       01005AF3H   LINE      ---      ---       #287
       01005AF3H   LINE      ---      ---       #288
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 197
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 197
 
 
       01005AFDH   LINE      ---      ---       #289
@@ -13395,7 +13395,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004754H   LINE      ---      ---       #3
       01004754H   LINE      ---      ---       #4
       01004754H   LINE      ---      ---       #5
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 198
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 198
 
 
       01004756H   LINE      ---      ---       #6
@@ -13463,7 +13463,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100646AH   LINE      ---      ---       #92
       0100646AH   LINE      ---      ---       #93
       0100646CH   LINE      ---      ---       #94
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 199
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 199
 
 
       0100646CH   LINE      ---      ---       #96
@@ -13531,7 +13531,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100651DH   LINE      CODE     ---       #160
       0100651DH   BLOCK     CODE     NEAR LAB  LVL=2
       0100651DH   LINE      ---      ---       #169
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 200
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 200
 
 
       01006523H   LINE      ---      ---       #170
@@ -13599,7 +13599,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01006613H   LINE      ---      ---       #283
       01006613H   LINE      ---      ---       #284
       01006615H   LINE      ---      ---       #285
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 201
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 201
 
 
       01006615H   LINE      ---      ---       #287
@@ -13667,7 +13667,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100676EH   LINE      ---      ---       #402
       01006770H   LINE      ---      ---       #404
       01006772H   LINE      ---      ---       #407
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 202
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 202
 
 
       0200099FH   SYMBOL    XDATA    VOID      MaxPacketSize
@@ -13735,7 +13735,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       010042A1H   BLOCK     CODE     ---       LVL=0
       010042A1H   LINE      ---      ---       #500
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 203
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 203
 
 
       010042A1H   LINE      ---      ---       #501
@@ -13803,7 +13803,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       0100440AH   LINE      ---      ---       #615
       0100440DH   LINE      ---      ---       #616
       0100440FH   LINE      ---      ---       #619
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 204
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 204
 
 
       ---         BLOCKEND  ---      ---       LVL=0
@@ -13871,7 +13871,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       010023B9H   LINE      ---      ---       #105
       010023C3H   LINE      ---      ---       #106
       010023C3H   LINE      ---      ---       #107
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 205
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 205
 
 
       010023CEH   LINE      ---      ---       #108
@@ -13939,7 +13939,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
       01004783H   LINE      ---      ---       #195
       01004783H   LINE      ---      ---       #196
       01004785H   LINE      ---      ---       #197
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 206
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 206
 
 
       01004790H   LINE      ---      ---       #201
@@ -14007,7 +14007,7 @@ SYMBOL TABLE OF MODULE:  .\output\obj\..\MVs6210 (CLK_IF)
 
       ---         MODULE    ---      ---       ?C?CCASE
       01000492H   PUBLIC    CODE     ---       ?C?CCASE
-LX51 LINKER/LOCATER V4.41                                                             11/22/2015  21:40:33  PAGE 207
+LX51 LINKER/LOCATER V4.41                                                             11/24/2015  14:32:06  PAGE 207
 
 
 

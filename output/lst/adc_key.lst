@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 1   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE ADC_KEY
 OBJECT MODULE PLACED IN .\output\obj\adc_key.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE key\adc_key.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config;
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE key\adc_key.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config;
                     -.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\bluetoot
                     -h;.\i2c) DEBUG PRINT(.\output\lst\adc_key.lst) OBJECT(.\output\obj\adc_key.obj)
 
@@ -62,7 +62,7 @@ line level    source
   51                  ADC_KEY_STATE_IDLE,
   52                  ADC_KEY_STATE_JITTER,
   53                  ADC_KEY_STATE_PRESS_DOWN,
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 2   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 2   
 
   54                  ADC_KEY_STATE_CP
   55          
@@ -126,7 +126,7 @@ line level    source
                       {MSG_PRE,                       MSG_VOL_SUB,            MSG_VOL_SUB,            MSG_NONE                },      //SW3
                       {MSG_MODE_SW,           MSG_NONE,                       MSG_NONE,                       MSG_NONE                }, //SW4
                       {MSG_EQ_SW,             MSG_NONE,                       MSG_NONE,                       MSG_NONE                },      //SW5
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 3   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 3   
 
                       {MSG_VOL_SUB,           MSG_VOL_SUB,            MSG_VOL_SUB,            MSG_NONE                },      //SW6
                       {MSG_VOL_ADD,           MSG_VOL_ADD,            MSG_VOL_ADD,            MSG_NONE                },      //SW7
@@ -190,7 +190,7 @@ line level    source
                       25,     //SW7   12K             22      22      //SW17
                       30,     //SW8   16K             26      27      //SW18  
                       36,     //SW9   24K             33      33      //SW19
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 4   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 4   
 
                       42,     //SW10  36K             39      39      //SW20
                       47,     //SW11  51K             44      44      //SW21
@@ -254,7 +254,7 @@ line level    source
                                       {
                                               return KeyIndex;        
                                       }
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 5   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 5   
 
                               }
                               else
@@ -318,7 +318,7 @@ line level    source
               #endif
               
                       //ÇÐ»ØADC ¿Ú
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 6   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 6   
 
               #ifdef FUNC_LED_ADC1_KEY_MULTIPLE_EN    
                       baGPIOCtrl[LED_ADC1_KEY_MULTIPLE_PORT_PU] &= ~LED_ADC1_KEY_MULTIPLE_BIT;
@@ -382,7 +382,7 @@ line level    source
  361   1      #ifdef ADC_KEY_PORT_CH1
  362   1      #if (ADC_KEY_PORT_CH1 == ADC_CHANNEL_B6)
                       SET_B6_ANALOG_IN(); 
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 7   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 7   
 
               #endif
  365   1      
@@ -446,7 +446,7 @@ line level    source
  423   1              baGPIOCtrl[GPIO_D_IE] &= ~0x20;//D5
  424   1              baGPIOCtrl[GPIO_D_OE] |= 0x20;
  425   1              baGPIOCtrl[GPIO_D_PU] |= 0x20;
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 8   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 8   
 
  426   1              baGPIOCtrl[GPIO_D_PD] |= 0x20; 
  427   1              baGPIOCtrl[GPIO_D_OUT] &= ~0x20; 
@@ -510,7 +510,7 @@ line level    source
  485   3                                       
  486   3      #endif                          
  487   3                                      return MSG_NONE;
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 9   
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 9   
 
  488   3                              }
  489   2      
@@ -574,7 +574,7 @@ line level    source
  547   3                                      {
  548   4      
  549   4                                              switch(PreKeyIndex)
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 10  
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 10  
 
  550   4                                              {
  551   5                                              case 0:
@@ -638,7 +638,7 @@ line level    source
                                                       break;
                                               }
               #endif
-C51 COMPILER V9.00   ADC_KEY                                                               11/22/2015 18:52:05 PAGE 11  
+C51 COMPILER V9.00   ADC_KEY                                                               11/24/2015 14:32:01 PAGE 11  
 
  612   3                                      return AdcKeyEvent[PreKeyIndex][3];
  613   3                              }

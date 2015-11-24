@@ -35,7 +35,7 @@
 
 #ifdef BTLED_PORT
 #define BTIO_PORT_BLUE_LED_INIT()/*D0*/	do{ \	
-	SetGpioRegBit(GPIO_D_PU, (1 << 0));\
+	ClrGpioRegBit(GPIO_D_PU, (1 << 0));\
 	ClrGpioRegBit(GPIO_D_PD, (1 << 0));	\
 	ClrGpioRegBit(GPIO_D_OE, (1 << 0));\
 	SetGpioRegBit(GPIO_D_IE, (1 << 0));\
@@ -46,7 +46,7 @@
 
 
 #define BTIO_PORT_RED_LED_INIT()/*D1*/	do{ \	
-	SetGpioRegBit(GPIO_D_PU, (1 << 1));\
+	ClrGpioRegBit(GPIO_D_PU, (1 << 1));\
 	ClrGpioRegBit(GPIO_D_PD, (1 << 1));	\
 	ClrGpioRegBit(GPIO_D_OE, (1 << 1));\
 	SetGpioRegBit(GPIO_D_IE, (1 << 1));\
@@ -94,7 +94,7 @@
 #endif
 
 
-#define btIO_Red_Led_is_High() \	
+#define btIO_Red_Led_is_High()  \	
 	GET_RED_LED_STATUS()
 	
 
