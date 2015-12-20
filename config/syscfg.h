@@ -52,7 +52,12 @@
 //#define AU6210K_NR_D_8_CSRBT     //ID=581
 //#define AU6210K_LK_SJ_CSRBT     //莱卡·户外
 #define AU6210K_ZB_BT007_CSR    //智博bt007 key 
-#define AU6210K_XLX_ALD800  // 新联芯ADL800:oem智博bt007 <FM+LINE+CSRBT>
+//#define AU6210K_XLX_ALD800  // 新联芯ADL800:oem智博bt007 <FM+LINE+CSRBT>
+#define AU6210K_MINI503      //新联芯mini503:oem ald800    <FM+TF+CSRBT>
+
+#ifdef AU6210K_MINI503
+#define FUNC_BT_CHAN_AUTO
+#endif
 
 #ifdef AU6210K_ZB_BT007_CSR
 //#define AU6210K_ZB_BT007_IR_IC_IS_334M_CSR  //移动电源的案子    //与智博bt007 仅有部分功能不同: ir ic  //168
@@ -82,14 +87,18 @@
 //#define FUNC_CARD_EN				//CARD HOST功能(可连接SD/TF卡播歌),卡检测引脚配置见下面
 #endif
 
-#define FUNC_LINEIN_EN				
+#if defined(AU6210K_MINI503)
+#define FUNC_CARD_EN	
+#endif
+
+//#define FUNC_LINEIN_EN				
 
 #if defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_ZB_BT007_CSR)
 #else//no use radio
 #define FUNC_RADIO_EN				//Radio功能,该型号芯片内部集成高性能FM模块
 #endif
 
-#if defined(AU6210K_XLX_ALD800)//ald800 use radio
+#if defined(AU6210K_XLX_ALD800) || defined(AU6210K_MINI503)//ald800 use radio
 #define FUNC_RADIO_EN	
 #endif
 
@@ -131,7 +140,7 @@
 #ifdef FUNC_SPI_FLASH_EN
 	#define FUNC_SPI_KEY_SOUND_EN	//打开此宏定义，支持SPI 播放按键音
 	//#define FUNC_SPI_PLAY_EN		    // 打开此宏定义，将SPI Flash当做一个MP3设备
-	#define FUNC_SPI_UPDATE_EN			// Update SPI via U-Disk/SD-Card(place *.MVF under root-diretory).
+	//#define FUNC_SPI_UPDATE_EN			// Update SPI via U-Disk/SD-Card(place *.MVF under root-diretory).
 	// Define SPI flash CS port and pin.
 	#define	SPI_FLASH_CS_PORT		GPIO_B_IN
 	#define	SPI_FLASH_CS_PIN		(1 << 3)
@@ -324,13 +333,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
 //#define	FUNC_LONG_NAME_EN		//长文件名功能														 
 //#define	FUNC_FAST_PLAY_EN		//快进、快退功能
-//#define	FUNC_AUTO_PLAY_EN		//自动播放功能
 //#define FUNC_FOLDER_EN			//文件夹功能
 //#define FUNC_HIDDEN_FOLD_EN 	//播放隐藏文件夹中的歌曲
 //#define FUNC_RECYCLED_FOLD_EN	//播放回收站文件夹中的歌曲
 //#define FUNC_OPEN_FILE_DELAY_EN		//是否有延迟响应PRE、NEXT命令，连续多次按PRE、NEXT时可以快速响应
 //#define FUNC_DEVICE_FORCEPAUSE_EN	//打开该宏开关，支持插入充电器时强制暂停当前设备的播放
 
+#define	FUNC_AUTO_PLAY_EN		//自动播放功能
 //加密播放功能
 //#define FUNC_ENCRYPT_DECODE_EN
 #ifdef 	FUNC_ENCRYPT_DECODE_EN
@@ -413,7 +422,7 @@
 // 该功能宏打开后，默认包含电池电压检测功能，有关电池电压检测的其它可定义参数，请详见power_monitor.c文件
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
 //#if defined(AU6210K_NR_D_9X_XJ_HTS)
-//#define FUNC_POWER_MONITOR_EN
+#define FUNC_POWER_MONITOR_EN
 //#endif
 
 #ifdef FUNC_POWER_MONITOR_EN
@@ -465,7 +474,7 @@
 	//该方式要求芯片带POWER_KEY引脚，可以实现极低功耗(powerdown)下保留重要信息的要求
 	//选择该方式后，默认系统包含POWER_KEY功能(必须选择带POWER KEY的芯片型号)
 	#if defined(AU6210K_ZB_BT007_CSR) || defined(AU6210K_LK_SJ_CSRBT)
-		#ifdef AU6210K_XLX_ALD800
+		#if defined(AU6210K_XLX_ALD800) || defined(AU6210K_MINI503)
 		#define PWR_KEY_MODE	 PWR_KEY_PUSH_BUTTON
 		#else
 	 	#define PWR_KEY_MODE	 PWR_KEY_SLIDE_SWITCH	//PWR_KEY_PUSH_BUTTON
@@ -478,8 +487,14 @@
 		//如果选择软开关，可以定义POWER KEY开关机保持时间
 		//在开机阶段，是指用户必须按住POWER_KEY超过[开关机保持时间]后，系统才会点亮显示继续运行，否则芯片再次进入powerdown
 		//在关机阶段，用户必须按住POWER_KEY超过[开关机保持时间]后，系统才会关闭显示等，然后进入powerdown.
+	#if defined(AU6210K_MINI503)
+	#define TIME_POWER_ON_HOLD		1000	//单位ms
+	#define TIME_POWER_OFF_HOLD 	1000
+
+	#else
 	#define TIME_POWER_ON_HOLD		2500	//单位ms
 	#define TIME_POWER_OFF_HOLD		2500
+	#endif
 
 	//除了POWER_KEY可以唤醒芯片启动片内主电源外，还可定义LP_RTC的闹钟源作为启动触发源，RTC唤醒仅仅在PWR_KEY_PUSH_BUTTON模式下应用
 	#define	WAKEUP_IN_PWRDWN_BY_LP_RTC
@@ -517,7 +532,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
 #ifdef	FUNC_CARD_EN
 #if defined(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_ZB_BT007_CSR)
-#else
+//#else
 #define SD_DETECT_HW_SW				//定义卡的检测方式为软硬件结合检测方式(推荐)
 #endif
 
@@ -525,7 +540,7 @@
 //定义卡连接硬件检测的pin脚
 //在GPIO资源充足时，也可以定义一个单独的GPIO脚作为硬件检测脚，从而节省一个电阻
 #if defined(AU6210K_JLH_JH82B) || defined(AU6210K_ZB_BT007_CSR)
-#else
+//#else
 #define SD_DETECT_PIN_USE_A4	//使用A4复用为检测脚时打开此宏定义(可以节约GPIO资源)
 //#define SD_DETECT_PIN_USE_E3	//使用E3复用为检测脚时打开此宏定义(可以节约GPIO资源)
 //#define SD_DETECT_PIN_USE_D6	//使用D6复用为检测脚时打开此宏定义(可以节约GPIO资源)
@@ -654,7 +669,7 @@
 // FUNC_EXMUTE_EN：是否支持IO控制声音使能
 // EXMUTE_PORT_IE ~ EXMUTE_PORT_OUT：外部Mute引脚配置，比如A6
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
-#define FUNC_EXMUTE_EN
+//#define FUNC_EXMUTE_EN
 
 #ifdef FUNC_EXMUTE_EN
 #if 0
@@ -802,7 +817,7 @@
 
 
 #if  defined(AU6210K_ZB_BT007_CSR) // || !defined(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) 
-#define FUNC_POWER_AMPLIFIER_EN	//AB和D类功放选择
+//#define FUNC_POWER_AMPLIFIER_EN	//AB和D类功放选择
 #endif
 
 #ifdef FUNC_POWER_AMPLIFIER_EN
@@ -947,6 +962,11 @@
 #define	VOLUME_INIT		16		
 #endif
 #define	VOLUME_MIN		0
+
+#ifdef AU6210K_MINI503
+#define CSR_CALL_CHECK_PORT
+#endif
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			

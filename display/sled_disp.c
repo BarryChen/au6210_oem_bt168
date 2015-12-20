@@ -37,6 +37,7 @@ extern BOOL isDefaultBass;
 BOOL SLedOnOffFlag = FALSE;		//按键端口与单个LED端口共用时LED状态标志
 #endif
 
+extern 	BYTE ChannelType;
 // LED灯亮或灭.
 // led ->LED灯,isLightOn -> TRUE: lighton.
 VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
@@ -55,7 +56,8 @@ VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
 #if defined(FUNC_SINGLE_LED_HIGHON_EN)
 			SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
 #else
-			if(gSys.SystemMode == SYS_MODE_BLUETOOTH)
+			if(gSys.SystemMode == SYS_MODE_BLUETOOTH ||
+				ChannelType == 3)
 				ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
 			else
 				SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
@@ -83,7 +85,11 @@ VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
 		if(IsLightOn)
 		{
 			DBG(("ON\n"));
-			ClrGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
+			if(gSys.SystemMode == SYS_MODE_BLUETOOTH ||
+				ChannelType == 3)
+				SetGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
+			else
+				ClrGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
 		}
 		else
 		{

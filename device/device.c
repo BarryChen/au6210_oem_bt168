@@ -6,8 +6,11 @@
 #include "debug.h"
 #include "seg_panel.h"
 #include "seg_led_disp.h"
-#include "bluetooth_ctrl.h"
+#include "bt.h"
 
+BOOL gBtCallIsHigh_Flag = FALSE;
+BOOL IsBtCallComingFlag = FALSE;
+BOOL IsBtCallEndFlag = FALSE;
 
 
 BOOL IsCardLinkFlag = FALSE;
@@ -216,7 +219,28 @@ BOOL IsLineInInsert(VOID)
 	IsLineInLinkFlag = IsLineInLink();
 	return (!Temp && IsLineInLinkFlag);
 }
+
 #endif
+
+#ifdef FUNC_BT_CHAN_AUTO
+BOOL IsBtCallComing(VOID)
+{	
+	BOOL Temp = IsBtCallComingFlag;
+
+	IsBtCallComingFlag = GET_BT_CALL_STATUS();
+	return (!Temp && IsBtCallComingFlag);//ÉÏÉýÑØ
+}	
+
+BOOL IsBtCallEnd(VOID)
+{	
+	BOOL Temp = IsBtCallEndFlag;
+
+	IsBtCallEndFlag = GET_BT_CALL_STATUS();
+	return (Temp && !IsBtCallEndFlag);//ÏÂ½µÑØ
+}	
+
+#endif
+
 
 
 #ifdef FUNC_RADIO_EN

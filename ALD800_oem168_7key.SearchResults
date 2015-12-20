@@ -1,6 +1,8 @@
----- SpiFlash_MX Matches (5 in 2 files) ----
-Spi_flash.c (spi_flash):		SpiFlashModel = SpiFlash_MX;
-Spi_flash.c (spi_flash)://	else if(SpiFlashModel == SpiFlash_MX)	//MX
-Spi_flash.c (spi_flash)://	else if(SpiFlashModel == SpiFlash_MX)	//MX
-Spi_flash.c (spi_flash)://	else if(SpiFlashModel == SpiFlash_MX)	//MX
-Spi_flash.h (spi_flash):	SpiFlash_MX,
+---- FUNC_POWER_MONITOR_EN Matches (7 in 5 files) ----
+Display.c (display):#ifdef FUNC_POWER_MONITOR_EN
+Power_monitor.c (power):#ifdef FUNC_POWER_MONITOR_EN
+Sled_disp.c (display):#ifdef FUNC_POWER_MONITOR_EN
+Syscfg.h (config)://#define FUNC_POWER_MONITOR_EN
+Syscfg.h (config):#ifdef FUNC_POWER_MONITOR_EN
+Sysctrl.c (system):#ifdef FUNC_POWER_MONITOR_EN
+Sysctrl.c (system):#ifdef FUNC_POWER_MONITOR_EN

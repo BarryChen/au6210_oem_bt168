@@ -36,10 +36,10 @@ extern BOOL isDefaultBass;
 
 #ifdef FUNC_BT_CHAN_AUTO
 typedef enum _CHANNEL_TYPE{
-	CHANNEL_TYPE_NONE 	= 0,
-	CHANNEL_TYPE_SD		= 1,
-	CHANNEL_TYPE_FM		= 2,
-	CHANNEL_TYPE_BT		= 3,
+	CHANNEL_TYPE_NONE = 0,
+	CHANNEL_TYPE_SD,
+	CHANNEL_TYPE_FM,
+	CHANNEL_TYPE_BT
 
 }CHANNEL_TYPE;
 
@@ -1540,7 +1540,7 @@ VOID DevStateCtrl(VOID)
 				DacMute_Save = FALSE;
 			MuteOn(TRUE, TRUE);
 			ChannelSwitchBT_and_Unmute();
-			baGPIOCtrl[GPIO_B_OUT] &= ~0x04; 
+			baGPIOCtrl[GPIO_E_OUT] &= ~0x04; 
 		}
 	}
 

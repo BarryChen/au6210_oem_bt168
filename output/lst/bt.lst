@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   BT                                                                    11/24/2015 14:32:05 PAGE 1   
+C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE BT
 OBJECT MODULE PLACED IN .\output\obj\bt.obj
-COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE bluetooth\bt.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config
+COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE bluetooth\bt.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config
                     -;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\bluetoo
                     -th;.\i2c) DEBUG PRINT(.\output\lst\bt.lst) OBJECT(.\output\obj\bt.obj)
 
@@ -62,7 +62,7 @@ line level    source
   51          {
   52          //注:Line In音频从E0、E1口输入到芯片内部，请用gFmInGain[VOLUME_MAX + 1]表中参数值
   53          //#if ((LINEIN_IO_TYPE == DAC_CH_E0_L) || (LINEIN_IO_TYPE == DAC_CH_E1_R) || (LINEIN_IO_TYPE == DAC_CH_E0E
-C51 COMPILER V9.00   BT                                                                    11/24/2015 14:32:05 PAGE 2   
+C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 2   
 
              -1))
   54          //      63,             61,             59,             57,             55,             53,             51,             49,
@@ -106,64 +106,67 @@ line level    source
   92   1              BTjustEnter = 1;
   93   1              PlayPairFlag = 1;
   94   1              BTIO_PORT_MUTE_INIT();
-  95   1      
-  96   1              //与CSR连接的IO口初始化
-  97   1              BTIO_PORT_BLUE_LED_INIT();
-  98   1              BTIO_PORT_RED_LED_INIT();
-  99   1              //MCUIO_PORT_red_LED_INIT();//开机的时候初始化了灯的状态，此处不要再设置
- 100   1              //MCUIO_PORT_blue_LED_INIT();
- 101   1      
- 102   1      
- 103   1              
- 104   1              BT_POWER_H();
- 105   1      
- 106   1      #if defined(FUNC_AUTO_BTSTANDBY)  
+  95   1      #ifdef CSR_CALL_CHECK_PORT
+  96   1              BTIO_PORT_CALL_INIT();
+  97   1      #endif
+  98   1              //与CSR连接的IO口初始化
+  99   1              BTIO_PORT_BLUE_LED_INIT();
+ 100   1              BTIO_PORT_RED_LED_INIT();
+ 101   1              //MCUIO_PORT_red_LED_INIT();//开机的时候初始化了灯的状态，此处不要再设置
+ 102   1              //MCUIO_PORT_blue_LED_INIT();
+ 103   1      
+ 104   1      
+ 105   1              
+ 106   1              BT_POWER_H();
+ 107   1      
+ 108   1      #if defined(FUNC_AUTO_BTSTANDBY)  
                   TimeOutSet(&BT_standby, BT_STAND_TIME);     
               #endif  
- 109   1      
- 110   1      #if defined(AU6210K_NR_D_8_CSRBT)
+ 111   1      
+ 112   1      #if defined(AU6210K_NR_D_8_CSRBT)
               #else
- 112   1              #if BLUETOOTH_CH_TYPE == DAC_CH_LINEIN
- 113   1              InDacChannelSel(BLUETOOTH_CH_TYPE);
- 114   1              #else
-C51 COMPILER V9.00   BT                                                                    11/24/2015 14:32:05 PAGE 3   
+ 114   1              #if BLUETOOTH_CH_TYPE == DAC_CH_LINEIN
+C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 3   
 
+ 115   1              InDacChannelSel(BLUETOOTH_CH_TYPE);
+ 116   1              #else
                       SET_E0_ANALOG_IN();     //将E0E1配置为模拟端口
                       SET_E1_ANALOG_IN();
                       #endif
- 118   1      #endif
- 119   1      
- 120   1      /*#ifdef AU6210K_NR_D_8_CSRBT
- 121   1              NPCA110X_ADC_Input_CH_Select(INPUT_CH1);
- 122   1              NPCA110X_DAC1_Set_Volume_and_Mute(gSys.Volume);
- 123   1      #else
- 124   1              SetBluetoothVolume(gSys.Volume);
- 125   1      #endif
- 126   1      */
- 127   1      #ifdef FUNC_CSR_CONTROL_BT_VOL
+ 120   1      #endif
+ 121   1      
+ 122   1      /*#ifdef AU6210K_NR_D_8_CSRBT
+ 123   1              NPCA110X_ADC_Input_CH_Select(INPUT_CH1);
+ 124   1              NPCA110X_DAC1_Set_Volume_and_Mute(gSys.Volume);
+ 125   1      #else
+ 126   1              SetBluetoothVolume(gSys.Volume);
+ 127   1      #endif
+ 128   1      */
+ 129   1      #ifdef FUNC_CSR_CONTROL_BT_VOL
                               SetBluetoothVolume(VOLUME_MAX);
               #else
- 130   1                      SetBluetoothVolume(gSys.Volume);
- 131   1              
- 132   1      #endif
- 133   1      
- 134   1              UnMute();
- 135   1              if (BTisMute())
- 136   1              {
- 137   2                      BtMuteFlag = TRUE;
- 138   2                      ExMuteOn();
- 139   2              }
- 140   1              else
- 141   1              {
- 142   2      #ifdef  FUNC_HEADPHONE_DETECT_EN
+ 132   1                      SetBluetoothVolume(gSys.Volume);
+ 133   1              
+ 134   1      #endif
+ 135   1      
+ 136   1              UnMute();
+ 137   1      #ifdef FUNC_EXMUTE_EN
+                      if (BTisMute())
+                      {
+                              BtMuteFlag = TRUE;
+                              ExMuteOn();
+                      }
+                      else
+                      {
+              #ifdef  FUNC_HEADPHONE_DETECT_EN
                               if(IsHeadphoneLinkFlag == FALSE)
               #endif
- 145   2                              BtMuteFlag = FALSE;
- 146   2                              ExMuteOff();
- 147   2                              DBG1(("r0000r\n"));
- 148   2              }
- 149   1      
- 150   1      #ifdef BT_BtPOWEROFF_TIME
+                                      BtMuteFlag = FALSE;
+                                      ExMuteOff();
+                                      DBG1(("r0000r\n"));
+                      }
+              
+              #ifdef BT_BtPOWEROFF_TIME
                       if (BTisMute() && BtMuteFlag)
                       {
                               BtMuteFlag = TRUE;
@@ -174,98 +177,102 @@ line level    source
               #endif          
                       }
               #endif
- 161   1              
- 162   1              DBG(("<<LineInCtrlInit()\n"));
- 163   1      #ifdef FUNC_BREAK_POINT_EN
- 164   1              BP_SaveInfo(&gBreakPointInfo.PowerMemory.SystemMode, sizeof(gBreakPointInfo.PowerMemory.SystemMode));
- 165   1      #endif
- 166   1      
- 167   1      
- 168   1      }
- 169          
- 170          
- 171          // LineIn IO DeInitialization.
- 172          VOID BluetothCtrlEnd(VOID)
- 173          {
- 174   1      #ifdef AU6210K_NR_D_8_CSRBT
+              
+              #endif
+ 166   1              
+ 167   1              DBG(("<<LineInCtrlInit()\n"));
+ 168   1      #ifdef FUNC_BREAK_POINT_EN
+ 169   1              BP_SaveInfo(&gBreakPointInfo.PowerMemory.SystemMode, sizeof(gBreakPointInfo.PowerMemory.SystemMode));
+ 170   1      #endif
+ 171   1      
+ 172   1      
+ 173   1      }
+ 174          
+ 175          
+ 176          // LineIn IO DeInitialization.
+C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 4   
+
+ 177          VOID BluetothCtrlEnd(VOID)
+ 178          {
+ 179   1      #ifdef AU6210K_NR_D_8_CSRBT
                       NPCA110X_SetOutMute(TRUE);
               #else
-C51 COMPILER V9.00   BT                                                                    11/24/2015 14:32:05 PAGE 4   
-
- 177   1      #endif
- 178   1              MuteOn(TRUE,TRUE);
- 179   1          InDacMuteEn();
- 180   1              InDacChannelSel(DAC_CH_NONE);
- 181   1              BT_POWER_L();
- 182   1      
- 183   1      }
- 184          
- 185          
- 186          BOOL Bluetooth_BlueLED()
- 187          {
- 188   1              //BTIO_PORT_BLUE_LED_INIT();
- 189   1              //WaitUs(10);
- 190   1              if(GET_BLUE_LED_STATUS())
- 191   1                      return FALSE;
- 192   1              else
- 193   1                      return TRUE;
- 194   1      }
- 195          
- 196          BOOL Bluetooth_RedLED()
- 197          {
- 198   1              //BTIO_PORT_RED_LED_INIT();
- 199   1              //WaitUs(10);
- 200   1              if(GET_RED_LED_STATUS())
- 201   1                      return FALSE;
- 202   1              else
- 203   1                      return TRUE;
- 204   1      }
- 205          
- 206          BOOL BTisMute()
- 207          {
- 208   1              //BTIO_PORT_MUTE_INIT();
- 209   1              //WaitUs(10);
- 210   1              if(GET_BT_MUTE_STATUS())
- 211   1                      return FALSE;
- 212   1              else
- 213   1                      return TRUE;
- 214   1      
- 215   1      }
- 216          
- 217          BOOL GetBtMuteFlag(void)
- 218          {
- 219   1              return BtMuteFlag;
- 220   1      }
- 221          VOID BluetoothStateCtrl(VOID)
- 222          {   
- 223   1          MESSAGE Event;
- 224   1              BYTE minvolflag = 0;
- 225   1              BYTE maxvolflag = 0;
- 226   1      #if 0
+ 182   1      #endif
+ 183   1              MuteOn(TRUE,TRUE);
+ 184   1          InDacMuteEn();
+ 185   1              InDacChannelSel(DAC_CH_NONE);
+ 186   1              
+ 187   1      #ifdef FUNC_BT_CHAN_AUTO
+ 188   1              //BT_POWER_L();
+ 189   1      #endif
+ 190   1      }
+ 191          
+ 192          
+ 193          BOOL Bluetooth_BlueLED()
+ 194          {
+ 195   1              //BTIO_PORT_BLUE_LED_INIT();
+ 196   1              //WaitUs(10);
+ 197   1              if(GET_BLUE_LED_STATUS())
+ 198   1                      return FALSE;
+ 199   1              else
+ 200   1                      return TRUE;
+ 201   1      }
+ 202          
+ 203          BOOL Bluetooth_RedLED()
+ 204          {
+ 205   1              //BTIO_PORT_RED_LED_INIT();
+ 206   1              //WaitUs(10);
+ 207   1              if(GET_RED_LED_STATUS())
+ 208   1                      return FALSE;
+ 209   1              else
+ 210   1                      return TRUE;
+ 211   1      }
+ 212          
+ 213          BOOL BTisMute()
+ 214          {
+ 215   1              //BTIO_PORT_MUTE_INIT();
+ 216   1              //WaitUs(10);
+ 217   1              if(GET_BT_MUTE_STATUS())
+ 218   1                      return FALSE;
+ 219   1              else
+ 220   1                      return TRUE;
+ 221   1      
+ 222   1      }
+ 223          
+ 224          BOOL GetBtMuteFlag(void)
+ 225          {
+ 226   1              return BtMuteFlag;
+ 227   1      }
+ 228          VOID BluetoothStateCtrl(VOID)
+ 229          {   
+ 230   1          MESSAGE Event;
+ 231   1              BYTE minvolflag = 0;
+ 232   1              BYTE maxvolflag = 0;
+ 233   1      #if 0
                       if (IsTimeOut(&BT_Statup) && BTjustEnter && gSys.Volume > VOLUME_MIN)
                       {
                               DBG(("active bluetooth time out.\n"));
                               BTjustEnter = 0;                
                               //BT_POWER_H();
+C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 5   
+
                               //开声音
               
                               //WaitMs(300);//等待通道切完后才解mute
                               ExMuteOff();    
                       }
               #endif  
- 238   1              /*if (IsTimeOut(&BT_WaitConnectedTime) && PlayPairFlag)
-C51 COMPILER V9.00   BT                                                                    11/24/2015 14:32:05 PAGE 5   
-
- 239   1              {
- 240   1      //              TimeOutSet(&BT_WaitConnectedTime,0);
- 241   1                      PlayPairFlag = 0;
- 242   1                      #ifdef FUNC_SPI_KEY_SOUND_EN
- 243   1                      SPI_PlaySelectNum(SPIPLAY_SONG_WAITCONNECTION,0);
- 244   1                      InDacChannelSel(BLUETOOTH_CJ_IO_TYPE);
- 245   1                      UnMute();
- 246   1                      #endif
- 247   1              }*/
- 248   1      #if 0//defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
+ 245   1              /*if (IsTimeOut(&BT_WaitConnectedTime) && PlayPairFlag)
+ 246   1              {
+ 247   1      //              TimeOutSet(&BT_WaitConnectedTime,0);
+ 248   1                      PlayPairFlag = 0;
+ 249   1                      #ifdef FUNC_SPI_KEY_SOUND_EN
+ 250   1                      SPI_PlaySelectNum(SPIPLAY_SONG_WAITCONNECTION,0);
+ 251   1                      InDacChannelSel(BLUETOOTH_CJ_IO_TYPE);
+ 252   1                      UnMute();
+ 253   1                      #endif
+ 254   1              }*/
+ 255   1      #if 0//defined(AU6210K_ZB_BT007_CSR)||defined(AU6210K_LK_SJ_CSRBT)
               //DBG1(("BtMuteFlag = %x\n",BtMuteFlag));
               
               if (Bluetooth_BlueLED())
@@ -283,54 +290,56 @@ line level    source
                               LED_RED_L();*/
               
               #else
- 266   1      
- 267   1      //mute检测循环检测的方法，用定时器此处不要
- 268   1      #if defined(AU6210K_ZB_BT007_CSR)|| defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)
- 269   1      
- 270   1      //#if defiend(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) || defiend(AU6210K_ZB_BT007_CSR)
- 271   1              if (BTisMute() && !BtMuteFlag)
- 272   1              {
- 273   2                      BtMuteFlag = TRUE;
- 274   2      #if defined(AU6210K_ZB_BT007_CSR)
- 275   2      #ifdef BT_BtPOWEROFF_TIME
+ 273   1      
+ 274   1      //mute检测循环检测的方法，用定时器此处不要
+ 275   1      #if defined(AU6210K_ZB_BT007_CSR)|| defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)
+ 276   1      
+ 277   1      //#if defiend(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) || defiend(AU6210K_ZB_BT007_CSR)
+ 278   1      #ifdef FUNC_EXMUTE_EN
+              
+                      if (BTisMute() && !BtMuteFlag)
+                      {
+                              BtMuteFlag = TRUE;
+              #if defined(AU6210K_ZB_BT007_CSR)
+              #ifdef BT_BtPOWEROFF_TIME
                               TimeOutSet(&CSR_BTPOWEROFF_TIME, BT_BtPOWEROFF_TIME);
                               BTPowerOffTime_Start =  TRUE;
                               DBG1(("BTPowerOffTime_Start =  TRUE;\n"));
               #endif
- 280   2      #endif          
- 281   2              
- 282   2              }
- 283   1              if ((!BTisMute() && BtMuteFlag) && (gSys.Volume > VOLUME_MIN))
- 284   1              {
- 285   2      #ifdef  FUNC_HEADPHONE_DETECT_EN
+              #endif          
+                      
+                      }
+                      if ((!BTisMute() && BtMuteFlag) && (gSys.Volume > VOLUME_MIN))
+                      {
+              #ifdef  FUNC_HEADPHONE_DETECT_EN
                               if(IsHeadphoneLinkFlag == FALSE)
               #endif
- 288   2                              BtMuteFlag = FALSE;
- 289   2                              
- 290   2                              DBG1(("r----\n"));
- 291   2      #if defined(AU6210K_ZB_BT007_CSR)       
- 292   2      #ifdef BT_BtPOWEROFF_TIME
+                                      BtMuteFlag = FALSE;
+                                      
+                                      DBG1(("r----\n"));
+              #if defined(AU6210K_ZB_BT007_CSR)       
+C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 6   
+
+              #ifdef BT_BtPOWEROFF_TIME
                                       TimeOutSet(&CSR_BTPOWEROFF_TIME, 0);
                                       BTPowerOffTime_Start =  FALSE;
                                       DBG1(("BTPowerOffTime_Start =  FALSE;\n"));
               #endif
- 297   2      #endif                  
- 298   2              }
- 299   1              
- 300   1              if(BtMuteFlag)
-C51 COMPILER V9.00   BT                                                                    11/24/2015 14:32:05 PAGE 6   
-
- 301   1                      ExMuteOn();
- 302   1              else
- 303   1              {
- 304   2                      ExMuteOff();
- 305   2              }
- 306   1      #endif
- 307   1      
- 308   1      
- 309   1      
- 310   1      #if defined(AU6210K_ZB_BT007_CSR)
- 311   1      #ifdef BT_BtPOWEROFF_TIME
+              #endif                  
+                      }
+                      
+                      if(BtMuteFlag)
+                              ExMuteOn();
+                      else
+                      {
+                              ExMuteOff();
+                      }
+              #endif
+ 316   1      #endif
+ 317   1      
+ 318   1      
+ 319   1      #if defined(AU6210K_ZB_BT007_CSR)
+ 320   1      #ifdef BT_BtPOWEROFF_TIME
                       if(IsTimeOut(&CSR_BTPOWEROFF_TIME) && BTPowerOffTime_Start)
                   {
                       //关机流程
@@ -350,9 +359,9 @@ line level    source
                               }
                   }
               #endif
- 331   1      #endif  
- 332   1      
- 333   1      #if defined(FUNC_AUTO_BTSTANDBY)  
+ 340   1      #endif  
+ 341   1      
+ 342   1      #if defined(FUNC_AUTO_BTSTANDBY)  
                       if((Connect == 0) && (IsTimeOut(&BT_standby)))
                       {
                           BT_POWER_L();
@@ -364,90 +373,90 @@ line level    source
                               standby_flag = 0;
                       }
               #endif  
- 345   1      
- 346   1      #endif  
- 347   1      
- 348   1              Event = MessageGet(MSG_FIFO_KEY);
- 349   1          switch(Event)
- 350   1              {
- 351   2      #ifndef FUNC_CSR_CONTROL_BT_VOL //if no def
- 352   2                      case MSG_VOL_ADD:                       
- 353   2                              VolumeAdjust(UP);
- 354   2                              break;
- 355   2              
- 356   2                      case MSG_VOL_SUB:
- 357   2                              VolumeAdjust(DOWN);
- 358   2                              break;          
- 359   2      #endif          
- 360   2      /*
- 361   2              case MSG_V_ADD:
- 362   2              case MSG_VOL_ADD:                       
-C51 COMPILER V9.00   BT                                                                    11/24/2015 14:32:05 PAGE 7   
+ 354   1      
+ 355   1      #endif  
+ 356   1      
+ 357   1              Event = MessageGet(MSG_FIFO_KEY);
+ 358   1          switch(Event)
+ 359   1              {
+ 360   2      #ifndef FUNC_CSR_CONTROL_BT_VOL //if no def
+ 361   2                      case MSG_VOL_ADD:                       
+ 362   2                              VolumeAdjust(UP);
+C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 7   
 
- 363   2      #if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
- 364   2                      VolType = VOL_MAIN;
- 365   2                      PT2313VolAdd();         
- 366   2      #else
- 367   2                      if(gSys.Volume < VOLUME_MAX)
- 368   2                      {
- 369   2                              maxvolflag = 1;
- 370   2                              VolumeAdjust(UP);
- 371   2                      }
- 372   2      #endif    
- 373   2      #if defined(AU6210K_NR_D_9X_XJ_HTS)|| defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)|| define
+ 363   2                              break;
+ 364   2              
+ 365   2                      case MSG_VOL_SUB:
+ 366   2                              VolumeAdjust(DOWN);
+ 367   2                              break;          
+ 368   2      #endif          
+ 369   2      /*
+ 370   2              case MSG_V_ADD:
+ 371   2              case MSG_VOL_ADD:                       
+ 372   2      #if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
+ 373   2                      VolType = VOL_MAIN;
+ 374   2                      PT2313VolAdd();         
+ 375   2      #else
+ 376   2                      if(gSys.Volume < VOLUME_MAX)
+ 377   2                      {
+ 378   2                              maxvolflag = 1;
+ 379   2                              VolumeAdjust(UP);
+ 380   2                      }
+ 381   2      #endif    
+ 382   2      #if defined(AU6210K_NR_D_9X_XJ_HTS)|| defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)|| define
              -d(AU6210K_ZB_BT007_CSR)
- 374   2                      if (Event == MSG_V_ADD && gSys.Volume == VOLUME_MAX && !maxvolflag)
- 375   2                      {
- 376   2                              SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 1);          
- 377   2                              if( !GetBtMuteFlag())
- 378   2                              {
- 379   2                              DBG1(("7777\m"));
- 380   2                                      UnMute();
- 381   2                              }
- 382   2                              
- 383   2                      }
- 384   2                      
- 385   2      #endif
- 386   2                      break;
- 387   2              case MSG_V_SUB:         
- 388   2              case MSG_VOL_SUB:                       
- 389   2      #if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
- 390   2                      VolType = VOL_MAIN;
- 391   2                      PT2313VolSub();         
- 392   2      #else
- 393   2                      if(gSys.Volume > VOLUME_MIN)
- 394   2                      {
- 395   2                              minvolflag = 1;
- 396   2                              VolumeAdjust(DOWN);
- 397   2                      }
- 398   2      #endif
- 399   2      #if defined(AU6210K_NR_D_9X_XJ_HTS) || defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)|| defin
+ 383   2                      if (Event == MSG_V_ADD && gSys.Volume == VOLUME_MAX && !maxvolflag)
+ 384   2                      {
+ 385   2                              SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 1);          
+ 386   2                              if( !GetBtMuteFlag())
+ 387   2                              {
+ 388   2                              DBG1(("7777\m"));
+ 389   2                                      UnMute();
+ 390   2                              }
+ 391   2                              
+ 392   2                      }
+ 393   2                      
+ 394   2      #endif
+ 395   2                      break;
+ 396   2              case MSG_V_SUB:         
+ 397   2              case MSG_VOL_SUB:                       
+ 398   2      #if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
+ 399   2                      VolType = VOL_MAIN;
+ 400   2                      PT2313VolSub();         
+ 401   2      #else
+ 402   2                      if(gSys.Volume > VOLUME_MIN)
+ 403   2                      {
+ 404   2                              minvolflag = 1;
+ 405   2                              VolumeAdjust(DOWN);
+ 406   2                      }
+ 407   2      #endif
+ 408   2      #if defined(AU6210K_NR_D_9X_XJ_HTS) || defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)|| defin
              -ed(AU6210K_ZB_BT007_CSR)
- 400   2                      if (Event == MSG_V_SUB && gSys.Volume == VOLUME_MIN && !minvolflag)
- 401   2                      {
- 402   2                              SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);
- 403   2                              if( !GetBtMuteFlag())
- 404   2                              {
- 405   2                              DBG1(("5555\m"));
- 406   2                                      UnMute();
- 407   2                              }
- 408   2                              //UnMute();
- 409   2                      }
- 410   2      #endif
- 411   2                      break;  */      
- 412   2                      
- 413   2              default:
- 414   2                      break;
- 415   2              }
- 416   1      }
- 417          #endif
- 418          
+ 409   2                      if (Event == MSG_V_SUB && gSys.Volume == VOLUME_MIN && !minvolflag)
+ 410   2                      {
+ 411   2                              SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);
+ 412   2                              if( !GetBtMuteFlag())
+ 413   2                              {
+ 414   2                              DBG1(("5555\m"));
+ 415   2                                      UnMute();
+ 416   2                              }
+ 417   2                              //UnMute();
+ 418   2                      }
+ 419   2      #endif
+ 420   2                      break;  */      
+ 421   2                      
+ 422   2              default:
+C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 8   
+
+ 423   2                      break;
+ 424   2              }
+ 425   1      }
+ 426          #endif
+ 427          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    496    ----
-C51 COMPILER V9.00   BT                                                                    11/24/2015 14:32:05 PAGE 8   
-
+   CODE SIZE        =    284    ----
    CONSTANT SIZE    =     33    ----
    XDATA SIZE       =     20       2
    PDATA SIZE       =   ----    ----

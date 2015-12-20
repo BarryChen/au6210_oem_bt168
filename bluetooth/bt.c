@@ -92,7 +92,9 @@ VOID BluetoothCtrlInit(VOID)
 	BTjustEnter = 1;
 	PlayPairFlag = 1;
 	BTIO_PORT_MUTE_INIT();
-
+#ifdef CSR_CALL_CHECK_PORT
+	BTIO_PORT_CALL_INIT();
+#endif
 	//与CSR连接的IO口初始化
 	BTIO_PORT_BLUE_LED_INIT();
 	BTIO_PORT_RED_LED_INIT();
@@ -132,6 +134,7 @@ VOID BluetoothCtrlInit(VOID)
 #endif
 
 	UnMute();
+#ifdef FUNC_EXMUTE_EN
 	if (BTisMute())
 	{
 		BtMuteFlag = TRUE;
@@ -158,6 +161,8 @@ VOID BluetoothCtrlInit(VOID)
 #endif		
 	}
 #endif
+
+#endif
 	
 	DBG(("<<LineInCtrlInit()\n"));
 #ifdef FUNC_BREAK_POINT_EN
@@ -178,8 +183,10 @@ VOID BluetothCtrlEnd(VOID)
 	MuteOn(TRUE,TRUE);
     InDacMuteEn();
 	InDacChannelSel(DAC_CH_NONE);
-	BT_POWER_L();
-
+	
+#ifdef FUNC_BT_CHAN_AUTO
+	//BT_POWER_L();
+#endif
 }
 
 
@@ -268,6 +275,8 @@ if (Bluetooth_BlueLED())
 #if defined(AU6210K_ZB_BT007_CSR)|| defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)
 
 //#if defiend(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) || defiend(AU6210K_ZB_BT007_CSR)
+#ifdef FUNC_EXMUTE_EN
+
 	if (BTisMute() && !BtMuteFlag)
 	{
 		BtMuteFlag = TRUE;
@@ -304,7 +313,7 @@ if (Bluetooth_BlueLED())
 		ExMuteOff();
 	}
 #endif
-
+#endif
 
 
 #if defined(AU6210K_ZB_BT007_CSR)

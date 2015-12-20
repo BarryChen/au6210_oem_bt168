@@ -132,7 +132,7 @@ VOID main()
 	SlaveCtrlInit();
 #endif*/
 
-#ifndef need_change_flag  //no use
+#if 0//ndef need_change_flag  //no use
 	baGPIOCtrl[GPIO_A_IE] |= 0x40;//A2
 	baGPIOCtrl[GPIO_A_OE] &= ~0x40;
 	baGPIOCtrl[GPIO_A_PU] |= 0x40;
@@ -152,7 +152,7 @@ VOID main()
 	SystemOn();
 #endif
 
-#ifndef need_change_flag  //no use
+#if 0//ndef need_change_flag  //no use
 	baGPIOCtrl[GPIO_A_IE] &= ~0x40;//A2
 	baGPIOCtrl[GPIO_A_OE] |= 0x40;
 	baGPIOCtrl[GPIO_A_PU] |= 0x40;

@@ -16,6 +16,9 @@ BOOL IsIpodLink(VOID);
 BOOL IsPcLink(VOID); 		//检查PC连接状态
 BOOL IsPcInsert(VOID); 		//检查是否有新插入PC
 
+BOOL IsBtCallComing(VOID);
+BOOL IsBtCallEnd(VOID);
+
 #ifdef OPTION_CHARGER_DETECT
 extern BOOL IsChargerLinkFlag;
 BOOL IsInCharge(VOID);		//硬件检查PC或充电器连接状态

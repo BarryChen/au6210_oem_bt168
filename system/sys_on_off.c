@@ -10,7 +10,7 @@
 #include "display.h"
 #include "bluetooth_ctrl.h"
 #include "npca110x.h"
-
+#include "bt.h"
 
 BYTE XDATA gWakeupTrigFlg _at_ 0x06D8; //不要轻易改动地址
 
@@ -168,6 +168,8 @@ VOID SystemOn(VOID)
 //系统关闭，包括系统以SLEEP方式关闭或者以片内主电源下电POWER DOWN方式关闭的相关处理
 VOID SystemOff(VOID)
 {
+	BT_POWER_L();  //mini503 蓝牙电源随总电源开关变化
+	
 #if (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_SLEEP)
 	//休眠，进入SLEEP模式
 	DBG(("SLEEP!\n"));

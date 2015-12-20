@@ -51,7 +51,10 @@ extern BYTE gRunningDev;
 extern BOOL ROM_QuickResponse(BYTE Dev);
 BOOL IsSupportSpecialDevice = FALSE;	//支持部分特色设备，MBR 512字节最后两个字节不是0x55AA【默认为FLASE，不支持特殊设备】
 
-
+BOOL getDacMute()
+{
+	return IsDacMute;
+}
 // 选择DAC 和外部功放Mute状态
 // Param: 
 //		DacMuteEn: 1--选择Dac Mute,  0--选择设置音量为0
@@ -612,7 +615,6 @@ BOOL QuickResponse(VOID)
 #endif
 
 
-
 extern BOOL BTisMute();
 //----------------------------------------------------------
 // 如果用户需要在1ms系统时基上做处理，要在应用代码上重写TimerTick1ms()函数
@@ -675,7 +677,7 @@ VOID TimerTick1ms(VOID)
 		}
 	}
 #endif
-#if 1
+#if 0
 
 	if(gSys.SystemMode == SYS_MODE_BLUETOOTH)
 	{
@@ -693,15 +695,19 @@ VOID TimerTick1ms(VOID)
 		else
 			clrMCU_Blue__Led_Port();
 
+#ifdef FUNC_EXMUTE_EN
 		if(BTisMute())		
 			//mute		
 			ExMuteOn();	 
 		else
 			//unmute
 			ExMuteOff();
-	}
-	
 #endif
+
+		
+	}
+#endif
+
 	// To do...
 }
 

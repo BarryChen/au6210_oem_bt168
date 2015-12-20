@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/24/2015 14:32:01 PAGE 1   
+C51 COMPILER V9.00   POWER_MONITOR                                                         12/20/2015 23:03:56 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE POWER_MONITOR
 OBJECT MODULE PLACED IN .\output\obj\power_monitor.obj
-COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE power\power_monitor.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.
+COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE power\power_monitor.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.
                     -\config;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\
                     -bluetooth;.\i2c) DEBUG PRINT(.\output\lst\power_monitor.lst) OBJECT(.\output\obj\power_monitor.obj)
 
@@ -33,14 +33,14 @@ line level    source
   22          extern BOOL GetBtMuteFlag();
   23          
   24          #ifdef FUNC_POWER_MONITOR_EN
-              
-              #define LDOIN_SAMPLE_COUNT                      100             //获取LDOIN幅度时用来平均的采样次数
-              #define LDOIN_SAMPLE_PERIOD                     50              //获取LDOIN幅度时获取采样值的间隔(ms)
-              #define LOW_POWEROFF_TIME                       10000           //低电检测关机连续检测时间(ms)
-              
-              
-              //以下定义不同的电压检测事件的触发电压(单位mV)，用户根据自身系统电池的特点来配置
-              #ifdef AU6210K_NR_D_8_CSRBT
+  25          
+  26          #define LDOIN_SAMPLE_COUNT                      100             //获取LDOIN幅度时用来平均的采样次数
+  27          #define LDOIN_SAMPLE_PERIOD                     50              //获取LDOIN幅度时获取采样值的间隔(ms)
+  28          #define LOW_POWEROFF_TIME                       10000           //低电检测关机连续检测时间(ms)
+  29          
+  30          
+  31          //以下定义不同的电压检测事件的触发电压(单位mV)，用户根据自身系统电池的特点来配置
+  32          #ifdef AU6210K_NR_D_8_CSRBT
               
               #define LDOIN_VOLTAGE_FULL                      58
               #define LDOIN_VOLTAGE_HIGH                      50
@@ -48,46 +48,46 @@ line level    source
               #define LDOIN_VOLTAGE_OFF                       47      //低于此电压值进入关机powerdown状态
               
               #else
-              
-              #define LDOIN_VOLTAGE_FULL                      4200
-              #define LDOIN_VOLTAGE_HIGH                      3600
-              #define LDOIN_VOLTAGE_LOW                       3500
-              #if defined(AU6210K_NR_D_9X_XJ_HTS) ||defined(AU6210K_LK_SJ_CSRBT) || defined(AU6210K_ZB_BT007_CSR)
-              #define LDOIN_VOLTAGE_OFF                       3400    //低于此电压值进入关机powerdown状态
-              #else 
+  40          
+  41          #define LDOIN_VOLTAGE_FULL                      4200
+  42          #define LDOIN_VOLTAGE_HIGH                      3600
+  43          #define LDOIN_VOLTAGE_LOW                       3500
+  44          #if defined(AU6210K_NR_D_9X_XJ_HTS) ||defined(AU6210K_LK_SJ_CSRBT) || defined(AU6210K_ZB_BT007_CSR)
+  45          #define LDOIN_VOLTAGE_OFF                       3400    //低于此电压值进入关机powerdown状态
+  46          #else 
               #define LDOIN_VOLTAGE_OFF                       3300
               #endif
-              
-              #endif
-              //电压检测时不同的显示处理
-              
-              
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/24/2015 14:32:01 PAGE 2   
+  49          
+  50          #endif
+  51          //电压检测时不同的显示处理
+  52          
+  53          
+C51 COMPILER V9.00   POWER_MONITOR                                                         12/20/2015 23:03:56 PAGE 2   
 
-              //主要用于电压状态显示的变量
-              static TIMER BlinkTimer;
-              static PWR_MNT_DISP PwrMntDisp;
-              static BOOL LowPwr_Flag = TRUE;
-              
-              
-              
-              //用于电压检测的变量
-              TIMER PowerMonitorTimer;
-              TIMER PowerOffTimer;
-              DWORD LdoinSampleSum = 0; 
-              WORD  LdoinSampleCnt = LDOIN_SAMPLE_COUNT;
-              DWORD LdoinLevelAverage = 0;            //当前LDOIN电压平均值
-              
-              extern BOOL SongPlayDo(VOID);           
-              extern BOOL SPI_PlaySelectNum(BYTE SpiPlayNum, BOOL PlayResumeFlag);
-              
-              PWR_MNT_DISP GetPwrDisp(void)
-              {
-                      return PwrMntDisp;
-              }
-              VOID PowerMonitorDisp(VOID)
-              {
-              #if (defined(FUNC_SEG_LED_EN) || defined(FUNC_SEG_LCD_EN))
+  54          //主要用于电压状态显示的变量
+  55          static TIMER BlinkTimer;
+  56          static PWR_MNT_DISP PwrMntDisp;
+  57          static BOOL LowPwr_Flag = TRUE;
+  58          
+  59          
+  60          
+  61          //用于电压检测的变量
+  62          TIMER PowerMonitorTimer;
+  63          TIMER PowerOffTimer;
+  64          DWORD LdoinSampleSum = 0; 
+  65          WORD  LdoinSampleCnt = LDOIN_SAMPLE_COUNT;
+  66          DWORD LdoinLevelAverage = 0;            //当前LDOIN电压平均值
+  67          
+  68          extern BOOL SongPlayDo(VOID);           
+  69          extern BOOL SPI_PlaySelectNum(BYTE SpiPlayNum, BOOL PlayResumeFlag);
+  70          
+  71          PWR_MNT_DISP GetPwrDisp(void)
+  72          {
+  73   1              return PwrMntDisp;
+  74   1      }
+  75          VOID PowerMonitorDisp(VOID)
+  76          {
+  77   1      #if (defined(FUNC_SEG_LED_EN) || defined(FUNC_SEG_LCD_EN))
                       static BOOL IsToShow = FALSE;
               
                       switch(PwrMntDisp)
@@ -126,7 +126,7 @@ line level    source
                                       DispIcon(ICON_BATFUL, FALSE);
                                       DispIcon(ICON_BATHAF, TRUE);
                                       //可以显示2格电量，请添加显示代码
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/24/2015 14:32:01 PAGE 3   
+C51 COMPILER V9.00   POWER_MONITOR                                                         12/20/2015 23:03:56 PAGE 3   
 
                                       break;
               
@@ -166,197 +166,197 @@ line level    source
                                       break;
                       }
               #endif  
-              }
-              
-              
-              //监测LDOIN的电压值，执行对应检测点的处理
-              //PowerOnInitFlag: TRUE--第一次上电执行电源监控检测
-              static VOID PowerLdoinLevelMonitor(BOOL PowerOnInitFlag)
-              {       
-                      BOOL PowerOffFlag = FALSE;
-                              
-                      if(LdoinSampleCnt > 0)
-                      {
-              #ifdef AU6210K_NR_D_8_CSRBT
+ 154   1      }
+ 155          
+ 156          
+ 157          //监测LDOIN的电压值，执行对应检测点的处理
+ 158          //PowerOnInitFlag: TRUE--第一次上电执行电源监控检测
+ 159          static VOID PowerLdoinLevelMonitor(BOOL PowerOnInitFlag)
+ 160          {       
+ 161   1              BOOL PowerOffFlag = FALSE;
+ 162   1                      
+ 163   1              if(LdoinSampleCnt > 0)
+ 164   1              {
+ 165   2      #ifdef AU6210K_NR_D_8_CSRBT
                               LdoinSampleSum +=  (AdcReadOneChannel(ADC_CHANNEL_B6, ADC_VREF_AVDD33)
                                       + AdcReadOneChannel(ADC_CHANNEL_B6, ADC_VREF_AVDD33) 
                                       + AdcReadOneChannel(ADC_CHANNEL_B6, ADC_VREF_AVDD33) + 2) / 3;  
               #else
-                              LdoinSampleSum += GetLdoinVoltage();                    
-              #endif
-                              LdoinSampleCnt--;
-                      }
-              
-                      //采样够LDOIN_SAMPLE_COUNT次数，求LDOIN平均值
-                      if(LdoinSampleCnt == 0)
-                      {
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/24/2015 14:32:01 PAGE 4   
+ 170   2                      LdoinSampleSum += GetLdoinVoltage();                    
+ 171   2      #endif
+ 172   2                      LdoinSampleCnt--;
+ 173   2              }
+ 174   1      
+ 175   1              //采样够LDOIN_SAMPLE_COUNT次数，求LDOIN平均值
+ 176   1              if(LdoinSampleCnt == 0)
+ 177   1              {
+C51 COMPILER V9.00   POWER_MONITOR                                                         12/20/2015 23:03:56 PAGE 4   
 
-                              LdoinLevelAverage = LdoinSampleSum / LDOIN_SAMPLE_COUNT;
-              
-                              DBG(("LODin 5V Volt: %lu", (DWORD)LdoinLevelAverage));
-              
-                              //为继续检测LDOIN，初始化变量
-                              LdoinSampleCnt = LDOIN_SAMPLE_COUNT;
-                              LdoinSampleSum = 0;
-              
-              #ifdef  OPTION_CHARGER_DETECT
+ 178   2                      LdoinLevelAverage = LdoinSampleSum / LDOIN_SAMPLE_COUNT;
+ 179   2      
+ 180   2                      DBG(("LODin 5V Volt: %lu", (DWORD)LdoinLevelAverage));
+ 181   2      
+ 182   2                      //为继续检测LDOIN，初始化变量
+ 183   2                      LdoinSampleCnt = LDOIN_SAMPLE_COUNT;
+ 184   2                      LdoinSampleSum = 0;
+ 185   2      
+ 186   2      #ifdef  OPTION_CHARGER_DETECT
                               if(IsInCharge())                //充电器已经接入的处理
                               {               
                                       return;
                               }
               #endif
-                              
-                              if(LdoinLevelAverage > LDOIN_VOLTAGE_HIGH)        
-                              {
-                                      //可以显示满格电量，请在PowerMonitorDisp中添加显示代码
-                                      //PowerMonitorDisp(PWR_MNT_DISP_HIGH_V);
-                                      PwrMntDisp = PWR_MNT_DISP_HIGH_V;
-                                      //DBG(("bat full\n"));
-                              }
-                              /*
-                              else if(LdoinLevelAverage > LDOIN_VOLTAGE_MID)
-                              {
-                                      //可以显示2格电量，请在PowerMonitorDisp中添加显示代码
-                                      //PowerMonitorDisp(PWR_MNT_DISP_MID_V);
-                                      PwrMntDisp = PWR_MNT_DISP_MID_V;
-                              }
-                              //*/
-                              else if(LdoinLevelAverage > LDOIN_VOLTAGE_LOW)
-                              {
-                                      //可以显示1格电量，请在PowerMonitorDisp中添加显示代码
-                                      //PowerMonitorDisp(PWR_MNT_DISP_LOW_V);
-                                      PwrMntDisp = PWR_MNT_DISP_LOW_V;
-                                      //DBG(("bat LOW\n"));
-                              }
-                              else if(LdoinLevelAverage > LDOIN_VOLTAGE_OFF)
-                              {
-                                      //可以显示0格电量，请在PowerMonitorDisp中添加显示代码
-                                      //PowerMonitorDisp(PWR_MNT_DISP_EMPTY_V);
-                                      PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
-                              }
-              
-                              if((LdoinLevelAverage > LDOIN_VOLTAGE_OFF) && (LdoinLevelAverage < LDOIN_VOLTAGE_LOW))
-                                      PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
-                      
-                              #if defined(AU6210K_NR_D_9X_XJ_HTS) || defined(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) || 
+ 192   2                      
+ 193   2                      if(LdoinLevelAverage > LDOIN_VOLTAGE_HIGH)        
+ 194   2                      {
+ 195   3                              //可以显示满格电量，请在PowerMonitorDisp中添加显示代码
+ 196   3                              //PowerMonitorDisp(PWR_MNT_DISP_HIGH_V);
+ 197   3                              PwrMntDisp = PWR_MNT_DISP_HIGH_V;
+ 198   3                              //DBG(("bat full\n"));
+ 199   3                      }
+ 200   2                      /*
+ 201   2                      else if(LdoinLevelAverage > LDOIN_VOLTAGE_MID)
+ 202   2                      {
+ 203   2                              //可以显示2格电量，请在PowerMonitorDisp中添加显示代码
+ 204   2                              //PowerMonitorDisp(PWR_MNT_DISP_MID_V);
+ 205   2                              PwrMntDisp = PWR_MNT_DISP_MID_V;
+ 206   2                      }
+ 207   2                      //*/
+ 208   2                      else if(LdoinLevelAverage > LDOIN_VOLTAGE_LOW)
+ 209   2                      {
+ 210   3                              //可以显示1格电量，请在PowerMonitorDisp中添加显示代码
+ 211   3                              //PowerMonitorDisp(PWR_MNT_DISP_LOW_V);
+ 212   3                              PwrMntDisp = PWR_MNT_DISP_LOW_V;
+ 213   3                              //DBG(("bat LOW\n"));
+ 214   3                      }
+ 215   2                      else if(LdoinLevelAverage > LDOIN_VOLTAGE_OFF)
+ 216   2                      {
+ 217   3                              //可以显示0格电量，请在PowerMonitorDisp中添加显示代码
+ 218   3                              //PowerMonitorDisp(PWR_MNT_DISP_EMPTY_V);
+ 219   3                              PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
+ 220   3                      }
+ 221   2      
+ 222   2                      if((LdoinLevelAverage > LDOIN_VOLTAGE_OFF) && (LdoinLevelAverage < LDOIN_VOLTAGE_LOW))
+ 223   2                              PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
+ 224   2              
+ 225   2                      #if defined(AU6210K_NR_D_9X_XJ_HTS) || defined(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) || 
              -defined(AU6210K_ZB_BT007_CSR)
-                              if(PowerOnInitFlag == TRUE) 
-                              {               
-                                      if(LdoinLevelAverage <= LDOIN_VOLTAGE_OFF)
-                                      {
-                                              PowerOffFlag = TRUE;
-                                      }                       
-                              }
-                              #else
+ 226   2                      if(PowerOnInitFlag == TRUE) 
+ 227   2                      {               
+ 228   3                              if(LdoinLevelAverage <= LDOIN_VOLTAGE_OFF)
+ 229   3                              {
+ 230   4                                      PowerOffFlag = TRUE;
+ 231   4                              }                       
+ 232   3                      }
+ 233   2                      #else
                               if(PowerOnInitFlag == TRUE) 
                               {               
                                       if(LdoinLevelAverage <= LDOIN_VOLTAGE_LOW)
                                       {
                                               PowerOffFlag = TRUE;
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/24/2015 14:32:01 PAGE 5   
+C51 COMPILER V9.00   POWER_MONITOR                                                         12/20/2015 23:03:56 PAGE 5   
 
                                       }                       
                               }
                       #endif
-                              if((PowerOnInitFlag == FALSE) && (LdoinLevelAverage <= LDOIN_VOLTAGE_OFF))
-                              {
-                                      PowerOffFlag = TRUE;
-                              }
-                              
-                              if(PowerOffFlag == TRUE)
-                              {
-                                      //低于关机电压，进入关机流程
-                                      //可以先行显示低电压提示，然后执行关机动作
-                                      PwrMntDisp = PWR_MNT_DISP_SYS_OFF;
-                                      PowerMonitorDisp();                     
-                                      FeedWatchDog();
-                                      #if defined(AU6210K_NR_D_9X_XJ_HTS)|| defined(AU6210K_NR_D_8_CSRBT)
+ 242   2                      if((PowerOnInitFlag == FALSE) && (LdoinLevelAverage <= LDOIN_VOLTAGE_OFF))
+ 243   2                      {
+ 244   3                              PowerOffFlag = TRUE;
+ 245   3                      }
+ 246   2                      
+ 247   2                      if(PowerOffFlag == TRUE)
+ 248   2                      {
+ 249   3                              //低于关机电压，进入关机流程
+ 250   3                              //可以先行显示低电压提示，然后执行关机动作
+ 251   3                              PwrMntDisp = PWR_MNT_DISP_SYS_OFF;
+ 252   3                              PowerMonitorDisp();                     
+ 253   3                              FeedWatchDog();
+ 254   3                              #if defined(AU6210K_NR_D_9X_XJ_HTS)|| defined(AU6210K_NR_D_8_CSRBT)
                                   SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,0);
                                   //  SLedLightOp(LED_POWER, FALSE);  
                                               WaitMs(1000);
                                       #endif
-                                      #if defined(AU6210K_ZB_BT007_CSR)
-                                      if(LowPwr_Flag)
-                                      {
-                                              LowPwr_Flag = FALSE;
-                                              TimeOutSet(&PowerOffTimer, 10000);
-                                              SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,1);
-                                              WaitMs(100);
-                                              if(gSys.SystemMode == SYS_MODE_BLUETOOTH && !GetBtMuteFlag())
-                                              {
-                                              DBG1(("ccccccccpower off\m"));
-                                                      UnMute();
-                                              }
-                                              
-                                      }
-                                      else
-                                      {
-                                              if(IsTimeOut(&PowerOffTimer))
-                                              {
-                                                      SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,0);
-                                                      WaitMs(1000);
-                                                      SystemOff();
-                                              }
-                                      
-                                      }
-                                      #endif
-                                      //停止正常工作流程，包括关显示、关DAC、关功放电源等动作
-                                      DBG(("PowerMonitor, PD\n"));    
-                                      #if defined(AU6210K_ZB_BT007_CSR)
-                                      #else
+ 259   3                              #if defined(AU6210K_ZB_BT007_CSR)
+ 260   3                              if(LowPwr_Flag)
+ 261   3                              {
+ 262   4                                      LowPwr_Flag = FALSE;
+ 263   4                                      TimeOutSet(&PowerOffTimer, 10000);
+ 264   4                                      SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,1);
+ 265   4                                      WaitMs(100);
+ 266   4                                      if(gSys.SystemMode == SYS_MODE_BLUETOOTH && !GetBtMuteFlag())
+ 267   4                                      {
+ 268   5                                      DBG1(("ccccccccpower off\m"));
+ 269   5                                              UnMute();
+ 270   5                                      }
+ 271   4                                      
+ 272   4                              }
+ 273   3                              else
+ 274   3                              {
+ 275   4                                      if(IsTimeOut(&PowerOffTimer))
+ 276   4                                      {
+ 277   5                                              SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,0);
+ 278   5                                              WaitMs(1000);
+ 279   5                                              SystemOff();
+ 280   5                                      }
+ 281   4                              
+ 282   4                              }
+ 283   3                              #endif
+ 284   3                              //停止正常工作流程，包括关显示、关DAC、关功放电源等动作
+ 285   3                              DBG(("PowerMonitor, PD\n"));    
+ 286   3                              #if defined(AU6210K_ZB_BT007_CSR)
+ 287   3                              #else
                                       SystemOff();
                                       #endif
-                              }               
-                      }
-                      PowerMonitorDisp();
-              }
-              
-              
-              //电能监视初始化
-              //实现系统启动过程中的低电压检测处理，以及初始化充电设备接入检测IO等
-              VOID PowerMonitorInit(VOID)
-              {
-                      TimeOutSet(&PowerMonitorTimer, 0);      
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/24/2015 14:32:01 PAGE 6   
+ 290   3                      }               
+ 291   2              }
+ 292   1              PowerMonitorDisp();
+ 293   1      }
+ 294          
+ 295          
+ 296          //电能监视初始化
+ 297          //实现系统启动过程中的低电压检测处理，以及初始化充电设备接入检测IO等
+ 298          VOID PowerMonitorInit(VOID)
+ 299          {
+ 300   1              TimeOutSet(&PowerMonitorTimer, 0);      
+C51 COMPILER V9.00   POWER_MONITOR                                                         12/20/2015 23:03:56 PAGE 6   
 
-                      TimeOutSet(&BlinkTimer, 0);     
-              
-              #ifdef OPTION_CHARGER_DETECT
+ 301   1              TimeOutSet(&BlinkTimer, 0);     
+ 302   1      
+ 303   1      #ifdef OPTION_CHARGER_DETECT
                       //如果系统启动时，充电设备已经接入，就不执行下面这段低电压检测和处理过程
                       if(!IsInCharge())
               #endif  
-                      {
-                              //系统启动过程中的低电压检测
-                              //开机时电压检测，如果小于开机电压，不进入设备检测和播放流程，直接关机
-                              //检测过程为时50ms，并进行对应的处理
-                              while(LdoinSampleCnt)
-                              {
-                                      LdoinSampleCnt--;
-              #ifdef AU6210K_NR_D_8_CSRBT
+ 307   1              {
+ 308   2                      //系统启动过程中的低电压检测
+ 309   2                      //开机时电压检测，如果小于开机电压，不进入设备检测和播放流程，直接关机
+ 310   2                      //检测过程为时50ms，并进行对应的处理
+ 311   2                      while(LdoinSampleCnt)
+ 312   2                      {
+ 313   3                              LdoinSampleCnt--;
+ 314   3      #ifdef AU6210K_NR_D_8_CSRBT
                                       LdoinSampleSum +=  (AdcReadOneChannel(ADC_CHANNEL_B6, ADC_VREF_AVDD33)
                                               + AdcReadOneChannel(ADC_CHANNEL_B6, ADC_VREF_AVDD33) 
                                               + AdcReadOneChannel(ADC_CHANNEL_B6, ADC_VREF_AVDD33) + 2) / 3;  
               #else
-                                      LdoinSampleSum += GetLdoinVoltage();                    
-              #endif                  
-                                      WaitMs(5);
-                              }               
-                              //为后边的LDOIN检测初始化变量
-                              PowerLdoinLevelMonitor(TRUE);
-                      }
-              }
-              
-              
-              //系统电源状态监控和处理
-              //系统启动后如果LDOIN大于开机电压，放在系统正常运行中监测LDOIN
-              VOID PowerMonitor(VOID)
-              {
-                      if(IsTimeOut(&PowerMonitorTimer))
-                      {
-                              TimeOutSet(&PowerMonitorTimer, LDOIN_SAMPLE_PERIOD);
-              
-              #ifdef OPTION_CHARGER_DETECT
+ 319   3                              LdoinSampleSum += GetLdoinVoltage();                    
+ 320   3      #endif                  
+ 321   3                              WaitMs(5);
+ 322   3                      }               
+ 323   2                      //为后边的LDOIN检测初始化变量
+ 324   2                      PowerLdoinLevelMonitor(TRUE);
+ 325   2              }
+ 326   1      }
+ 327          
+ 328          
+ 329          //系统电源状态监控和处理
+ 330          //系统启动后如果LDOIN大于开机电压，放在系统正常运行中监测LDOIN
+ 331          VOID PowerMonitor(VOID)
+ 332          {
+ 333   1              if(IsTimeOut(&PowerMonitorTimer))
+ 334   1              {
+ 335   2                      TimeOutSet(&PowerMonitorTimer, LDOIN_SAMPLE_PERIOD);
+ 336   2      
+ 337   2      #ifdef OPTION_CHARGER_DETECT
                               if(IsInCharge())                //充电器已经接入的处理
                               {
                                       if(LdoinLevelAverage >= LDOIN_VOLTAGE_FULL) 
@@ -373,21 +373,21 @@ line level    source
                                       }
                               }
               #endif          
-                              //没有采样够LDOIN_SAMPLE_COUNT次数，继续采样
-                              PowerLdoinLevelMonitor(FALSE);
-                      }
-              }
-              
-              
-              #endif
+ 354   2                      //没有采样够LDOIN_SAMPLE_COUNT次数，继续采样
+ 355   2                      PowerLdoinLevelMonitor(FALSE);
+ 356   2              }
+ 357   1      }
+ 358          
+ 359          
+ 360          #endif
 
 
-C51 COMPILER V9.00   POWER_MONITOR                                                         11/24/2015 14:32:01 PAGE 7   
+C51 COMPILER V9.00   POWER_MONITOR                                                         12/20/2015 23:03:56 PAGE 7   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   ----    ----
+   CODE SIZE        =    617    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
+   XDATA SIZE       =     27       2
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

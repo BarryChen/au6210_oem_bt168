@@ -73,21 +73,21 @@ extern BOOL gLedDispRefreshFlag;
 static CODE BYTE AdcKeyEvent[][4] = 
 {
 //	SP						CPS					CPH							CPR	
+	{MSG_PLAY_PAUSE,	MSG_MODE_SW,			MSG_NONE,					MSG_NONE	},	//SW4
 	{MSG_NEXT,			MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW3
+	{MSG_PRE,			MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW2	
 	{MSG_VOL_ADD,			MSG_VOL_ADD,				MSG_VOL_ADD,					MSG_NONE	},	//SW3
 	{MSG_VOL_SUB,			MSG_VOL_SUB,				MSG_VOL_SUB,					MSG_NONE	},	//SW4
-	{MSG_PRE,			MSG_NONE,				MSG_NONE,					MSG_NONE	},	//SW2	
-	{MSG_PLAY_PAUSE,	MSG_NONE,			MSG_NONE,					MSG_NONE	},	//SW4
 };
 
 
 BYTE  CODE KeyVal1[ADC_KEY_COUNT] = 
 { 
-	3,	//SW3	0 		0	0	//SW13
 	9,	//SW4	2.2k		6	6	//SW14
 	14,	//SW5	4.7K 		11	12	//SW15
 	19,	//SW6	7.5K		16	17	//SW16
 	25,	//SW7	12K		22	22	//SW17
+	30, //SW8	16K 	26	27	//SW18	
 	
 };
 #else
@@ -253,18 +253,15 @@ static BYTE	AdcChannelKeyGet(BYTE Channel)
 					switch(KeyIndex)
 					{
 					case 0:
-						baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
-						break;
-					case 1:	
-						baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
-						break;
-					case 2:
-						baGPIOCtrl[GPIO_D_OUT] |= 0x40; //D6
-						break;
-					case 3:
 						baGPIOCtrl[GPIO_A_OUT] |= 0x02; //A1
 						break;
-					case 4:
+					case 1:	
+						baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
+						break;
+					case 2:
+						baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
+						break;
+					case 3:
 						baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
 						break;
 					default:
@@ -413,6 +410,7 @@ VOID AdcKeyScanInit(VOID)
 #endif
 
 #ifdef CSR_IO_CTRL
+//mini503:  D6接听电话按键 复合power按键 
 	baGPIOCtrl[GPIO_D_IE] &= ~0x04;//D2
 	baGPIOCtrl[GPIO_D_OE] |= 0x04;
 	baGPIOCtrl[GPIO_D_PU] |= 0x04;
@@ -448,6 +446,12 @@ VOID AdcKeyScanInit(VOID)
 	baGPIOCtrl[GPIO_A_OUT] &= ~0x04; 
 	WaitMs(2);
 	DBG1(("dfdfd"));
+	baGPIOCtrl[GPIO_E_IE] &= ~0x04;//A1
+	baGPIOCtrl[GPIO_E_OE] |= 0x04;
+	baGPIOCtrl[GPIO_E_PU] |= 0x04;
+	baGPIOCtrl[GPIO_E_PD] |= 0x04; 
+	baGPIOCtrl[GPIO_E_OUT] &= ~0x04; 
+	WaitMs(2);
 #endif
 }
 
@@ -479,7 +483,7 @@ MESSAGE AdcKeyEventGet(VOID)
 #ifdef CSR_IO_CTRL
 				baGPIOCtrl[GPIO_D_OUT] &= ~0x04;//D2
 				baGPIOCtrl[GPIO_D_OUT] &= ~0x20;//D5
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x40;//D6
+				
 				baGPIOCtrl[GPIO_A_OUT] &= ~0x02;//A1
 				baGPIOCtrl[GPIO_A_OUT] &= ~0x04;//A2
 				 
@@ -544,23 +548,19 @@ MESSAGE AdcKeyEventGet(VOID)
 
 #ifdef CSR_IO_CTRL
 				if(gSys.SystemMode == SYS_MODE_BLUETOOTH )
-				{
-
-					switch(PreKeyIndex)
+				{				
+					switch(KeyIndex)
 					{
 					case 0:
-						baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
-						break;
-					case 1:	
-						baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
-						break;
-					case 2:
-						baGPIOCtrl[GPIO_D_OUT] |= 0x40; //D6
-						break;
-					case 3:
 						baGPIOCtrl[GPIO_A_OUT] |= 0x02; //A1
 						break;
-					case 4:
+					case 1:	
+						baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
+						break;
+					case 2:
+						baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
+						break;
+					case 3:
 						baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
 						break;
 					default:

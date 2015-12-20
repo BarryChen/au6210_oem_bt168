@@ -149,8 +149,26 @@
 #define GET_BT_MUTE_STATUS()/*a7*/	\	
 	GetGpioReg(GPIO_B_IN) & (1 << 6)
 
+
 #define btIO_Mute_Need_mute() \
 	GET_BT_MUTE_STATUS()
+
+
+
+
+#ifdef CSR_CALL_CHECK_PORT
+#define BTIO_PORT_CALL_INIT()/*a7*/	do{ \	
+	SetGpioRegBit(GPIO_A_IE, (1 << 7));\
+	ClrGpioRegBit(GPIO_A_OE, (1 << 7));\
+	SetGpioRegBit(GPIO_A_PU, (1 << 7));\
+	SetGpioRegBit(GPIO_A_PD, (1 << 7));	\
+	}while(0)
+#define GET_BT_CALL_STATUS()/*a7*/	\	
+	GetGpioReg(GPIO_A_IN) & (1 << 7)
+
+#endif
+
+	
 
 
 
