@@ -1540,7 +1540,6 @@ VOID DevStateCtrl(VOID)
 				DacMute_Save = FALSE;
 			MuteOn(TRUE, TRUE);
 			ChannelSwitchBT_and_Unmute();
-			baGPIOCtrl[GPIO_B_OUT] &= ~0x04; 
 		}
 	}
 
@@ -1549,7 +1548,6 @@ VOID DevStateCtrl(VOID)
 	{
 		
 			ChannelSwitch_and_Unmute();
-			baGPIOCtrl[GPIO_E_OUT] |= 0x04; 
 		
 	}
 #endif

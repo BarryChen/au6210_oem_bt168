@@ -409,22 +409,27 @@ VOID VolumeAdjust(BYTE Direction)
 			if(gSys.Volume == VOLUME_MAX)	
 			{
 				SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 1);			
-				
+
+	#ifdef FUNC_EXMUTE_EN
 				if(gSys.SystemMode == SYS_MODE_BLUETOOTH && !GetBtMuteFlag())
 				{
 					DBG1(("123\m"));
 					UnMute();
 				}
+	#endif
 			}
 	
 			if(gSys.Volume == VOLUME_MIN)	
 			{
-				SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);			
+				SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);	
+	#ifdef FUNC_EXMUTE_EN
+
 				if(gSys.SystemMode == SYS_MODE_BLUETOOTH && !GetBtMuteFlag())
 				{
 					DBG1(("345\m"));
 					UnMute();
 				}
+	#endif
 			}
 		}
 #endif	

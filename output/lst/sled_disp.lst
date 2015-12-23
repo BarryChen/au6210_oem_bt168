@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 1   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SLED_DISP
 OBJECT MODULE PLACED IN .\output\obj\sled_disp.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE display\sled_disp.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\c
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE display\sled_disp.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\c
                     -onfig;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\bl
                     -uetooth;.\i2c) DEBUG PRINT(.\output\lst\sled_disp.lst) OBJECT(.\output\obj\sled_disp.obj)
 
@@ -62,7 +62,7 @@ line level    source
   51   1              if(Led == LED_POWER)
   52   1              {
   53   2                      if(IsLightOn)
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 2   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 2   
 
   54   2                      {
   55   3                              //DBG(("SLED_POWER ON\n"));
@@ -126,7 +126,7 @@ line level    source
                                       DBG(("OFF\n"));
                                       SetGpioRegBit(SLED_USB_PORT, MASK_SLED_USB);
                               }
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 3   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 3   
 
                       }
               #endif
@@ -190,7 +190,7 @@ line level    source
                               {
                                       DBG(("ON\n"));
                                       ClrGpioRegBit(SLED_REPEAT_PORT, MASK_SLED_REPEAT);
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 4   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 4   
 
                               }
                               else
@@ -254,7 +254,7 @@ line level    source
                       ClrGpioRegBit(SLED_MP3_IE, MASK_SLED_MP3);              // Input Disable
                       SetGpioRegBit(SLED_MP3_OE, MASK_SLED_MP3);              // Output Enable. // D[2:7]
                       SetGpioRegBit(SLED_MP3_OUT, MASK_SLED_MP3);             // Output 0
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 5   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 5   
 
               #else
  241   1              SetGpioRegBit(SLED_MP3_PU, MASK_SLED_MP3);              // Pull-Down.
@@ -318,7 +318,7 @@ line level    source
               #endif
  300   1      
  301   1      #ifdef SLED_RAD_EN
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 6   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 6   
 
                       SLedLightOp(LED_RADIO, LIGHTOFF);
               #endif
@@ -382,7 +382,7 @@ line level    source
  361   2              
  362   2      #ifdef SLED_USB_EN
                                       SLedLightOp(LED_USB, LIGHTOFF);
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 7   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 7   
 
               #endif
  365   2      
@@ -446,7 +446,7 @@ line level    source
  423   2      #ifdef SLED_SD_EN
                                       SLedLightOp(LED_SD, LIGHTOFF);
               #endif
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 8   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 8   
 
  426   2              
  427   2      #ifdef SLED_AUX_EN
@@ -510,7 +510,7 @@ line level    source
               #ifdef SLED_AUX_EN
                                       SLedLightOp(LED_AUX, LIGHTOFF);
               #endif
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 9   
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 9   
 
               
               #ifdef SLED_RAD_EN
@@ -574,7 +574,7 @@ line level    source
  547   2                      SLedFlickNormal = 0;
  548   2                      SLedNormaloff = 0;
  549   2                      SLedFlickSlow = 1;
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 10  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 10  
 
  550   2                      SLedSlowoff = 1;
  551   2      #else
@@ -638,7 +638,7 @@ line level    source
                                       SLedLightOp(LED_SD, LIGHTOFF);
                               }
               #endif
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 11  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 11  
 
                               TimeOutSet(&DispTmr, QUICK_BLINK_INTERVAL);
                       }
@@ -702,7 +702,7 @@ line level    source
  671   3      #ifdef SLED_USB_EN
                                       SLedLightOp(LED_USB, LIGHTOFF);
               #endif
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 12  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 12  
 
  674   3      
  675   3      #ifdef SLED_SD_EN
@@ -766,7 +766,7 @@ line level    source
               
               #if defined(AU6210K_ZB_BT007_CSR) || defined(AU6210K_LK_SJ_CSRBT)
                       if(gSys.MuteFg == TRUE)
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 13  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 13  
 
                       {
               
@@ -830,7 +830,7 @@ line level    source
               #else
                       gBlink.BlinkFlag = 0;
               
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 14  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 14  
 
               #endif
               
@@ -894,7 +894,7 @@ line level    source
  855   2      #endif
  856   2                      
  857   2                      SLedLightOp(LED_MP3, LIGHTOFF);
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 15  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 15  
 
  858   2      #ifdef SLED_RAD_EN
                               SLedLightOp(LED_RADIO, LIGHTOFF);
@@ -958,7 +958,7 @@ line level    source
  917          #ifdef FUNC_RTC_EN
               VOID SLedDispRTC(VOID)
               {
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 16  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 16  
 
                       if(gSys.SystemMode != SYS_MODE_RTC)
                       {
@@ -1022,7 +1022,7 @@ line level    source
  979   3      
  980   3      #ifdef SLED_USB_EN
                                               if(gSys.SystemMode == SYS_MODE_USB)
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 17  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 17  
 
                                               {
                                                       SLedLightOp(LED_USB, LIGHTON);
@@ -1086,7 +1086,7 @@ line level    source
                                               SLedLightOp(LED_RADIO, LIGHTON);
               #endif
 1043   3                                      TimeOutSet(&DispTmr, 0);
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 18  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 18  
 
 1044   3                              }
 1045   2                              break;
@@ -1150,7 +1150,7 @@ line level    source
 1103          {
 1104   1              BOOL Light;
 1105   1      #if 0//defined(AU6210K_NR_D_8_CSRBT)
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 19  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 19  
 
               #ifdef FUNC_POWER_MONITOR_EN
                       if(GetPwrDisp() == PWR_MNT_DISP_EMPTY_V)
@@ -1214,7 +1214,7 @@ line level    source
 1165   2                      else
 1166   2                      {
 1167   3                              //DBG(("SLedFlickNormal\n"));
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 20  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 20  
 
 1168   3                              TimeOutSet(&DispTmr, NORMAL_BLINK_INTERVAL);
 1169   3                              SLedNormaloff = !SLedNormaloff;
@@ -1278,7 +1278,7 @@ line level    source
                                               SLedLightOp(LED_AUX, Light);
               #endif
                                               break;
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 21  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 21  
 
               #endif
 1231   3              
@@ -1342,7 +1342,7 @@ line level    source
                                               SLedDispLineIn();
                                               break;
               #endif
-C51 COMPILER V9.00   SLED_DISP                                                             12/20/2015 23:03:59 PAGE 22  
+C51 COMPILER V9.00   SLED_DISP                                                             12/22/2015 18:11:13 PAGE 22  
 
 1292   3              
 1293   3      #ifdef FUNC_RADIO_EN

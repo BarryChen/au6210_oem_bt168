@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 1   
+C51 COMPILER V9.00   BT                                                                    12/22/2015 18:11:14 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE BT
 OBJECT MODULE PLACED IN .\output\obj\bt.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE bluetooth\bt.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE bluetooth\bt.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config
                     -;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\bluetoo
                     -th;.\i2c) DEBUG PRINT(.\output\lst\bt.lst) OBJECT(.\output\obj\bt.obj)
 
@@ -62,7 +62,7 @@ line level    source
   51          {
   52          //注:Line In音频从E0、E1口输入到芯片内部，请用gFmInGain[VOLUME_MAX + 1]表中参数值
   53          //#if ((LINEIN_IO_TYPE == DAC_CH_E0_L) || (LINEIN_IO_TYPE == DAC_CH_E1_R) || (LINEIN_IO_TYPE == DAC_CH_E0E
-C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 2   
+C51 COMPILER V9.00   BT                                                                    12/22/2015 18:11:14 PAGE 2   
 
              -1))
   54          //      63,             61,             59,             57,             55,             53,             51,             49,
@@ -126,7 +126,7 @@ line level    source
  112   1      #if defined(AU6210K_NR_D_8_CSRBT)
               #else
  114   1              #if BLUETOOTH_CH_TYPE == DAC_CH_LINEIN
-C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 3   
+C51 COMPILER V9.00   BT                                                                    12/22/2015 18:11:14 PAGE 3   
 
  115   1              InDacChannelSel(BLUETOOTH_CH_TYPE);
  116   1              #else
@@ -190,7 +190,7 @@ line level    source
  174          
  175          
  176          // LineIn IO DeInitialization.
-C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 4   
+C51 COMPILER V9.00   BT                                                                    12/22/2015 18:11:14 PAGE 4   
 
  177          VOID BluetothCtrlEnd(VOID)
  178          {
@@ -254,7 +254,7 @@ line level    source
                               DBG(("active bluetooth time out.\n"));
                               BTjustEnter = 0;                
                               //BT_POWER_H();
-C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 5   
+C51 COMPILER V9.00   BT                                                                    12/22/2015 18:11:14 PAGE 5   
 
                               //开声音
               
@@ -318,7 +318,7 @@ line level    source
                                       
                                       DBG1(("r----\n"));
               #if defined(AU6210K_ZB_BT007_CSR)       
-C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 6   
+C51 COMPILER V9.00   BT                                                                    12/22/2015 18:11:14 PAGE 6   
 
               #ifdef BT_BtPOWEROFF_TIME
                                       TimeOutSet(&CSR_BTPOWEROFF_TIME, 0);
@@ -382,7 +382,7 @@ line level    source
  360   2      #ifndef FUNC_CSR_CONTROL_BT_VOL //if no def
  361   2                      case MSG_VOL_ADD:                       
  362   2                              VolumeAdjust(UP);
-C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 7   
+C51 COMPILER V9.00   BT                                                                    12/22/2015 18:11:14 PAGE 7   
 
  363   2                              break;
  364   2              
@@ -446,7 +446,7 @@ line level    source
  420   2                      break;  */      
  421   2                      
  422   2              default:
-C51 COMPILER V9.00   BT                                                                    12/20/2015 23:04:01 PAGE 8   
+C51 COMPILER V9.00   BT                                                                    12/22/2015 18:11:14 PAGE 8   
 
  423   2                      break;
  424   2              }

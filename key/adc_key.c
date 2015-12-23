@@ -87,7 +87,7 @@ BYTE  CODE KeyVal1[ADC_KEY_COUNT] =
 	14,	//SW5	4.7K 		11	12	//SW15
 	19,	//SW6	7.5K		16	17	//SW16
 	25,	//SW7	12K		22	22	//SW17
-	30, //SW8	16K 	26	27	//SW18	
+	36,	//SW9	24K		33	33	//SW19
 	
 };
 #else
@@ -261,9 +261,7 @@ static BYTE	AdcChannelKeyGet(BYTE Channel)
 					case 2:
 						baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
 						break;
-					case 3:
-						baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
-						break;
+					
 					default:
 						break;
 					}
@@ -444,13 +442,6 @@ VOID AdcKeyScanInit(VOID)
 	baGPIOCtrl[GPIO_A_PU] |= 0x04;
 	baGPIOCtrl[GPIO_A_PD] |= 0x04; 
 	baGPIOCtrl[GPIO_A_OUT] &= ~0x04; 
-	WaitMs(2);
-	DBG1(("dfdfd"));
-	baGPIOCtrl[GPIO_E_IE] &= ~0x04;//A1
-	baGPIOCtrl[GPIO_E_OE] |= 0x04;
-	baGPIOCtrl[GPIO_E_PU] |= 0x04;
-	baGPIOCtrl[GPIO_E_PD] |= 0x04; 
-	baGPIOCtrl[GPIO_E_OUT] &= ~0x04; 
 	WaitMs(2);
 #endif
 }

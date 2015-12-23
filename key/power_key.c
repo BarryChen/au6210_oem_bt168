@@ -64,7 +64,7 @@ MESSAGE PowerKeyEventGet(VOID)
 			if(gIsPwrkeyPadOn == FALSE)
 			{
 				IsPwrkeyInSysOn = FALSE;
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x40;//D6
+				baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
 				return MSG_NONE;
 			}
 			DBG(("GOTO POWER PRESS DOWN!\n"));
@@ -79,7 +79,7 @@ MESSAGE PowerKeyEventGet(VOID)
 			{
 				TimeOutSet(&PowerKeyWaitTimer, TIME_POWER_OFF_HOLD);
 			}
-			baGPIOCtrl[GPIO_D_OUT] |= 0x40; //D6
+			baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
 
 			PowerKeyState = POWER_KEY_STATE_PRESS_DOWN;
 			break;
@@ -89,7 +89,8 @@ MESSAGE PowerKeyEventGet(VOID)
 			{
 				IsPwrkeyInSysOn = FALSE;
 				PowerKeyState = POWER_KEY_STATE_IDLE;
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x40;//D6
+				baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
+				
 				return PowerKeyEvent[0];			//return key sp value
 			}
 			else if(IsTimeOut(&PowerKeyWaitTimer))
