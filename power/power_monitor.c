@@ -26,28 +26,17 @@ extern BOOL GetBtMuteFlag();
 #define LDOIN_SAMPLE_COUNT			100		//获取LDOIN幅度时用来平均的采样次数
 #define LDOIN_SAMPLE_PERIOD			50		//获取LDOIN幅度时获取采样值的间隔(ms)
 #define LOW_POWEROFF_TIME			10000		//低电检测关机连续检测时间(ms)
+#define LOW_POWER_SONG_TIME			30000		//
 
 
 //以下定义不同的电压检测事件的触发电压(单位mV)，用户根据自身系统电池的特点来配置
-#ifdef AU6210K_NR_D_8_CSRBT
 
-#define LDOIN_VOLTAGE_FULL			58
-#define LDOIN_VOLTAGE_HIGH			50
-#define LDOIN_VOLTAGE_LOW			52
-#define LDOIN_VOLTAGE_OFF			47	//低于此电压值进入关机powerdown状态
-
-#else
 
 #define LDOIN_VOLTAGE_FULL			4200
 #define LDOIN_VOLTAGE_HIGH			3600
-#define LDOIN_VOLTAGE_LOW			3500
-#if defined(AU6210K_NR_D_9X_XJ_HTS) ||defined(AU6210K_LK_SJ_CSRBT) || defined(AU6210K_ZB_BT007_CSR)
-#define LDOIN_VOLTAGE_OFF			3400	//低于此电压值进入关机powerdown状态
-#else 
-#define LDOIN_VOLTAGE_OFF			3300
-#endif
+#define LDOIN_VOLTAGE_LOW			3400
+#define LDOIN_VOLTAGE_OFF			3200	//低于此电压值进入关机powerdown状态
 
-#endif
 //电压检测时不同的显示处理
 
 
@@ -59,6 +48,8 @@ static BOOL LowPwr_Flag = TRUE;
 
 
 //用于电压检测的变量
+TIMER LowPowerSongTimer;
+
 TIMER PowerMonitorTimer;
 TIMER PowerOffTimer;
 DWORD LdoinSampleSum = 0; 
@@ -222,7 +213,7 @@ static VOID PowerLdoinLevelMonitor(BOOL PowerOnInitFlag)
 		if((LdoinLevelAverage > LDOIN_VOLTAGE_OFF) && (LdoinLevelAverage < LDOIN_VOLTAGE_LOW))
 			PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
 	
-		#if defined(AU6210K_NR_D_9X_XJ_HTS) || defined(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_LK_SJ_CSRBT) || defined(AU6210K_ZB_BT007_CSR)
+		#if defined(AU6210K_ZB_BT007_CSR)
 		if(PowerOnInitFlag == TRUE) 
 		{		
 			if(LdoinLevelAverage <= LDOIN_VOLTAGE_OFF)
@@ -230,14 +221,7 @@ static VOID PowerLdoinLevelMonitor(BOOL PowerOnInitFlag)
 				PowerOffFlag = TRUE;
 			}			
 		}
-		#else
-		if(PowerOnInitFlag == TRUE) 
-		{		
-			if(LdoinLevelAverage <= LDOIN_VOLTAGE_LOW)
-			{
-				PowerOffFlag = TRUE;
-			}			
-		}
+		
         #endif
 		if((PowerOnInitFlag == FALSE) && (LdoinLevelAverage <= LDOIN_VOLTAGE_OFF))
 		{
@@ -251,42 +235,9 @@ static VOID PowerLdoinLevelMonitor(BOOL PowerOnInitFlag)
 			PwrMntDisp = PWR_MNT_DISP_SYS_OFF;
 			PowerMonitorDisp();			
 			FeedWatchDog();
-			#if defined(AU6210K_NR_D_9X_XJ_HTS)|| defined(AU6210K_NR_D_8_CSRBT)
-	            SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,0);
-		    //	SLedLightOp(LED_POWER, FALSE);	
-				WaitMs(1000);
-			#endif
-			#if defined(AU6210K_ZB_BT007_CSR)
-			if(LowPwr_Flag)
-			{
-				LowPwr_Flag = FALSE;
-				TimeOutSet(&PowerOffTimer, 10000);
-				SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,1);
-				WaitMs(100);
-				if(gSys.SystemMode == SYS_MODE_BLUETOOTH && !GetBtMuteFlag())
-				{
-				DBG1(("ccccccccpower off\m"));
-					UnMute();
-				}
-				
-			}
-			else
-			{
-				if(IsTimeOut(&PowerOffTimer))
-				{
-					SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,0);
-					WaitMs(1000);
-					SystemOff();
-				}
-			
-			}
-			#endif
 			//停止正常工作流程，包括关显示、关DAC、关功放电源等动作
 			DBG(("PowerMonitor, PD\n"));	
-			#if defined(AU6210K_ZB_BT007_CSR)
-			#else
 			SystemOff();
-			#endif
 		}		
 	}
 	PowerMonitorDisp();
@@ -299,6 +250,7 @@ VOID PowerMonitorInit(VOID)
 {
 	TimeOutSet(&PowerMonitorTimer, 0);	
 	TimeOutSet(&BlinkTimer, 0);	
+	TimeOutSet(&LowPowerSongTimer, 0);	
 
 #ifdef OPTION_CHARGER_DETECT
 	//如果系统启动时，充电设备已经接入，就不执行下面这段低电压检测和处理过程
@@ -351,6 +303,29 @@ VOID PowerMonitor(VOID)
 			}
 		}
 #endif		
+
+#ifdef AU6210K_MINI503
+		
+				if(PwrMntDisp == PWR_MNT_DISP_EMPTY_V)
+				{
+					if(IsTimeOut(&LowPowerSongTimer))
+					{
+						TimeOutSet(&LowPowerSongTimer, LOW_POWER_SONG_TIME);
+#ifdef FUNC_SPI_KEY_SOUND_EN						
+						SPI_PlaySelectNum(SPIPLAY_SONG_LOW_PWR,0);
+#endif
+						WaitMs(100);
+						UnMute();
+						DBG1(("low power song!!"));
+						
+					}
+				}
+				else
+				{
+					TimeOutSet(&LowPowerSongTimer, 0);	
+				}
+#endif			
+
 		//没有采样够LDOIN_SAMPLE_COUNT次数，继续采样
 		PowerLdoinLevelMonitor(FALSE);
 	}

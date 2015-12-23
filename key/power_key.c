@@ -8,6 +8,7 @@
 #include "sysctrl.h"
 #include "key.h"
 #include "power_key.h"
+#include "bt.h"
 
 
 #if	(PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON)
@@ -79,7 +80,9 @@ MESSAGE PowerKeyEventGet(VOID)
 			{
 				TimeOutSet(&PowerKeyWaitTimer, TIME_POWER_OFF_HOLD);
 			}
-			baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
+
+			if(GET_BT_CALL_STATUS())
+				baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
 
 			PowerKeyState = POWER_KEY_STATE_PRESS_DOWN;
 			break;

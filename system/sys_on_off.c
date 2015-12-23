@@ -183,6 +183,12 @@ VOID SystemOff(VOID)
 		RadioCtrlDeinit();
 	}
 #endif
+#ifdef AU6210K_MINI503
+		SPI_PlaySelectNum(SPIPLAY_SONG_POWEROFF,0);
+	//	SLedLightOp(LED_POWER, FALSE);	
+		WaitMs(1000);
+#endif
+
 
 	MuteOn(FALSE, TRUE);
 	//NPCA110X_SetOutMute(TRUE);

@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   SYS_ON_OFF                                                            12/22/2015 18:11:10 PAGE 1   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            12/23/2015 22:10:10 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SYS_ON_OFF
 OBJECT MODULE PLACED IN .\output\obj\sys_on_off.obj
-COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE system\sys_on_off.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\c
+COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE system\sys_on_off.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\c
                     -onfig;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\bl
                     -uetooth;.\i2c) DEBUG PRINT(.\output\lst\sys_on_off.lst) OBJECT(.\output\obj\sys_on_off.obj)
 
@@ -62,7 +62,7 @@ line level    source
                                               (IrKeyData == 0x5FA07F80) ||
                                               (IrKeyData == 0x5EA17F80) ||
                                               (IrKeyData == 0x5DA27F80) ||
-C51 COMPILER V9.00   SYS_ON_OFF                                                            12/22/2015 18:11:10 PAGE 2   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            12/23/2015 22:10:10 PAGE 2   
 
                                               (IrKeyData == 0x5CA37F80) ||
                                               (IrKeyData == 0x59A67F80) ||
@@ -126,7 +126,7 @@ line level    source
  111   1      #if     (PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON)
  112   1              DBG(("\nPWR_KEY_PUSH_BUTTON\n\n"));     
  113   1              SetChip8SRstMode(CRM_IN_PUSH_BUTTON);
-C51 COMPILER V9.00   SYS_ON_OFF                                                            12/22/2015 18:11:10 PAGE 3   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            12/23/2015 22:10:10 PAGE 3   
 
  114   1      
  115   1      #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
@@ -190,7 +190,7 @@ line level    source
  172   1              
  173   1      #if (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_SLEEP)
                       //休眠，进入SLEEP模式
-C51 COMPILER V9.00   SYS_ON_OFF                                                            12/22/2015 18:11:10 PAGE 4   
+C51 COMPILER V9.00   SYS_ON_OFF                                                            12/23/2015 22:10:10 PAGE 4   
 
                       DBG(("SLEEP!\n"));
               #ifdef FUNC_DISP_EN
@@ -203,6 +203,12 @@ line level    source
                               RadioCtrlDeinit();
                       }
               #endif
+              #ifdef AU6210K_MINI503
+                              SPI_PlaySelectNum(SPIPLAY_SONG_POWEROFF,0);
+                      //      SLedLightOp(LED_POWER, FALSE);  
+                              WaitMs(1000);
+              #endif
+              
               
                       MuteOn(FALSE, TRUE);
                       //NPCA110X_SetOutMute(TRUE);
@@ -221,41 +227,41 @@ line level    source
                       return;
               
               #elif (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_POWERDOWN)
- 204   1      
- 205   1      #if(PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON) //POWER_KEY为按钮开关（软开关）
- 206   1              DBG(("\nSYSTEM OFF BY PUSH BUTTON!\n\n"));
- 207   1      
- 208   1      #ifdef  FUNC_ALARM_EN
+ 210   1      
+ 211   1      #if(PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON) //POWER_KEY为按钮开关（软开关）
+ 212   1              DBG(("\nSYSTEM OFF BY PUSH BUTTON!\n\n"));
+ 213   1      
+ 214   1      #ifdef  FUNC_ALARM_EN
                       SetWakeupLpRtcInPD(); // RTC闹钟唤醒使能
               #endif
- 211   1      
- 212   1      #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
+ 217   1      
+ 218   1      #elif(PWR_KEY_MODE == PWR_KEY_SLIDE_SWITCH)
                               DBG(("\nSYSTEM OFF BY SLID SWITCH!\n\n"));      
               #endif
- 215   1              
- 216   1      #ifdef FUNC_DISP_EN
- 217   1              DispDeInit();
- 218   1      #endif
- 219   1      
- 220   1              MuteOn(FALSE, TRUE);
- 221   1      //执行InDacMuteEn、InDacChannelSel和InDacPowerDown 共800ms左右，造成关机后不能快速按键开机
- 222   1      //屏蔽这部分代码后可能导致快速开机会有POP声
- 223   1      //      InDacChannelSel(DAC_CH_NONE);
- 224   1      //      InDacPowerDown(FALSE);
- 225   1              
- 226   1              GoToPDMode();   
- 227   1      #endif
- 228   1      }
- 229          
- 230          
- 231          #ifdef FUN_SYSTEM_POWEROFF_WAIT_TIME
+ 221   1              
+ 222   1      #ifdef FUNC_DISP_EN
+ 223   1              DispDeInit();
+ 224   1      #endif
+ 225   1      
+ 226   1              MuteOn(FALSE, TRUE);
+ 227   1      //执行InDacMuteEn、InDacChannelSel和InDacPowerDown 共800ms左右，造成关机后不能快速按键开机
+ 228   1      //屏蔽这部分代码后可能导致快速开机会有POP声
+ 229   1      //      InDacChannelSel(DAC_CH_NONE);
+ 230   1      //      InDacPowerDown(FALSE);
+ 231   1              
+ 232   1              GoToPDMode();   
+ 233   1      #endif
+ 234   1      }
+ 235          
+ 236          
+C51 COMPILER V9.00   SYS_ON_OFF                                                            12/23/2015 22:10:10 PAGE 5   
+
+ 237          #ifdef FUN_SYSTEM_POWEROFF_WAIT_TIME
               SystemTimingOff gSysTimeOffState;
               
               
               VOID SystemOffTimeInit(VOID)
               {
-C51 COMPILER V9.00   SYS_ON_OFF                                                            12/22/2015 18:11:10 PAGE 5   
-
                       gSysTimeOffState.ProState = SYS_OFF_TIMEING_IDLE;
                       gSysTimeOffState.EnState = FALSE;
                       gSysTimeOffState.SleepState = SLEEP_00;
@@ -312,14 +318,14 @@ line level    source
               VOID SystemOffTimeEnDis(BYTE Type)
               {
                       TimeOutSet(&gSysTimeOffState.DisTimer, 3000);
+C51 COMPILER V9.00   SYS_ON_OFF                                                            12/23/2015 22:10:10 PAGE 6   
+
                               
                       if(SYSOFF_TIME_SET_VALUE == Type)
                       {
                               if(gSysTimeOffState.EnState == FALSE)
                               {
                                       gSysTimeOffState.EnState = TRUE;                                
-C51 COMPILER V9.00   SYS_ON_OFF                                                            12/22/2015 18:11:10 PAGE 6   
-
                                       gSysTimeOffState.ProState = SYS_OFF_TIMEING_SET_MODE_VALID;     
                                       SystemOffSetTimer();
                               }
@@ -376,14 +382,14 @@ line level    source
               //              gSysTimeOffState.ProState = SYS_OFF_TIMEING_SET_MODE_VALID;     
               //      }
               //      else
+C51 COMPILER V9.00   SYS_ON_OFF                                                            12/23/2015 22:10:10 PAGE 7   
+
               //      {
               //              gSysTimeOffState.ProState  = SYS_OFF_TIMEING_SET_MODE_INVALID;
               //      }
               }
               
               
-C51 COMPILER V9.00   SYS_ON_OFF                                                            12/22/2015 18:11:10 PAGE 7   
-
               //如果有和此函数类似用法(嵌入到各个模式)的函数位于其后，此函数不要有default，防止拦截后者有用的消息
               VOID SystemOffTimeMsgPro(BYTE Msg)
               {       
@@ -440,14 +446,14 @@ line level    source
                                                       gSysTimeOffState.ProState = SYS_OFF_TIMEING_IDLE;
                                               }
                                       }
+C51 COMPILER V9.00   SYS_ON_OFF                                                            12/23/2015 22:10:10 PAGE 8   
+
                                       break;
               
                               case SYS_OFF_TIMEING_WAIT_POWEROFF:
                                       if(IsTimeOut(&gSysTimeOffState.AutoOutTimer))
                                       {
                                               if(gSysTimeOffState.EnState == TRUE)
-C51 COMPILER V9.00   SYS_ON_OFF                                                            12/22/2015 18:11:10 PAGE 8   
-
                                               {
                                                       DBG(("SYSTEM OFF BY TimeOut!\n"));
                                                       SystemOff();
@@ -461,8 +467,8 @@ line level    source
               }
               
               #endif
- 434          
- 435          
+ 440          
+ 441          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

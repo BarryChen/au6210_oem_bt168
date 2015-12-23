@@ -347,7 +347,7 @@ DBG(("gBreakPointInfo.PowerMemory.Volume = %x\n",gBreakPointInfo.PowerMemory.Vol
 	if((gSys.Volume == 0) && (IsDacMute == FALSE))
 	{
 		gSys.MuteFg = FALSE;		
-		MuteOn(FALSE, TRUE);		
+		MuteOn(TRUE, TRUE);		
 	}
 	if((IsDacMute == TRUE) && (gSys.Volume > 0))
 	{

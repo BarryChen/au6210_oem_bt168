@@ -473,8 +473,7 @@ MESSAGE AdcKeyEventGet(VOID)
 			{
 #ifdef CSR_IO_CTRL
 				baGPIOCtrl[GPIO_D_OUT] &= ~0x04;//D2
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x20;//D5
-				
+			
 				baGPIOCtrl[GPIO_A_OUT] &= ~0x02;//A1
 				baGPIOCtrl[GPIO_A_OUT] &= ~0x04;//A2
 				 
@@ -551,9 +550,7 @@ MESSAGE AdcKeyEventGet(VOID)
 					case 2:
 						baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
 						break;
-					case 3:
-						baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
-						break;
+					
 					default:
 						break;
 					}

@@ -1,8 +1,7 @@
----- FUNC_POWER_MONITOR_EN Matches (7 in 5 files) ----
-Display.c (display):#ifdef FUNC_POWER_MONITOR_EN
-Power_monitor.c (power):#ifdef FUNC_POWER_MONITOR_EN
-Sled_disp.c (display):#ifdef FUNC_POWER_MONITOR_EN
-Syscfg.h (config)://#define FUNC_POWER_MONITOR_EN
-Syscfg.h (config):#ifdef FUNC_POWER_MONITOR_EN
-Sysctrl.c (system):#ifdef FUNC_POWER_MONITOR_EN
-Sysctrl.c (system):#ifdef FUNC_POWER_MONITOR_EN
+---- PWR_MNT_DISP_EMPTY_V Matches (6 in 3 files) ----
+Power_monitor.c (power):		case PWR_MNT_DISP_EMPTY_V:
+Power_monitor.c (power):			//PowerMonitorDisp(PWR_MNT_DISP_EMPTY_V);
+Power_monitor.c (power):			PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
+Power_monitor.c (power):			PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
+Power_monitor.h (power):	PWR_MNT_DISP_EMPTY_V, 
+Sled_disp.c (display):	if(GetPwrDisp() == PWR_MNT_DISP_EMPTY_V)
