@@ -131,6 +131,7 @@ VOID main()
 /*#ifdef FUNC_SLAVE_UART_EN
 	SlaveCtrlInit();
 #endif*/
+	BT_POWER_ON_INIT();
 
 #if 0//ndef need_change_flag  //no use
 	baGPIOCtrl[GPIO_A_IE] |= 0x40;//A2

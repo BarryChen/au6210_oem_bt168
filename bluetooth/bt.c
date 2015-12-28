@@ -28,6 +28,9 @@ TIMER   BT_standby;
 BYTE standby_flag;
 #endif
 
+BOOL BtDelayOnFlag = TRUE;
+TIMER BT_Delay_ON;
+#define		BT_DELAY_ON_TIME	2000
 
 
 
@@ -102,8 +105,9 @@ VOID BluetoothCtrlInit(VOID)
 	//MCUIO_PORT_blue_LED_INIT();
 
 
-	
-	BT_POWER_H();
+	TimeOutSet(&BT_Delay_ON, BT_DELAY_ON_TIME);	
+	//BT_POWER_ON_INIT();
+	//BT_POWER_H();
 
 #if defined(FUNC_AUTO_BTSTANDBY)  
     TimeOutSet(&BT_standby, BT_STAND_TIME);	
@@ -230,6 +234,15 @@ VOID BluetoothStateCtrl(VOID)
     MESSAGE Event;
 	BYTE minvolflag = 0;
 	BYTE maxvolflag = 0;
+
+	if(BtDelayOnFlag)
+	{
+		if(IsTimeOut(&BT_Delay_ON))
+		{
+			BtDelayOnFlag = FALSE;
+			BT_POWER_H();
+		}
+	}
 #if 0
 	if (IsTimeOut(&BT_Statup) && BTjustEnter && gSys.Volume > VOLUME_MIN)
 	{

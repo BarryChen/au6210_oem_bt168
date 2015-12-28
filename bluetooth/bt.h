@@ -5,6 +5,15 @@
 #ifdef FUNC_BLUETOOTH_CSR_EN
 //À¶ÑÀGPIO¿Ú¿ØÖÆ
 
+#define BT_POWER_ON_INIT()/*D0*/	do{ \	
+	SetGpioRegBit(GPIO_B_PU, (1 << 7));\
+	SetGpioRegBit(GPIO_B_PD, (1 << 7));	\
+	SetGpioRegBit(GPIO_B_OE, (1 << 7));\
+	ClrGpioRegBit(GPIO_B_IE, (1 << 7));\
+	ClrGpioRegBit(GPIO_B_OUT, (1 << 7));\
+	}while(0)
+
+
 #define		BT_POWER_L()	SetGpioRegBit(GPIO_B_OE,	1<<7),\	
 	                       	ClrGpioRegBit(GPIO_B_OUT, 	1<<7);
 
