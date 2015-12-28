@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 1   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SLAVE_CTRL
 OBJECT MODULE PLACED IN .\output\obj\slave_ctrl.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE slave\slave_ctrl.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\co
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE slave\slave_ctrl.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\co
                     -nfig;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\blu
                     -etooth;.\i2c) DEBUG PRINT(.\output\lst\slave_ctrl.lst) OBJECT(.\output\obj\slave_ctrl.obj)
 
@@ -62,7 +62,7 @@ line level    source
               #define SLAVE_NEXT                  0X0304
               #define SLAVE_PRE                   0X0305
               #define SLAVE_PLAY_PAUSE            0X0306
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 2   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 2   
 
               #define SLAVE_FF                    0X0307
               #define SLAVE_FB                    0X0308
@@ -126,7 +126,7 @@ line level    source
               #define SLAVE_NEXT_STEP        0X0A03
               #define SLAVE_PREV_STEP        0X0A04
               #define SLAVE_NEXT_STATION        0X0A05
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 3   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 3   
 
               #define SLAVE_PREV_STATION        0X0A06
               #define SLAVE_AUTO_SCAN        0X0A07
@@ -190,7 +190,7 @@ line level    source
                       {
                               //DBG(("File size invalid!\n"));
                               //return FALSE;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 4   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 4   
 
                       }
                       while(!FileEOF(&file))
@@ -254,7 +254,7 @@ line level    source
                                       break;
                                       
                               case SLAVE_GET_CHECKSUM_INFO:
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 5   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 5   
 
                                       
               /*otp中相关烧录信息空间说明(0xffe0-0xffff)：
@@ -318,7 +318,7 @@ line level    source
                                       SlaveRespBuf[42]=gBreakPointInfo.Volume;
                                       SlaveRespBuf[43]=gBreakPointInfo.Eq;
                                       SlaveRespBuf[44]=gBreakPointInfo.RepeatMode;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 6   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 6   
 
               
                                       SlaveSendResp(SLAVE_GET_BREAKPOINT_INFO,SlaveRespBuf,45);
@@ -382,7 +382,7 @@ line level    source
                                       {                               
                                               SuspendTick = 0;
                                               SlaveRespBuf[0]=(BYTE)(gFsInfo.FolderSum>>8);
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 7   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 7   
 
                                               SlaveRespBuf[1]=(BYTE)(gFsInfo.FolderSum);
                                               SlaveRespBuf[2]=(BYTE)(gFsInfo.ValidFolderSum>>8);
@@ -446,7 +446,7 @@ line level    source
                                       SlaveRespBuf[4]=(BYTE)(folder.StartFileNum>>8);
                                       SlaveRespBuf[5]=(BYTE)folder.StartFileNum;
                                       SlaveRespBuf[6]=(BYTE)(folder.IncFileCnt>>8);
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 8   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 8   
 
                                       SlaveRespBuf[7]=(BYTE)folder.IncFileCnt;
                                       SlaveRespBuf[8]=(BYTE)(folder.IncFolderCnt>>8);
@@ -510,7 +510,7 @@ line level    source
                                       SlaveSendResp(SLAVE_GET_FILE_INFO,SlaveRespBuf,18+SlaveRespBuf[17]);
                                       #endif
                                       break;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 9   
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 9   
 
                       }
               }
@@ -574,7 +574,7 @@ line level    source
                                       break;
                               case SLAVE_STOP_FF_FB:
                                       if(!isUSBorSD())
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 10  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 10  
 
                                               break;          
                                       SuspendTick = 0;
@@ -638,7 +638,7 @@ line level    source
               #endif
                                       if(!SongPlayInit())
                                       {
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 11  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 11  
 
                                               gPlayCtrl.State = PLAY_STATE_STOP;
                                                       MessageSend(MSG_FIFO_KEY, MSG_NEXT);
@@ -702,7 +702,7 @@ line level    source
                                       SuspendTick = 0;
                                       if(gSlaveCmdData[0] < REPEAT_MODE_SUM)
                                       {
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 12  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 12  
 
                                               gPlayCtrl.RepeatMode = gSlaveCmdData[0];
                                           if(gPlayCtrl.RepeatMode==REPEAT_RANDOM)
@@ -766,7 +766,7 @@ line level    source
                                       else if(gSys.SystemMode == SYS_MODE_SD)
                                       {
                                               BP_SaveInfo(&gBreakPointInfo.PowerMemory.SD_FolderEnFlag, sizeof(gBreakPointInfo.PowerMemory.SD_Folder
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 13  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 13  
 
              -EnFlag));
                                       }                                                       
@@ -830,7 +830,7 @@ line level    source
                                       memcpy(&SlaveRespBuf[3],&gTagInfo.Comment[0],temp);
                                       SlaveSendResp(SLAVE_GET_COMMENT,SlaveRespBuf,temp+3);   
                                       break;          
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 14  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 14  
 
                               case SLAVE_GET_YEAR:
                                       if(!isUSBorSD())
@@ -894,7 +894,7 @@ line level    source
                                       SlaveSendResp(SLAVE_SET_EQ,SlaveRespBuf,0);
                                       break;
                               case SLAVE_GET_EQ:
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 15  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 15  
 
                                       SuspendTick = 0;
                                       SlaveRespBuf[0]=gPlayCtrl.Eq;
@@ -958,7 +958,7 @@ line level    source
                       RTC_DATE_TIME uRtcTime;
                       RTC_DATE_TIME uAlarmTime;
                       RTC_LUNAR_DATE uLunarDate;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 16  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 16  
 
               
                       BYTE temp=0;
@@ -1022,7 +1022,7 @@ line level    source
                                               SlaveRespBuf[4]=uAlarmTime.Date;
                                               SlaveRespBuf[5]=uAlarmTime.WDay;                        
                                               SlaveRespBuf[6]=uAlarmTime.Hour;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 17  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 17  
 
                                               SlaveRespBuf[7]=uAlarmTime.Min;
                                               SlaveRespBuf[8]=uAlarmTime.Sec;
@@ -1086,7 +1086,7 @@ line level    source
                                       break;
                               case SLAVE_GET_EARTHLY_BRANCH:
                                       SuspendTick = 0;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 18  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 18  
 
                                       SlaveRespBuf[0]=GetEarthlyBranch(*(WORD*)gSlaveCmdData);
                                       SlaveSendResp(SLAVE_GET_EARTHLY_BRANCH,SlaveRespBuf,1);                 
@@ -1150,7 +1150,7 @@ line level    source
                                       }
                                       SlaveSendResp(SLAVE_ENABLE_ADC_CHANNEL,SlaveRespBuf,0);
                                       break;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 19  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 19  
 
                               case SLAVE_DISABLE_ADC_CHANNEL:
                                       SuspendTick = 0;
@@ -1214,7 +1214,7 @@ line level    source
                                               SuspendTick = 0;
                                               PwmEnableChannel(gSlaveCmdData[0]);
                                               SlaveSendResp(SLAVE_ENABLE_PWM_CHANNEL,SlaveRespBuf,0);
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 20  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 20  
 
                                       }
                                       break;
@@ -1278,7 +1278,7 @@ line level    source
               VOID SlaveRadioProcess(WORD Cmd)
               {
                      BYTE i;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 21  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 21  
 
               #ifdef FUNC_RADIO_EN
                       switch(Cmd)
@@ -1342,7 +1342,7 @@ line level    source
                                       break;          
                               case SLAVE_SET_MONO_MODE:
                                       SuspendTick = 0;                        
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 22  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 22  
 
                                       SlaveSendResp(SLAVE_SET_MONO_MODE,SlaveRespBuf,0);
                                       if(gSlaveCmdData[0]<=1)
@@ -1406,7 +1406,7 @@ line level    source
                               case 0x06:
                                       SlaveGpioProcess(CmdCode);
                                       break;
-C51 COMPILER V9.00   SLAVE_CTRL                                                            12/23/2015 22:10:16 PAGE 23  
+C51 COMPILER V9.00   SLAVE_CTRL                                                            12/25/2015 17:22:52 PAGE 23  
 
                               case 0x07:
                                       SlaveAdcProcess(CmdCode);

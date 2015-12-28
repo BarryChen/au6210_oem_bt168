@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/23/2015 22:10:12 PAGE 1   
+C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/25/2015 17:22:49 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE SEG_LCD_DISP
 OBJECT MODULE PLACED IN .\output\obj\seg_lcd_disp.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE display\seg_lcd_disp.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE display\seg_lcd_disp.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(
                     -.\config;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.
                     -\bluetooth;.\i2c) DEBUG PRINT(.\output\lst\seg_lcd_disp.lst) OBJECT(.\output\obj\seg_lcd_disp.obj)
 
@@ -62,7 +62,7 @@ line level    source
                               Count = 0;
                               LcdSetRefMem();
                       }
-C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/23/2015 22:10:12 PAGE 2   
+C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/25/2015 17:22:49 PAGE 2   
 
               }
               
@@ -126,7 +126,7 @@ line level    source
               //              {
               ////                    LcdBlinkCtrl(5, LcdIconSet[Icon] % 8, LcdIconSet[Icon] / 8);
               //                      //// 0 -> B0, 1-> B1... 7->B7, 8 -> D2, 9 -> D3 ... 13 -> D7
-C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/23/2015 22:10:12 PAGE 3   
+C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/25/2015 17:22:49 PAGE 3   
 
               //                      //BYTE CODE LcdSegChanNo[MAX_SEG_NUM]={6, 5, 3, 2, 1, 0, 4, 7};
               //                      //LcdBlinkCtrl(5, LcdSegChanNo[LcdIconSet[Icon]%MAX_SEG_NUM], LcdIconSet[Icon]/MAX_COM_NUM);
@@ -190,7 +190,7 @@ line level    source
              -LAY_STATE_PLAY))
               #ifdef FUNC_AUDIO_EN
                               || ((gSys.SystemMode == SYS_MODE_AUDIO) && (gAudioState == AUDIO_PLAY))
-C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/23/2015 22:10:12 PAGE 4   
+C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/25/2015 17:22:49 PAGE 4   
 
               #endif
               #ifdef FUNC_AUDIO_READER_EN
@@ -254,7 +254,7 @@ line level    source
               
               #ifdef FUNC_USB_EN
                                       case SYS_MODE_USB:
-C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/23/2015 22:10:12 PAGE 5   
+C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/25/2015 17:22:49 PAGE 5   
 
                                               DispString(" LOD");
                                               LcdAmplitudeCurve(Ampl_Zero);
@@ -318,7 +318,7 @@ line level    source
                                                       gRadioData.CurrFreq = RADIO_LOWER_BOUND;
                                               }
                                               Num2Char(gRadioData.CurrFreq, FALSE);
-C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/23/2015 22:10:12 PAGE 6   
+C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/25/2015 17:22:49 PAGE 6   
 
                                               break;
               #endif
@@ -382,7 +382,7 @@ line level    source
                                               DispIcon(ICON_COLON, LIGHT_OFF);
                                               break;
               #endif
-C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/23/2015 22:10:12 PAGE 7   
+C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/25/2015 17:22:49 PAGE 7   
 
                               
                                       default:
@@ -446,7 +446,7 @@ line level    source
                                       LcdAmplitudeCurve(Ampl_Zero);
                               }
               
-C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/23/2015 22:10:12 PAGE 8   
+C51 COMPILER V9.00   SEG_LCD_DISP                                                          12/25/2015 17:22:49 PAGE 8   
 
                               if(gPlayCtrl.State == PLAY_STATE_PAUSE)
                               {

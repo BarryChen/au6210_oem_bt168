@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   GPIO_KEY                                                              12/23/2015 22:10:11 PAGE 1   
+C51 COMPILER V9.00   GPIO_KEY                                                              12/25/2015 17:22:48 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE GPIO_KEY
 OBJECT MODULE PLACED IN .\output\obj\gpio_key.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE key\gpio_key.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE key\gpio_key.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config
                     -;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\bluetoo
                     -th;.\i2c) DEBUG PRINT(.\output\lst\gpio_key.lst) OBJECT(.\output\obj\gpio_key.obj)
 
@@ -62,7 +62,7 @@ line level    source
                       GPIO_KEY_STATE_CP
               
               } GPIO_KEY_STATE;
-C51 COMPILER V9.00   GPIO_KEY                                                              12/23/2015 22:10:11 PAGE 2   
+C51 COMPILER V9.00   GPIO_KEY                                                              12/25/2015 17:22:48 PAGE 2   
 
               
               TIMER                   GpioKeyWaitTimer;
@@ -126,7 +126,7 @@ line level    source
                               return 1;
                       }
               
-C51 COMPILER V9.00   GPIO_KEY                                                              12/23/2015 22:10:11 PAGE 3   
+C51 COMPILER V9.00   GPIO_KEY                                                              12/25/2015 17:22:48 PAGE 3   
 
               #else
               //示例: 3个GPIO连接3 个按键的扫描
@@ -190,7 +190,7 @@ line level    source
                       }
                       if((baGPIOCtrl[GPIO_D_IN] & 0x80) == 0)//SW1
                       {
-C51 COMPILER V9.00   GPIO_KEY                                                              12/23/2015 22:10:11 PAGE 4   
+C51 COMPILER V9.00   GPIO_KEY                                                              12/25/2015 17:22:48 PAGE 4   
 
                               DBG(("SW1\n"));
                               return 0;
@@ -254,7 +254,7 @@ line level    source
               {
                       static  BYTE    PreKeyIndex = -1;
                       static  BYTE    KeyIndex;
-C51 COMPILER V9.00   GPIO_KEY                                                              12/23/2015 22:10:11 PAGE 5   
+C51 COMPILER V9.00   GPIO_KEY                                                              12/25/2015 17:22:48 PAGE 5   
 
               
                       if (!IsTimeOut(&GpioKeyScanTimer))
@@ -318,7 +318,7 @@ line level    source
                                       if(PreKeyIndex != KeyIndex)
                                       {
                                               //return key sp value
-C51 COMPILER V9.00   GPIO_KEY                                                              12/23/2015 22:10:11 PAGE 6   
+C51 COMPILER V9.00   GPIO_KEY                                                              12/25/2015 17:22:48 PAGE 6   
 
                                               //DBG(("KEY  SP  %bu\n",PreKeyIndex));
                                               GpioKeyState = GPIO_KEY_STATE_IDLE;
@@ -382,7 +382,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   ----    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
-C51 COMPILER V9.00   GPIO_KEY                                                              12/23/2015 22:10:11 PAGE 7   
+C51 COMPILER V9.00   GPIO_KEY                                                              12/25/2015 17:22:48 PAGE 7   
 
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----

@@ -81,7 +81,7 @@ MESSAGE PowerKeyEventGet(VOID)
 				TimeOutSet(&PowerKeyWaitTimer, TIME_POWER_OFF_HOLD);
 			}
 
-			if(GET_BT_CALL_STATUS())
+			if(GET_BT_CALL_STATUS() || (gSys.SystemMode == SYS_MODE_BLUETOOTH))
 				baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
 
 			PowerKeyState = POWER_KEY_STATE_PRESS_DOWN;

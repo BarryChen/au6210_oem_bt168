@@ -1,9 +1,9 @@
-A51 MACRO ASSEMBLER  STARTUP                                                              12/23/2015 22:10:09 PAGE     1
+A51 MACRO ASSEMBLER  STARTUP                                                              12/25/2015 16:06:09 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.01
 OBJECT MODULE PLACED IN .\output\obj\STARTUP.obj
-ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE system\STARTUP.a51 SET(LARGE) DEBUG PRINT(.\output\lst\STARTUP.lst) OBJECT
+ASSEMBLER INVOKED BY: d:\Keil\C51\BIN\A51.EXE system\STARTUP.a51 SET(LARGE) DEBUG PRINT(.\output\lst\STARTUP.lst) OBJECT
                       (.\output\obj\STARTUP.obj) EP
 
 LOC  OBJ            LINE     SOURCE
@@ -65,7 +65,7 @@ LOC  OBJ            LINE     SOURCE
                       55     ;------------------------------------------------------------------------------
                       56     ;
                       57     ;  Page Definition for Using the Compact Model with 64 KByte xdata RAM
-A51 MACRO ASSEMBLER  STARTUP                                                              12/23/2015 22:10:09 PAGE     2
+A51 MACRO ASSEMBLER  STARTUP                                                              12/25/2015 16:06:09 PAGE     2
 
                       58     ;
                       59     ;  The following EQU statements define the xdata page used for pdata
@@ -133,7 +133,7 @@ LOC  OBJ            LINE     SOURCE
 0009 120000   F      121                                     LCALL   GetBPSize ;?????
 000C EF              122                                     MOV             A,R7
 000D FD              123                                     MOV             R5,A
-A51 MACRO ASSEMBLER  STARTUP                                                              12/23/2015 22:10:09 PAGE     3
+A51 MACRO ASSEMBLER  STARTUP                                                              12/25/2015 16:06:09 PAGE     3
 
 000E 9006D9          124                     MOV     DPTR,#XDATASTART
 0011 6003            125                                     JZ              GET_XDATALEN
@@ -201,10 +201,10 @@ LOC  OBJ            LINE     SOURCE
 002B 120000   F      187                     LCALL   VariableInit_Rom
 002E 020000   F      188                                     LJMP    ?C_START
                      189     
-A51 MACRO ASSEMBLER  STARTUP                                                              12/23/2015 22:10:09 PAGE     4
+A51 MACRO ASSEMBLER  STARTUP                                                              12/25/2015 16:06:09 PAGE     4
 
                      190                     END
-A51 MACRO ASSEMBLER  STARTUP                                                              12/23/2015 22:10:09 PAGE     5
+A51 MACRO ASSEMBLER  STARTUP                                                              12/25/2015 16:06:09 PAGE     5
 
 SYMBOL TABLE LISTING
 ------ ----- -------
