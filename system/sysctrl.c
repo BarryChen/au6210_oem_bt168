@@ -152,6 +152,7 @@ VOID main()
 	|| (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_POWERDOWN)) 
 	SystemOn();
 #endif
+	
 
 #if 0//ndef need_change_flag  //no use
 	baGPIOCtrl[GPIO_A_IE] &= ~0x40;//A2

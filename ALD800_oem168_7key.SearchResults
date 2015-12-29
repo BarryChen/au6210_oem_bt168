@@ -1,15 +1,7 @@
----- DAC_CH_ONCHIP_FM Matches (14 in 4 files) ----
-Dac.h (library):#define DAC_CH_ONCHIP_FM	0x12	//ONCHIP_FM_L, ONCHIP_FM_R
-Dac.h (library):// 2).总共有DAC_CH_DAC/DAC_CH_LINEIN/DAC_CH_ONCHIP_FM/DAC_CH_E0E1四个通道可供选择,
-Devctrl - 副本.c (device):	InDacChannelSel(DAC_CH_ONCHIP_FM);
-Devctrl - 副本.c (device):			InDacChannelSel(DAC_CH_ONCHIP_FM);
-Devctrl.c (device):	InDacChannelSel(DAC_CH_ONCHIP_FM);
-Devctrl.c (device):					DAC_CH_ONCHIP_FM
-Devctrl.c (device):			InDacChannelSel(DAC_CH_ONCHIP_FM);
-Radio_ctrl.c (radio):				InDacChannelSel(DAC_CH_ONCHIP_FM);
-Radio_ctrl.c (radio):			InDacChannelSel(DAC_CH_ONCHIP_FM);
-Radio_ctrl.c (radio):					InDacChannelSel(DAC_CH_ONCHIP_FM);
-Radio_ctrl.c (radio):				InDacChannelSel(DAC_CH_ONCHIP_FM);
-Radio_ctrl.c (radio):			InDacChannelSel(DAC_CH_ONCHIP_FM);
-Radio_ctrl.c (radio):					InDacChannelSel(DAC_CH_ONCHIP_FM);
-Radio_ctrl.c (radio):				InDacChannelSel(DAC_CH_ONCHIP_FM);
+---- GoToPDMode Matches (6 in 4 files) ----
+Power.h (library):VOID GoToPDMode(VOID);
+Sys_on_off.c (system):		GoToPDMode();
+Sys_on_off.c (system):	GoToPDMode();	
+User_interface.c (lib_if):		GoToPDMode();		//执行硬开关的系统关闭动作
+复件 sys_on_off.c (system):		GoToPDMode();
+复件 sys_on_off.c (system):	GoToPDMode();	

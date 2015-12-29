@@ -233,8 +233,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>420</TopLine>
-      <CurrentLine>421</CurrentLine>
+      <TopLine>407</TopLine>
+      <CurrentLine>407</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\lib_if\user_interface.c</PathWithFileName>
       <FilenameWithoutPath>user_interface.c</FilenameWithoutPath>
@@ -2388,5 +2388,22 @@
       </Window>
     </View>
   </WinLayout>
+
+  <MDIGroups>
+    <Orientation>1</Orientation>
+    <ActiveMDIGroup>0</ActiveMDIGroup>
+    <MDIGroup>
+      <Size>0</Size>
+      <ActiveTab>0</ActiveTab>
+      <Documents>
+        <Doc>
+          <Name>.\lib_if\user_interface.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>407</TopLine>
+          <CurrentLine>407</CurrentLine>
+        </Doc>
+      </Documents>
+    </MDIGroup>
+  </MDIGroups>
 
 </ProjectOpt>

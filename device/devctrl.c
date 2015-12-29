@@ -1311,7 +1311,7 @@ VOID DevCtrlInit(VOID)
 
 	//等待300毫秒，第一次检测所有设备的连接状态
 	//消除系统复位后第一次的后插先播
-	TimeOutSet(&Timer, 300);
+	TimeOutSet(&Timer, 500);
 	while(!IsTimeOut(&Timer))
 	{	
 #ifdef FUNC_HEADPHONE_ADC_DETECT_EN
