@@ -198,6 +198,11 @@ BOOL SPI_PlaySelectNum(BYTE SpiPlayNum, BOOL PlayResumeFlag)
 {	
 	BYTE Volume;
 
+	if (SpiPlayNum > gSpiFsCtrl.FsHead.Mp3FileSum)
+	{
+		return FALSE;
+	}
+
 	if(SpiPlayNum == SPIPLAY_SONG_IR_ON_OFF || 
 		SpiPlayNum == SPIPLAY_SONG_IR_KEY )
 		return FALSE;

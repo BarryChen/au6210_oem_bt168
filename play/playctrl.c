@@ -948,48 +948,26 @@ VOID PlayStateCtrl(VOID)
 		//处理各种状态下的通用事件
 		switch (gPlayCtrl.Event)
 		{							
-			
-	case MSG_V_ADD:
-	case MSG_VOL_ADD:			
-#if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
-		VolType = VOL_MAIN;
-		PT2313VolAdd(); 	
-#else
-		if(gSys.Volume < VOLUME_MAX)
-		{
-			maxvolflag = 1;
-			VolumeAdjust(UP);
-		}
-#endif    
-#if defined(AU6210K_NR_D_9X_XJ_HTS)|| defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)|| defined(AU6210K_ZB_BT007_CSR)
-		if (gPlayCtrl.Event == MSG_V_ADD && gSys.Volume == VOLUME_MAX && !maxvolflag)
-		{
-			SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 1);			
-			
-		}
-		
+			case MSG_VOL_ADD:	
+
+				VolumeAdjust(UP);
+#ifdef AU6210K_MINI503 
+				if (gSys.Volume >= VOLUME_MAX)
+				{
+					SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 1);
+				}
 #endif
-		break;
-	case MSG_V_SUB:		
-	case MSG_VOL_SUB:			
-#if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
-		VolType = VOL_MAIN;
-		PT2313VolSub(); 	
-#else
-		if(gSys.Volume > VOLUME_MIN)
-		{
-			minvolflag = 1;
-			VolumeAdjust(DOWN);
-		}
+				break;
+				
+			case MSG_VOL_SUB:	
+				VolumeAdjust(DOWN);
+#ifdef AU6210K_MINI503
+				if (gSys.Volume <= VOLUME_MIN)
+				{
+						SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);
+				}
 #endif
-#if defined(AU6210K_NR_D_9X_XJ_HTS) || defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)|| defined(AU6210K_ZB_BT007_CSR)
-		if (gPlayCtrl.Event == MSG_V_SUB && gSys.Volume == VOLUME_MIN && !minvolflag)
-		{
-			SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);
-			//UnMute();
-		}
-#endif
-		break;	
+				break;
 #ifdef FUNC_PT231X_EN
 	        case MSG_TREBUP:
 			case MSG_TREBDN:

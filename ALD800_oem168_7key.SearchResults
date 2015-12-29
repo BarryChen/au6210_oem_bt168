@@ -1,7 +1,3 @@
----- PWR_MNT_DISP_EMPTY_V Matches (6 in 3 files) ----
-Power_monitor.c (power):		case PWR_MNT_DISP_EMPTY_V:
-Power_monitor.c (power):			//PowerMonitorDisp(PWR_MNT_DISP_EMPTY_V);
-Power_monitor.c (power):			PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
-Power_monitor.c (power):			PwrMntDisp = PWR_MNT_DISP_EMPTY_V;
-Power_monitor.h (power):	PWR_MNT_DISP_EMPTY_V, 
-Sled_disp.c (display):	if(GetPwrDisp() == PWR_MNT_DISP_EMPTY_V)
+---- SPI_FILE_TXT Matches (2 in 2 files) ----
+Spi_fs.c (spi_flash):	else if (FileType == SPI_FILE_TXT)
+Spi_fs.h (spi_flash):	SPI_FILE_TXT,

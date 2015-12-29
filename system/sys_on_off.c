@@ -210,9 +210,11 @@ VOID SystemOff(VOID)
 
 
 #ifdef AU6210K_MINI503
+		ClrGpioRegBit(GPIO_B_OUT, (1 << 5));
 		SPI_PlaySelectNum(SPIPLAY_SONG_POWEROFF,0);
 	//	SLedLightOp(LED_POWER, FALSE);	
 		WaitMs(1000);
+		SetGpioRegBit(GPIO_B_OUT, (1 << 5));
 #endif
 
 #if(PWR_KEY_MODE == PWR_KEY_PUSH_BUTTON) //POWER_KEY为按钮开关（软开关）

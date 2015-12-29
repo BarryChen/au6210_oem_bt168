@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 1   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE PLAYCTRL
 OBJECT MODULE PLACED IN .\output\obj\playctrl.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE play\playctrl.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\confi
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE play\playctrl.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\confi
                     -g;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\blueto
                     -oth;.\i2c) DEBUG PRINT(.\output\lst\playctrl.lst) OBJECT(.\output\obj\playctrl.obj)
 
@@ -62,7 +62,7 @@ line level    source
               #endif
   52          
   53          DWORD   g_OldPlayTime = -1;
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 2   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 2   
 
   54          
   55          
@@ -126,7 +126,7 @@ line level    source
  113          };
  114          
  115          
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 3   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 3   
 
  116          #ifdef FUNC_UARTDBG_EN
               VOID PrintPlayInfo(VOID);
@@ -190,7 +190,7 @@ line level    source
               #endif
  176   2      
  177   2      #ifdef FUNC_BREAK_POINT_EN
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 4   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 4   
 
  178   2                      BP_SetPlayAttrib();
  179   2      #endif
@@ -254,7 +254,7 @@ line level    source
                       DBG(("%s", (gSongInfo.Mp3MpegVersion == 3)?"MPEG_1\n":""));
                       DBG(("%s", (gSongInfo.Mp3MpegVersion == 2)?"MPEG_2\n":""));
                       DBG(("%s", (gSongInfo.Mp3MpegVersion == 0)?"MPEG_2_5\n":""));
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 5   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 5   
 
                       DBG(("%s", (gSongInfo.Mp3Layer == 3)?"LAYER_1\n":""));
                       DBG(("%s", (gSongInfo.Mp3Layer == 2)?"LAYER_2\n":""));
@@ -318,7 +318,7 @@ line level    source
               #endif
  294          
  295          
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 6   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 6   
 
  296          // Send volume to decoder.
  297          VOID PlayVol2Decd(VOID)         
@@ -382,7 +382,7 @@ line level    source
  355   1      
  356   1              return TRUE;                    
  357   1      }
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 7   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 7   
 
  358          
  359          
@@ -446,7 +446,7 @@ line level    source
  417   1              DBG(("SongPlayStart(),gSongInfo.DataOffset:%x\n", gSongInfo.DataOffset));
  418   1              SongPlayTimeStart();
  419   1              TimeOutSet(&gPlayWatchTimer, PLAY_WATCH_TIME);          
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 8   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 8   
 
  420   1              //如果是快进、快退、断点播放，不是从歌曲开头播放，则延时一段时间再打开DAC的音量，消除pop或变调声。
  421   1              TimeOutSet(&VolumeUpTimer, (gSongInfo.CurPlayTime > 0) ? 200 : 0);      
@@ -510,7 +510,7 @@ line level    source
                       if(gSys.SystemMode != SYS_MODE_OTPDEV)  //开机音乐播放不需要记忆断点信息
               #endif
  480   1              {
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 9   
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 9   
 
  481   2                      BP_SaveInfo((BYTE*)(&gBreakPointInfo.PowerMemory), sizeof(gBreakPointInfo.PowerMemory));
  482   2              }
@@ -574,7 +574,7 @@ line level    source
  540   2                      if(gSongInfo.CurPlayTime >= gSongInfo.TotalPlayTime)
  541   2                      {
  542   3                              gSongInfo.CurPlayTime = 0;
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 10  
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 10  
 
  543   3                      }
  544   2                      //DBG(("gSongInfo.CurPlayTime:%lu\n", gSongInfo.CurPlayTime));  
@@ -638,7 +638,7 @@ line level    source
  602   2                      case REPEAT_FOLDER:
  603   2                              if(Direction == PLAY_DIRECT_NEXT_10)
  604   2                              {
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 11  
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 11  
 
  605   3                                      StepCnt = 10;
  606   3                                      Direction = PLAY_DIRECT_NEXT;
@@ -702,7 +702,7 @@ line level    source
  664   1              DispFileNum();
  665   1      #endif
  666   1              return;
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 12  
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 12  
 
  667   1      }
  668          
@@ -766,7 +766,7 @@ line level    source
  726   2              }
  727   1      
  728   1              switch(gPlayCtrl.Event)
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 13  
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 13  
 
  729   1              {
  730   2                      case MSG_PLAY_PAUSE:
@@ -830,7 +830,7 @@ line level    source
                                       }                                       
               #endif
                                       DBG(("FB_START\n"));
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 14  
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 14  
 
                                       MuteOn(FALSE, TRUE);
                                       DecoderFastPlaySet(FAST_BACKWARD, 32);
@@ -894,7 +894,7 @@ line level    source
  850   2                              break;                  
  851   2              }       
  852   1      }
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 15  
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 15  
 
  853          
  854          
@@ -958,7 +958,7 @@ line level    source
                                       break;
               
                               default:
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 16  
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 16  
 
                                       break;
                       }
@@ -996,58 +996,34 @@ line level    source
  948   2                      //处理各种状态下的通用事件
  949   2                      switch (gPlayCtrl.Event)
  950   2                      {                                                       
- 951   3                              
- 952   3              case MSG_V_ADD:
- 953   3              case MSG_VOL_ADD:                       
- 954   3      #if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
-                              VolType = VOL_MAIN;
-                              PT2313VolAdd();         
-              #else
- 958   3                      if(gSys.Volume < VOLUME_MAX)
- 959   3                      {
- 960   4                              maxvolflag = 1;
- 961   4                              VolumeAdjust(UP);
- 962   4                      }
- 963   3      #endif    
- 964   3      #if defined(AU6210K_NR_D_9X_XJ_HTS)|| defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)|| define
-             -d(AU6210K_ZB_BT007_CSR)
- 965   3                      if (gPlayCtrl.Event == MSG_V_ADD && gSys.Volume == VOLUME_MAX && !maxvolflag)
- 966   3                      {
- 967   4                              SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 1);                  
- 968   4                              
- 969   4                      }
- 970   3                      
- 971   3      #endif
- 972   3                      break;
- 973   3              case MSG_V_SUB:         
- 974   3              case MSG_VOL_SUB:                       
- 975   3      #if defined(FUNC_PT231X_EN) && !defined(AU6210K_NR_D_8_CSRBT)
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 17  
-
-                              VolType = VOL_MAIN;
-                              PT2313VolSub();         
-              #else
- 979   3                      if(gSys.Volume > VOLUME_MIN)
- 980   3                      {
- 981   4                              minvolflag = 1;
- 982   4                              VolumeAdjust(DOWN);
- 983   4                      }
- 984   3      #endif
- 985   3      #if defined(AU6210K_NR_D_9X_XJ_HTS) || defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_LK_SJ_CSRBT)|| defin
-             -ed(AU6210K_ZB_BT007_CSR)
- 986   3                      if (gPlayCtrl.Event == MSG_V_SUB && gSys.Volume == VOLUME_MIN && !minvolflag)
- 987   3                      {
- 988   4                              SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);
- 989   4                              //UnMute();
- 990   4                      }
- 991   3      #endif
- 992   3                      break;  
- 993   3      #ifdef FUNC_PT231X_EN
+ 951   3                              case MSG_VOL_ADD:       
+ 952   3      
+ 953   3                                      VolumeAdjust(UP);
+ 954   3      #ifdef AU6210K_MINI503 
+ 955   3                                      if (gSys.Volume >= VOLUME_MAX)
+ 956   3                                      {
+ 957   4                                              SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 1);
+ 958   4                                      }
+ 959   3      #endif
+ 960   3                                      break;
+ 961   3                                      
+ 962   3                              case MSG_VOL_SUB:       
+ 963   3                                      VolumeAdjust(DOWN);
+ 964   3      #ifdef AU6210K_MINI503
+ 965   3                                      if (gSys.Volume <= VOLUME_MIN)
+ 966   3                                      {
+ 967   4                                                      SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);
+ 968   4                                      }
+ 969   3      #endif
+ 970   3                                      break;
+ 971   3      #ifdef FUNC_PT231X_EN
                               case MSG_TREBUP:
                                       case MSG_TREBDN:
                                       case MSG_BASSUP:
                                       case MSG_BASSDN:
                                       case MSG_DEFAULT:
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 17  
+
                                               PT2315E_Do(gPlayCtrl.Event);                    
                                               break;  
               
@@ -1065,93 +1041,91 @@ line level    source
                                       }
                                       break;
               #endif
-1016   3      
-1017   3                              case MSG_INTRO:
-1018   3                                      if(gPlayCtrl.RepeatMode == REPEAT_INTRO)
-1019   3                                      {
-1020   4                                              gPlayCtrl.RepeatMode = REPEAT_ALL;
-1021   4                                      }
-1022   3                                      else
-1023   3                                      {
-1024   4                                              gPlayCtrl.RepeatMode = REPEAT_INTRO;
-1025   4                                      }
-1026   3      #ifdef FUNC_DISP_EN
-1027   3                                      DispRepeat(TRUE);
-1028   3      #endif                          
-1029   3                                      break;
-1030   3      
-1031   3                              case MSG_REPEAT:                                
-1032   3                                      DBG(("REPEAT\n"));
-1033   3                                      /*gPlayCtrl.RepeatMode++;
-1034   3                                      if(gPlayCtrl.RepeatMode >= REPEAT_MODE_SUM)
-1035   3                                      {
-1036   3                                              gPlayCtrl.RepeatMode = REPEAT_ALL;
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 18  
+ 994   3      
+ 995   3                              case MSG_INTRO:
+ 996   3                                      if(gPlayCtrl.RepeatMode == REPEAT_INTRO)
+ 997   3                                      {
+ 998   4                                              gPlayCtrl.RepeatMode = REPEAT_ALL;
+ 999   4                                      }
+1000   3                                      else
+1001   3                                      {
+1002   4                                              gPlayCtrl.RepeatMode = REPEAT_INTRO;
+1003   4                                      }
+1004   3      #ifdef FUNC_DISP_EN
+1005   3                                      DispRepeat(TRUE);
+1006   3      #endif                          
+1007   3                                      break;
+1008   3      
+1009   3                              case MSG_REPEAT:                                
+1010   3                                      DBG(("REPEAT\n"));
+1011   3                                      /*gPlayCtrl.RepeatMode++;
+1012   3                                      if(gPlayCtrl.RepeatMode >= REPEAT_MODE_SUM)
+1013   3                                      {
+1014   3                                              gPlayCtrl.RepeatMode = REPEAT_ALL;
+1015   3                                      }
+1016   3                                      if(gPlayCtrl.RepeatMode == REPEAT_FOLDER)
+1017   3                                      {
+1018   3                                              gPlayCtrl.FolderEnable = TRUE;
+1019   3                                              gPlayCtrl.FileNum = gPlayCtrl.File.FileNumInFolder;
+1020   3                                      }
+1021   3                                      else
+1022   3                                      {
+1023   3                                              gPlayCtrl.FolderEnable = FALSE;
+1024   3                                              gPlayCtrl.FileNum = gPlayCtrl.File.FileNumInDisk;
+1025   3                                      }*/
+1026   3                      if(gPlayCtrl.RepeatMode == REPEAT_ALL)
+1027   3                                      {
+1028   4                                              gPlayCtrl.RepeatMode = REPEAT_ONE;
+1029   4                                      }
+1030   3                                      else
+1031   3                                      {   
+1032   4                                          gPlayCtrl.RepeatMode = REPEAT_ALL;
+1033   4                                      }
+1034   3      
+1035   3                                      
+1036   3                                      if(gPlayCtrl.RepeatMode == REPEAT_FOLDER)
+1037   3                                      {
+1038   4                                              gPlayCtrl.FolderEnable = TRUE;
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 18  
 
-1037   3                                      }
-1038   3                                      if(gPlayCtrl.RepeatMode == REPEAT_FOLDER)
-1039   3                                      {
-1040   3                                              gPlayCtrl.FolderEnable = TRUE;
-1041   3                                              gPlayCtrl.FileNum = gPlayCtrl.File.FileNumInFolder;
-1042   3                                      }
-1043   3                                      else
-1044   3                                      {
-1045   3                                              gPlayCtrl.FolderEnable = FALSE;
-1046   3                                              gPlayCtrl.FileNum = gPlayCtrl.File.FileNumInDisk;
-1047   3                                      }*/
-1048   3                      if(gPlayCtrl.RepeatMode == REPEAT_ALL)
-1049   3                                      {
-1050   4                                              gPlayCtrl.RepeatMode = REPEAT_ONE;
-1051   4                                      }
-1052   3                                      else
-1053   3                                      {   
-1054   4                                          gPlayCtrl.RepeatMode = REPEAT_ALL;
-1055   4                                      }
-1056   3      
-1057   3                                      
-1058   3                                      if(gPlayCtrl.RepeatMode == REPEAT_FOLDER)
-1059   3                                      {
-1060   4                                              gPlayCtrl.FolderEnable = TRUE;
-1061   4                                              gPlayCtrl.FileNum = gPlayCtrl.File.FileNumInFolder;
+1039   4                                              gPlayCtrl.FileNum = gPlayCtrl.File.FileNumInFolder;
+1040   4                                      }
+1041   3                                      else
+1042   3                                      {
+1043   4                                              gPlayCtrl.FolderEnable = FALSE;
+1044   4                                              gPlayCtrl.FileNum = gPlayCtrl.File.FileNumInDisk;
+1045   4                                      }
+1046   3      #ifdef FUNC_BREAK_POINT_EN
+1047   3                                      BP_SetPlayAttrib();
+1048   3      #endif
+1049   3      
+1050   3      #ifdef FUNC_DISP_EN
+1051   3                                      DispRepeat(TRUE);
+1052   3      #endif
+1053   3                                      break;
+1054   3      
+1055   3                              //case MSG_EQ_SW:
+1056   3                              case MSG_EQ_CH_SUB:
+1057   3                                      DBG(("EQ\n"));  
+1058   3                                      gPlayCtrl.Eq++;
+1059   3                                      if(gPlayCtrl.Eq >= DECD_EQ_SUM)
+1060   3                                      {
+1061   4                                              gPlayCtrl.Eq = DECD_EQ_NORMAL;  
 1062   4                                      }
-1063   3                                      else
-1064   3                                      {
-1065   4                                              gPlayCtrl.FolderEnable = FALSE;
-1066   4                                              gPlayCtrl.FileNum = gPlayCtrl.File.FileNumInDisk;
-1067   4                                      }
-1068   3      #ifdef FUNC_BREAK_POINT_EN
-1069   3                                      BP_SetPlayAttrib();
-1070   3      #endif
-1071   3      
-1072   3      #ifdef FUNC_DISP_EN
-1073   3                                      DispRepeat(TRUE);
-1074   3      #endif
-1075   3                                      break;
-1076   3      
-1077   3                              //case MSG_EQ_SW:
-1078   3                              case MSG_EQ_CH_SUB:
-1079   3                                      DBG(("EQ\n"));  
-1080   3                                      gPlayCtrl.Eq++;
-1081   3                                      if(gPlayCtrl.Eq >= DECD_EQ_SUM)
-1082   3                                      {
-1083   4                                              gPlayCtrl.Eq = DECD_EQ_NORMAL;  
-1084   4                                      }
-1085   3                                      PlayEQ2Decd();                  
-1086   3      
-1087   3      #ifdef FUNC_BREAK_POINT_EN
-1088   3                                      BP_SetPlayAttrib();
-1089   3      #endif
-1090   3      
-1091   3      #ifdef FUNC_DISP_EN
-1092   3                                      DispEQ(TRUE);
-1093   3      #endif
-1094   3                                      break;
-1095   3                                      
-1096   3                              case MSG_MUTE:                          
-1097   3      #if 0//def FUNC_SPI_KEY_SOUND_EN
+1063   3                                      PlayEQ2Decd();                  
+1064   3      
+1065   3      #ifdef FUNC_BREAK_POINT_EN
+1066   3                                      BP_SetPlayAttrib();
+1067   3      #endif
+1068   3      
+1069   3      #ifdef FUNC_DISP_EN
+1070   3                                      DispEQ(TRUE);
+1071   3      #endif
+1072   3                                      break;
+1073   3                                      
+1074   3                              case MSG_MUTE:                          
+1075   3      #if 0//def FUNC_SPI_KEY_SOUND_EN
                                               if(gSys.MuteFg)
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 19  
-
                                               {
                                                       if(gPlayCtrl.State == PLAY_STATE_PLAY)
                                                       {
@@ -1167,57 +1141,57 @@ line level    source
                                                       SPI_PlaySelectNum(SPIPLAY_SONG_MUTE, 0);
                                               }
               #endif
-1114   3                                      MuteStatusChange();     
-1115   3                                      break;
-1116   3              
-1117   3                              case MSG_NEXT:
-1118   3                              case MSG_NEXT1:
-1119   3      #ifdef  FUNC_DEVICE_FORCEPAUSE_EN
+1092   3                                      MuteStatusChange();     
+1093   3                                      break;
+1094   3              
+1095   3                              case MSG_NEXT:
+1096   3                              case MSG_NEXT1:
+1097   3      #ifdef  FUNC_DEVICE_FORCEPAUSE_EN
                                               if(gDevicePlayForcePauseFlag == TRUE) 
                                               {
                                                       break;
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 19  
+
                                               }                                       
               #endif
-1125   3                                      DBG1(("NEXT\n"));
-1126   3      #if 0//def FUNC_SPI_KEY_SOUND_EN
+1103   3                                      DBG1(("NEXT\n"));
+1104   3      #if 0//def FUNC_SPI_KEY_SOUND_EN
                                               SPI_PlaySelectNum(SPIPLAY_SONG_NEXT, 0);
               #endif
-1129   3      
-1130   3      #ifdef FUNC_DISP_EN
-1131   3                                      DispDev();
-1132   3      #endif
-1133   3      #ifndef FUNC_FOLDER_EN
-1134   3                                      if(gFsInfo.FileSum > 1)
-1135   3      #else
+1107   3      
+1108   3      #ifdef FUNC_DISP_EN
+1109   3                                      DispDev();
+1110   3      #endif
+1111   3      #ifndef FUNC_FOLDER_EN
+1112   3                                      if(gFsInfo.FileSum > 1)
+1113   3      #else
                                               if(((gPlayCtrl.FolderEnable == TRUE) && (gPlayCtrl.Folder.IncFileCnt > 1))
                                               || ((gPlayCtrl.FolderEnable == FALSE) && (gFsInfo.FileSum > 1)))
               #endif
-1139   3                                      {
-1140   4                                              SongPlayStop();
-1141   4                                              GetNextSongNum(PLAY_DIRECT_NEXT);
-1142   4                                              
-1143   4      #ifdef FUNC_BEEP_SOUND_EN       
+1117   3                                      {
+1118   4                                              SongPlayStop();
+1119   4                                              GetNextSongNum(PLAY_DIRECT_NEXT);
+1120   4                                              
+1121   4      #ifdef FUNC_BEEP_SOUND_EN       
                                                       PushKeyBeep(1);
               #endif
-1146   4                                              gSys.MuteFg = FALSE;
-1147   4      
-1148   4      #ifdef FUNC_OPEN_FILE_DELAY_EN
+1124   4                                              gSys.MuteFg = FALSE;
+1125   4      
+1126   4      #ifdef FUNC_OPEN_FILE_DELAY_EN
                                                       TimeOutSet(&s_OpenFileDelayTimer, OPEN_FILE_DELAY_TIME);
                                                       s_IsOpenFileDelay = TRUE;
               #else
-1152   4      
-1153   4                                              if(!SongPlayInit())
-1154   4                                              {
-1155   5                                                      MessageSend(MSG_FIFO_KEY, MSG_NEXT);
-1156   5                                                      gPlayCtrl.State = PLAY_STATE_STOP; 
-1157   5                                              }               
-1158   4      #endif
-1159   4                                      }
-1160   3                                      else
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 20  
-
-1161   3                                      {               
-1162   4      #ifdef FUNC_OTP_PLAY_EN
+1130   4      
+1131   4                                              if(!SongPlayInit())
+1132   4                                              {
+1133   5                                                      MessageSend(MSG_FIFO_KEY, MSG_NEXT);
+1134   5                                                      gPlayCtrl.State = PLAY_STATE_STOP; 
+1135   5                                              }               
+1136   4      #endif
+1137   4                                      }
+1138   3                                      else
+1139   3                                      {               
+1140   4      #ifdef FUNC_OTP_PLAY_EN
                                                       if(gSys.SystemMode == SYS_MODE_OTPDEV)
                                                       {
                                                               SongPlayStop();
@@ -1231,15 +1205,17 @@ line level    source
                                                               break;
                                                       }
               #endif
-1176   4                                              DBG(("ONE S1\n"));
-1177   4                                              DBG(("gPlayCtrl.FolderEnable:0x%bx, gFsInfo.ValidFolderSum:0x%x,gFsInfo.FileSum:0x%x\n", gPlayCtrl.Fo
+1154   4                                              DBG(("ONE S1\n"));
+1155   4                                              DBG(("gPlayCtrl.FolderEnable:0x%bx, gFsInfo.ValidFolderSum:0x%x,gFsInfo.FileSum:0x%x\n", gPlayCtrl.Fo
              -lderEnable, gFsInfo.ValidFolderSum, gFsInfo.FileSum));
-1178   4                                              DBG(("gPlayCtrl.File.FolderNum:0x%x,gPlayCtrl.Folder.IncFileCnt:0x%x\n", gPlayCtrl.File.FolderNum, gP
+1156   4                                              DBG(("gPlayCtrl.File.FolderNum:0x%x,gPlayCtrl.Folder.IncFileCnt:0x%x\n", gPlayCtrl.File.FolderNum, gP
              -layCtrl.Folder.IncFileCnt));
-1179   4                                              //To do...
-1180   4      #ifdef FUNC_FOLDER_EN
+1157   4                                              //To do...
+1158   4      #ifdef FUNC_FOLDER_EN
                                                       if(gPlayCtrl.FolderEnable == TRUE)
                                                       {
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 20  
+
                                                               DBG(("**gFsInfo.ValidFolderSum:%u,FolderSum:%u\n", gFsInfo.ValidFolderSum, gFsInfo.FolderSum));
                                                               if(gFsInfo.FolderSum > 1)
                                                               {
@@ -1254,59 +1230,59 @@ line level    source
               #endif  
                                                       }
               #else
-1197   4                                              //MessageSend(MSG_FIFO_KEY, MSG_STOP);
-1198   4      #endif
-1199   4                                      }
-1200   3                                      break;
-1201   3              
-1202   3                              case MSG_PRE:
-1203   3                              case MSG_PREV1:
-1204   3      #ifdef  FUNC_DEVICE_FORCEPAUSE_EN
+1175   4                                              //MessageSend(MSG_FIFO_KEY, MSG_STOP);
+1176   4      #endif
+1177   4                                      }
+1178   3                                      break;
+1179   3              
+1180   3                              case MSG_PRE:
+1181   3                              case MSG_PREV1:
+1182   3      #ifdef  FUNC_DEVICE_FORCEPAUSE_EN
                                               if(gDevicePlayForcePauseFlag == TRUE) 
                                               {
                                                       break;
                                               }                                       
               #endif
-1210   3                                      DBG1(("PRE\n"));
-1211   3      #if 0//def FUNC_SPI_KEY_SOUND_EN
+1188   3                                      DBG1(("PRE\n"));
+1189   3      #if 0//def FUNC_SPI_KEY_SOUND_EN
                                               SPI_PlaySelectNum(SPIPLAY_SONG_PREV, 0);
               #endif
-1214   3      
-1215   3      #ifdef FUNC_DISP_EN
-1216   3                                      DispDev();
-1217   3      #endif
-1218   3      #ifndef FUNC_FOLDER_EN
-1219   3                                      if(gFsInfo.FileSum > 1)
-1220   3      #else
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 21  
-
+1192   3      
+1193   3      #ifdef FUNC_DISP_EN
+1194   3                                      DispDev();
+1195   3      #endif
+1196   3      #ifndef FUNC_FOLDER_EN
+1197   3                                      if(gFsInfo.FileSum > 1)
+1198   3      #else
                                               if(((gPlayCtrl.FolderEnable == TRUE) && (gPlayCtrl.Folder.IncFileCnt > 1) && (gPlayCtrl.File.FolderNum
              -))
                                               || ((gPlayCtrl.FolderEnable == FALSE) && (gFsInfo.FileSum > 1)))
               #endif
-1224   3                                      {                                       
-1225   4                                              SongPlayStop();
-1226   4                                              GetNextSongNum(PLAY_DIRECT_PRE);
-1227   4                                              
-1228   4      #ifdef FUNC_BEEP_SOUND_EN       
+1202   3                                      {                                       
+1203   4                                              SongPlayStop();
+1204   4                                              GetNextSongNum(PLAY_DIRECT_PRE);
+1205   4                                              
+1206   4      #ifdef FUNC_BEEP_SOUND_EN       
                                                       PushKeyBeep(1);
               #endif                                  
-1231   4                                              gSys.MuteFg = FALSE;
-1232   4      
-1233   4      #ifdef FUNC_OPEN_FILE_DELAY_EN
+1209   4                                              gSys.MuteFg = FALSE;
+1210   4      
+1211   4      #ifdef FUNC_OPEN_FILE_DELAY_EN
                                                       TimeOutSet(&s_OpenFileDelayTimer, OPEN_FILE_DELAY_TIME);
                                                       s_IsOpenFileDelay = TRUE;
               #else
-1237   4                                              if(!SongPlayInit())
-1238   4                                              {
-1239   5                                                      MessageSend(MSG_FIFO_KEY, MSG_PRE);
-1240   5                                                      gPlayCtrl.State = PLAY_STATE_STOP; 
-1241   5                                              }       
-1242   4      #endif
-1243   4                                      }
-1244   3                                      else
-1245   3                                      {
-1246   4      #ifdef FUNC_OTP_PLAY_EN
+1215   4                                              if(!SongPlayInit())
+1216   4                                              {
+1217   5                                                      MessageSend(MSG_FIFO_KEY, MSG_PRE);
+1218   5                                                      gPlayCtrl.State = PLAY_STATE_STOP; 
+1219   5                                              }       
+1220   4      #endif
+1221   4                                      }
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 21  
+
+1222   3                                      else
+1223   3                                      {
+1224   4      #ifdef FUNC_OTP_PLAY_EN
                                                       if(gSys.SystemMode == SYS_MODE_OTPDEV)
                                                       {
                                                               SongPlayStop();
@@ -1320,13 +1296,13 @@ line level    source
                                                               break;
                                                       }
               #endif
-1260   4                                              DBG(("ONE S2\n"));
-1261   4                                              DBG(("gPlayCtrl.FolderEnable:0x%bx, gFsInfo.ValidFolderSum:0x%x,gFsInfo.FileSum:0x%x\n", gPlayCtrl.Fo
+1238   4                                              DBG(("ONE S2\n"));
+1239   4                                              DBG(("gPlayCtrl.FolderEnable:0x%bx, gFsInfo.ValidFolderSum:0x%x,gFsInfo.FileSum:0x%x\n", gPlayCtrl.Fo
              -lderEnable, gFsInfo.ValidFolderSum, gFsInfo.FileSum));
-1262   4                                              DBG(("gPlayCtrl.File.FolderNum:0x%x,gPlayCtrl.Folder.IncFileCnt:0x%x\n", gPlayCtrl.File.FolderNum, gP
+1240   4                                              DBG(("gPlayCtrl.File.FolderNum:0x%x,gPlayCtrl.Folder.IncFileCnt:0x%x\n", gPlayCtrl.File.FolderNum, gP
              -layCtrl.Folder.IncFileCnt));
-1263   4                                              //To do...
-1264   4      #ifdef FUNC_FOLDER_EN
+1241   4                                              //To do...
+1242   4      #ifdef FUNC_FOLDER_EN
                                                       if(gPlayCtrl.FolderEnable == TRUE)
                                                       {
                                                               DBG(("**gFsInfo.ValidFolderSum:%u,FolderSum:%u\n", gFsInfo.ValidFolderSum, gFsInfo.FolderSum));
@@ -1342,136 +1318,134 @@ line level    source
                                                               }
               #endif  
                                                       }
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 22  
-
               #else
-1281   4                                              //MessageSend(MSG_FIFO_KEY, MSG_STOP);
-1282   4      #endif
-1283   4                                      }
-1284   3                                      break;
-1285   3      
-1286   3      #ifdef  FUNC_NUMBER_KEY_EN
-1287   3                              case MSG_FREQUP_10TRK:
-1288   3                              case MSG_10TRACK_ADD:
-1289   3                              case MSG_10TRACK_ADDCP: //10+
-1290   3      #ifndef FUNC_FOLDER_EN
-1291   3                                      if(gFsInfo.FileSum > 1)
-1292   3      #else
+1259   4                                              //MessageSend(MSG_FIFO_KEY, MSG_STOP);
+1260   4      #endif
+1261   4                                      }
+1262   3                                      break;
+1263   3      
+1264   3      #ifdef  FUNC_NUMBER_KEY_EN
+1265   3                              case MSG_FREQUP_10TRK:
+1266   3                              case MSG_10TRACK_ADD:
+1267   3                              case MSG_10TRACK_ADDCP: //10+
+1268   3      #ifndef FUNC_FOLDER_EN
+1269   3                                      if(gFsInfo.FileSum > 1)
+1270   3      #else
                                               if(((gPlayCtrl.FolderEnable == TRUE) && (gPlayCtrl.Folder.IncFileCnt > 1) && (gPlayCtrl.File.FolderNum
              -))
                                               || ((gPlayCtrl.FolderEnable == FALSE) && (gFsInfo.FileSum > 1)))
               #endif
-1296   3                                      {                                       
-1297   4                                              SongPlayStop();
-1298   4                                              GetNextSongNum(PLAY_DIRECT_NEXT_10);
-1299   4                                              gSys.MuteFg = FALSE;
-1300   4                                              if(!SongPlayInit())
-1301   4                                              {
-1302   5                                                      MessageSend(MSG_FIFO_KEY, MSG_NEXT);
-1303   5                                                      gPlayCtrl.State = PLAY_STATE_STOP; 
-1304   5                                              }
-1305   4                                      }
-1306   3                                      else
-1307   3                                      {
-1308   4                                              DBG(("10+,FN<1\n"));
-1309   4                                              //DBG(("FileSum:0x%x\n", gFsInfo.FileSum));
-1310   4                                              //DBG(("Folder.IncFileCnt:0x%x\n", gPlayCtrl.Folder.IncFileCnt));
-1311   4                                              //To do...
-1312   4                                              //MessageSend(MSG_FIFO_KEY, MSG_STOP);
-1313   4                                      }
-1314   3                                      break;
-1315   3      
-1316   3                              case MSG_FREQDN_10TRK:
-1317   3                              case MSG_10TRACK_SUB:
-1318   3                              case MSG_10TRACK_SUBCP:
-1319   3      #ifndef FUNC_FOLDER_EN
-1320   3                                      if(gFsInfo.FileSum > 1)
-1321   3      #else
-                                              if(((gPlayCtrl.FolderEnable == TRUE) && (gPlayCtrl.Folder.IncFileCnt > 1) && (gPlayCtrl.File.FolderNum
-             -))
-                                              || ((gPlayCtrl.FolderEnable == FALSE) && (gFsInfo.FileSum > 1)))
-              #endif
-1325   3                                      {                                       
-1326   4                                              SongPlayStop();
-1327   4                                              GetNextSongNum(PLAY_DIRECT_PRE_10);
-1328   4                                              gSys.MuteFg = FALSE;
-1329   4                                              if(!SongPlayInit())
-1330   4                                              {
-1331   5                                                      MessageSend(MSG_FIFO_KEY, MSG_PRE);
-1332   5                                                      gPlayCtrl.State = PLAY_STATE_STOP; 
-1333   5                                              }
-1334   4                                      }
-1335   3                                      else
-1336   3                                      {
-1337   4                                              DBG(("10-,FN<1\n"));
-1338   4                                              //DBG(("FileSum:0x%x\n", gFsInfo.FileSum));
-1339   4                                              //DBG(("Folder.IncFileCnt:0x%x\n", gPlayCtrl.Folder.IncFileCnt));
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 23  
+1274   3                                      {                                       
+1275   4                                              SongPlayStop();
+1276   4                                              GetNextSongNum(PLAY_DIRECT_NEXT_10);
+1277   4                                              gSys.MuteFg = FALSE;
+1278   4                                              if(!SongPlayInit())
+1279   4                                              {
+1280   5                                                      MessageSend(MSG_FIFO_KEY, MSG_NEXT);
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 22  
 
-1340   4                                              //To do...
-1341   4                                              //MessageSend(MSG_FIFO_KEY, MSG_STOP);
-1342   4                                      }
-1343   3                                      break;
-1344   3      
-1345   3                              case MSG_RECV_NUM:
-1346   3                              case MSG_NUM_SAVE_STAITON:
-1347   3                                      DBG(("MP3 RECV_NUM\n"));
-1348   3      #ifdef FUNC_PICKSONG_WHOLE_DISK_EN
+1281   5                                                      gPlayCtrl.State = PLAY_STATE_STOP; 
+1282   5                                              }
+1283   4                                      }
+1284   3                                      else
+1285   3                                      {
+1286   4                                              DBG(("10+,FN<1\n"));
+1287   4                                              //DBG(("FileSum:0x%x\n", gFsInfo.FileSum));
+1288   4                                              //DBG(("Folder.IncFileCnt:0x%x\n", gPlayCtrl.Folder.IncFileCnt));
+1289   4                                              //To do...
+1290   4                                              //MessageSend(MSG_FIFO_KEY, MSG_STOP);
+1291   4                                      }
+1292   3                                      break;
+1293   3      
+1294   3                              case MSG_FREQDN_10TRK:
+1295   3                              case MSG_10TRACK_SUB:
+1296   3                              case MSG_10TRACK_SUBCP:
+1297   3      #ifndef FUNC_FOLDER_EN
+1298   3                                      if(gFsInfo.FileSum > 1)
+1299   3      #else
+                                              if(((gPlayCtrl.FolderEnable == TRUE) && (gPlayCtrl.Folder.IncFileCnt > 1) && (gPlayCtrl.File.FolderNum
+             -))
+                                              || ((gPlayCtrl.FolderEnable == FALSE) && (gFsInfo.FileSum > 1)))
+              #endif
+1303   3                                      {                                       
+1304   4                                              SongPlayStop();
+1305   4                                              GetNextSongNum(PLAY_DIRECT_PRE_10);
+1306   4                                              gSys.MuteFg = FALSE;
+1307   4                                              if(!SongPlayInit())
+1308   4                                              {
+1309   5                                                      MessageSend(MSG_FIFO_KEY, MSG_PRE);
+1310   5                                                      gPlayCtrl.State = PLAY_STATE_STOP; 
+1311   5                                              }
+1312   4                                      }
+1313   3                                      else
+1314   3                                      {
+1315   4                                              DBG(("10-,FN<1\n"));
+1316   4                                              //DBG(("FileSum:0x%x\n", gFsInfo.FileSum));
+1317   4                                              //DBG(("Folder.IncFileCnt:0x%x\n", gPlayCtrl.Folder.IncFileCnt));
+1318   4                                              //To do...
+1319   4                                              //MessageSend(MSG_FIFO_KEY, MSG_STOP);
+1320   4                                      }
+1321   3                                      break;
+1322   3      
+1323   3                              case MSG_RECV_NUM:
+1324   3                              case MSG_NUM_SAVE_STAITON:
+1325   3                                      DBG(("MP3 RECV_NUM\n"));
+1326   3      #ifdef FUNC_PICKSONG_WHOLE_DISK_EN
                                                       DBG(("WHOLE DISK,0\n"));
                                                       if((gFsInfo.FileSum >= gRecvNum) && (gRecvNum > 0))
               #else
-1352   3                                              if( ((gFsInfo.FileSum >= gRecvNum)  && (gRecvNum > 0) && (gPlayCtrl.FolderEnable == FALSE))
-1353   3      #ifdef FUNC_FOLDER_EN
+1330   3                                              if( ((gFsInfo.FileSum >= gRecvNum)  && (gRecvNum > 0) && (gPlayCtrl.FolderEnable == FALSE))
+1331   3      #ifdef FUNC_FOLDER_EN
                                                        || ((gPlayCtrl.FolderEnable == TRUE) && (gPlayCtrl.Folder.IncFileCnt >= gRecvNum))
               #endif
-1356   3                                                      )
-1357   3      #endif
-1358   3                                              {
-1359   4      #ifdef FUNC_PICKSONG_WHOLE_DISK_EN
+1334   3                                                      )
+1335   3      #endif
+1336   3                                              {
+1337   4      #ifdef FUNC_PICKSONG_WHOLE_DISK_EN
                                                               DBG(("WHOLE DISK,1\n"));
                                                               if(gPlayCtrl.File.FileNumInDisk != gRecvNum)
               #else
-1363   4                                                      if(gPlayCtrl.FileNum != gRecvNum)
-1364   4      #endif
-1365   4                                                      {
-1366   5                                                              DBG(("---MP3 RECV_NUM,RecvNum:%u,FileNum:%u,FileNumInDisk:%u\n", gRecvNum, gPlayCtrl.FileNum, gPlay
+1341   4                                                      if(gPlayCtrl.FileNum != gRecvNum)
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 23  
+
+1342   4      #endif
+1343   4                                                      {
+1344   5                                                              DBG(("---MP3 RECV_NUM,RecvNum:%u,FileNum:%u,FileNumInDisk:%u\n", gRecvNum, gPlayCtrl.FileNum, gPlay
              -Ctrl.File.FileNumInDisk));
-1367   5                                                              
-1368   5                                                              SongPlayStop();
-1369   5      #ifdef FUNC_PICKSONG_WHOLE_DISK_EN
+1345   5                                                              
+1346   5                                                              SongPlayStop();
+1347   5      #ifdef FUNC_PICKSONG_WHOLE_DISK_EN
                                                                       gPlayCtrl.FolderEnable = FALSE;
               #endif
-1372   5                                                                      gPlayCtrl.FileNum = gRecvNum;
-1373   5                                                                      gRecvNum = 0;
-1374   5                                                                      if(!SongPlayInit())
-1375   5                                                                      {
-1376   6                                                                              MessageSend(MSG_FIFO_KEY, MSG_NEXT);
-1377   6                                                                              gPlayCtrl.State = PLAY_STATE_STOP; 
-1378   6                                                                      }
-1379   5                                                                      DBG(("===MP3 RECV_NUM,RecvNum:%u,FileNum:%u,FileNumInDisk:%u\n", gRecvNum, gPlayCtrl.FileNum, gPla
+1350   5                                                                      gPlayCtrl.FileNum = gRecvNum;
+1351   5                                                                      gRecvNum = 0;
+1352   5                                                                      if(!SongPlayInit())
+1353   5                                                                      {
+1354   6                                                                              MessageSend(MSG_FIFO_KEY, MSG_NEXT);
+1355   6                                                                              gPlayCtrl.State = PLAY_STATE_STOP; 
+1356   6                                                                      }
+1357   5                                                                      DBG(("===MP3 RECV_NUM,RecvNum:%u,FileNum:%u,FileNumInDisk:%u\n", gRecvNum, gPlayCtrl.FileNum, gPla
              -yCtrl.File.FileNumInDisk));
-1380   5                                                      }       
-1381   4                                              }                               
-1382   3      #ifdef FUNC_DISP_EN                     
-1383   3                                      if((gRecvNum > gFsInfo.FileSum) && (gRecvNum > 0))
-1384   3                                      {
-1385   4                                              TimeOutSet(&DispTmr, NORMAL_INTERVAL);  //按遥控确认键输入错误Err显示保留时间
-1386   4                                      }
-1387   3                                      else
-1388   3                                      {
-1389   4                                              TimeOutSet(&DispTmr, 0);        //退出数值显示
-1390   4                                      }
-1391   3                                      gRecvNum = 0;
-1392   3      #endif
-1393   3                                      break;
-1394   3      #endif
-1395   3      
-1396   3      
-1397   3      #ifdef FUNC_FOLDER_EN
+1358   5                                                      }       
+1359   4                                              }                               
+1360   3      #ifdef FUNC_DISP_EN                     
+1361   3                                      if((gRecvNum > gFsInfo.FileSum) && (gRecvNum > 0))
+1362   3                                      {
+1363   4                                              TimeOutSet(&DispTmr, NORMAL_INTERVAL);  //按遥控确认键输入错误Err显示保留时间
+1364   4                                      }
+1365   3                                      else
+1366   3                                      {
+1367   4                                              TimeOutSet(&DispTmr, 0);        //退出数值显示
+1368   4                                      }
+1369   3                                      gRecvNum = 0;
+1370   3      #endif
+1371   3                                      break;
+1372   3      #endif
+1373   3      
+1374   3      
+1375   3      #ifdef FUNC_FOLDER_EN
                                       case MSG_FOLDER_EN:
                                               if(gPlayCtrl.FolderEnable)
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 24  
-
                                               {
                                                       DBG(("FOLDER_DIS\n"));
                                                       gPlayCtrl.FolderEnable = FALSE;
@@ -1496,6 +1470,8 @@ line level    source
                                               }                                                       
               #endif
               
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 24  
+
               #ifdef FUNC_DISP_EN
                                               DispFoldState();
               #endif
@@ -1534,8 +1510,6 @@ line level    source
                                               if(!SongPlayInit())
                                               {
                                                       DBG(("SongPlayInit error!\n"));
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 25  
-
                                                       MessageSend(MSG_FIFO_KEY, MSG_NEXT); 
                                               }
                                               DBG(("SongPlayInit OK!\n"));
@@ -1560,6 +1534,8 @@ line level    source
                                               }
                       
                                               if(!FolderOpenByValidNum(&gPlayCtrl.Folder, NULL, gPlayCtrl.FolderNum))
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 25  
+
                                               {
                                                       DBG(("FolderOpenByValidNum() error!\n"));
                                                       MessageSend(MSG_FIFO_KEY, MSG_PRE_FOLDER);
@@ -1577,8 +1553,8 @@ line level    source
                                               }
                                               break;
               #endif
-1499   3              
-1500   3      #ifdef FUNC_FILE_BROWSER_EN
+1477   3              
+1478   3      #ifdef FUNC_FILE_BROWSER_EN
                                       case MSG_BROWSE_START:
                                               FileBrowseInit();
                                               SongPlayStop();
@@ -1586,8 +1562,8 @@ line level    source
                                               gPlayCtrl.Event = MSG_NONE;
                                               break;
               #endif
-1508   3      
-1509   3      #ifdef FUNC_SPI_UPDATE_EN
+1486   3      
+1487   3      #ifdef FUNC_SPI_UPDATE_EN
                                       case MSG_UPDATE_FLASH:
                                               if(gIsMVFFileFind == 1)
                                               {
@@ -1598,8 +1574,6 @@ line level    source
                                                       //SectNum = gPlayCtrl.File.OpSec;                                       
                                                       if (gPlayCtrl.State == PLAY_STATE_PLAY)
                                                       {
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 26  
-
                                                               PlayStatePauseOp();
                                                               IsResume = TRUE;
                                                       }
@@ -1618,18 +1592,20 @@ line level    source
                                               }
                                               break;
               #endif
-1538   3              
-1539   3                              default:                        
-1540   3                                      break;
-1541   3                      }
-1542   2                      
-1543   2      #ifdef FUN_SYSTEM_POWEROFF_WAIT_TIME
+1516   3              
+1517   3                              default:                        
+1518   3                                      break;
+1519   3                      }
+1520   2                      
+1521   2      #ifdef FUN_SYSTEM_POWEROFF_WAIT_TIME
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 26  
+
                               SystemOffTimeMsgPro(gPlayCtrl.Event);
               #endif
-1546   2              }
-1547   1      
-1548   1      
-1549   1      #ifdef BT_BtPOWEROFF_TIME
+1524   2              }
+1525   1      
+1526   1      
+1527   1      #ifdef BT_BtPOWEROFF_TIME
               
                       if(gPlayCtrl.State != PLAY_STATE_PLAY && !PowerOffTimeBeginFlag)
                       {
@@ -1662,8 +1638,6 @@ line level    source
                                       WaitMs(2);
                                       SPI_PlaySelectNum(SPIPLAY_SONG_POWEROFF, 0);//关机提示音
                                       WaitMs(1000);
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 27  
-
                                       SystemOff();
                               }else
                               {
@@ -1673,90 +1647,92 @@ line level    source
                       }
               #endif  
               #endif
-1591   1      
-1592   1              switch(gPlayCtrl.State)
-1593   1              {
-1594   2                      case PLAY_STATE_PLAY:
-1595   2                              PlayStatePlayOp();
-1596   2                              break;
-1597   2      
-1598   2                      case PLAY_STATE_PAUSE:
-1599   2                              PlayStatePauseOp();
-1600   2                              break;
-1601   2      
-1602   2                      case PLAY_STATE_STOP:
-1603   2                              PlayStateStopOp();
-1604   2                              break;
-1605   2      
-1606   2      #ifdef FUNC_FAST_PLAY_EN
+1569   1      
+1570   1              switch(gPlayCtrl.State)
+1571   1              {
+1572   2                      case PLAY_STATE_PLAY:
+1573   2                              PlayStatePlayOp();
+1574   2                              break;
+1575   2      
+1576   2                      case PLAY_STATE_PAUSE:
+1577   2                              PlayStatePauseOp();
+1578   2                              break;
+1579   2      
+1580   2                      case PLAY_STATE_STOP:
+1581   2                              PlayStateStopOp();
+1582   2                              break;
+1583   2      
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 27  
+
+1584   2      #ifdef FUNC_FAST_PLAY_EN
                               case PLAY_STATE_FF:                     
                               case PLAY_STATE_FB:                     
                                       PlayStateFF_FBOp();
                                       break;
               #endif
-1612   2                      
-1613   2      #ifdef FUNC_FILE_BROWSER_EN
+1590   2                      
+1591   2      #ifdef FUNC_FILE_BROWSER_EN
                               case PLAY_STATE_BROWSE:
                                       PlayStateBrowseOp();
                                       break;
               #endif
-1618   2      
-1619   2                      default:
-1620   2                              break;
-1621   2              }       
-1622   1      
-1623   1              SongPlayTimeUpdate();
-1624   1      }
-1625          
-1626          
-1627          // Initialize playing control structure extend.
-1628          BOOL PlayCtrlInit(VOID)
-1629          {
-1630   1              DBG(("PlayCtrlInit()\n"));
-1631   1      #ifndef FUNC_FOLDER_EN
-1632   1                      gPlayCtrl.FolderEnable = FALSE;
-1633   1      #else
+1596   2      
+1597   2                      default:
+1598   2                              break;
+1599   2              }       
+1600   1      
+1601   1              SongPlayTimeUpdate();
+1602   1      }
+1603          
+1604          
+1605          // Initialize playing control structure extend.
+1606          BOOL PlayCtrlInit(VOID)
+1607          {
+1608   1              DBG(("PlayCtrlInit()\n"));
+1609   1      #ifndef FUNC_FOLDER_EN
+1610   1                      gPlayCtrl.FolderEnable = FALSE;
+1611   1      #else
                               if(gPlayCtrl.FolderEnable > 1)
                               {
                                       gPlayCtrl.FolderEnable = TRUE;  
                               }       
               #endif
-1639   1      
-1640   1      #ifdef FUNC_OPEN_FILE_DELAY_EN
+1617   1      
+1618   1      #ifdef FUNC_OPEN_FILE_DELAY_EN
                       s_IsOpenFileDelay = FALSE;
               #endif
-1643   1                      
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 28  
-
-1644   1      #ifdef FUNC_BREAK_POINT_EN
-1645   1              if(IsBPValid() == TRUE)
-1646   1              {               
-1647   2                      if(gIsFindLastestSong == FALSE)
-1648   2                      {
-1649   3                              DBG(("play frist song\n"));
-1650   3                              s_BreakPointFlag = FALSE;
-1651   3                              gPlayCtrl.FileNum = 1;
-1652   3      #ifdef FUNC_FOLDER_EN                           
+1621   1                      
+1622   1      #ifdef FUNC_BREAK_POINT_EN
+1623   1              if(IsBPValid() == TRUE)
+1624   1              {               
+1625   2                      if(gIsFindLastestSong == FALSE)
+1626   2                      {
+1627   3                              DBG(("play frist song\n"));
+1628   3                              s_BreakPointFlag = FALSE;
+1629   3                              gPlayCtrl.FileNum = 1;
+1630   3      #ifdef FUNC_FOLDER_EN                           
                                       gPlayCtrl.FolderNum = 1;
               #endif     
-1655   3                              //gPlayCtrl.Eq = DECD_EQ_NORMAL;
-1656   3                              gPlayCtrl.RepeatMode = REPEAT_ALL;
-1657   3                      }
-1658   2                      else if(gCurFileNum > 0)
-1659   2                      {
-1660   3                              s_BreakPointFlag = TRUE;
-1661   3                              if(gCurFileNum > gFsInfo.FileSum)
-1662   3                              {
-1663   4                                      //DBG(("PlayCtrlInit,502\n"));
-1664   4                                      gCurFileNum = 1;
-1665   4                              }
-1666   3                              if(gCurFolderNum > gFsInfo.FolderSum)
-1667   3                              {
-1668   4                                      //DBG(("PlayCtrlInit,503\n"));
-1669   4                                      gCurFolderNum = 1;
-1670   4                              }
-1671   3      
-1672   3      #ifdef FUNC_FOLDER_EN
+1633   3                              //gPlayCtrl.Eq = DECD_EQ_NORMAL;
+1634   3                              gPlayCtrl.RepeatMode = REPEAT_ALL;
+1635   3                      }
+1636   2                      else if(gCurFileNum > 0)
+1637   2                      {
+1638   3                              s_BreakPointFlag = TRUE;
+1639   3                              if(gCurFileNum > gFsInfo.FileSum)
+1640   3                              {
+1641   4                                      //DBG(("PlayCtrlInit,502\n"));
+1642   4                                      gCurFileNum = 1;
+1643   4                              }
+1644   3                              if(gCurFolderNum > gFsInfo.FolderSum)
+1645   3                              {
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 28  
+
+1646   4                                      //DBG(("PlayCtrlInit,503\n"));
+1647   4                                      gCurFolderNum = 1;
+1648   4                              }
+1649   3      
+1650   3      #ifdef FUNC_FOLDER_EN
                                       if(gPlayCtrl.FolderEnable == TRUE)
                                       { 
                                               gPlayCtrl.FileNum = gCurFileNumInFolder;
@@ -1770,33 +1746,31 @@ line level    source
                                       }
                                       
               #else
-1686   3                              gPlayCtrl.FolderEnable = FALSE;
-1687   3                              gPlayCtrl.FileNum = gCurFileNum;
-1688   3      #endif
-1689   3      
-1690   3                              //gPlayCtrl.Eq = gBreakPointInfo.Eq;    
-1691   3                              //gPlayCtrl.RepeatMode = gBreakPointInfo.RepeatMode;
-1692   3                              gPlayCtrl.RepeatMode = REPEAT_ALL;      //Repeat 模式不记忆
-1693   3                              
-1694   3      //                      DBG(("gPlayCtrl.FolderEnable:%bu\n", gPlayCtrl.FolderEnable));
-1695   3      //                      DBG(("gPlayCtrl.FileNum:%u, gPlayCtrl.FolderNum:%u\n", gPlayCtrl.FileNum, gPlayCtrl.FolderNum));
-1696   3      //                      DBG(("gPlayCtrl.Eq:%bu\n", gPlayCtrl.Eq));
-1697   3      //                      DBG(("gPlayCtrl.RepeatMode:%bu\n", gPlayCtrl.RepeatMode));
-1698   3                      }
-1699   2              }
-1700   1              else
-1701   1              {
-1702   2                      s_BreakPointFlag = FALSE;
-1703   2                      gPlayCtrl.FolderNum = 1;
-1704   2                      gPlayCtrl.FileNum = 1;
-1705   2                      //gPlayCtrl.Eq = DECD_EQ_NORMAL;
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 29  
-
-1706   2                      gPlayCtrl.RepeatMode = REPEAT_ALL;
-1707   2                      gSongInfo.CurPlayTime = 0;
-1708   2                      DBG(("BP InVald\n"));           
-1709   2              }
-1710   1      #else
+1664   3                              gPlayCtrl.FolderEnable = FALSE;
+1665   3                              gPlayCtrl.FileNum = gCurFileNum;
+1666   3      #endif
+1667   3      
+1668   3                              //gPlayCtrl.Eq = gBreakPointInfo.Eq;    
+1669   3                              //gPlayCtrl.RepeatMode = gBreakPointInfo.RepeatMode;
+1670   3                              gPlayCtrl.RepeatMode = REPEAT_ALL;      //Repeat 模式不记忆
+1671   3                              
+1672   3      //                      DBG(("gPlayCtrl.FolderEnable:%bu\n", gPlayCtrl.FolderEnable));
+1673   3      //                      DBG(("gPlayCtrl.FileNum:%u, gPlayCtrl.FolderNum:%u\n", gPlayCtrl.FileNum, gPlayCtrl.FolderNum));
+1674   3      //                      DBG(("gPlayCtrl.Eq:%bu\n", gPlayCtrl.Eq));
+1675   3      //                      DBG(("gPlayCtrl.RepeatMode:%bu\n", gPlayCtrl.RepeatMode));
+1676   3                      }
+1677   2              }
+1678   1              else
+1679   1              {
+1680   2                      s_BreakPointFlag = FALSE;
+1681   2                      gPlayCtrl.FolderNum = 1;
+1682   2                      gPlayCtrl.FileNum = 1;
+1683   2                      //gPlayCtrl.Eq = DECD_EQ_NORMAL;
+1684   2                      gPlayCtrl.RepeatMode = REPEAT_ALL;
+1685   2                      gSongInfo.CurPlayTime = 0;
+1686   2                      DBG(("BP InVald\n"));           
+1687   2              }
+1688   1      #else
                       DBG(("\n!BP\n\n"));
                       s_BreakPointFlag = FALSE;
                       gPlayCtrl.FolderNum = 1;
@@ -1805,10 +1779,10 @@ line level    source
                       gPlayCtrl.RepeatMode = REPEAT_ALL;
                       gSongInfo.CurPlayTime = 0;
               #endif
-1719   1      
-1720   1              gPlayCtrl.Direction = PLAY_DIRECT_NEXT;
-1721   1      
-1722   1      #ifdef FUNC_FOLDER_EN
+1697   1      
+1698   1              gPlayCtrl.Direction = PLAY_DIRECT_NEXT;
+1699   1      
+1700   1      #ifdef FUNC_FOLDER_EN
                       if((gSys.SystemMode != SYS_MODE_OTPDEV))
                       {
                               if(gPlayCtrl.FolderNum > gFsInfo.FolderSum)
@@ -1816,6 +1790,8 @@ line level    source
                                       gPlayCtrl.FolderNum = 1;
                               }
               
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 29  
+
                               if(!FolderOpenByValidNum(&gPlayCtrl.Folder, NULL, gPlayCtrl.FolderNum))
                               {
                                       DBG(("FolderOpenByValidNum() error!\n"));
@@ -1844,51 +1820,51 @@ line level    source
                               }
                       }
               #endif
-1758   1      
-1759   1              if(gFsInfo.FileSum == 0)
-1760   1              {
-1761   2                      DBG(("No Song in Disk!!\n"));
-1762   2                      gPlayCtrl.State = PLAY_STATE_STOP;
-1763   2                      return TRUE;
-1764   2              }
-1765   1      
-1766   1              //DBG(("gPlayCtrl.State11:%bx\n",gPlayCtrl.State));
-1767   1              
-C51 COMPILER V9.00   PLAYCTRL                                                              12/28/2015 22:10:20 PAGE 30  
+1736   1      
+1737   1              if(gFsInfo.FileSum == 0)
+1738   1              {
+1739   2                      DBG(("No Song in Disk!!\n"));
+1740   2                      gPlayCtrl.State = PLAY_STATE_STOP;
+1741   2                      return TRUE;
+1742   2              }
+1743   1      
+1744   1              //DBG(("gPlayCtrl.State11:%bx\n",gPlayCtrl.State));
+1745   1              
+1746   1              gPlayCtrl.State = PLAY_STATE_STOP;
+1747   1      #ifdef FUNC_AUTO_PLAY_EN
+1748   1              if(!SongPlayInit())
+1749   1              {
+1750   2                      MessageSend(MSG_FIFO_KEY, MSG_NEXT);    
+1751   2              }
+1752   1      #endif
+1753   1              //DBG(("gPlayCtrl.State22:%bx\n", gPlayCtrl.State));
+1754   1      //清标志
+1755   1      #ifdef FUNC_BREAK_POINT_EN      
+1756   1              gCurFileNum = 0;
+1757   1              gCurFileNumInFolder = 0;
+1758   1              gCurFolderNum = 0;
+1759   1      #endif 
+1760   1      
+1761   1              return TRUE;
+1762   1      }
+1763          
+1764          
+1765          // Call this function before leaving play state.
+1766          BOOL PlayCtrlEnd(VOID)
+1767          {
+1768   1              DBG(("PlayCtrlEnd()\n"));
+1769   1              
+C51 COMPILER V9.00   PLAYCTRL                                                              12/29/2015 13:58:45 PAGE 30  
 
-1768   1              gPlayCtrl.State = PLAY_STATE_STOP;
-1769   1      #ifdef FUNC_AUTO_PLAY_EN
-1770   1              if(!SongPlayInit())
-1771   1              {
-1772   2                      MessageSend(MSG_FIFO_KEY, MSG_NEXT);    
-1773   2              }
-1774   1      #endif
-1775   1              //DBG(("gPlayCtrl.State22:%bx\n", gPlayCtrl.State));
-1776   1      //清标志
-1777   1      #ifdef FUNC_BREAK_POINT_EN      
-1778   1              gCurFileNum = 0;
-1779   1              gCurFileNumInFolder = 0;
-1780   1              gCurFolderNum = 0;
-1781   1      #endif 
-1782   1      
-1783   1              return TRUE;
-1784   1      }
-1785          
-1786          
-1787          // Call this function before leaving play state.
-1788          BOOL PlayCtrlEnd(VOID)
-1789          {
-1790   1              DBG(("PlayCtrlEnd()\n"));
-1791   1              
-1792   1              //关闭DAC       
-1793   1              SongPlayStop(); 
-1794   1      
-1795   1              return TRUE;
-1796   1      }
+1770   1              //关闭DAC       
+1771   1              SongPlayStop(); 
+1772   1      
+1773   1              return TRUE;
+1774   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   2594    ----
+   CODE SIZE        =   2517    ----
    CONSTANT SIZE    =    176    ----
    XDATA SIZE       =    123       9
    PDATA SIZE       =   ----    ----

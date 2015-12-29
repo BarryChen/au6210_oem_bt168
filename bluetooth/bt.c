@@ -373,10 +373,23 @@ if (Bluetooth_BlueLED())
 #ifndef FUNC_CSR_CONTROL_BT_VOL	//if no def
 		case MSG_VOL_ADD:			
 			VolumeAdjust(UP);
+#ifdef AU6210K_MINI503 
+			if (gSys.Volume >= VOLUME_MAX)
+			{
+				SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 1);
+			}
+#endif
 			break;
 	
 		case MSG_VOL_SUB:
 			VolumeAdjust(DOWN);
+#ifdef AU6210K_MINI503
+			if (gSys.Volume <= VOLUME_MIN)
+			{
+					SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 1);
+			}
+#endif
+
 			break;		
 #endif		
 /*

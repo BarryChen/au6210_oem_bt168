@@ -404,7 +404,7 @@ VOID VolumeAdjust(BYTE Direction)
 			gSys.Volume--;
 		}	
 	}
-#ifdef AU6210K_ZB_BT007_CSR
+#if 0//AU6210K_ZB_BT007_CSR
 		{
 			if(gSys.Volume == VOLUME_MAX)	
 			{

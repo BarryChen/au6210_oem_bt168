@@ -782,6 +782,16 @@ VOID RadioEventProcess(VOID)
             VolType = VOL_MAIN;
             PT2313VolAdd();
 #else
+		#ifdef AU6210K_MINI503
+			if (gSys.Volume >= VOLUME_MAX)
+			{
+				SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 0);
+				InDacChannelSel(DAC_CH_ONCHIP_FM);
+				RadioSetFreq();
+				UnMute();
+				SysClkDivSet(CLK_DIV_RATE);
+			}
+		#endif
 			VolumeAdjust(UP);
 #endif
 			break;
@@ -812,6 +822,15 @@ VOID RadioEventProcess(VOID)
                     VolType = VOL_MAIN;
                     PT2313VolSub();
 #else
+		#ifdef AU6210K_MINI503
+			if (gSys.Volume <= VOLUME_MIN)
+			{
+				SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 0);
+				InDacChannelSel(DAC_CH_ONCHIP_FM);
+				RadioSetFreq();
+				SysClkDivSet(CLK_DIV_RATE);
+			}
+		#endif
 			VolumeAdjust(DOWN);
 #endif
 			break;
