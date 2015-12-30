@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   POWER_KEY                                                             12/29/2015 23:40:49 PAGE 1   
+C51 COMPILER V9.00   POWER_KEY                                                             12/30/2015 18:11:23 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE POWER_KEY
 OBJECT MODULE PLACED IN .\output\obj\power_key.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE key\power_key.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\confi
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE key\power_key.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\confi
                     -g;.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\blueto
                     -oth;.\i2c) DEBUG PRINT(.\output\lst\power_key.lst) OBJECT(.\output\obj\power_key.obj)
 
@@ -62,10 +62,10 @@ line level    source
   49   1              PowerKeyState = POWER_KEY_STATE_IDLE;
   50   1              IsPwrkeyInSysOn = TRUE;                                 //首先软开关用于系统启动，此后用于系统关闭
   51   1      }
-C51 COMPILER V9.00   POWER_KEY                                                             12/29/2015 23:40:49 PAGE 2   
+C51 COMPILER V9.00   POWER_KEY                                                             12/30/2015 18:11:23 PAGE 2   
 
   52          
-  53          
+  53          extern BOOL BtPowerIsOn;
   54          //
   55          // POWER_KEY与普通的按键不同，连接按钮开关（软开关）时的主要作用还是系统开关机，当然，也允许复用短按功能。
   56          // 短按产生时，推送短按消息。超过短按区间，推送系统开关机消息。
@@ -80,85 +80,94 @@ line level    source
   65   2                              if(gIsPwrkeyPadOn == FALSE)
   66   2                              {
   67   3                                      IsPwrkeyInSysOn = FALSE;
-  68   3                                      baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
-  69   3                                      return MSG_NONE;
-  70   3                              }
-  71   2                              DBG(("GOTO POWER PRESS DOWN!\n"));
-  72   2      
-  73   2      #if defined(TIME_POWER_ON_HOLD)
-  74   2                              if(IsPwrkeyInSysOn == TRUE)
-  75   2                              {
-  76   3                                      TimeOutSet(&PowerKeyWaitTimer, TIME_POWER_ON_HOLD);     
-  77   3                              }
-  78   2                              else
-  79   2      #endif
-  80   2                              {
-  81   3                                      TimeOutSet(&PowerKeyWaitTimer, TIME_POWER_OFF_HOLD);
-  82   3                              }
-  83   2      
-  84   2                              if(GET_BT_CALL_STATUS() || (gSys.SystemMode == SYS_MODE_BLUETOOTH))
-  85   2                                      baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
+  68   3                                      if(BtPowerIsOn)
+  69   3                                      {
+  70   4                                              baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
+  71   4                                      }
+  72   3                                      return MSG_NONE;
+  73   3                              }
+  74   2                              DBG(("GOTO POWER PRESS DOWN!\n"));
+  75   2      
+  76   2      #if defined(TIME_POWER_ON_HOLD)
+  77   2                              if(IsPwrkeyInSysOn == TRUE)
+  78   2                              {
+  79   3                                      TimeOutSet(&PowerKeyWaitTimer, TIME_POWER_ON_HOLD);     
+  80   3                              }
+  81   2                              else
+  82   2      #endif
+  83   2                              {
+  84   3                                      TimeOutSet(&PowerKeyWaitTimer, TIME_POWER_OFF_HOLD);
+  85   3                              }
   86   2      
-  87   2                              PowerKeyState = POWER_KEY_STATE_PRESS_DOWN;
-  88   2                              break;
-  89   2      
-  90   2                      case POWER_KEY_STATE_PRESS_DOWN:
-  91   2                              if(gIsPwrkeyPadOn == FALSE)
-  92   2                              {
-  93   3                                      IsPwrkeyInSysOn = FALSE;
-  94   3                                      PowerKeyState = POWER_KEY_STATE_IDLE;
-  95   3                                      baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
-  96   3                                      
-  97   3                                      return PowerKeyEvent[0];                        //return key sp value
-  98   3                              }
-  99   2                              else if(IsTimeOut(&PowerKeyWaitTimer))
- 100   2                              {
- 101   3                                      TimeOutSet(&PowerKeyWaitTimer, POWER_KEY_CPH_TIME);
- 102   3                                      PowerKeyState = POWER_KEY_STATE_CP;
- 103   3                                      if(IsPwrkeyInSysOn == TRUE)                     //系统启动时，推送MSG_SYS_ON消息，用于通知POWER_KEY开机保持时间已到
- 104   3                                      {
- 105   4                                              DBG(("PowerKeyEvent[1]:%bx\n", PowerKeyEvent[1]));
- 106   4                                              return PowerKeyEvent[1];
- 107   4                                      }
- 108   3                                      else                                                            //系统启动之后，POWER_KEY的长按只发送MSG_SYS_OFF消息，用于关闭系统
- 109   3                                      {
- 110   4                                              DBG(("PowerKeyEvent[2]:%bx\n", PowerKeyEvent[2]));
- 111   4                                              return PowerKeyEvent[2];
- 112   4                                      }
- 113   3                              }
-C51 COMPILER V9.00   POWER_KEY                                                             12/29/2015 23:40:49 PAGE 3   
+  87   2                              if(BtPowerIsOn)
+  88   2                              {
+  89   3                                      if(GET_BT_CALL_STATUS() || (gSys.SystemMode == SYS_MODE_BLUETOOTH))
+  90   3                                              baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
+  91   3                              }
+  92   2      
+  93   2                              PowerKeyState = POWER_KEY_STATE_PRESS_DOWN;
+  94   2                              break;
+  95   2      
+  96   2                      case POWER_KEY_STATE_PRESS_DOWN:
+  97   2                              if(gIsPwrkeyPadOn == FALSE)
+  98   2                              {
+  99   3                                      IsPwrkeyInSysOn = FALSE;
+ 100   3                                      PowerKeyState = POWER_KEY_STATE_IDLE;
+ 101   3                                      if(BtPowerIsOn)
+ 102   3                                      {
+ 103   4                                              baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
+ 104   4                                      }
+ 105   3                                      
+ 106   3                                      return PowerKeyEvent[0];                        //return key sp value
+ 107   3                              }
+ 108   2                              else if(IsTimeOut(&PowerKeyWaitTimer))
+ 109   2                              {
+ 110   3                                      TimeOutSet(&PowerKeyWaitTimer, POWER_KEY_CPH_TIME);
+ 111   3                                      PowerKeyState = POWER_KEY_STATE_CP;
+ 112   3                                      if(IsPwrkeyInSysOn == TRUE)                     //系统启动时，推送MSG_SYS_ON消息，用于通知POWER_KEY开机保持时间已到
+ 113   3                                      {
+C51 COMPILER V9.00   POWER_KEY                                                             12/30/2015 18:11:23 PAGE 3   
 
- 114   2                              break;
- 115   2                              
- 116   2                      case POWER_KEY_STATE_CP:
- 117   2                              if(gIsPwrkeyPadOn == FALSE)
- 118   2                              {
- 119   3                                      IsPwrkeyInSysOn = FALSE;                        //系统启动后，POWER_KEY长按的作用变为关机
- 120   3                                      PowerKeyState = POWER_KEY_STATE_IDLE;
- 121   3                              }
- 122   2                              else if(IsTimeOut(&PowerKeyWaitTimer))
- 123   2                              {
- 124   3                                      TimeOutSet(&PowerKeyWaitTimer, POWER_KEY_CPH_TIME);
- 125   3                                      if(IsPwrkeyInSysOn == FALSE)            //系统启动后，POWER_KEY的长按只发送MSG_SYS_OFF消息，用于关闭系统
- 126   3                                      {
- 127   4                                              DBG(("PowerKeyEvent[2]:%bx\n", PowerKeyEvent[2]));
- 128   4                                              return PowerKeyEvent[2];
- 129   4                                      }
+ 114   4                                              DBG(("PowerKeyEvent[1]:%bx\n", PowerKeyEvent[1]));
+ 115   4                                              return PowerKeyEvent[1];
+ 116   4                                      }
+ 117   3                                      else                                                            //系统启动之后，POWER_KEY的长按只发送MSG_SYS_OFF消息，用于关闭系统
+ 118   3                                      {
+ 119   4                                              DBG(("PowerKeyEvent[2]:%bx\n", PowerKeyEvent[2]));
+ 120   4                                              return PowerKeyEvent[2];
+ 121   4                                      }
+ 122   3                              }
+ 123   2                              break;
+ 124   2                              
+ 125   2                      case POWER_KEY_STATE_CP:
+ 126   2                              if(gIsPwrkeyPadOn == FALSE)
+ 127   2                              {
+ 128   3                                      IsPwrkeyInSysOn = FALSE;                        //系统启动后，POWER_KEY长按的作用变为关机
+ 129   3                                      PowerKeyState = POWER_KEY_STATE_IDLE;
  130   3                              }
- 131   2                              break;  
- 132   2                                              
- 133   2                      default:
- 134   2                              PowerKeyState = POWER_KEY_STATE_IDLE;
- 135   2                              break;
- 136   2              }
- 137   1              return MSG_NONE;
- 138   1      }
- 139          
- 140          #endif
+ 131   2                              else if(IsTimeOut(&PowerKeyWaitTimer))
+ 132   2                              {
+ 133   3                                      TimeOutSet(&PowerKeyWaitTimer, POWER_KEY_CPH_TIME);
+ 134   3                                      if(IsPwrkeyInSysOn == FALSE)            //系统启动后，POWER_KEY的长按只发送MSG_SYS_OFF消息，用于关闭系统
+ 135   3                                      {
+ 136   4                                              DBG(("PowerKeyEvent[2]:%bx\n", PowerKeyEvent[2]));
+ 137   4                                              return PowerKeyEvent[2];
+ 138   4                                      }
+ 139   3                              }
+ 140   2                              break;  
+ 141   2                                              
+ 142   2                      default:
+ 143   2                              PowerKeyState = POWER_KEY_STATE_IDLE;
+ 144   2                              break;
+ 145   2              }
+ 146   1              return MSG_NONE;
+ 147   1      }
+ 148          
+ 149          #endif
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    282    ----
+   CODE SIZE        =    309    ----
    CONSTANT SIZE    =      3    ----
    XDATA SIZE       =      7    ----
    PDATA SIZE       =   ----    ----

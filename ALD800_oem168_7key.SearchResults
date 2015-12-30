@@ -1,7 +1,13 @@
----- GoToPDMode Matches (6 in 4 files) ----
-Power.h (library):VOID GoToPDMode(VOID);
-Sys_on_off.c (system):		GoToPDMode();
-Sys_on_off.c (system):	GoToPDMode();	
-User_interface.c (lib_if):		GoToPDMode();		//执行硬开关的系统关闭动作
-复件 sys_on_off.c (system):		GoToPDMode();
-复件 sys_on_off.c (system):	GoToPDMode();	
+---- KeyEventGet Matches (12 in 9 files) ----
+Devctrl.c (device):		KeyEventGet();	
+I2c.c (eeprom):extern VOID KeyEventGet(VOID);	
+I2c.c (eeprom):		KeyEventGet();		
+Key.c (key):VOID KeyEventGet(VOID)							
+Key.h (key):VOID KeyEventGet(VOID);							
+Presearch.c (fs):extern VOID KeyEventGet(VOID);
+Presearch.c (fs):			KeyEventGet();
+Sysctrl.c (system):		KeyEventGet();
+Sys_on_off.c (system):			KeyEventGet();	
+Test.c:extern VOID KeyEventGet(VOID);	
+Test.c:		KeyEventGet();		
+复件 sys_on_off.c (system):			KeyEventGet();	

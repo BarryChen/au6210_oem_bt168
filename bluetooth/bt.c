@@ -18,6 +18,8 @@
 
 #ifdef FUNC_BLUETOOTH_CSR_EN
 
+BOOL BtPowerIsOn = FALSE;
+
 #define		BT_ACTIVE_AFTERWARE	4000
 TIMER	BT_Statup;
 TIMER	BT_WaitConnectedTime;
@@ -95,9 +97,6 @@ VOID BluetoothCtrlInit(VOID)
 	BTjustEnter = 1;
 	PlayPairFlag = 1;
 	BTIO_PORT_MUTE_INIT();
-#ifdef CSR_CALL_CHECK_PORT
-	BTIO_PORT_CALL_INIT();
-#endif
 	//与CSR连接的IO口初始化
 	BTIO_PORT_BLUE_LED_INIT();
 	BTIO_PORT_RED_LED_INIT();
@@ -174,7 +173,7 @@ VOID BluetoothCtrlInit(VOID)
 #endif
 
 	BT_POWER_H();
-
+	BtPowerIsOn = TRUE;
 
 
 }

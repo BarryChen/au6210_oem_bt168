@@ -144,6 +144,10 @@ VOID main()
 
 	DBG1(("******* Welcome to use MVsilicon's chip! *******\n"));
 
+#ifdef CSR_CALL_CHECK_PORT
+	BTIO_PORT_CALL_INIT();
+#endif
+
 	KeyScanInit();
 
 	MessageInit();

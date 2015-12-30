@@ -414,35 +414,31 @@ VOID AdcKeyScanInit(VOID)
 	baGPIOCtrl[GPIO_D_PU] |= 0x04;
 	baGPIOCtrl[GPIO_D_PD] |= 0x04; 
 	baGPIOCtrl[GPIO_D_OUT] &= ~0x04; 
-	WaitMs(2);
 
 	baGPIOCtrl[GPIO_D_IE] &= ~0x20;//D5
 	baGPIOCtrl[GPIO_D_OE] |= 0x20;
 	baGPIOCtrl[GPIO_D_PU] |= 0x20;
 	baGPIOCtrl[GPIO_D_PD] |= 0x20; 
 	baGPIOCtrl[GPIO_D_OUT] &= ~0x20; 
-	WaitMs(2);
 	
 	baGPIOCtrl[GPIO_D_IE] &= ~0x40;//D6
 	baGPIOCtrl[GPIO_D_OE] |= 0x40;
 	baGPIOCtrl[GPIO_D_PU] |= 0x40;
 	baGPIOCtrl[GPIO_D_PD] |= 0x40; 
 	baGPIOCtrl[GPIO_D_OUT] &= ~0x40; 
-	WaitMs(2);
 	
 	baGPIOCtrl[GPIO_A_IE] &= ~0x02;//A1
 	baGPIOCtrl[GPIO_A_OE] |= 0x02;
 	baGPIOCtrl[GPIO_A_PU] |= 0x02;
 	baGPIOCtrl[GPIO_A_PD] |= 0x02; 
 	baGPIOCtrl[GPIO_A_OUT] &= ~0x02; 
-	WaitMs(2);
 	
 	baGPIOCtrl[GPIO_A_IE] &= ~0x04;//A2
 	baGPIOCtrl[GPIO_A_OE] |= 0x04;
 	baGPIOCtrl[GPIO_A_PU] |= 0x04;
 	baGPIOCtrl[GPIO_A_PD] |= 0x04; 
 	baGPIOCtrl[GPIO_A_OUT] &= ~0x04; 
-	WaitMs(2);
+	WaitUs(20);
 #endif
 }
 

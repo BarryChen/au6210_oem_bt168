@@ -50,7 +50,7 @@ VOID PowerKeyScanInit(VOID)
 	IsPwrkeyInSysOn = TRUE;					//首先软开关用于系统启动，此后用于系统关闭
 }
 
-
+extern BOOL BtPowerIsOn;
 //
 // POWER_KEY与普通的按键不同，连接按钮开关（软开关）时的主要作用还是系统开关机，当然，也允许复用短按功能。
 // 短按产生时，推送短按消息。超过短按区间，推送系统开关机消息。
@@ -65,7 +65,10 @@ MESSAGE PowerKeyEventGet(VOID)
 			if(gIsPwrkeyPadOn == FALSE)
 			{
 				IsPwrkeyInSysOn = FALSE;
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
+				if(BtPowerIsOn)
+				{
+					baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
+				}
 				return MSG_NONE;
 			}
 			DBG(("GOTO POWER PRESS DOWN!\n"));
@@ -81,8 +84,11 @@ MESSAGE PowerKeyEventGet(VOID)
 				TimeOutSet(&PowerKeyWaitTimer, TIME_POWER_OFF_HOLD);
 			}
 
-			if(GET_BT_CALL_STATUS() || (gSys.SystemMode == SYS_MODE_BLUETOOTH))
-				baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
+			if(BtPowerIsOn)
+			{
+				if(GET_BT_CALL_STATUS() || (gSys.SystemMode == SYS_MODE_BLUETOOTH))
+					baGPIOCtrl[GPIO_D_OUT] |= 0x20; //D5
+			}
 
 			PowerKeyState = POWER_KEY_STATE_PRESS_DOWN;
 			break;
@@ -92,7 +98,10 @@ MESSAGE PowerKeyEventGet(VOID)
 			{
 				IsPwrkeyInSysOn = FALSE;
 				PowerKeyState = POWER_KEY_STATE_IDLE;
-				baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
+				if(BtPowerIsOn)
+				{
+					baGPIOCtrl[GPIO_D_OUT] &= ~0x20; //D5
+				}
 				
 				return PowerKeyEvent[0];			//return key sp value
 			}

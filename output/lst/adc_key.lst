@@ -1,9 +1,9 @@
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 1   
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE ADC_KEY
 OBJECT MODULE PLACED IN .\output\obj\adc_key.obj
-COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE key\adc_key.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config;
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE key\adc_key.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE) BROWSE INCDIR(.\config;
                     -.\device;.\display;.\fs;.\key;.\lib_if;.\play;.\system;.\library;.\power;.\radio;.\eeprom;.\spi_flash;.\slave;.\bluetoot
                     -h;.\i2c) DEBUG PRINT(.\output\lst\adc_key.lst) OBJECT(.\output\obj\adc_key.obj)
 
@@ -62,7 +62,7 @@ line level    source
   51                  ADC_KEY_STATE_IDLE,
   52                  ADC_KEY_STATE_JITTER,
   53                  ADC_KEY_STATE_PRESS_DOWN,
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 2   
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 2   
 
   54                  ADC_KEY_STATE_CP
   55          
@@ -126,7 +126,7 @@ line level    source
                       {MSG_PRE,                       MSG_VOL_SUB,            MSG_VOL_SUB,            MSG_NONE                },      //SW3
                       {MSG_MODE_SW,           MSG_NONE,                       MSG_NONE,                       MSG_NONE                }, //SW4
                       {MSG_EQ_SW,             MSG_NONE,                       MSG_NONE,                       MSG_NONE                },      //SW5
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 3   
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 3   
 
                       {MSG_VOL_SUB,           MSG_VOL_SUB,            MSG_VOL_SUB,            MSG_NONE                },      //SW6
                       {MSG_VOL_ADD,           MSG_VOL_ADD,            MSG_VOL_ADD,            MSG_NONE                },      //SW7
@@ -190,7 +190,7 @@ line level    source
                       25,     //SW7   12K             22      22      //SW17
                       30,     //SW8   16K             26      27      //SW18  
                       36,     //SW9   24K             33      33      //SW19
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 4   
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 4   
 
                       42,     //SW10  36K             39      39      //SW20
                       47,     //SW11  51K             44      44      //SW21
@@ -254,7 +254,7 @@ line level    source
                                       {
                                               return KeyIndex;        
                                       }
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 5   
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 5   
 
                               }
                               else
@@ -318,7 +318,7 @@ line level    source
                       baGPIOCtrl[LED_ADC1_KEY_MULTIPLE_PORT_PD] |= LED_ADC1_KEY_MULTIPLE_BIT;         
               #endif
               
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 6   
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 6   
 
               #ifdef FUNC_LED_ADC2_KEY_MULTIPLE_EN
                       baGPIOCtrl[LED_ADC2_KEY_MULTIPLE_PORT_PU] &= ~LED_ADC2_KEY_MULTIPLE_BIT;
@@ -382,7 +382,7 @@ line level    source
  361   1      #if (ADC_KEY_PORT_CH1 == ADC_CHANNEL_D7) 
  362   1              SET_D7_ANALOG_IN();
  363   1      #endif
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 7   
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 7   
 
  364   1      
  365   1      #if (ADC_KEY_PORT_CH1 == ADC_CHANNEL_E0)
@@ -437,169 +437,165 @@ line level    source
  414   1              baGPIOCtrl[GPIO_D_PU] |= 0x04;
  415   1              baGPIOCtrl[GPIO_D_PD] |= 0x04; 
  416   1              baGPIOCtrl[GPIO_D_OUT] &= ~0x04; 
- 417   1              WaitMs(2);
- 418   1      
- 419   1              baGPIOCtrl[GPIO_D_IE] &= ~0x20;//D5
- 420   1              baGPIOCtrl[GPIO_D_OE] |= 0x20;
- 421   1              baGPIOCtrl[GPIO_D_PU] |= 0x20;
- 422   1              baGPIOCtrl[GPIO_D_PD] |= 0x20; 
- 423   1              baGPIOCtrl[GPIO_D_OUT] &= ~0x20; 
- 424   1              WaitMs(2);
- 425   1              
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 8   
+ 417   1      
+ 418   1              baGPIOCtrl[GPIO_D_IE] &= ~0x20;//D5
+ 419   1              baGPIOCtrl[GPIO_D_OE] |= 0x20;
+ 420   1              baGPIOCtrl[GPIO_D_PU] |= 0x20;
+ 421   1              baGPIOCtrl[GPIO_D_PD] |= 0x20; 
+ 422   1              baGPIOCtrl[GPIO_D_OUT] &= ~0x20; 
+ 423   1              
+ 424   1              baGPIOCtrl[GPIO_D_IE] &= ~0x40;//D6
+ 425   1              baGPIOCtrl[GPIO_D_OE] |= 0x40;
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 8   
 
- 426   1              baGPIOCtrl[GPIO_D_IE] &= ~0x40;//D6
- 427   1              baGPIOCtrl[GPIO_D_OE] |= 0x40;
- 428   1              baGPIOCtrl[GPIO_D_PU] |= 0x40;
- 429   1              baGPIOCtrl[GPIO_D_PD] |= 0x40; 
- 430   1              baGPIOCtrl[GPIO_D_OUT] &= ~0x40; 
- 431   1              WaitMs(2);
- 432   1              
- 433   1              baGPIOCtrl[GPIO_A_IE] &= ~0x02;//A1
- 434   1              baGPIOCtrl[GPIO_A_OE] |= 0x02;
- 435   1              baGPIOCtrl[GPIO_A_PU] |= 0x02;
- 436   1              baGPIOCtrl[GPIO_A_PD] |= 0x02; 
- 437   1              baGPIOCtrl[GPIO_A_OUT] &= ~0x02; 
- 438   1              WaitMs(2);
- 439   1              
- 440   1              baGPIOCtrl[GPIO_A_IE] &= ~0x04;//A2
- 441   1              baGPIOCtrl[GPIO_A_OE] |= 0x04;
- 442   1              baGPIOCtrl[GPIO_A_PU] |= 0x04;
- 443   1              baGPIOCtrl[GPIO_A_PD] |= 0x04; 
- 444   1              baGPIOCtrl[GPIO_A_OUT] &= ~0x04; 
- 445   1              WaitMs(2);
- 446   1      #endif
- 447   1      }
- 448          
- 449          
- 450          // Key process, image key value to key event.
- 451          MESSAGE AdcKeyEventGet(VOID)                                                    
- 452          {
- 453   1              static  BYTE PreKeyIndex = -1;
- 454   1              static  BYTE KeyIndex;
- 455   1      
- 456   1              //DBG(("AdcKeyEventGet*******\n"));
- 457   1              if(!IsTimeOut(&AdcKeyScanTimer))
- 458   1              {
- 459   2                      return MSG_NONE;
- 460   2              }
- 461   1              TimeOutSet(&AdcKeyScanTimer, ADC_KEY_SCAN_TIME);        
- 462   1      
- 463   1              KeyIndex = GetAdcKeyIndex();
- 464   1      
- 465   1      #ifdef FUNC_BEEP_SOUND_EN       
+ 426   1              baGPIOCtrl[GPIO_D_PU] |= 0x40;
+ 427   1              baGPIOCtrl[GPIO_D_PD] |= 0x40; 
+ 428   1              baGPIOCtrl[GPIO_D_OUT] &= ~0x40; 
+ 429   1              
+ 430   1              baGPIOCtrl[GPIO_A_IE] &= ~0x02;//A1
+ 431   1              baGPIOCtrl[GPIO_A_OE] |= 0x02;
+ 432   1              baGPIOCtrl[GPIO_A_PU] |= 0x02;
+ 433   1              baGPIOCtrl[GPIO_A_PD] |= 0x02; 
+ 434   1              baGPIOCtrl[GPIO_A_OUT] &= ~0x02; 
+ 435   1              
+ 436   1              baGPIOCtrl[GPIO_A_IE] &= ~0x04;//A2
+ 437   1              baGPIOCtrl[GPIO_A_OE] |= 0x04;
+ 438   1              baGPIOCtrl[GPIO_A_PU] |= 0x04;
+ 439   1              baGPIOCtrl[GPIO_A_PD] |= 0x04; 
+ 440   1              baGPIOCtrl[GPIO_A_OUT] &= ~0x04; 
+ 441   1              WaitUs(20);
+ 442   1      #endif
+ 443   1      }
+ 444          
+ 445          
+ 446          // Key process, image key value to key event.
+ 447          MESSAGE AdcKeyEventGet(VOID)                                                    
+ 448          {
+ 449   1              static  BYTE PreKeyIndex = -1;
+ 450   1              static  BYTE KeyIndex;
+ 451   1      
+ 452   1              //DBG(("AdcKeyEventGet*******\n"));
+ 453   1              if(!IsTimeOut(&AdcKeyScanTimer))
+ 454   1              {
+ 455   2                      return MSG_NONE;
+ 456   2              }
+ 457   1              TimeOutSet(&AdcKeyScanTimer, ADC_KEY_SCAN_TIME);        
+ 458   1      
+ 459   1              KeyIndex = GetAdcKeyIndex();
+ 460   1      
+ 461   1      #ifdef FUNC_BEEP_SOUND_EN       
                       gPushKeyNeedBeepFlag = FALSE;
               #endif
- 468   1      
- 469   1              switch(AdcKeyState)
- 470   1              {
- 471   2                      case ADC_KEY_STATE_IDLE:
- 472   2                              if(KeyIndex == -1)
- 473   2                              {
- 474   3      #ifdef CSR_IO_CTRL
- 475   3                                      baGPIOCtrl[GPIO_D_OUT] &= ~0x04;//D2
- 476   3                              
- 477   3                                      baGPIOCtrl[GPIO_A_OUT] &= ~0x02;//A1
- 478   3                                      baGPIOCtrl[GPIO_A_OUT] &= ~0x04;//A2
- 479   3                                       
- 480   3      #endif                          
- 481   3                                      return MSG_NONE;
- 482   3                              }
- 483   2      
- 484   2                              PreKeyIndex = KeyIndex;
- 485   2                              TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_JTTER_TIME);
- 486   2                              //DBG(("GOTO JITTER!\n"));
- 487   2                              AdcKeyState = ADC_KEY_STATE_JITTER;
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 9   
+ 464   1      
+ 465   1              switch(AdcKeyState)
+ 466   1              {
+ 467   2                      case ADC_KEY_STATE_IDLE:
+ 468   2                              if(KeyIndex == -1)
+ 469   2                              {
+ 470   3      #ifdef CSR_IO_CTRL
+ 471   3                                      baGPIOCtrl[GPIO_D_OUT] &= ~0x04;//D2
+ 472   3                              
+ 473   3                                      baGPIOCtrl[GPIO_A_OUT] &= ~0x02;//A1
+ 474   3                                      baGPIOCtrl[GPIO_A_OUT] &= ~0x04;//A2
+ 475   3                                       
+ 476   3      #endif                          
+ 477   3                                      return MSG_NONE;
+ 478   3                              }
+ 479   2      
+ 480   2                              PreKeyIndex = KeyIndex;
+ 481   2                              TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_JTTER_TIME);
+ 482   2                              //DBG(("GOTO JITTER!\n"));
+ 483   2                              AdcKeyState = ADC_KEY_STATE_JITTER;
+ 484   2                                      
+ 485   2                      case ADC_KEY_STATE_JITTER:
+ 486   2                              if(PreKeyIndex != KeyIndex)
+ 487   2                              {
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 9   
 
- 488   2                                      
- 489   2                      case ADC_KEY_STATE_JITTER:
- 490   2                              if(PreKeyIndex != KeyIndex)
- 491   2                              {
- 492   3                                      //DBG(("%bx != %bx,GOTO IDLE Because jitter!\n", PreKeyIndex, KeyIndex));
- 493   3                                      AdcKeyState = ADC_KEY_STATE_IDLE;
- 494   3                              }
- 495   2                              else if(IsTimeOut(&AdcKeyWaitTimer))
- 496   2                              {
- 497   3                                      //DBG(("GOTO PRESS_DOWN!\n"));
- 498   3      //                              if((PreKeyIndex == ADC_KEY_POWER0_IDX)  
- 499   3      //                              ||(PreKeyIndex == ADC_KEY_POWER1_IDX)
- 500   3      //                              || (PreKeyIndex == ADC_KEY_POWER2_IDX)                          
- 501   3      //                              )
- 502   3      //                              {        
- 503   3      //                                      //set cp-time 3000ms for power-down key 
- 504   3      //                                      TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_PWRDOWN_CP_TIME);  
- 505   3      //                              }       
- 506   3      
- 507   3      #ifdef HEADPHONE_ADC_PORT_CH
+ 488   3                                      //DBG(("%bx != %bx,GOTO IDLE Because jitter!\n", PreKeyIndex, KeyIndex));
+ 489   3                                      AdcKeyState = ADC_KEY_STATE_IDLE;
+ 490   3                              }
+ 491   2                              else if(IsTimeOut(&AdcKeyWaitTimer))
+ 492   2                              {
+ 493   3                                      //DBG(("GOTO PRESS_DOWN!\n"));
+ 494   3      //                              if((PreKeyIndex == ADC_KEY_POWER0_IDX)  
+ 495   3      //                              ||(PreKeyIndex == ADC_KEY_POWER1_IDX)
+ 496   3      //                              || (PreKeyIndex == ADC_KEY_POWER2_IDX)                          
+ 497   3      //                              )
+ 498   3      //                              {        
+ 499   3      //                                      //set cp-time 3000ms for power-down key 
+ 500   3      //                                      TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_PWRDOWN_CP_TIME);  
+ 501   3      //                              }       
+ 502   3      
+ 503   3      #ifdef HEADPHONE_ADC_PORT_CH
                                               if(PreKeyIndex == ADC_KEY_HPPUSHOUT_IDX)
                                               {
                                                       TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_HPPUSHOUT_CP_TIME);
                                               }
                                               else
               #endif                          
- 514   3                                      {
- 515   4                                              //DBG(("ADC_KEY_CP_TIME!\n"));
- 516   4                                              TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_CP_TIME);
- 517   4                                      }
- 518   3                                      AdcKeyState = ADC_KEY_STATE_PRESS_DOWN;
- 519   3                              }
- 520   2                              break;
- 521   2      
- 522   2                      case ADC_KEY_STATE_PRESS_DOWN:
- 523   2                              if(PreKeyIndex != KeyIndex)
- 524   2                              {
- 525   3                                      //return key sp value
- 526   3                                      //DBG(("KEY  SP  %bu\n",PreKeyIndex));
- 527   3                                      AdcKeyState = ADC_KEY_STATE_IDLE;
- 528   3      #ifdef FUNC_BEEP_SOUND_EN       
+ 510   3                                      {
+ 511   4                                              //DBG(("ADC_KEY_CP_TIME!\n"));
+ 512   4                                              TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_CP_TIME);
+ 513   4                                      }
+ 514   3                                      AdcKeyState = ADC_KEY_STATE_PRESS_DOWN;
+ 515   3                              }
+ 516   2                              break;
+ 517   2      
+ 518   2                      case ADC_KEY_STATE_PRESS_DOWN:
+ 519   2                              if(PreKeyIndex != KeyIndex)
+ 520   2                              {
+ 521   3                                      //return key sp value
+ 522   3                                      //DBG(("KEY  SP  %bu\n",PreKeyIndex));
+ 523   3                                      AdcKeyState = ADC_KEY_STATE_IDLE;
+ 524   3      #ifdef FUNC_BEEP_SOUND_EN       
                                               gPushKeyNeedBeepFlag = TRUE;
               #endif
- 531   3      
- 532   3      #ifdef HEADPHONE_ADC_PORT_CH
+ 527   3      
+ 528   3      #ifdef HEADPHONE_ADC_PORT_CH
                                               if((PreKeyIndex == ADC_KEY_HPPUSHIN_IDX) || (PreKeyIndex == ADC_KEY_HPPUSHOUT_IDX))
                                               {
                                                       break;
                                               }
               #endif
- 538   3      
- 539   3      #ifdef CSR_IO_CTRL
- 540   3                                      if(gSys.SystemMode == SYS_MODE_BLUETOOTH )
- 541   3                                      {                               
- 542   4                                              switch(KeyIndex)
- 543   4                                              {
- 544   5                                              case 0:
- 545   5                                                      baGPIOCtrl[GPIO_A_OUT] |= 0x02; //A1
- 546   5                                                      break;
- 547   5                                              case 1: 
- 548   5                                                      baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
- 549   5                                                      break;
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 10  
+ 534   3      
+ 535   3      #ifdef CSR_IO_CTRL
+ 536   3                                      if(gSys.SystemMode == SYS_MODE_BLUETOOTH )
+ 537   3                                      {                               
+ 538   4                                              switch(KeyIndex)
+ 539   4                                              {
+ 540   5                                              case 0:
+ 541   5                                                      baGPIOCtrl[GPIO_A_OUT] |= 0x02; //A1
+ 542   5                                                      break;
+ 543   5                                              case 1: 
+ 544   5                                                      baGPIOCtrl[GPIO_A_OUT] |= 0x04; //A2
+ 545   5                                                      break;
+ 546   5                                              case 2:
+ 547   5                                                      baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
+ 548   5                                                      break;
+ 549   5                                              
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 10  
 
- 550   5                                              case 2:
- 551   5                                                      baGPIOCtrl[GPIO_D_OUT] |= 0x04; //D2
- 552   5                                                      break;
- 553   5                                              
- 554   5                                              default:
- 555   5                                                      break;
- 556   5                                              }
- 557   4                                      }
- 558   3      
- 559   3      #endif
- 560   3      
- 561   3                                      return AdcKeyEvent[PreKeyIndex][0];
- 562   3                              }
- 563   2                              else if(IsTimeOut(&AdcKeyWaitTimer))
- 564   2                              {
- 565   3                                      //return key cp value
- 566   3                                      //DBG(("KEY CPS  %bu\n",PreKeyIndex));
- 567   3                                      TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_CPH_TIME);
- 568   3                                      AdcKeyState = ADC_KEY_STATE_CP;
- 569   3      #ifdef FUNC_BEEP_SOUND_EN       
+ 550   5                                              default:
+ 551   5                                                      break;
+ 552   5                                              }
+ 553   4                                      }
+ 554   3      
+ 555   3      #endif
+ 556   3      
+ 557   3                                      return AdcKeyEvent[PreKeyIndex][0];
+ 558   3                              }
+ 559   2                              else if(IsTimeOut(&AdcKeyWaitTimer))
+ 560   2                              {
+ 561   3                                      //return key cp value
+ 562   3                                      //DBG(("KEY CPS  %bu\n",PreKeyIndex));
+ 563   3                                      TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_CPH_TIME);
+ 564   3                                      AdcKeyState = ADC_KEY_STATE_CP;
+ 565   3      #ifdef FUNC_BEEP_SOUND_EN       
                                               gPushKeyNeedBeepFlag = TRUE;
               #endif
- 572   3      
- 573   3      #ifdef HEADPHONE_ADC_PORT_CH
+ 568   3      
+ 569   3      #ifdef HEADPHONE_ADC_PORT_CH
                                               if(PreKeyIndex == ADC_KEY_HPPUSHIN_IDX) 
                                               {                                       
                                                       break;
@@ -610,43 +606,43 @@ line level    source
                                                       break;
                                               }
               #endif
- 584   3                                      return AdcKeyEvent[PreKeyIndex][1];
- 585   3                              }
- 586   2                              break;
- 587   2      
- 588   2                      case ADC_KEY_STATE_CP:
- 589   2                              if(PreKeyIndex != KeyIndex)
- 590   2                              {
- 591   3                                      //return key cp value
- 592   3                                      //DBG(("ADC KEY CPR!\n"));
- 593   3                                      AdcKeyState = ADC_KEY_STATE_IDLE;                               
- 594   3      #ifdef HEADPHONE_ADC_PORT_CH
+ 580   3                                      return AdcKeyEvent[PreKeyIndex][1];
+ 581   3                              }
+ 582   2                              break;
+ 583   2      
+ 584   2                      case ADC_KEY_STATE_CP:
+ 585   2                              if(PreKeyIndex != KeyIndex)
+ 586   2                              {
+ 587   3                                      //return key cp value
+ 588   3                                      //DBG(("ADC KEY CPR!\n"));
+ 589   3                                      AdcKeyState = ADC_KEY_STATE_IDLE;                               
+ 590   3      #ifdef HEADPHONE_ADC_PORT_CH
                                               if((PreKeyIndex == ADC_KEY_HPPUSHIN_IDX) || (PreKeyIndex == ADC_KEY_HPPUSHOUT_IDX))
                                               {
                                                       break;
                                               }
               #endif
- 600   3                                      return AdcKeyEvent[PreKeyIndex][3];
- 601   3                              }
- 602   2                              else if(IsTimeOut(&AdcKeyWaitTimer))
- 603   2                              {
- 604   3                                      //return key cph value
- 605   3                                      //DBG(("ADC KEY CPH!\n"));
- 606   3      //                              if((PreKeyIndex == ADC_KEY_POWER0_IDX)  
- 607   3      //                              ||(PreKeyIndex == ADC_KEY_POWER1_IDX)
- 608   3      //                              || (PreKeyIndex == ADC_KEY_POWER2_IDX))
- 609   3      //                              {        
- 610   3      //                                      //set cp-time 3000ms for power-down key 
- 611   3      //                                      //DBG(("ADC POWER!\n"));
-C51 COMPILER V9.00   ADC_KEY                                                               12/29/2015 21:03:19 PAGE 11  
+ 596   3                                      return AdcKeyEvent[PreKeyIndex][3];
+ 597   3                              }
+ 598   2                              else if(IsTimeOut(&AdcKeyWaitTimer))
+ 599   2                              {
+ 600   3                                      //return key cph value
+ 601   3                                      //DBG(("ADC KEY CPH!\n"));
+ 602   3      //                              if((PreKeyIndex == ADC_KEY_POWER0_IDX)  
+ 603   3      //                              ||(PreKeyIndex == ADC_KEY_POWER1_IDX)
+ 604   3      //                              || (PreKeyIndex == ADC_KEY_POWER2_IDX))
+ 605   3      //                              {        
+ 606   3      //                                      //set cp-time 3000ms for power-down key 
+ 607   3      //                                      //DBG(("ADC POWER!\n"));
+ 608   3      //                                      TimeOutSet(&AdcKeyWaitTimer, 3000);
+ 609   3      //                              }
+ 610   3      //                              else
+ 611   3      //                              {
+C51 COMPILER V9.00   ADC_KEY                                                               12/30/2015 18:11:22 PAGE 11  
 
- 612   3      //                                      TimeOutSet(&AdcKeyWaitTimer, 3000);
+ 612   3                                              TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_CPH_TIME);
  613   3      //                              }
- 614   3      //                              else
- 615   3      //                              {
- 616   3                                              TimeOutSet(&AdcKeyWaitTimer, ADC_KEY_CPH_TIME);
- 617   3      //                              }
- 618   3      #ifdef HEADPHONE_ADC_PORT_CH
+ 614   3      #ifdef HEADPHONE_ADC_PORT_CH
                                               if(PreKeyIndex == ADC_KEY_HPPUSHIN_IDX)
                                               {
                                                       IsHeadphoneLinkFlag = TRUE;
@@ -658,26 +654,26 @@ line level    source
                                                       break;
                                               }
               #endif
- 630   3                                      return AdcKeyEvent[PreKeyIndex][2];
- 631   3                              }
+ 626   3                                      return AdcKeyEvent[PreKeyIndex][2];
+ 627   3                              }
+ 628   2                              break;
+ 629   2      
+ 630   2                      default:
+ 631   2                              AdcKeyState = ADC_KEY_STATE_IDLE;
  632   2                              break;
- 633   2      
- 634   2                      default:
- 635   2                              AdcKeyState = ADC_KEY_STATE_IDLE;
- 636   2                              break;
- 637   2              }
- 638   1              return MSG_NONE;
- 639   1      }
- 640          
- 641          
- 642          #else
+ 633   2              }
+ 634   1              return MSG_NONE;
+ 635   1      }
+ 636          
+ 637          
+ 638          #else
                       #warning        "MV: ADC KEY NOT ENABLE!"
                       
               #endif
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    844    ----
+   CODE SIZE        =    810    ----
    CONSTANT SIZE    =     25    ----
    XDATA SIZE       =     13       1
    PDATA SIZE       =   ----    ----

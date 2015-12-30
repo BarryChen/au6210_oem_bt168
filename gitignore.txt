@@ -1,0 +1,4 @@
+output/
+/168_7key*
+/MVs6210_R1_src*
+/ALD800_oem168_7key*

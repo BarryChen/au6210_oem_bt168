@@ -1,5 +1,0 @@
----- RadioDisCurFreBlink Matches (4 in 2 files) ----
-Radio_ctrl.c (radio):					RadioDisFlag = RadioDisCurFreBlink;
-Radio_ctrl.c (radio):				RadioDisFlag = RadioDisCurFreBlink;
-Radio_ctrl.c (radio):				else if(RadioDisFlag == RadioDisCurFreBlink)
-Radio_ctrl.h (radio):#define RadioDisCurFreBlink		3	//иак╦
