@@ -12,6 +12,7 @@
 #include "pt231x.h"
 #include "bt.h"
 #include "npca110x.h"
+#include "power_monitor.h"
 
 
 
@@ -682,23 +683,21 @@ VOID TimerTick1ms(VOID)
 		}
 	}
 #endif
-#if 0
-
+#if 1
 	if(gSys.SystemMode == SYS_MODE_BLUETOOTH)
 	{
 		if(btIO_Red_Led_is_High())
-		{
 			setMCU_Red__Led_Port();
-		}
 		else
-		{
 			clrMCU_Red__Led_Port();
-		}
 
 		if(btIO_Blue_Led_is_High())
 			setMCU_Blue__Led_Port();
 		else
-			clrMCU_Blue__Led_Port();
+			if(GetPwrDisp() != PWR_MNT_DISP_EMPTY_V)
+				clrMCU_Blue__Led_Port();
+			else
+				setMCU_Blue__Led_Port();				
 
 #ifdef FUNC_EXMUTE_EN
 		if(BTisMute())		

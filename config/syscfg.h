@@ -53,7 +53,9 @@
 //#define AU6210K_LK_SJ_CSRBT     //莱卡·户外
 #define AU6210K_ZB_BT007_CSR    //智博bt007 key 
 //#define AU6210K_XLX_ALD800  // 新联芯ADL800:oem智博bt007 <FM+LINE+CSRBT>
-#define AU6210K_MINI503      //新联芯mini503:oem ald800    <FM+TF+CSRBT>
+//#define AU6210K_MINI503      //新联芯mini503:oem ald800    <FM+TF+CSRBT>
+
+#define AU6210K_AT_BT809      //新联芯AT-BT8093:oem ald800    <FM+TF+CSRBT+LINEOFF>
 
 #ifdef AU6210K_MINI503
 #define FUNC_BT_CHAN_AUTO
@@ -87,18 +89,18 @@
 //#define FUNC_CARD_EN				//CARD HOST功能(可连接SD/TF卡播歌),卡检测引脚配置见下面
 #endif
 
-#if defined(AU6210K_MINI503)
+#if defined(AU6210K_MINI503) || defined(AU6210K_AT_BT809)
 #define FUNC_CARD_EN	
 #endif
 
-//#define FUNC_LINEIN_EN				
+#define FUNC_LINEIN_EN				
 
 #if defined(AU6210K_NR_D_8_CSRBT)||defined(AU6210K_ZB_BT007_CSR)
 #else//no use radio
 #define FUNC_RADIO_EN				//Radio功能,该型号芯片内部集成高性能FM模块
 #endif
 
-#if defined(AU6210K_XLX_ALD800) || defined(AU6210K_MINI503)//ald800 use radio
+#if defined(AU6210K_XLX_ALD800) || defined(AU6210K_MINI503) || defined(AU6210K_AT_BT809)//ald800 use radio
 #define FUNC_RADIO_EN	
 #endif
 
@@ -106,7 +108,7 @@
 //#define		BT_BtPOWEROFF_TIME	(DWORD)(600000)///10min 5000//5s///5000//5s use debug
 //#define FUNC_READER_EN      		//单独的USB读卡器模式
 #endif
-//#define FUNC_AUDIO_READER_EN		//一线通模式，PC同时识别出USB声卡和USB读卡器	
+#define FUNC_AUDIO_READER_EN		//一线通模式，PC同时识别出USB声卡和USB读卡器	
 //#define FUNC_AUDIO_EN				//单独的USB声卡模式	
 //#define FUNC_STANDBY_EN		//支持待机模式，默认不开启
 //#define FUNC_BLUETOOTH_EN
@@ -324,7 +326,7 @@
 #endif
 
 #if !defined(AU6210K_NR_D_8_CSRBT)
-#define FUNC_NUMBER_KEY_EN		//打开该宏定义，支持数字按键功能
+//#define FUNC_NUMBER_KEY_EN		//打开该宏定义，支持数字按键功能
 #endif
 
 
@@ -474,7 +476,7 @@
 	//该方式要求芯片带POWER_KEY引脚，可以实现极低功耗(powerdown)下保留重要信息的要求
 	//选择该方式后，默认系统包含POWER_KEY功能(必须选择带POWER KEY的芯片型号)
 	#if defined(AU6210K_ZB_BT007_CSR) || defined(AU6210K_LK_SJ_CSRBT)
-		#if defined(AU6210K_XLX_ALD800) || defined(AU6210K_MINI503)
+		#if defined(AU6210K_XLX_ALD800) || defined(AU6210K_MINI503)|| defined(AU6210K_AT_BT809)
 		#define PWR_KEY_MODE	 PWR_KEY_PUSH_BUTTON
 		#else
 	 	#define PWR_KEY_MODE	 PWR_KEY_SLIDE_SWITCH	//PWR_KEY_PUSH_BUTTON
@@ -487,7 +489,7 @@
 		//如果选择软开关，可以定义POWER KEY开关机保持时间
 		//在开机阶段，是指用户必须按住POWER_KEY超过[开关机保持时间]后，系统才会点亮显示继续运行，否则芯片再次进入powerdown
 		//在关机阶段，用户必须按住POWER_KEY超过[开关机保持时间]后，系统才会关闭显示等，然后进入powerdown.
-	#if defined(AU6210K_MINI503)
+	#if defined(AU6210K_MINI503)|| defined(AU6210K_AT_BT809)
 	#define TIME_POWER_ON_HOLD		1000	//单位ms
 	#define TIME_POWER_OFF_HOLD 	1000
 
@@ -669,7 +671,7 @@
 // FUNC_EXMUTE_EN：是否支持IO控制声音使能
 // EXMUTE_PORT_IE ~ EXMUTE_PORT_OUT：外部Mute引脚配置，比如A6
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////			
-//#define FUNC_EXMUTE_EN
+#define FUNC_EXMUTE_EN
 
 #ifdef FUNC_EXMUTE_EN
 #if 0
@@ -694,7 +696,7 @@
 	#define EXMUTE_PORT_OE				GPIO_D_OE
 	#define EXMUTE_PORT_PU				GPIO_D_PU
 	#define EXMUTE_PORT_PD				GPIO_D_PD
-	#define EXMUTE_PORT_BIT				(1 << 4)   //D6
+	#define EXMUTE_PORT_BIT				(1 << 3)   //D3
 	#define EXMUTE_PORT_OUT				GPIO_D_OUT
 #elif defined(AU6210K_HXX_B002)
 	#define EXMUTE_PORT_IE				GPIO_A_IE

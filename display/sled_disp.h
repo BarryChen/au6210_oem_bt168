@@ -57,19 +57,19 @@
 #define SLED_PORT_PD		GPIO_A_PD
 
 #define SLED_POWER_PORT		GPIO_A_OUT
-#define MASK_SLED_POWER		(1 << 0)	// a[0]  mp3 led blue
+#define MASK_SLED_POWER		(1 << 0)	// A0 blue led
 
 
 
 
-#define SLED_MP3_IE		GPIO_B_IE
-#define SLED_MP3_OE		GPIO_B_OE
-#define SLED_MP3_OUT	GPIO_B_OUT
-#define SLED_MP3_PU		GPIO_B_PU
-#define SLED_MP3_PD		GPIO_B_PD
+#define SLED_MP3_IE		GPIO_E_IE
+#define SLED_MP3_OE		GPIO_E_OE
+#define SLED_MP3_OUT	GPIO_E_OUT
+#define SLED_MP3_PU		GPIO_E_PU
+#define SLED_MP3_PD		GPIO_E_PD
 
-#define SLED_MP3_PORT		GPIO_B_OUT
-#define MASK_SLED_MP3		(1 << 5)	// a[0]
+#define SLED_MP3_PORT		GPIO_E_OUT
+#define MASK_SLED_MP3		(1 << 2)	// E2  MP3 led  red
 
 
 

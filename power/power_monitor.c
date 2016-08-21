@@ -304,7 +304,7 @@ VOID PowerMonitor(VOID)
 		}
 #endif		
 
-#ifdef AU6210K_MINI503
+#ifdef AU6210K_MINI503  //µÕµÁÃ· æ“Ù
 		
 				if(PwrMntDisp == PWR_MNT_DISP_EMPTY_V)
 				{

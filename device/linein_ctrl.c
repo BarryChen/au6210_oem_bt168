@@ -72,6 +72,8 @@ VOID LineInCtrlInit(VOID)
 //	IsVolumeUpEnd = FALSE;
 //	SetLineInVolume(VolumeVal);
 //	TimeOutSet(&VolumeUpTimer, 10);
+	SystemOff();
+
 #ifdef AU6210K_NR_D_8_CSRBT
 	NPCA110X_DAC1_Set_Volume_and_Mute(gSys.Volume);
 #else

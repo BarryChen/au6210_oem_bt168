@@ -1052,7 +1052,7 @@ VOID PlayStateCtrl(VOID)
 #endif
 				break;
 
-			//case MSG_EQ_SW:
+			case MSG_EQ_SW:
 			case MSG_EQ_CH_SUB:
 				DBG(("EQ\n"));	
 				gPlayCtrl.Eq++;

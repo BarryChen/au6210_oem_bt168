@@ -1137,7 +1137,7 @@ static VOID TryGotoNextMode(BYTE Mode)
 
 
 #ifdef FUNC_LINEIN_EN
-		SYS_MODE_LINEIN,
+		//SYS_MODE_LINEIN,
 #endif	
 
 #ifdef FUNC_RADIO_EN

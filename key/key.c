@@ -56,7 +56,7 @@ BOOL GetIrIsOn(void)
 	return IrIsOn;
 }
 #endif
-#ifdef FUNC_BLUETOOTH_CSR_EN
+#if 0//def FUNC_BLUETOOTH_CSR_EN
 MESSAGE IsDoubleClick(MESSAGE event)
 {
 	TIMER DoubleClickTimer;

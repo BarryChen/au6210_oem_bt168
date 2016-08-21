@@ -42,59 +42,59 @@
 #define MCUIO_PORT  //need config
 
 #ifdef BTLED_PORT
-#define BTIO_PORT_BLUE_LED_INIT()/*D0*/	do{ \	
-	ClrGpioRegBit(GPIO_D_PU, (1 << 0));\
-	ClrGpioRegBit(GPIO_D_PD, (1 << 0));	\
-	ClrGpioRegBit(GPIO_D_OE, (1 << 0));\
-	SetGpioRegBit(GPIO_D_IE, (1 << 0));\
-	}while(0)
-#define GET_BLUE_LED_STATUS()/*D0*/	 \	
-	GetGpioReg(GPIO_D_IN) & (1 << 0)
-
-
-
-#define BTIO_PORT_RED_LED_INIT()/*D1*/	do{ \	
+#define BTIO_PORT_BLUE_LED_INIT()/*D1*/	do{ \	
 	ClrGpioRegBit(GPIO_D_PU, (1 << 1));\
 	ClrGpioRegBit(GPIO_D_PD, (1 << 1));	\
 	ClrGpioRegBit(GPIO_D_OE, (1 << 1));\
 	SetGpioRegBit(GPIO_D_IE, (1 << 1));\
 	}while(0)
-#define GET_RED_LED_STATUS()/*D1*/	\	
+#define GET_BLUE_LED_STATUS()/*D1*/	 \	
 	GetGpioReg(GPIO_D_IN) & (1 << 1)
+
+
+
+#define BTIO_PORT_RED_LED_INIT()/*D0*/	do{ \	
+	ClrGpioRegBit(GPIO_D_PU, (1 << 0));\
+	ClrGpioRegBit(GPIO_D_PD, (1 << 0));	\
+	ClrGpioRegBit(GPIO_D_OE, (1 << 0));\
+	SetGpioRegBit(GPIO_D_IE, (1 << 0));\
+	}while(0)
+#define GET_RED_LED_STATUS()/*D0*/	\	
+	GetGpioReg(GPIO_D_IN) & (1 << 0)
 
 #endif
 
 
 
 
-#ifdef MCUIO_PORT
-#define MCUIO_PORT_red_LED_INIT()/*D1*/	do{ \	
-	SetGpioRegBit(GPIO_B_PU, (1 << 5));\
-	ClrGpioRegBit(GPIO_B_PD, (1 << 5));	\
-	ClrGpioRegBit(GPIO_B_OE, (1 << 5));\
-	SetGpioRegBit(GPIO_B_OUT, (1 << 5));\
-	ClrGpioRegBit(GPIO_B_IE, (1 << 5));\
+#ifdef MCUIO_PORT//AT-BT809:E2 A0
+#define MCUIO_PORT_red_LED_INIT()/*E2*/	do{ \	
+	SetGpioRegBit(GPIO_E_PU, (1 << 2));\
+	ClrGpioRegBit(GPIO_E_PD, (1 << 2));	\
+	ClrGpioRegBit(GPIO_E_OE, (1 << 2));\
+	SetGpioRegBit(GPIO_E_OUT, (1 << 2));\
+	ClrGpioRegBit(GPIO_E_IE, (1 << 2));\
 	}while(0)
-#define SET_MCU_red_LED_PORT()/*D1*/	do{ \	
-	SetGpioRegBit(GPIO_B_OUT, (1 << 5)); \
+#define SET_MCU_red_LED_PORT()/*E2*/	do{ \	
+	SetGpioRegBit(GPIO_E_OUT, (1 << 2)); \
 	}while(0)
 
-#define CLR_MCU_red_LED_PORT()/*D1*/	do{ \	
-	ClrGpioRegBit(GPIO_B_OUT, (1 << 5)); \
+#define CLR_MCU_red_LED_PORT()/*E2*/	do{ \	
+	ClrGpioRegBit(GPIO_E_OUT, (1 << 2)); \
 	}while(0)
 	
 
-#define MCUIO_PORT_blue_LED_INIT()/*D1*/	do{ \	
+#define MCUIO_PORT_blue_LED_INIT()/*A0*/	do{ \	
 	SetGpioRegBit(GPIO_A_PU, (1 << 0));\
 	ClrGpioRegBit(GPIO_A_PD, (1 << 0));	\
 	ClrGpioRegBit(GPIO_A_OE, (1 << 0));\
 	SetGpioRegBit(GPIO_A_OUT, (1 << 0));\
 	ClrGpioRegBit(GPIO_A_IE, (1 << 0));\
 	}while(0)
-#define SET_MCU_blue_LED_PORT()/*D1*/	do{ \	
+#define SET_MCU_blue_LED_PORT()/*A0*/	do{ \	
 	SetGpioRegBit(GPIO_A_OUT, (1 << 0));\
 	}while(0)
-#define CLR_MCU_blue_LED_PORT()/*D1*/	do{ \	
+#define CLR_MCU_blue_LED_PORT()/*A0*/	do{ \	
 	ClrGpioRegBit(GPIO_A_OUT, (1 << 0));\
 	}while(0)
 
@@ -149,13 +149,13 @@
 #elif defined(AU6210K_ZB_BT007_CSR) 
 
 #define BTIO_PORT_MUTE_INIT()/*a7*/	do{ \	
-	SetGpioRegBit(GPIO_B_IE, (1 << 6));\
-	ClrGpioRegBit(GPIO_B_OE, (1 << 6));\
-	SetGpioRegBit(GPIO_B_PU, (1 << 6));\
-	SetGpioRegBit(GPIO_B_PD, (1 << 6));	\
+	ClrGpioRegBit(GPIO_A_PU, (1 << 7));\
+	ClrGpioRegBit(GPIO_A_PD, (1 << 7));	\
+	ClrGpioRegBit(GPIO_A_OE, (1 << 7));\
+	SetGpioRegBit(GPIO_A_IE, (1 << 7));\
 	}while(0)
 #define GET_BT_MUTE_STATUS()/*a7*/	\	
-	GetGpioReg(GPIO_B_IN) & (1 << 6)
+	GetGpioReg(GPIO_A_IN) & (1 << 7)
 
 
 #define btIO_Mute_Need_mute() \

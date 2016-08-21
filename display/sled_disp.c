@@ -56,11 +56,11 @@ VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
 #if defined(FUNC_SINGLE_LED_HIGHON_EN)
 			SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
 #else
-			if(gSys.SystemMode == SYS_MODE_BLUETOOTH ||
-				ChannelType == 3)
-				ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
-			else
+		
+			if(gSys.SystemMode != SYS_MODE_BLUETOOTH)
 				SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+			else
+				ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
 #endif
 		}
 		else
@@ -85,11 +85,7 @@ VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
 		if(IsLightOn)
 		{
 			DBG(("ON\n"));
-			if(gSys.SystemMode == SYS_MODE_BLUETOOTH ||
-				ChannelType == 3)
-				SetGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
-			else
-				ClrGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
+			ClrGpioRegBit(SLED_MP3_PORT, MASK_SLED_MP3);
 		}
 		else
 		{
@@ -1102,7 +1098,7 @@ VOID BassLed_CallBak(VOID)
 VOID SLedDisplay(VOID)
 {
 	BOOL Light;
-#if 0//defined(AU6210K_NR_D_8_CSRBT)
+#if defined(AU6210K_AT_BT809)
 #ifdef FUNC_POWER_MONITOR_EN
 	if(GetPwrDisp() == PWR_MNT_DISP_EMPTY_V)
 	{
@@ -1119,7 +1115,7 @@ VOID SLedDisplay(VOID)
 				SLedQuickoff = !SLedQuickoff;
 				Light = SLedQuickoff;
 			}
-			SLedLightOp(LED_POWER, Light);
+			//SLedLightOp(LED_POWER, Light);
 			SLedLightOp(LED_MP3, Light);
 
 		}

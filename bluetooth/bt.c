@@ -98,12 +98,16 @@ VOID BluetoothCtrlInit(VOID)
 #ifdef CSR_CALL_CHECK_PORT
 	BTIO_PORT_CALL_INIT();
 #endif
+
+#ifdef BTLED_PORT
 	//与CSR连接的IO口初始化
 	BTIO_PORT_BLUE_LED_INIT();
 	BTIO_PORT_RED_LED_INIT();
+#endif
+#ifdef MCUIO_PORT
 	//MCUIO_PORT_red_LED_INIT();//开机的时候初始化了灯的状态，此处不要再设置
 	//MCUIO_PORT_blue_LED_INIT();
-
+#endif
 
 	//TimeOutSet(&BT_Delay_ON, BT_DELAY_ON_TIME);	
 	//BT_POWER_ON_INIT();
@@ -192,7 +196,7 @@ VOID BluetothCtrlEnd(VOID)
 	InDacChannelSel(DAC_CH_NONE);
 	
 #ifdef FUNC_BT_CHAN_AUTO
-	//BT_POWER_L();
+	BT_POWER_L();
 #endif
 }
 
@@ -222,9 +226,9 @@ BOOL BTisMute()
 	//BTIO_PORT_MUTE_INIT();
 	//WaitUs(10);
 	if(GET_BT_MUTE_STATUS())
-		return FALSE;
-	else
 		return TRUE;
+	else
+		return FALSE;
 
 }
 
