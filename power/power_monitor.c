@@ -304,7 +304,7 @@ VOID PowerMonitor(VOID)
 		}
 #endif		
 
-#ifdef AU6210K_MINI503  //低电提示音
+#if defined(AU6210K_MINI503) || defined(AU6210K_AT_BT809)  //低电提示音
 		
 				if(PwrMntDisp == PWR_MNT_DISP_EMPTY_V)
 				{
