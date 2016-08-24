@@ -37,7 +37,27 @@ extern BOOL isDefaultBass;
 BOOL SLedOnOffFlag = FALSE;		//按键端口与单个LED端口共用时LED状态标志
 #endif
 
+#ifdef FUNC_MIN_MAX_VOLUME_LED
+BOOL min_max_volume_flag = FALSE;
+BOOL led_volume_display_end = TRUE;
+#endif
+
 extern 	BYTE ChannelType;
+VOID SetLedLightOp(SLED_IDX Led, BOOL IsLightOn)
+{
+	if(IsLightOn)
+	{
+		ClrGpioRegBit(GPIO_A_OUT, (1 << 0));
+		ClrGpioRegBit(GPIO_E_OUT, (1 << 2));
+	}
+	else
+	{
+		SetGpioRegBit(GPIO_A_OUT, (1 << 0));
+		SetGpioRegBit(GPIO_E_OUT, (1 << 2));
+		
+	}
+}
+
 // LED灯亮或灭.
 // led ->LED灯,isLightOn -> TRUE: lighton.
 VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
@@ -58,9 +78,19 @@ VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
 #else
 		
 			if(gSys.SystemMode != SYS_MODE_BLUETOOTH)
-				SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+			{
+			
+	#ifdef FUNC_MIN_MAX_VOLUME_LED
+				if(min_max_volume_flag)
+					ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+				else
+	#endif
+					SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+			}
 			else
+			{
 				ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+			}
 #endif
 		}
 		else
@@ -1095,10 +1125,117 @@ VOID BassLed_CallBak(VOID)
 }
 
 // 显示.
+#ifdef FUNC_MIN_MAX_VOLUME_LED
+VOID SetLedVolumeDis()
+{
+	if(min_max_volume_flag)
+	{
+		SLedFlickQuick = 1;
+		SLedQuickoff = 1;
+		SLedFlickNormal = 0;
+		SLedNormaloff = 0;
+		SLedFlickSlow = 0;
+		SLedSlowoff = 0;
+		SLedLightOp(LED_POWER, LIGHTOFF);
+		SLedLightOp(LED_MP3, LIGHTOFF);
+		TimeOutSet(&DispTmr, VOLUME_BLINK_INTERVAL);
+	}
+	else
+	{
+		gBlink.BlinkFlag=0;
+	}
+}
+
+
+#endif
+
+typedef enum display_status
+{
+	display_prepare = 0,
+  	display_doing = 1,
+  	display_done = 2,
+}DISPLAY_STATUS;
+
+static DISPLAY_STATUS status  = display_prepare;
+static BYTE led_times = 0;
+
 VOID SLedDisplay(VOID)
 {
 	BOOL Light;
 #if defined(AU6210K_AT_BT809)
+
+#ifdef FUNC_MIN_MAX_VOLUME_LED
+	TIMER ledDispTmr;
+	if(min_max_volume_flag)
+	{
+		switch(status)
+		{
+		case display_prepare:
+			SLedFlickQuick = 1;
+			SLedQuickoff = 1;
+			SLedFlickNormal = 0;
+			SLedNormaloff = 0;
+			SLedFlickSlow = 0;
+			SLedSlowoff = 0;
+			SLedLightOp(LED_POWER, LIGHTOFF);
+			SLedLightOp(LED_MP3, LIGHTOFF);
+			TimeOutSet(&DispTmr, VOLUME_BLINK_INTERVAL);
+			TimeOutSet(&ledDispTmr, 1100);
+			
+			status = display_doing;
+			break;
+		case display_doing:
+			if(IsTimeOut(&ledDispTmr))
+			{
+				status = display_done;
+				return;
+			}
+			if(gBlink.BlinkFlag)
+			{
+				if(!IsTimeOut(&DispTmr))
+				{
+					return;
+				}
+				
+				if(SLedFlickQuick)
+				{
+					//DBG(("SLedFlickQuick\n"));
+					TimeOutSet(&DispTmr, VOLUME_BLINK_INTERVAL);
+					SLedQuickoff = !SLedQuickoff;
+					Light = SLedQuickoff;
+				}
+				SLedLightOp(LED_POWER, Light);
+				SLedLightOp(LED_MP3, Light);
+			}
+			else
+			{
+				SLedFlickQuick = 1;
+				SLedQuickoff = 1;
+				SLedFlickNormal = 0;
+				SLedNormaloff = 0;
+				SLedFlickSlow = 0;
+				SLedSlowoff = 0;
+				SLedLightOp(LED_POWER, LIGHTOFF);
+				SLedLightOp(LED_MP3, LIGHTOFF);
+				TimeOutSet(&DispTmr, VOLUME_BLINK_INTERVAL);
+			}
+			return;
+			
+			break;
+		case display_done:
+			min_max_volume_flag = FALSE;
+			gBlink.BlinkFlag = 0;
+			SLedLightOp(LED_POWER, LIGHTOFF);
+			SLedLightOp(LED_MP3, LIGHTOFF);
+			status = display_prepare;
+			break;
+		default:
+			break;
+		}
+	}
+
+#endif
+
 #ifdef FUNC_POWER_MONITOR_EN
 	if(GetPwrDisp() == PWR_MNT_DISP_EMPTY_V)
 	{

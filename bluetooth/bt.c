@@ -198,6 +198,11 @@ VOID BluetothCtrlEnd(VOID)
 #ifdef FUNC_BT_CHAN_AUTO
 	BT_POWER_L();
 #endif
+
+#ifdef AU6210K_AT_BT809  //此处不知道两个项目的区别 暂时这样
+	BT_POWER_L();
+#endif
+
 }
 
 

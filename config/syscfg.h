@@ -61,6 +61,10 @@
 #define FUNC_BT_CHAN_AUTO
 #endif
 
+#ifdef AU6210K_AT_BT809
+#define FUNC_MIN_MAX_VOLUME_LED   //最大最小音量时快闪灯功能
+#endif
+
 #ifdef AU6210K_ZB_BT007_CSR
 //#define AU6210K_ZB_BT007_IR_IC_IS_334M_CSR  //移动电源的案子    //与智博bt007 仅有部分功能不同: ir ic  //168
 #endif

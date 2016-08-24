@@ -368,6 +368,11 @@ DBG(("gBreakPointInfo.PowerMemory.Volume = %x\n",gBreakPointInfo.PowerMemory.Vol
 #endif
 }
 
+#ifdef FUNC_MIN_MAX_VOLUME_LED
+extern BOOL min_max_volume_flag;
+extern BOOL led_volume_display_end;
+extern VOID SetLedVolumeDis();
+#endif
 
 // 设置系统音量并同时解除Mute状态、显示音量
 VOID SetVolumeWithDisplay(VOID)
@@ -405,6 +410,16 @@ VOID VolumeAdjust(BYTE Direction)
 			gSys.Volume--;
 		}	
 	}
+#ifdef FUNC_MIN_MAX_VOLUME_LED
+	if (gSys.Volume >= VOLUME_MAX ||
+		gSys.Volume <= VOLUME_MIN)// && led_volume_display_end)
+	{
+		min_max_volume_flag = TRUE;
+		//SetLedVolumeDis();
+	}
+#endif
+
+	
 #if 0//AU6210K_ZB_BT007_CSR
 		{
 			if(gSys.Volume == VOLUME_MAX)	
@@ -684,7 +699,7 @@ VOID TimerTick1ms(VOID)
 	}
 #endif
 #if 1
-	if(gSys.SystemMode == SYS_MODE_BLUETOOTH)
+	if((gSys.SystemMode == SYS_MODE_BLUETOOTH) && (!min_max_volume_flag))
 	{
 		if(btIO_Red_Led_is_High())
 			setMCU_Red__Led_Port();
