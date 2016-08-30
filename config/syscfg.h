@@ -62,7 +62,9 @@
 #endif
 
 #ifdef AU6210K_AT_BT809
-#define FUNC_MIN_MAX_VOLUME_LED   //最大最小音量时快闪灯功能
+//#define FUNC_MIN_MAX_VOLUME_LED   //最大最小音量时快闪灯功能
+#define FUNC_MIN_MAX_VOLUME_LED_WITH_TONE   //最大最小音量时快闪灯功能
+
 #endif
 
 #ifdef AU6210K_ZB_BT007_CSR
@@ -717,7 +719,9 @@
 	#define EXMUTE_PORT_BIT 			(1 << 2)   //A6
 	#define EXMUTE_PORT_OUT 			GPIO_A_OUT
 #endif
-	#if defined(AU6210K_NR_D_9X) || defined(AU6210K_NR_D_8_CSRBT) || defined(AU6210K_ZB_BT007_CSR)
+	#if defined(AU6210K_NR_D_9X) || \
+	defined(AU6210K_NR_D_8_CSRBT) || \
+	(defined(AU6210K_ZB_BT007_CSR) && !defined(AU6210K_AT_BT809))
         #define ExMuteOn()	do{ \
 							SetGpioRegBit(EXMUTE_PORT_PU, EXMUTE_PORT_BIT); \
 							ClrGpioRegBit(EXMUTE_PORT_PD, EXMUTE_PORT_BIT); \

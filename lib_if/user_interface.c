@@ -635,7 +635,9 @@ BOOL QuickResponse(VOID)
 }
 #endif
 
-
+#if defined(FUNC_MIN_MAX_VOLUME_LED_WITH_TONE)
+extern BOOL type_flag;
+#endif
 extern BOOL BTisMute();
 //----------------------------------------------------------
 // 如果用户需要在1ms系统时基上做处理，要在应用代码上重写TimerTick1ms()函数
@@ -699,7 +701,7 @@ VOID TimerTick1ms(VOID)
 	}
 #endif
 #if 1
-	if((gSys.SystemMode == SYS_MODE_BLUETOOTH) && (!min_max_volume_flag))
+	if((gSys.SystemMode == SYS_MODE_BLUETOOTH) && (!type_flag))
 	{
 		if(btIO_Red_Led_is_High())
 			setMCU_Red__Led_Port();

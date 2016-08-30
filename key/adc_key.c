@@ -73,8 +73,8 @@ extern BOOL gLedDispRefreshFlag;
 static CODE BYTE AdcKeyEvent[][4] = 
 {
 //	SP						CPS					CPH							CPR	
-	{MSG_VOL_ADD,			MSG_VOL_ADD,			MSG_VOL_ADD,					MSG_NONE	},	//SW3
-	{MSG_VOL_SUB,			MSG_VOL_SUB,			MSG_VOL_SUB,					MSG_NONE	},	//SW2	
+	{MSG_NEXT,			MSG_VOL_ADD,			MSG_VOL_ADD,					MSG_NONE	},	//SW3
+	{MSG_PRE,			MSG_VOL_SUB,			MSG_VOL_SUB,					MSG_NONE	},	//SW2	
 	{MSG_EQ_SW,			MSG_MODE_SW,			MSG_NONE,					MSG_NONE	},	//SW4
 };
 

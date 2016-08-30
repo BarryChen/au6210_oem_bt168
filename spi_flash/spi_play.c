@@ -87,6 +87,7 @@ extern BLUETOOTH_STATUS gBlutoothStatus;
 //指定播放时间，初始化decoder，给decoder数据，启动decoder解码
 //快进，快退恢复播放
 //进入播放状态
+
 BOOL SPI_SongPlayStart(BYTE SpiFileNum)
 {	
 	isSpiPlay = TRUE;
@@ -144,7 +145,6 @@ BOOL SPI_SongPlayStart(BYTE SpiFileNum)
 	PlayVol2Decd();
 	DecoderStartPlay();
 	DBG(("<-SPI_SongPlayStart()\n"));
-	
 	return TRUE;
 }
 
@@ -192,11 +192,23 @@ static VOID NormalSongPlayResume(VOID)
 		return;
 	}		
 }
-
+#ifdef FUNC_MIN_MAX_VOLUME_LED_WITH_TONE
+BOOL type_flag = FALSE;
+#endif
 
 BOOL SPI_PlaySelectNum(BYTE SpiPlayNum, BOOL PlayResumeFlag)
 {	
 	BYTE Volume;
+	
+#ifdef FUNC_MIN_MAX_VOLUME_LED_WITH_TONE
+	BYTE times=0;
+	BOOL vol_disp_flag = TRUE;
+	TIMER		Disp_vol;
+
+	TimeOutSet(&Disp_vol, 200);
+	ClrGpioRegBit(GPIO_E_OUT, (1 << 2));
+	ClrGpioRegBit(GPIO_A_OUT, (1 << 0));
+#endif
 
 	if (SpiPlayNum > gSpiFsCtrl.FsHead.Mp3FileSum)
 	{
@@ -206,6 +218,13 @@ BOOL SPI_PlaySelectNum(BYTE SpiPlayNum, BOOL PlayResumeFlag)
 	if(SpiPlayNum == SPIPLAY_SONG_IR_ON_OFF || 
 		SpiPlayNum == SPIPLAY_SONG_IR_KEY )
 		return FALSE;
+#ifdef FUNC_MIN_MAX_VOLUME_LED_WITH_TONE
+	if(SpiPlayNum == SPIPLAY_SONG_MAX_VOLUME ||
+		SpiPlayNum == SPIPLAY_SONG_MIN_VOLUME)
+		type_flag = TRUE;
+	else
+		type_flag = FALSE;
+#endif
 		
 	if(SpiFlashModel == SpiFlash_None)
 	{
@@ -230,7 +249,29 @@ BOOL SPI_PlaySelectNum(BYTE SpiPlayNum, BOOL PlayResumeFlag)
 #ifdef FUNC_WATCHDOG_EN
 		FeedWatchDog();
 #endif
+	
+#ifdef FUNC_MIN_MAX_VOLUME_LED_WITH_TONE
+		if(IsTimeOut(&Disp_vol) && (times < 4) && (type_flag))
+		{
+			times++;
+			TimeOutSet(&Disp_vol, 200);
+			if(vol_disp_flag)
+			{
+				vol_disp_flag = FALSE;
+				SetGpioRegBit(GPIO_E_OUT, (1 << 2));
+				SetGpioRegBit(GPIO_A_OUT, (1 << 0));
+			}
+			else
+			{
+				vol_disp_flag = TRUE;
+				ClrGpioRegBit(GPIO_E_OUT, (1 << 2));
+				ClrGpioRegBit(GPIO_A_OUT, (1 << 0));
+			}
+		}
+#endif
+
 	}
+	type_flag = FALSE;
 
 	SPISongPlayStop();	
 

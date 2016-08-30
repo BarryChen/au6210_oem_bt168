@@ -783,7 +783,7 @@ VOID RadioEventProcess(VOID)
             PT2313VolAdd();
 #else
 			VolumeAdjust(UP);
-		#ifdef AU6210K_MINI503
+#if defined(AU6210K_MINI503) || defined(AU6210K_AT_BT809)
 			if (gSys.Volume >= VOLUME_MAX)
 			{
 				if(SPI_PlaySelectNum(SPIPLAY_SONG_MAX_VOLUME, 0))
@@ -826,7 +826,7 @@ VOID RadioEventProcess(VOID)
                     PT2313VolSub();
 #else
 			VolumeAdjust(DOWN);
-		#ifdef AU6210K_MINI503
+#if defined(AU6210K_MINI503) || defined(AU6210K_AT_BT809)
 			if (gSys.Volume <= VOLUME_MIN)
 			{
 				if(SPI_PlaySelectNum(SPIPLAY_SONG_MIN_VOLUME, 0))
