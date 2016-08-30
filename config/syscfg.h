@@ -496,8 +496,8 @@
 		//在开机阶段，是指用户必须按住POWER_KEY超过[开关机保持时间]后，系统才会点亮显示继续运行，否则芯片再次进入powerdown
 		//在关机阶段，用户必须按住POWER_KEY超过[开关机保持时间]后，系统才会关闭显示等，然后进入powerdown.
 	#if defined(AU6210K_MINI503)|| defined(AU6210K_AT_BT809)
-	#define TIME_POWER_ON_HOLD		1000	//单位ms
-	#define TIME_POWER_OFF_HOLD 	1000
+	#define TIME_POWER_ON_HOLD		5000	//单位ms
+	#define TIME_POWER_OFF_HOLD 	3000
 
 	#else
 	#define TIME_POWER_ON_HOLD		2500	//单位ms

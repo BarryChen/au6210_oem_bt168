@@ -72,7 +72,9 @@ VOID LineInCtrlInit(VOID)
 //	IsVolumeUpEnd = FALSE;
 //	SetLineInVolume(VolumeVal);
 //	TimeOutSet(&VolumeUpTimer, 10);
+#ifdef AU6210K_AT_BT809
 	SystemOff();
+#endif
 
 #ifdef AU6210K_NR_D_8_CSRBT
 	NPCA110X_DAC1_Set_Volume_and_Mute(gSys.Volume);
@@ -130,6 +132,8 @@ VOID LineInStateCtrl(VOID)
 //		}	
 //	}
  //   DBG(("LineinON\n"));
+#ifdef AU6210K_AT_BT809
+#else
 	switch(Event)
 	{
 	case MSG_V_ADD:
@@ -236,6 +240,7 @@ VOID LineInStateCtrl(VOID)
 
 #ifdef FUN_SYSTEM_POWEROFF_WAIT_TIME
 	SystemOffTimeMsgPro(Event);
+#endif
 #endif
 }
 

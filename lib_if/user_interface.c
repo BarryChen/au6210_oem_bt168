@@ -639,6 +639,11 @@ BOOL QuickResponse(VOID)
 extern BOOL type_flag;
 #endif
 extern BOOL BTisMute();
+#ifdef AU6210K_AT_BT809
+extern BOOL bt_ready_flag;
+extern BOOL power_off_flag;
+#endif
+
 //----------------------------------------------------------
 // 如果用户需要在1ms系统时基上做处理，要在应用代码上重写TimerTick1ms()函数
 extern BOOL gIsNvmOnUse;
@@ -701,31 +706,34 @@ VOID TimerTick1ms(VOID)
 	}
 #endif
 #if 1
-	if((gSys.SystemMode == SYS_MODE_BLUETOOTH) && (!type_flag))
+	if(bt_ready_flag && !power_off_flag)
 	{
-		if(btIO_Red_Led_is_High())
-			setMCU_Red__Led_Port();
-		else
-			clrMCU_Red__Led_Port();
-
-		if(btIO_Blue_Led_is_High())
-			setMCU_Blue__Led_Port();
-		else
-			if(GetPwrDisp() != PWR_MNT_DISP_EMPTY_V)
-				clrMCU_Blue__Led_Port();
+		if((gSys.SystemMode == SYS_MODE_BLUETOOTH) && (!type_flag)  )
+		{
+			if(btIO_Red_Led_is_High())
+				setMCU_Red__Led_Port();
 			else
-				setMCU_Blue__Led_Port();				
+				clrMCU_Red__Led_Port();
+
+			if(btIO_Blue_Led_is_High())
+				setMCU_Blue__Led_Port();
+			else
+				if(GetPwrDisp() != PWR_MNT_DISP_EMPTY_V)
+					clrMCU_Blue__Led_Port();
+				else
+					setMCU_Blue__Led_Port();				
 
 #ifdef FUNC_EXMUTE_EN
-		if(BTisMute())		
-			//mute		
-			ExMuteOn();	 
-		else
-			//unmute
-			ExMuteOff();
+			if(BTisMute())		
+				//mute		
+				ExMuteOn();	 
+			else
+				//unmute
+				ExMuteOff();
 #endif
 
-		
+			
+		}
 	}
 #endif
 

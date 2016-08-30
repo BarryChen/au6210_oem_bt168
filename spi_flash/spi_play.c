@@ -206,8 +206,7 @@ BOOL SPI_PlaySelectNum(BYTE SpiPlayNum, BOOL PlayResumeFlag)
 	TIMER		Disp_vol;
 
 	TimeOutSet(&Disp_vol, 200);
-	ClrGpioRegBit(GPIO_E_OUT, (1 << 2));
-	ClrGpioRegBit(GPIO_A_OUT, (1 << 0));
+	
 #endif
 
 	if (SpiPlayNum > gSpiFsCtrl.FsHead.Mp3FileSum)
@@ -221,7 +220,11 @@ BOOL SPI_PlaySelectNum(BYTE SpiPlayNum, BOOL PlayResumeFlag)
 #ifdef FUNC_MIN_MAX_VOLUME_LED_WITH_TONE
 	if(SpiPlayNum == SPIPLAY_SONG_MAX_VOLUME ||
 		SpiPlayNum == SPIPLAY_SONG_MIN_VOLUME)
+	{
+		ClrGpioRegBit(GPIO_E_OUT, (1 << 2));
+		ClrGpioRegBit(GPIO_A_OUT, (1 << 0));
 		type_flag = TRUE;
+	}
 	else
 		type_flag = FALSE;
 #endif

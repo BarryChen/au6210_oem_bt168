@@ -153,7 +153,7 @@ VOID DispInit(BOOL IsStandBy)
 
 #ifdef FUNC_SINGLE_LED_EN
 	SLedInit();
-	SLedLightOp(LED_POWER, LIGHTON);	
+	//SLedLightOp(LED_POWER, LIGHTON);	
 #endif
 
 #ifdef FUNC_SEG_LED_EN

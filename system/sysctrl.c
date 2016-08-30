@@ -84,6 +84,9 @@ VOID SysTickInit(VOID)
 //	EA = 1;											//run Timer0
 }
 
+#ifdef AU6210K_AT_BT809
+BOOL bt_ready_flag = FALSE, power_off_flag = FALSE;
+#endif
 
 // Oriole Series Chip example main function, add you code.
 VOID main()
@@ -154,12 +157,14 @@ VOID main()
 #endif
 	
 
-#if 0//ndef need_change_flag  //no use
-	baGPIOCtrl[GPIO_A_IE] &= ~0x40;//A2
-	baGPIOCtrl[GPIO_A_OE] |= 0x40;
-	baGPIOCtrl[GPIO_A_PU] |= 0x40;
-	baGPIOCtrl[GPIO_A_PD] |= 0x40; 
-	baGPIOCtrl[GPIO_A_OUT] |= 0x40; //A2
+#if 1//ndef need_change_flag  //no use
+	
+	ClrGpioRegBit(GPIO_A_PU, (1 << 0));		// Pull-Down.
+	ClrGpioRegBit(GPIO_A_PD, (1 << 0));		// Pull-Down.
+	ClrGpioRegBit(GPIO_A_IE, (1 << 0));		// Input Disable
+	SetGpioRegBit(GPIO_A_OE, (1 << 0));		// Output Enable. // D[2:7]
+	ClrGpioRegBit(GPIO_A_OUT, (1 << 0));		// Output 0
+	
 	WaitMs(2);
 #endif
 
@@ -168,7 +173,7 @@ VOID main()
 #endif
 
 	//示例，A2口作为普通GPIO输入带上拉
-	SetA2IcsReg(A2_ICS_FOR_GPIO, A2_ICS_CLOSE);  //设置A2口作为普通GPIO
+	//SetA2IcsReg(A2_ICS_FOR_GPIO, A2_ICS_CLOSE);  //设置A2口作为普通GPIO
 //	ClrGpioRegBit(GPIO_A_PD, (1 << 2));
 //	ClrGpioRegBit(GPIO_A_PU, (1 << 2));
 //	SetGpioRegBit(GPIO_A_IE, (1 << 2));

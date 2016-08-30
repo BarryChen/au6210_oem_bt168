@@ -43,20 +43,6 @@ BOOL led_volume_display_end = TRUE;
 #endif
 
 extern 	BYTE ChannelType;
-VOID SetLedLightOp(SLED_IDX Led, BOOL IsLightOn)
-{
-	if(IsLightOn)
-	{
-		ClrGpioRegBit(GPIO_A_OUT, (1 << 0));
-		ClrGpioRegBit(GPIO_E_OUT, (1 << 2));
-	}
-	else
-	{
-		SetGpioRegBit(GPIO_A_OUT, (1 << 0));
-		SetGpioRegBit(GPIO_E_OUT, (1 << 2));
-		
-	}
-}
 
 // LEDµÆÁÁ»òÃð.
 // led ->LEDµÆ,isLightOn -> TRUE: lighton.
@@ -74,18 +60,13 @@ VOID SLedLightOp(SLED_IDX Led, BOOL IsLightOn)
 		{
 			//DBG(("SLED_POWER ON\n"));
 #if defined(FUNC_SINGLE_LED_HIGHON_EN)
-			SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+			//SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
 #else
 		
 			if(gSys.SystemMode != SYS_MODE_BLUETOOTH)
 			{
 			
-	#ifdef FUNC_MIN_MAX_VOLUME_LED
-				if(min_max_volume_flag)
-					ClrGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
-				else
-	#endif
-					SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
+				SetGpioRegBit(SLED_POWER_PORT, MASK_SLED_POWER);
 			}
 			else
 			{
@@ -268,7 +249,7 @@ VOID SLedInit(VOID)
 	SetGpioRegBit(SLED_MP3_PD, MASK_SLED_MP3);		// Pull-Down.
 	ClrGpioRegBit(SLED_MP3_IE, MASK_SLED_MP3);		// Input Disable
 	SetGpioRegBit(SLED_MP3_OE, MASK_SLED_MP3);		// Output Enable. // D[2:7]
-	ClrGpioRegBit(SLED_MP3_OUT, MASK_SLED_MP3);		// Output 0
+	SetGpioRegBit(SLED_MP3_OUT, MASK_SLED_MP3);		// Output 0
 #endif	
 
 #endif
@@ -550,7 +531,12 @@ VOID SLedDispDevSymbol(VOID)
 			break;
 	}
 
+#ifdef AU6210K_AT_BT809
+SLedLightOp(LED_POWER, LIGHTOFF);
+
+#else
 	SLedLightOp(LED_POWER, LIGHTON);
+#endif
 	gBlink.BlinkFlag = 0;
 	TimeOutSet(&DispTmr, NORMAL_INTERVAL);
 }

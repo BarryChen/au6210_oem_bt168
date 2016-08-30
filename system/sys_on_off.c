@@ -164,11 +164,55 @@ VOID SystemOn(VOID)
 #endif
 }
 
+#ifdef AU6210K_AT_BT809
+extern BOOL power_off_flag;
+#endif
 
 //系统关闭，包括系统以SLEEP方式关闭或者以片内主电源下电POWER DOWN方式关闭的相关处理
 VOID SystemOff(VOID)
 {
+#ifdef FUNC_MIN_MAX_VOLUME_LED_WITH_TONE
+	BYTE times=0;
+	BOOL vol_disp_flag = TRUE;
+	TIMER		Disp_vol;
+
+	TimeOutSet(&Disp_vol, 200);
+	ClrGpioRegBit(GPIO_E_OUT, (1 << 2));
+	ClrGpioRegBit(GPIO_A_OUT, (1 << 0));
+#endif
 	BT_POWER_L();  //mini503 蓝牙电源随总电源开关变化
+#ifdef FUNC_MIN_MAX_VOLUME_LED_WITH_TONE
+	while(1)
+	{
+#ifdef FUNC_WATCHDOG_EN
+		FeedWatchDog();
+#endif
+		power_off_flag = TRUE;
+	
+		if(times > 10)
+			break;
+		if(IsTimeOut(&Disp_vol) )
+		{
+			times++;
+			TimeOutSet(&Disp_vol, 200);
+			if(vol_disp_flag)
+			{
+				vol_disp_flag = FALSE;
+				SetGpioRegBit(GPIO_E_OUT, (1 << 2));
+				SetGpioRegBit(GPIO_A_OUT, (1 << 0));
+			}
+			else
+			{
+				vol_disp_flag = TRUE;
+				ClrGpioRegBit(GPIO_E_OUT, (1 << 2));
+				ClrGpioRegBit(GPIO_A_OUT, (1 << 0));
+			}
+		}
+
+	}
+	WaitMs(1000);
+#endif
+
 	
 #if (POWER_SAVING_MODE_OPTION == POWER_SAVING_MODE_SLEEP)
 	//休眠，进入SLEEP模式
@@ -188,7 +232,6 @@ VOID SystemOff(VOID)
 	//	SLedLightOp(LED_POWER, FALSE);	
 		WaitMs(1000);
 #endif
-
 
 	MuteOn(FALSE, TRUE);
 	//NPCA110X_SetOutMute(TRUE);

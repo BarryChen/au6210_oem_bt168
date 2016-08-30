@@ -87,7 +87,10 @@ VOID SetBluetoothVolume(BYTE Vol)
 {
 	InDacLineInGain(gBTInGain[Vol], gBTInGain[Vol]);
 }
-
+#ifdef AU6210K_AT_BT809
+extern BOOL bt_ready_flag;
+extern BOOL power_off_flag;
+#endif
 
 VOID BluetoothCtrlInit(VOID)
 {
@@ -178,7 +181,9 @@ VOID BluetoothCtrlInit(VOID)
 #endif
 
 	BT_POWER_H();
-
+#ifdef AU6210K_AT_BT809
+	bt_ready_flag = TRUE;
+#endif
 
 
 }
